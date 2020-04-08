@@ -24,7 +24,7 @@ hs_err_pid*
 
 # Idea
 .idea/
-target/
+*/target/
 *.iml
 
 # Project
