@@ -1,0 +1,12 @@
+package rs.emulator.packet.network.message.impl
+
+import gg.rsmod.game.message.Message
+
+/**
+ * @author Triston Plummer ("Dread")
+ *
+ * Represents the third player interaction option
+ *
+ * @param index The index of the player that the client is interacting with
+ */
+class OpPlayer3Message(val index: Int) : Message

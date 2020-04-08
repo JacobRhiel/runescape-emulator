@@ -1,0 +1,12 @@
+
+hibernate.hikari.dataSource.user: "postgres"
+
+hibernate.hikari.dataSource.password: "deadmau5"
+
+hibernate.hikari.dataSource.databaseName: "runescape-emulator"
+
+hibernate.hikari.dataSource.portNumber: 5432
+
+hibernate.hikari.dataSource.serverName: "localhost"
+
+connection.provider_class: "org.hibernate.hikaricp.internal.HikariCPConnectionProvider"
