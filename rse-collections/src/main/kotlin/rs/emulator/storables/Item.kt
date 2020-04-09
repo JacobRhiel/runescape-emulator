@@ -6,7 +6,7 @@ import rs.emulator.attributes.AttributeMap
 import rs.emulator.attributes.Copyable
 
 data class Item(override val id: Int, override var amount: Int = 1, val attributes: AttributeMap) :
-    Storable {
+    Storable, Copyable<Item> {
     constructor(id: Int, amount: Int = 1) : this(id, amount, AttributeMap()) {
         this["stackable"] = false
     }
@@ -75,5 +75,9 @@ data class Item(override val id: Int, override var amount: Int = 1, val attribut
 
     companion object {
         val EMPTY_ITEM = Item(0, 0)
+    }
+
+    override fun copy(): Item {
+        return this.copy(this.amount)
     }
 }
