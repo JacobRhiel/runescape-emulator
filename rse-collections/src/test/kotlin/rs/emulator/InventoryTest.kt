@@ -2,113 +2,168 @@ package rs.emulator
 
 import org.junit.Assert
 import org.junit.Test
-import rs.emulator.container.ResultType
-import rs.emulator.container.impl.Inventory
+import rs.emulator.containers.items.Inventory
 import rs.emulator.storables.Item
-import java.util.logging.Level
-import java.util.logging.Logger
-import kotlin.math.log
 
 class InventoryTest {
 
-    val logger = Logger.getLogger(InventoryTest::class.java.simpleName)
-
     @Test
     fun addStackableItem() {
-
         val inv = Inventory()
+        val coins = Item.asStackable(995, 2000)
 
-        val coins = Item(995, 1000)
-        coins["stackable"] = true
+        inv.addItem(coins)
 
-        inv.add(coins)
-
-        Assert.assertNotNull("Failed to add 1000 coins", inv.find { it.value.isIdentical(coins) })
+        Assert.assertNotNull("Failed to add $coins", inv.find { it.isIdentical(coins) })
 
     }
 
     @Test
     fun removeStackableItem() {
-
         val inv = Inventory()
+        val coins = Item.asStackable(995, 2000)
 
-        val added = Item(995, 1000)
-        added["stackable"] = true
+        inv.addItem(coins)
 
-        inv.add(added)
+        inv.removeItem(coins.copy(1000))
 
-        val coins = Item(995, 500)
-        coins["stackable"] = true
+        Assert.assertNotNull("Failed to remove $coins", inv.find { it.isIdentical(coins) && it.amount == 1000 })
 
-        inv.remove(coins)
+    }
 
-        Assert.assertNull("Failed to remove 500 coins", inv.find { it.value.isIdentical(coins) && it.value.amount == 1000 })
+    @Test
+    fun listenerChangeTest() {
+        val inv = Inventory()
+        val coins = Item.asStackable(995)
+
+        inv.addChangeListener { _, _, item2 ->
+            Assert.assertTrue("Failed to record change for $coins", item2.isIdentical(coins))
+        }
+
+        inv.addItem(coins)
+
 
     }
 
     @Test
     fun addNonStackableItem() {
         val inv = Inventory()
+        val whip = Item(4151)
 
+        inv.addItem(whip)
 
-        val whips = Item(4151, 4)
+        Assert.assertTrue("Failed to add non stackable item $whip", inv.count { it.isIdentical(whip) } == 1)
 
-        inv.add(whips)
+        val whips = Item(4151, 2)
 
-        Assert.assertTrue("Failed to add whips separately", inv.count { it.value.isIdentical(whips) } == 4)
+        inv.addItem(whips)
+
+        Assert.assertTrue("Failed to add none stackable item $whips", inv.count { it.isIdentical(whip) } == 3)
 
     }
 
     @Test
     fun removeNonStackableItem() {
         val inv = Inventory()
+        val whip = Item(4151)
 
-        val added = Item(4151, 4)
+        inv.addItem(whip)
 
-        inv.add(added)
+        inv.removeItem(Item(4151))
 
-        val whips = Item(4151, 2)
+        Assert.assertTrue("Failed to remove non stackable $whip", inv.count { it.isIdentical(whip) } == 0)
 
-        inv.remove(whips)
+        val whips = Item(4151, 5)
 
-        Assert.assertTrue("Failed to remove whips separately", inv.count { it.value.isIdentical(whips) } == 2)
+        inv.addItem(whips)
+
+        inv.removeItem(Item(4151, 2))
+
+        Assert.assertTrue("Failed to remove non stackale ${whips.copy(2)}", inv.count { it.isIdentical(whip) } == 3)
 
     }
 
     @Test
-    fun resetSetTest() {
+    fun swapSlots() {
         val inv = Inventory()
-
+        val santa = Item(1050)
         val whip = Item(4151)
 
-        val set = inv.add(whip)
+        inv.addItem(santa)
+        inv.addItem(whip)
 
-        Assert.assertNotNull("Failed to record added item in result set", set.resultMap[ResultType.ADDED]?.find { it.isIdentical(whip) })
+        inv.swap(0, 1)
 
-        val removedSet = inv.remove(whip)
+        Assert.assertTrue("Failed to swap santa to slot 1", inv[1].isIdentical(santa))
+        Assert.assertTrue("Failed to swap whip to slot 0", inv[0].isIdentical(whip))
 
-        Assert.assertNotNull("Failed to record removed item from result set", removedSet.resultMap[ResultType.REMOVED]?.find { it.isIdentical(whip) })
+    }
 
-        val coins = Item(995, 5000)
-        coins["stackable"] = true
+    @Test
+    fun tempListenerTest() {
+        val inv = Inventory()
+        val whip = Item(4151)
 
-        val coinSet = inv.add(coins)
+        inv.addItem(whip) { left_over, added ->
+            Assert.assertTrue(
+                "Temp listener expect 1 empty 1 added",
+                left_over == Item.EMPTY_ITEM && added != Item.EMPTY_ITEM
+            )
+        }
 
-        Assert.assertNotNull("Failed to record stackable item to result set", coinSet.resultMap[ResultType.ADDED]?.find { it.isIdentical(coins) })
+        val whips = Item(4151, 27)
 
-        val removedCoins = Item(995, 2500)
-        removedCoins["stackable"] = true
+        inv.addItem(whips) { left_over, added ->
+            Assert.assertTrue("Listener expect 0 left and 27 added", left_over == Item.EMPTY_ITEM && added.amount == 27)
+        }
 
-        val cSet = inv.remove(removedCoins)
+        val santa = Item(1050, 5)
 
-        Assert.assertTrue("Failed to record stackable modified to result set", cSet.resultMap[ResultType.MODIFIED]?.count { it.isIdentical(removedCoins) && it.amount == 2500 } == 1)
+        inv.addItem(santa) { left_over, added ->
+            Assert.assertTrue(
+                "Expect 5 ($left_over) left overs and 0 ($added) added",
+                left_over.amount == 5 && added == Item.EMPTY_ITEM
+            )
+        }
 
-        val moreRemovedCoins = Item(995, 3000)
-        moreRemovedCoins["stackable"] = true
+        val rWhip = Item(4151)
 
-        val removeSet = inv.remove(moreRemovedCoins)
+        inv.removeItem(rWhip) { old, new ->
+            Assert.assertTrue("Expect 1 ($old) and empty ($new)", old.isIdentical(rWhip) && new == Item.EMPTY_ITEM)
+        }
 
-        Assert.assertTrue("Failed to record stackable removed to result set", removeSet.resultMap[ResultType.REMOVED]?.count { it.isIdentical(moreRemovedCoins) } == 1)
+        val moreSanta = Item(1050, 3)
+
+        inv.addItem(moreSanta) { left_over, added ->
+            Assert.assertTrue("Expect 2 ($left_over) and 1 added ($added)", left_over.amount == 2 && added.amount == 1)
+        }
+
+    }
+
+    /**
+     * Haven't written bank code, therefor shifting was tested on inventory.
+     * All containers can be shifted, Item.EMPTY_ITEM will be shifted to the right.
+     */
+
+    @Test
+    fun shifting() {
+        val inv = Inventory()
+        val whips = Item(4151, 28)
+
+        inv.addItem(whips)
+
+        inv[1] = Item.EMPTY_ITEM
+        inv[2] = Item(1050)
+        inv[3] = Item.EMPTY_ITEM
+
+        inv.shiftItems()
+
+        Assert.assertTrue(
+            "Failed to shift items to the left",
+            inv[26] == Item.EMPTY_ITEM
+                    && inv[27] == Item.EMPTY_ITEM
+                    && inv[1].isIdentical(Item(1050))
+        )
 
     }
 
