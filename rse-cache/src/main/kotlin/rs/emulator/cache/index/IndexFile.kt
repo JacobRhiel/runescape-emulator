@@ -6,7 +6,7 @@ import rs.emulator.cache.compression.Compressible
 import rs.emulator.cache.index.archive.ArchiveConfig
 import rs.emulator.cache.index.archive.ArchiveFile
 import rs.emulator.cache.index.archive.entry.EntryData
-import rs.emulator.hash.Djb2
+import rs.emulator.utilities.hash.Djb2
 import rs.emulator.utilities.logger
 import java.io.*
 
