@@ -11,9 +11,11 @@ import rs.emulator.entity.update.EntityUpdateType
  *
  * @author Tom <rspsmods@gmail.com>
  */
-abstract class EntityUpdate<T : Entity>(open val type: EntityUpdateType, open val entity: T) {
+abstract class EntityUpdate<T : Entity>(open val type: EntityUpdateType, open val entity: T)
+{
 
     abstract fun toMessage(): Message
 
     override fun toString(): String = MoreObjects.toStringHelper(this).add("type", type).add("entity", entity).toString()
+
 }

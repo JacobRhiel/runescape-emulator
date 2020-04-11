@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit
     }
 
     private val regionCache: Cache<Int, Object2ObjectOpenHashMap<Region, HashMap<MapScapeDefinition, LandscapeDefinition>>> = Caffeine.newBuilder()
-        .maximumSize(fileStore.fetchIndex(IndexConfig.MAPS.identifier).indexTable.archiveCount.toLong())
+        .maximumSize(/*fileStore.fetchIndex(IndexConfig.MAPS.identifier).indexTable.archiveCount.toLong()*/15000)//todo size
         .expireAfterAccess(2, TimeUnit.MINUTES)
         .recordStats()
         .build()
@@ -60,9 +60,9 @@ import java.util.concurrent.TimeUnit
 
         val definitions = HashMap<MapScapeDefinition, LandscapeDefinition>()
 
-        val mapScapeDefinition = DefinitionRepository.INSTANCE!!.find(MapScapeDefinition::class.java, region.id) ?: throw Error("No mapscape definition for region ${region.id}.")
+        val mapScapeDefinition = DefinitionRepository.INSTANCE!!.find(MapScapeDefinition::class.java, region.id) ?: throw Error("No map scape definition for region ${region.id}.")
 
-        val landscapeDefinition = DefinitionRepository.INSTANCE!!.find(LandscapeDefinition::class.java, region.id) ?: throw Error("No mapscape definition for region ${region.id}.")
+        val landscapeDefinition = DefinitionRepository.INSTANCE!!.find(LandscapeDefinition::class.java, region.id) ?: throw Error("No landscape definition for region ${region.id}.")
 
         definitions[mapScapeDefinition] = landscapeDefinition
 
