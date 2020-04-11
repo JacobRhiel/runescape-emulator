@@ -9,10 +9,12 @@ import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.movement.MovementQueue
 import rs.emulator.entity.actor.player.update.PlayerUpdateProtocol
 import rs.emulator.entity.actor.player.update.block.UpdateBlockSet
+import rs.emulator.entity.obj.Item
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.model.widget.WidgetSet
 import rs.emulator.model.widget.root.RootWidgetType
 import rs.emulator.model.widget.viewport.ViewportWidgetType
+import rs.emulator.packet.network.message.ChatMessageType
 import rs.emulator.packet.network.message.impl.*
 import rs.emulator.security.uuid.UUIDGenerator
 import rs.emulator.world.map.old.region.EntityType
@@ -123,7 +125,15 @@ open class Player(val channel: Channel,
         }
         varps.clean()
 
-        //channel.write(MessageGameMessage(ChatMessageType.GAME_MESSAGE.id, "", "Welcome to RuneScape Emulator."))
+        channel.write(MessageGameMessage(ChatMessageType.GAME_MESSAGE.id, "", "Welcome to RuneScape Emulator."))
+
+        channel.write(UpdateInvFullMessage(interfaceId = 149, component = 0, containerKey = 93, items = hashMapOf(Pair(4151, 1))))
+
+/*
+        val msg = EntityGroupMessage(7, EntityUpdate(7, this).toMessage())
+
+        channel.write(UpdateZonePartialEnclosedMessage(local.x, local.z, PacketConstants.MESSAGE_ENCODER_SET!!, PacketConstants.MESSAGE_STRUCTURE_SET!!, msg))
+*/
 
     }
 
