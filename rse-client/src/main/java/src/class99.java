@@ -164,7 +164,7 @@ public class class99 {
 
                      for(var8 = 0; var8 < var17; ++var8) {
                         var9 = var15.readShort((byte)30);
-                        var10 = var15.method5552(297718403);
+                        var10 = var15.readInt(297718403);
                         if(this.field1282[var9]) {
                            this.field1283.put(Integer.valueOf(var9), Integer.valueOf(var10));
                         }

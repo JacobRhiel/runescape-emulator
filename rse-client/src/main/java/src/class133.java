@@ -46,7 +46,7 @@ public class class133 extends class189 {
          this.field1634 = new int[var2];
 
          for(var3 = 0; var3 < var2; ++var3) {
-            this.field1634[var3] = var1.method5552(297718403);
+            this.field1634[var3] = var1.readInt(297718403);
          }
 
          this.field1643 = var1.readUnsignedByte((byte)69);

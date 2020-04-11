@@ -78,7 +78,7 @@ public class class66 implements Callable {
       int var4 = var3.readShort((byte)101);
       int var5 = var3.field3709.length - 2 - var4 - 12;
       var3.field3710 = var5;
-      int var6 = var3.method5552(297718403);
+      int var6 = var3.readInt(297718403);
       var2.field1302 = var3.readShort((byte)103);
       var2.field1301 = var3.readShort((byte)78);
       var2.field1306 = var3.readShort((byte)104);
@@ -95,8 +95,8 @@ public class class66 implements Callable {
             var2.field1304[var8] = var10;
 
             while(var9-- > 0) {
-               int var11 = var3.method5552(297718403);
-               int var12 = var3.method5552(297718403);
+               int var11 = var3.readInt(297718403);
+               int var12 = var3.readInt(297718403);
                var10.method5963(new class188(var12), (long)var11);
             }
          }
@@ -113,7 +113,7 @@ public class class66 implements Callable {
          if(var9 == 3) {
             var2.field1299[var8] = var3.method5667(-1282132720);
          } else if(var9 < 100 && var9 != 21 && var9 != 38 && var9 != 39) {
-            var2.field1300[var8] = var3.method5552(297718403);
+            var2.field1300[var8] = var3.readInt(297718403);
          } else {
             var2.field1300[var8] = var3.readUnsignedByte((byte)89);
          }

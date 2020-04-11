@@ -24,8 +24,8 @@ public class class115 {
 
    final void method2581(class309 var1) {
       this.field1449 = var1.readUnsignedByte((byte)66);
-      this.field1450 = var1.method5552(297718403);
-      this.field1447 = var1.method5552(297718403);
+      this.field1450 = var1.readInt(297718403);
+      this.field1447 = var1.readInt(297718403);
       this.method2583(var1);
    }
 

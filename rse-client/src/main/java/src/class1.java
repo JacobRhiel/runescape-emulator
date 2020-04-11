@@ -7,7 +7,7 @@ final class class1 implements class0 {
    }
 
    public Object vmethod74(class309 var1, int var2) {
-      return Integer.valueOf(var1.method5552(297718403));
+      return Integer.valueOf(var1.readInt(297718403));
    }
 
    public void vmethod64(Object var1, class309 var2, byte var3) {

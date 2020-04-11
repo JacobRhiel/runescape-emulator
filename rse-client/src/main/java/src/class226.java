@@ -376,7 +376,7 @@ public class class226 extends class189 {
             if(var10 == 1) {
                this.field2660[var9] = var1.method5550(277076398);
                this.field2637[var9] = var1.method5550(482664201);
-               this.field2638[var9] = var1.method5552(297718403);
+               this.field2638[var9] = var1.readInt(297718403);
             } else {
                this.field2638[var9] = -1;
             }
@@ -415,18 +415,18 @@ public class class226 extends class189 {
       }
 
       if(this.field2569 == 1 || this.field2569 == 3 || this.field2569 == 4) {
-         this.field2592 = var1.method5552(297718403);
+         this.field2592 = var1.readInt(297718403);
       }
 
       if(this.field2569 == 3 || this.field2569 == 4) {
-         this.field2636 = var1.method5552(297718403);
-         this.field2705 = var1.method5552(297718403);
-         this.field2595 = var1.method5552(297718403);
+         this.field2636 = var1.readInt(297718403);
+         this.field2705 = var1.readInt(297718403);
+         this.field2595 = var1.readInt(297718403);
       }
 
       if(this.field2569 == 5) {
-         this.field2602 = var1.method5552(297718403);
-         this.field2578 = var1.method5552(297718403);
+         this.field2602 = var1.readInt(297718403);
+         this.field2578 = var1.readInt(297718403);
       }
 
       if(this.field2569 == 6) {
@@ -467,7 +467,7 @@ public class class226 extends class189 {
          }
 
          this.field2684 = var1.readUnsignedByte((byte)19) == 1;
-         this.field2592 = var1.method5552(297718403);
+         this.field2592 = var1.readInt(297718403);
          this.field2634 = var1.method5550(-533559390);
          this.field2635 = var1.method5550(-375962539);
          var5 = var1.readUnsignedByte((byte)88);
@@ -561,12 +561,12 @@ public class class226 extends class189 {
       }
 
       if(this.field2569 == 5) {
-         this.field2602 = var1.method5552(297718403);
+         this.field2602 = var1.readInt(297718403);
          this.field2604 = var1.readShort((byte)54);
          this.field2605 = var1.readUnsignedByte((byte)64) == 1;
          this.field2640 = var1.readUnsignedByte((byte)94);
          this.field2606 = var1.readUnsignedByte((byte)112);
-         this.field2607 = var1.method5552(297718403);
+         this.field2607 = var1.readInt(297718403);
          this.field2608 = var1.readUnsignedByte((byte)74) == 1;
          this.field2609 = var1.readUnsignedByte((byte)13) == 1;
       }
@@ -611,18 +611,18 @@ public class class226 extends class189 {
          this.field2631 = var1.readUnsignedByte((byte)67);
          this.field2645 = var1.readUnsignedByte((byte)75);
          this.field2684 = var1.readUnsignedByte((byte)92) == 1;
-         this.field2592 = var1.method5552(297718403);
+         this.field2592 = var1.readInt(297718403);
       }
 
       if(this.field2569 == 3) {
-         this.field2592 = var1.method5552(297718403);
+         this.field2592 = var1.readInt(297718403);
          this.field2685 = var1.readUnsignedByte((byte)78) == 1;
          this.field2640 = var1.readUnsignedByte((byte)90);
       }
 
       if(this.field2569 == 9) {
          this.field2600 = var1.readUnsignedByte((byte)112);
-         this.field2592 = var1.method5552(297718403);
+         this.field2592 = var1.readInt(297718403);
          this.field2601 = var1.readUnsignedByte((byte)80) == 1;
       }
 
@@ -866,7 +866,7 @@ public class class226 extends class189 {
          for(int var5 = 0; var5 < var3; ++var5) {
             int var6 = var1.readUnsignedByte((byte)102);
             if(var6 == 0) {
-               var4[var5] = new Integer(var1.method5552(297718403));
+               var4[var5] = new Integer(var1.readInt(297718403));
             } else if(var6 == 1) {
                var4[var5] = var1.method5667(-553177812);
             }
@@ -909,7 +909,7 @@ public class class226 extends class189 {
          int[] var4 = new int[var3];
 
          for(int var5 = 0; var5 < var3; ++var5) {
-            var4[var5] = var1.method5552(297718403);
+            var4[var5] = var1.readInt(297718403);
          }
 
          return var4;

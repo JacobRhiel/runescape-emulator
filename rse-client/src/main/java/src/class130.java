@@ -1212,7 +1212,7 @@ public class class130 extends class144 {
          var2.readShort((byte)30);
          var2.readShort((byte)110);
          var2.readShort((byte)82);
-         var2.method5552(297718403);
+         var2.readInt(297718403);
       }
 
    }

@@ -14,7 +14,7 @@ public class class259 extends class184 {
       if(var2 == 1) {
          this.field3302 = class236.method4199(var1.readByte(-1556367137), -1712005839);
       } else if(var2 == 2) {
-         this.field3298 = var1.method5552(297718403);
+         this.field3298 = var1.readInt(297718403);
       } else if(var2 == 4) {
          this.field3300 = false;
       } else if(var2 == 5) {

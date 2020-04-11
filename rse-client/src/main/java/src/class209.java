@@ -71,8 +71,8 @@ public class class209 {
       int var3;
       int var5;
       for(var3 = 0; var3 < var2; this.field2481.field3710 += var5) {
-         int var4 = this.field2481.method5552(297718403);
-         var5 = this.field2481.method5552(297718403);
+         int var4 = this.field2481.readInt(297718403);
+         var5 = this.field2481.readInt(297718403);
          if(var4 == 1297379947) {
             this.field2469[var3] = this.field2481.field3710;
             ++var3;

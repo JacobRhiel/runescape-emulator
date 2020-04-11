@@ -57,8 +57,8 @@ public class class309 extends class189 {
    }
 
    public long method5553(byte var1) {
-      long var2 = (long)this.method5552(297718403) & 4294967295L;
-      long var4 = (long)this.method5552(297718403) & 4294967295L;
+      long var2 = (long)this.readInt(297718403) & 4294967295L;
+      long var4 = (long)this.readInt(297718403) & 4294967295L;
       return (var2 << 32) + var4;
    }
 
@@ -88,7 +88,7 @@ public class class309 extends class189 {
       return var3 == 0?"":class35.method507(this.field3709, var2, var3, (byte)-37);
    }
 
-   public int method5552(int var1) {
+   public int readInt(int var1) {
       this.field3710 += 4;
       return ((this.field3709[this.field3710 - 3] & 255) << 16) + (this.field3709[this.field3710 - 1] & 255) + ((this.field3709[this.field3710 - 2] & 255) << 8) + ((this.field3709[this.field3710 - 4] & 255) << 24);
    }
@@ -119,7 +119,7 @@ public class class309 extends class189 {
 
    public int method5564(byte var1) {
       if(this.field3709[this.field3710] < 0) {
-         return this.method5552(297718403) & Integer.MAX_VALUE;
+         return this.readInt(297718403) & Integer.MAX_VALUE;
       } else {
          int var2 = this.readShort((byte)107);
          return var2 == 32767?-1:var2;
@@ -219,7 +219,7 @@ public class class309 extends class189 {
    }
 
    public int method5751(int var1) {
-      return this.field3709[this.field3710] < 0?this.method5552(297718403) & Integer.MAX_VALUE:this.readShort((byte)38);
+      return this.field3709[this.field3710] < 0?this.readInt(297718403) & Integer.MAX_VALUE:this.readShort((byte)38);
    }
 
    public void method5727(int[] var1, int var2, int var3, int var4) {
@@ -228,8 +228,8 @@ public class class309 extends class189 {
       int var6 = (var3 - var2) / 8;
 
       for(int var7 = 0; var7 < var6; ++var7) {
-         int var8 = this.method5552(297718403);
-         int var9 = this.method5552(297718403);
+         int var8 = this.readInt(297718403);
+         int var9 = this.readInt(297718403);
          int var10 = -957401312;
          int var11 = -1640531527;
 
@@ -308,7 +308,7 @@ public class class309 extends class189 {
       this.field3709[++this.field3710 - 1] = (byte)(var1 + 128);
    }
 
-   public int method5577(int var1) {
+   public int readByteN(int var1) {
       return 0 - this.field3709[++this.field3710 - 1] & 255;
    }
 
@@ -337,7 +337,7 @@ public class class309 extends class189 {
       this.field3709[++this.field3710 - 1] = (byte)(var1 + 128);
    }
 
-   public int method5594(byte var1) {
+   public int readMEInt(byte var1) {
       this.field3710 += 4;
       return ((this.field3709[this.field3710 - 1] & 255) << 8) + ((this.field3709[this.field3710 - 4] & 255) << 16) + (this.field3709[this.field3710 - 2] & 255) + ((this.field3709[this.field3710 - 3] & 255) << 24);
    }
@@ -564,7 +564,7 @@ public class class309 extends class189 {
       }
 
       var5 = ~var5;
-      var6 = this.method5552(297718403);
+      var6 = this.readInt(297718403);
       return var6 == var5;
    }
 
@@ -599,8 +599,8 @@ public class class309 extends class189 {
       this.field3710 = 0;
 
       for(int var4 = 0; var4 < var3; ++var4) {
-         int var5 = this.method5552(297718403);
-         int var6 = this.method5552(297718403);
+         int var5 = this.readInt(297718403);
+         int var6 = this.readInt(297718403);
          int var7 = 0;
          int var8 = -1640531527;
 
@@ -622,8 +622,8 @@ public class class309 extends class189 {
       int var6 = (var3 - var2) / 8;
 
       for(int var7 = 0; var7 < var6; ++var7) {
-         int var8 = this.method5552(297718403);
-         int var9 = this.method5552(297718403);
+         int var8 = this.readInt(297718403);
+         int var9 = this.readInt(297718403);
          int var10 = 0;
          int var11 = -1640531527;
 
@@ -655,8 +655,8 @@ public class class309 extends class189 {
       this.field3710 = 0;
 
       for(int var4 = 0; var4 < var3; ++var4) {
-         int var5 = this.method5552(297718403);
-         int var6 = this.method5552(297718403);
+         int var5 = this.readInt(297718403);
+         int var6 = this.readInt(297718403);
          int var7 = -957401312;
          int var8 = -1640531527;
 

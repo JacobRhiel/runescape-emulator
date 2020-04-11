@@ -78,7 +78,7 @@ public class class264 extends class184 {
       } else if(var2 == 11) {
          this.field3418 = 1;
       } else if(var2 == 12) {
-         this.field3417 = var1.method5552(297718403);
+         this.field3417 = var1.readInt(297718403);
       } else if(var2 == 16) {
          this.field3412 = true;
       } else if(var2 == 23) {

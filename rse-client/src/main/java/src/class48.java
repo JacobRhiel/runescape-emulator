@@ -88,7 +88,7 @@ public class class48 extends class30 {
       return super.field197 | super.field198 << 8 | this.field374 << 16 | this.field377 << 24;
    }
 
-   static final void method816(class194 var0, byte var1) {
+   static final void updateEntityType(class194 var0, byte var1) {
       class308 var2 = client.field761.field1337;
       int var4;
       int var5;
@@ -98,7 +98,7 @@ public class class48 extends class30 {
       int var9;
       int var38;
       if(class194.field2327 == var0) {
-         var38 = var2.method5577(1093621994);
+         var38 = var2.readByteN(1093621994);
          var4 = var38 >> 2;
          var5 = var38 & 3;
          var6 = client.field699[var4];
@@ -120,7 +120,7 @@ public class class48 extends class30 {
             var4 = var2.method5587(-1264815455);
             var5 = var2.readShort((byte)114);
             var6 = var2.method5587(-1679564732);
-            var7 = var2.method5577(678489344);
+            var7 = var2.readByteN(678489344);
             var8 = var7 >> 2;
             var9 = var7 & 3;
             var10 = client.field699[var8];
@@ -291,8 +291,8 @@ public class class48 extends class30 {
             } else if(class194.field2332 == var0) {
                var38 = var2.method5586((byte)119);
                var4 = var2.readByteS(-576195763) * 4;
-               var5 = var2.method5577(2146763860) * 4;
-               var6 = var2.method5577(1816779581);
+               var5 = var2.readByteN(2146763860) * 4;
+               var6 = var2.readByteN(1816779581);
                byte var39 = var2.method5580(-587494464);
                var8 = var2.method5587(-1790389065);
                var9 = var2.readUnsignedShort((byte)86);

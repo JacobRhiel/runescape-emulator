@@ -44,16 +44,16 @@ public class class111 extends class189 {
 
    void method2463(byte[] var1) {
       class309 var2 = new class309(var1);
-      this.field1370 = var2.method5552(297718403);
-      this.field1373 = var2.method5552(297718403);
-      this.field1372 = var2.method5552(297718403);
-      this.field1390 = var2.method5552(297718403);
+      this.field1370 = var2.readInt(297718403);
+      this.field1373 = var2.readInt(297718403);
+      this.field1372 = var2.readInt(297718403);
+      this.field1390 = var2.readInt(297718403);
       if(this.field1390 < 0) {
          this.field1390 = ~this.field1390;
          this.field1387 = true;
       }
 
-      int var3 = var2.method5552(297718403);
+      int var3 = var2.readInt(297718403);
       this.field1381 = new byte[var3][];
 
       for(int var4 = 0; var4 < var3; ++var4) {

@@ -26,7 +26,7 @@ public class class291 extends class286 {
             if(var7 > 0) {
                var1.method5667(-2117271640);
                var1.readUnsignedByte((byte)76);
-               var1.method5552(297718403);
+               var1.readInt(297718403);
             }
 
             var1.method5667(-588780588);

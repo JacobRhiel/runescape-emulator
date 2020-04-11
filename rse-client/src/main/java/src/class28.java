@@ -154,7 +154,7 @@ public class class28 implements class46 {
 
          if((var5 & 2) != 0) {
             var4.field1009 = var0.method5587(-1889162822);
-            var6 = var0.method5594((byte)-22);
+            var6 = var0.readMEInt((byte)-22);
             var4.field1033 = var6 >> 16;
             var4.field1013 = (var6 & '\uffff') + client.field689;
             var4.field1006 = 0;
@@ -200,14 +200,14 @@ public class class28 implements class46 {
                }
             }
 
-            var7 = var0.method5577(1624802147);
+            var7 = var0.readByteN(1624802147);
             if(var7 > 0) {
                for(var8 = 0; var8 < var7; ++var8) {
                   var9 = var0.method5561(1016845309);
                   var10 = var0.method5561(1315200137);
                   if(var10 != 32767) {
                      var11 = var0.method5561(2145187715);
-                     var12 = var0.method5577(1811680304);
+                     var12 = var0.readByteN(1811680304);
                      int var13 = var10 > 0?var0.readByteS(-576195763):var12;
                      var4.method1831(var9, client.field689, var10, var11, var12, var13, (byte)-58);
                   } else {

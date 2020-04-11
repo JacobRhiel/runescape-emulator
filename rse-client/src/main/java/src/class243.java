@@ -133,7 +133,7 @@ public abstract class class243 {
       int var4 = var3.readUnsignedByte((byte)72);
       if(var4 >= 5 && var4 <= 7) {
          if(var4 >= 6) {
-            var3.method5552(297718403);
+            var3.readInt(297718403);
          }
 
          int var5 = var3.readUnsignedByte((byte)99);
@@ -173,18 +173,18 @@ public abstract class class243 {
             this.field3130 = new int[var7 + 1];
 
             for(var8 = 0; var8 < this.field3128; ++var8) {
-               this.field3130[this.field3137[var8]] = var3.method5552(297718403);
+               this.field3130[this.field3137[var8]] = var3.readInt(297718403);
             }
 
             this.field3131 = new class344(this.field3130);
          }
 
          for(var8 = 0; var8 < this.field3128; ++var8) {
-            this.field3129[this.field3137[var8]] = var3.method5552(297718403);
+            this.field3129[this.field3137[var8]] = var3.readInt(297718403);
          }
 
          for(var8 = 0; var8 < this.field3128; ++var8) {
-            this.field3133[this.field3137[var8]] = var3.method5552(297718403);
+            this.field3133[this.field3137[var8]] = var3.readInt(297718403);
          }
 
          for(var8 = 0; var8 < this.field3128; ++var8) {
@@ -242,7 +242,7 @@ public abstract class class243 {
                this.field3127[var9] = new int[this.field3146[var9].length];
 
                for(var11 = 0; var11 < var10; ++var11) {
-                  this.field3127[var9][this.field3135[var9][var11]] = var3.method5552(297718403);
+                  this.field3127[var9][this.field3135[var9][var11]] = var3.readInt(297718403);
                }
 
                this.field3136[var9] = new class344(this.field3127[var9]);
@@ -354,7 +354,7 @@ public abstract class class243 {
                   var15 = 0;
 
                   for(var16 = 0; var16 < var4; ++var16) {
-                     var15 += var12.method5552(297718403);
+                     var15 += var12.readInt(297718403);
                      var13[var16] += var15;
                   }
                }
@@ -374,7 +374,7 @@ public abstract class class243 {
                   int var17 = 0;
 
                   for(var18 = 0; var18 < var4; ++var18) {
-                     var17 += var12.method5552(297718403);
+                     var17 += var12.readInt(297718403);
                      System.arraycopy(var26, var15, var24[var18], var13[var18], var17);
                      var13[var18] += var17;
                      var15 += var17;

@@ -386,7 +386,7 @@ public final class client extends class62 implements class289 {
                                  var10 = class246.field3176.readUnsignedByte((byte)118);
                                  var11 = class246.field3176.readShort((byte)109);
                                  int var12 = class246.field3176.readUnsignedByte((byte)117);
-                                 var13 = class246.field3176.method5552(297718403);
+                                 var13 = class246.field3176.readInt(297718403);
                                  long var14 = (long)(var11 + (var10 << 16));
                                  class242 var16 = (class242)class246.field3174.method6010(var14);
                                  class76.field677 = true;
@@ -442,8 +442,8 @@ public final class client extends class62 implements class289 {
                                        class245 var20 = class246.field3164[var11];
                                        if(var20 != null) {
                                           class13.field59.field3710 = var11 * 8 + 5;
-                                          var13 = class13.field59.method5552(297718403);
-                                          int var21 = class13.field59.method5552(297718403);
+                                          var13 = class13.field59.readInt(297718403);
+                                          int var21 = class13.field59.readInt(297718403);
                                           var20.method4323(var13, var21, (byte)60);
                                        }
                                     }
@@ -805,7 +805,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2160 == var1.field1332) {
-               class48.method816(class194.field2325, (byte)49);
+               class48.updateEntityType(class194.field2325, (byte)49);
                var1.field1332 = null;
                return true;
             }
@@ -828,8 +828,8 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2199 == var1.field1332) {
-               field862 = var4.method5577(91963828);
-               field896 = var4.method5577(825166597);
+               field862 = var4.readByteN(91963828);
+               field896 = var4.readByteN(825166597);
                var1.field1332 = null;
                return true;
             }
@@ -845,7 +845,7 @@ public final class client extends class62 implements class289 {
             if(ServerPacket.field2186 == var1.field1332) {
                var17 = var4.readUnsignedShort((byte)45);
                var6 = var4.readUnsignedShort((byte)80);
-               var7 = var4.method5594((byte)76);
+               var7 = var4.readMEInt((byte)76);
                var48 = class208.method3898(var7, (byte)-12);
                var48.field2623 = var6 + (var17 << 16);
                var1.field1332 = null;
@@ -914,7 +914,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2125 == var1.field1332) {
-               class48.method816(class194.field2328, (byte)6);
+               class48.updateEntityType(class194.field2328, (byte)6);
                var1.field1332 = null;
                return true;
             }
@@ -951,7 +951,7 @@ public final class client extends class62 implements class289 {
 
             class226 var51;
             if(ServerPacket.field2179 == var1.field1332) {
-               var17 = var4.method5552(297718403);
+               var17 = var4.readInt(297718403);
                var6 = var4.method5586((byte)127);
                var51 = class208.method3898(var17, (byte)-125);
                if(var51.field2610 != 1 || var6 != var51.field2611) {
@@ -972,7 +972,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2197 == var1.field1332) {
-               class48.method816(class194.field2331, (byte)49);
+               class48.updateEntityType(class194.field2331, (byte)49);
                var1.field1332 = null;
                return true;
             }
@@ -991,7 +991,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2161 == var1.field1332) {
-               class48.method816(class194.field2329, (byte)2);
+               class48.updateEntityType(class194.field2329, (byte)2);
                var1.field1332 = null;
                return true;
             }
@@ -1005,7 +1005,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2183 == var1.field1332) {
-               class48.method816(class194.field2323, (byte)-1);
+               class48.updateEntityType(class194.field2323, (byte)-1);
                var1.field1332 = null;
                return true;
             }
@@ -1014,7 +1014,7 @@ public final class client extends class62 implements class289 {
             int var10;
             int var11;
             if(ServerPacket.field2177 == var1.field1332) {
-               var17 = var4.method5552(297718403);
+               var17 = var4.readInt(297718403);
                var6 = var4.readShort((byte)47);
                if(var17 < -70000) {
                   var6 += '\u8000';
@@ -1038,9 +1038,10 @@ public final class client extends class62 implements class289 {
 
                for(var9 = 0; var9 < var43; ++var9) {
                   var10 = var4.method5587(125664341);
-                  var11 = var4.method5577(1923226993);
+                  System.out.println("item id: " + var10);
+                  var11 = var4.readByteN(1923226993);
                   if(var11 == 255) {
-                     var11 = var4.method5594((byte)-7);
+                     var11 = var4.readMEInt((byte)-7);
                   }
 
                   if(var51 != null && var9 < var51.field2671.length) {
@@ -1145,7 +1146,7 @@ public final class client extends class62 implements class289 {
 
             if(ServerPacket.field2176 == var1.field1332) {
                var17 = var4.readUnsignedShort((byte)73);
-               var6 = var4.method5552(297718403);
+               var6 = var4.readInt(297718403);
                var7 = var17 >> 10 & 31;
                var43 = var17 >> 5 & 31;
                var9 = var17 & 31;
@@ -1161,7 +1162,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2137 == var1.field1332) {
-               var17 = var4.method5552(297718403);
+               var17 = var4.readInt(297718403);
                if(var17 != field762) {
                   field762 = var17;
                   class3.method48((short)14702);
@@ -1198,7 +1199,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2153 == var1.field1332) {
-               var17 = var4.method5552(297718403);
+               var17 = var4.readInt(297718403);
                var6 = var4.readShort((byte)59);
                if(var17 < -70000) {
                   var6 += '\u8000';
@@ -1217,7 +1218,7 @@ public final class client extends class62 implements class289 {
                   if(var9 != 0) {
                      var10 = var4.readUnsignedByte((byte)117);
                      if(var10 == 255) {
-                        var10 = var4.method5552(297718403);
+                        var10 = var4.readInt(297718403);
                      }
                   }
 
@@ -1238,7 +1239,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2133 == var1.field1332) {
-               var17 = var4.method5552(297718403);
+               var17 = var4.readInt(297718403);
                var28 = var4.method5667(-788764754);
                var51 = class208.method3898(var17, (byte)-31);
                if(!var28.equals(var51.field2628)) {
@@ -1303,7 +1304,7 @@ public final class client extends class62 implements class289 {
 
             if(ServerPacket.field2155 == var1.field1332) {
                class58.method966((byte)72);
-               var17 = var4.method5577(2023341235);
+               var17 = var4.readByteN(2023341235);
                var6 = var4.method5576(823972061);
                var7 = var4.method5592(1328564610);
                field821[var6] = var7;
@@ -1323,7 +1324,7 @@ public final class client extends class62 implements class289 {
 
             class70 var18;
             if(ServerPacket.field2182 == var1.field1332) {
-               var17 = var4.method5577(2008929967);
+               var17 = var4.readByteN(2008929967);
                var6 = var4.method5586((byte)126);
                var7 = var4.method5611(282352601);
                System.out.println("sub: " + var17 + ", " + var6 + ", " + (var7 >> 16));
@@ -1349,7 +1350,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2150 == var1.field1332) {
-               class48.method816(class194.field2330, (byte)97);
+               class48.updateEntityType(class194.field2330, (byte)97);
                var1.field1332 = null;
                return true;
             }
@@ -1380,13 +1381,13 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2141 == var1.field1332) {
-               class48.method816(class194.field2324, (byte)18);
+               class48.updateEntityType(class194.field2324, (byte)18);
                var1.field1332 = null;
                return true;
             }
 
             if(ServerPacket.field2198 == var1.field1332) {
-               class48.method816(class194.field2326, (byte)25);
+               class48.updateEntityType(class194.field2326, (byte)25);
                var1.field1332 = null;
                return true;
             }
@@ -1395,7 +1396,7 @@ public final class client extends class62 implements class289 {
                class80 var41 = new class80();
                var41.field1051 = var4.method5667(-442215980);
                var41.field1040 = var4.readShort((byte)55);
-               var6 = var4.method5552(297718403);
+               var6 = var4.readInt(297718403);
                var41.field1049 = var6;
                class72.method1293(45, -2143630615);
                var3.vmethod5866((byte)-6);
@@ -1407,7 +1408,7 @@ public final class client extends class62 implements class289 {
 
             if(ServerPacket.field2126 == var1.field1332) {
                var17 = var4.method5716(-1103250346);
-               var6 = var4.method5594((byte)-18);
+               var6 = var4.readMEInt((byte)-18);
                var51 = class208.method3898(var6, (byte)-75);
                if(var17 != var51.field2614 || var17 == -1) {
                   var51.field2614 = var17;
@@ -1534,7 +1535,7 @@ public final class client extends class62 implements class289 {
                while(var4.field3710 < var1.field1333) {
                   var17 = var4.readUnsignedByte((byte)107);
                   class194 var59 = class33.method434(-615033295)[var17];
-                  class48.method816(var59, (byte)26);
+                  class48.updateEntityType(var59, (byte)26);
                }
 
                var1.field1332 = null;
@@ -1605,7 +1606,7 @@ public final class client extends class62 implements class289 {
                }
 
                var6 = var4.method5592(165363797);
-               var7 = var4.method5594((byte)11);
+               var7 = var4.readMEInt((byte)11);
                var48 = class208.method3898(var7, (byte)-86);
                class264 var57;
                if(!var48.field2566) {
@@ -1667,7 +1668,7 @@ public final class client extends class62 implements class289 {
 
             if(ServerPacket.field2192 == var1.field1332) {
                var38 = var4.method5667(-2134366945);
-               var6 = var4.method5577(974608622);
+               var6 = var4.readByteN(974608622);
                var7 = var4.method5576(-1181300777);
                if(var7 >= 1 && var7 <= 8) {
                   if(var38.equalsIgnoreCase("null")) {
@@ -1689,13 +1690,13 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2149 == var1.field1332) {
-               class48.method816(class194.field2332, (byte)68);
+               class48.updateEntityType(class194.field2332, (byte)68);
                var1.field1332 = null;
                return true;
             }
 
             if(ServerPacket.field2156 == var1.field1332) {
-               class48.method816(class194.field2327, (byte)29);
+               class48.updateEntityType(class194.field2327, (byte)29);
                var1.field1332 = null;
                return true;
             }
@@ -1723,7 +1724,7 @@ public final class client extends class62 implements class289 {
 
                class70 var27;
                for(; var7-- > 0; var27.field594 = true) {
-                  var43 = var4.method5552(297718403);
+                  var43 = var4.readInt(297718403);
                   var9 = var4.readShort((byte)101);
                   var10 = var4.readUnsignedByte((byte)95);
                   var27 = (class70)field841.method6010((long)var43);
@@ -1748,10 +1749,10 @@ public final class client extends class62 implements class289 {
                field750 = new class327(512);
 
                while(var4.field3710 < var17) {
-                  var43 = var4.method5552(297718403);
+                  var43 = var4.readInt(297718403);
                   var9 = var4.readShort((byte)52);
                   var10 = var4.readShort((byte)117);
-                  var11 = var4.method5552(297718403);
+                  var11 = var4.readInt(297718403);
 
                   for(int var35 = var9; var35 <= var10; ++var35) {
                      var13 = (long)var35 + ((long)var43 << 32);
@@ -1764,7 +1765,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2188 == var1.field1332) {
-               var17 = var4.method5552(297718403);
+               var17 = var4.readInt(297718403);
                class70 var58 = (class70)field841.method6010((long)var17);
                if(var58 != null) {
                   class41.method653(var58, true, -1111064476);
@@ -1868,8 +1869,8 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2122 == var1.field1332) {
-               var17 = var4.method5552(297718403);
-               var6 = var4.method5552(297718403);
+               var17 = var4.readInt(297718403);
+               var6 = var4.readInt(297718403);
                var7 = class183.method3650((byte)42);
                class196 var47 = class146.method3363(ClientPacket.field2218, field761.field1340, -1772580204);
                var47.field2338.method5591(var17, 277386885);
@@ -1918,7 +1919,7 @@ public final class client extends class62 implements class289 {
                }
 
                var6 = var4.method5611(1446601986);
-               var7 = var4.method5552(297718403);
+               var7 = var4.readInt(297718403);
                var43 = var4.method5587(-1082350877);
                if(var43 == '\uffff') {
                   var43 = -1;
@@ -1939,7 +1940,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2123 == var1.field1332) {
-               var17 = var4.method5594((byte)87);
+               var17 = var4.readMEInt((byte)87);
                var54 = class208.method3898(var17, (byte)-17);
                var54.field2610 = 3;
                var54.field2611 = class311.field3717.field646.method4071(1778112126);
@@ -1956,11 +1957,11 @@ public final class client extends class62 implements class289 {
                   if(var38.charAt(var7) == 115) {
                      var53[var7 + 1] = var4.method5667(-1905901320);
                   } else {
-                     var53[var7 + 1] = new Integer(var4.method5552(297718403));
+                     var53[var7 + 1] = new Integer(var4.readInt(297718403));
                   }
                }
 
-               var53[0] = new Integer(var4.method5552(297718403));
+               var53[0] = new Integer(var4.readInt(297718403));
                class71 var50 = new class71();
                var50.field602 = var53;
                class76.method1395(var50, -2026359226);
@@ -2023,7 +2024,7 @@ public final class client extends class62 implements class289 {
 
             if(ServerPacket.field2124 == var1.field1332) {
                var17 = var4.method5611(1078535567);
-               var6 = var4.method5552(297718403);
+               var6 = var4.readInt(297718403);
                class70 var19 = (class70)field841.method6010((long)var6);
                var18 = (class70)field841.method6010((long)var17);
                if(var18 != null) {

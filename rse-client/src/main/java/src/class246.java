@@ -116,7 +116,7 @@ public class class246 {
          if(var5) {
             var7 = new class185(var0.method5667(-671161491));
          } else {
-            var7 = new class188(var0.method5552(297718403));
+            var7 = new class188(var0.readInt(297718403));
          }
 
          var1.method5963((class189)var7, (long)var6);

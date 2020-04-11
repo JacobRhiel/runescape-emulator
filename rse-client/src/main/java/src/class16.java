@@ -17,8 +17,8 @@ public class class16 {
       this.field86 = var1.method5667(-1505088485);
       this.field81 = var1.readShort((byte)66);
       this.field76 = var1.method5553((byte)15);
-      int var4 = var1.method5552(297718403);
-      int var5 = var1.method5552(297718403);
+      int var4 = var1.readInt(297718403);
+      int var5 = var1.readInt(297718403);
       this.field85 = new class18();
       this.field85.method211(2, 587802237);
       this.field85.method187(var2, -582599399);

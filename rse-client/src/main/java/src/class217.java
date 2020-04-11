@@ -18,14 +18,14 @@ public class class217 {
    static final byte[] method4013(byte[] var0, int var1) {
       class309 var2 = new class309(var0);
       int var3 = var2.readUnsignedByte((byte)59);
-      int var4 = var2.method5552(297718403);
+      int var4 = var2.readInt(297718403);
       if(var4 >= 0 && (class243.field3143 == 0 || var4 <= class243.field3143)) {
          if(var3 == 0) {
             byte[] var5 = new byte[var4];
             var2.method5620(var5, 0, var4, -1176132955);
             return var5;
          } else {
-            int var7 = var2.method5552(297718403);
+            int var7 = var2.readInt(297718403);
             if(var7 >= 0 && (class243.field3143 == 0 || var7 <= class243.field3143)) {
                byte[] var6 = new byte[var7];
                if(var3 == 1) {

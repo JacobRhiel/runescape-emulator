@@ -176,7 +176,7 @@ public final class class151 {
          System.out.println(var3 + ", " + var4 + ", " + var5);
          for(var6 = 0; var6 < var5; ++var6) {
             for(var7 = 0; var7 < 4; ++var7) {
-               class152.field1957[var6][var7] = var1.method5552(297718403);
+               class152.field1957[var6][var7] = var1.readInt(297718403);
             }
          }
 
@@ -235,7 +235,7 @@ public final class class151 {
 
          for(var7 = 0; var7 < var6; ++var7) {
             for(var8 = 0; var8 < 4; ++var8) {
-               class152.field1957[var7][var8] = var1.method5552(297718403);
+               class152.field1957[var7][var8] = var1.readInt(297718403);
             }
          }
 

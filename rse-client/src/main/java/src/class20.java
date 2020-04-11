@@ -376,7 +376,7 @@ final class class20 implements Comparator {
             var6 = -1;
          }
 
-         var7 = var0.method5577(1190550583);
+         var7 = var0.readByteN(1190550583);
          System.out.println("animation delay: " + var7);
          class14.method149(var2, var6, var7, (byte)8);
       }
@@ -424,8 +424,8 @@ final class class20 implements Comparator {
       int var13;
       if((var3 & 1) != 0) {
          var6 = var0.method5586((byte)105);
-         class238 var19 = (class238)class16.method159(class70.method1278((byte)61), var0.method5577(1626574628), -1609956543);
-         boolean var15 = var0.method5577(279752499) == 1;
+         class238 var19 = (class238)class16.method159(class70.method1278((byte)61), var0.readByteN(1626574628), -1609956543);
+         boolean var15 = var0.readByteN(279752499) == 1;
          var9 = var0.method5576(-499249652);
          var10 = var0.field3710;
          if(var2.field652 != null && var2.field646 != null) {
@@ -505,7 +505,7 @@ final class class20 implements Comparator {
                if(var10 != 32767) {
                   var18 = var0.method5561(1392756891);
                   var16 = var0.readUnsignedByte((byte)74);
-                  var13 = var10 > 0?var0.method5577(1636027142):var16;
+                  var13 = var10 > 0?var0.readByteN(1636027142):var16;
                   var2.method1831(var9, client.field689, var10, var18, var16, var13, (byte)-123);
                } else {
                   var2.method1832(var9, -971039498);

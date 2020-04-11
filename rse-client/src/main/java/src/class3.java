@@ -36,8 +36,8 @@ public class class3 implements class203 {
    static void method58(class245 var0, int var1, int var2) {
       if(class13.field59 != null) {
          class13.field59.field3710 = var1 * 8 + 5;
-         int var3 = class13.field59.method5552(297718403);
-         int var4 = class13.field59.method5552(297718403);
+         int var3 = class13.field59.readInt(297718403);
+         int var4 = class13.field59.readInt(297718403);
          var0.method4323(var3, var4, (byte)95);
       } else {
          class147.method3371((class245)null, 255, 255, 0, (byte)0, true, -626508532);

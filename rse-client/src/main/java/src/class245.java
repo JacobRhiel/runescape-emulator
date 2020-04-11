@@ -111,7 +111,7 @@ public class class245 extends class243 {
 
          int var9 = 0;
          if(var13 >= 6) {
-            var9 = var12.method5552(297718403);
+            var9 = var12.readInt(297718403);
          }
 
          if(var9 != this.field3160) {

@@ -40,8 +40,8 @@ public class class82 {
                int var3 = var1.readUnsignedByte((byte)52);
 
                for(int var4 = 0; var4 < var3; ++var4) {
-                  int var5 = var1.method5552(297718403);
-                  int var6 = var1.method5552(297718403);
+                  int var5 = var1.readInt(297718403);
+                  int var6 = var1.readInt(297718403);
                   this.field1082.put(Integer.valueOf(var5), Integer.valueOf(var6));
                }
             }

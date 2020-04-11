@@ -18,7 +18,7 @@ public class class47 extends class35 {
 
       for(int var5 = 0; var5 < var4; ++var5) {
          int var6 = var1.method5564((byte)-27);
-         class222 var7 = new class222(var1.method5552(297718403));
+         class222 var7 = new class222(var1.readInt(297718403));
          boolean var8 = var1.readUnsignedByte((byte)33) == 1;
          if(var2 || !var8) {
             this.field371.add(new class27((class222)null, var7, var6, (class37)null));

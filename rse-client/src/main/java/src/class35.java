@@ -26,8 +26,8 @@ public class class35 {
       this.field260 = var2;
       this.field257 = var1.method5667(-1424274065);
       this.field254 = var1.method5667(-1706246464);
-      this.field263 = new class222(var1.method5552(297718403));
-      this.field255 = var1.method5552(297718403);
+      this.field263 = new class222(var1.readInt(297718403));
+      this.field255 = var1.readInt(297718403);
       var1.readUnsignedByte((byte)14);
       this.field262 = var1.readUnsignedByte((byte)72) == 1;
       this.field256 = var1.readUnsignedByte((byte)24);

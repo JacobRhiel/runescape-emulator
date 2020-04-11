@@ -47,7 +47,7 @@ final class class17 implements Comparator {
    public static void method169(class309 var0, int var1, short var2) {
       class106 var3 = new class106();
       var3.field1353 = var0.readUnsignedByte((byte)103);
-      var3.field1347 = var0.method5552(297718403);
+      var3.field1347 = var0.readInt(297718403);
       var3.field1348 = new int[var3.field1353];
       var3.field1350 = new int[var3.field1353];
       var3.field1349 = new Field[var3.field1353];
@@ -77,7 +77,7 @@ final class class17 implements Comparator {
                   int var13;
                   if(var5 == 3) {
                      for(int var12 = 0; var12 < var8; ++var12) {
-                        var13 = var0.method5552(297718403);
+                        var13 = var0.readInt(297718403);
                         var11[var12] = new byte[var13];
                         var0.method5620(var11[var12], 0, var13, -1770968214);
                      }
@@ -126,7 +126,7 @@ final class class17 implements Comparator {
                var7 = var0.method5667(-1464121173);
                var8 = 0;
                if(var5 == 1) {
-                  var8 = var0.method5552(297718403);
+                  var8 = var0.readInt(297718403);
                }
 
                var3.field1348[var4] = var5;

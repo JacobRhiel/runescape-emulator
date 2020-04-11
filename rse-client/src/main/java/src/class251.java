@@ -92,13 +92,13 @@ public class class251 extends class184 {
                this.field3220[var5] = var1.method5550(-43398669);
             }
 
-            var1.method5552(297718403);
+            var1.readInt(297718403);
             var5 = var1.readUnsignedByte((byte)42);
             this.field3229 = new int[var5];
 
             int var6;
             for(var6 = 0; var6 < this.field3229.length; ++var6) {
-               this.field3229[var6] = var1.method5552(297718403);
+               this.field3229[var6] = var1.readInt(297718403);
             }
 
             this.field3218 = new byte[var4];
@@ -114,9 +114,9 @@ public class class251 extends class184 {
             } else if(var2 == 19) {
                this.field3213 = var1.readShort((byte)108);
             } else if(var2 == 21) {
-               var1.method5552(297718403);
+               var1.readInt(297718403);
             } else if(var2 == 22) {
-               var1.method5552(297718403);
+               var1.readInt(297718403);
             } else if(var2 == 23) {
                var1.readUnsignedByte((byte)21);
                var1.readUnsignedByte((byte)44);
