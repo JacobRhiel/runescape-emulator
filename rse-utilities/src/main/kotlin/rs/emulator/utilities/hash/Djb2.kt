@@ -1,4 +1,4 @@
-package rs.emulator.hash
+package rs.emulator.utilities.hash
 
 /**
  * An implementation of the `djb2` hash function.
