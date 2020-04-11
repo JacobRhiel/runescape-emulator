@@ -2,46 +2,28 @@
 
 package rs.emulator.boot
 
-import com.google.common.base.Stopwatch
 import com.google.common.util.concurrent.ServiceManager
 import com.google.common.util.concurrent.ThreadFactoryBuilder
 import com.google.inject.Guice
 import com.google.inject.Inject
 import com.google.inject.Injector
 import com.google.inject.Singleton
-import gg.rsmod.game.DevContext
-import gg.rsmod.game.GameContext
-import gg.rsmod.game.Server
-import gg.rsmod.game.model.Tile
-import gg.rsmod.game.model.World
-import gg.rsmod.game.model.entity.GroundItem
-import gg.rsmod.game.model.entity.Npc
-import gg.rsmod.game.model.skill.SkillSet
-import gg.rsmod.game.plugin.PluginRepository
-import gg.rsmod.game.service.GameService
-import gg.rsmod.game.service.xtea.XteaKeyService
-import gg.rsmod.game.task.parallel.ParallelNpcCycleTask
-import gg.rsmod.util.ServerProperties
-import kotlinx.coroutines.asExecutor
-import net.runelite.cache.fs.Store
 import rs.emulator.cache.FileStore
 import rs.emulator.cache.definition.DefinitionRepository
+import rs.emulator.cache.index.IndexConfig
 import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.configuration.environment.RSEEnvironment
 import rs.emulator.database.service.JDBCPoolingService
 import rs.emulator.encryption.rsa.service.RSAService
 import rs.emulator.engine.service.CyclicEngineService
-import rs.emulator.engine.task.EngineTask
 import rs.emulator.fileserver.FileStoreService
 import rs.emulator.packet.PacketService
 import rs.emulator.packet.configuration.PacketConfiguration
 import rs.emulator.world.service.WorldService
-import rs.emulator.world.task.parallel.*
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.text.DecimalFormat
+import rs.emulator.packet.task.QueueHandlerTask
+import rs.emulator.packet.task.parallel.*
+import rs.emulator.world.map.WorldMap
 import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 
 /**
  *
@@ -80,36 +62,45 @@ class RuneScapeEmulator @Inject constructor()
 
     @Inject private lateinit var engineService: CyclicEngineService
 
+    @Inject private lateinit var worldMap: WorldMap
+
     fun start()
     {
 
+/*        fileStore.init()
+
+        val index = fileStore.fetchIndex(IndexConfig.MAPS.identifier)
+
+        val mapScape = index.fetchArchiveByName("m49_49")
+
+        val landScape = index.fetchArchiveByName("l49_49")
+
+        val buffer = mapScape.decompress(fileStore.fetchArchiveBuffer(index.identifier, mapScape.identifier))
+
+        println(mapScape)*/
+
         val executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors(), ThreadFactoryBuilder()
             .setNameFormat("game-task-thread")
-            .setUncaughtExceptionHandler { t, e -> GameService.logger.error("Error with thread $t", e) }
             .build())
 
         val tasks = listOf(
+            QueueHandlerTask(),
             ParallelPlayerCycleTask(executor),
             ParallelSynchronizationTask(executor),
-            ParallelPlayerPostCycleTask(executor))
+            ParallelPlayerPostCycleTask(executor)
+        )
 
         tasks.forEach { engineService.submitTask(it) }
+
+        DefinitionRepository.INSTANCE = definitions
+
+        WorldMap.INSTANCE = worldMap
 
         manager = ServiceManager(
             listOf(databaseService, rsaService, fileStoreService, packetService, worldService, engineService)
         )
 
         manager.startAsync().awaitHealthy()
-
-        /*val server = Server()
-        server.startServer(apiProps = Paths.get("./data/api.yml"))
-        server.startGame(
-            filestore = Paths.get("./data", "cache"),
-            gameProps = Paths.get("./game.yml"),
-            packets = Paths.get("./data", "packets.yml"),
-            blocks = Paths.get("./data", "blocks.yml"),
-            devProps = Paths.get("./dev-settings.yml"), args = emptyArray()
-        )*/
 
     }
 

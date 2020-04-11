@@ -1,7 +1,7 @@
 package rs.emulator.packet.network.message.channel.decoder
 
-import rs.emulator.buffer.packet.GamePacket
-import rs.emulator.buffer.packet.PacketType
+import rs.emulator.packet.GamePacket
+import rs.emulator.packet.PacketType
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToByteEncoder
@@ -27,13 +27,9 @@ class GamePacketEncoder(private val random: IsaacRandom?) : MessageToByteEncoder
         when (msg.type) {
             PacketType.VARIABLE_BYTE  -> out.writeByte(msg.length)
             PacketType.VARIABLE_SHORT -> out.writeShort(msg.length)
-            else                                                                   -> {}
+            else                                                            -> {}
         }
         println("Encoding packet: ${msg.javaClass.simpleName}. ${msg.opcode}")
-        if(msg.opcode == 79)
-        {
-            println(msg.payload.array().toTypedArray().contentDeepToString())
-        }
         out.writeBytes(msg.payload)
         msg.payload.release()
     }

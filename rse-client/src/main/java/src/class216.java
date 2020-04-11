@@ -53,7 +53,7 @@ public class class216 {
          if(class246.field3180 != null) {
             try {
                class309 var1 = new class309(4);
-               var1.method5531(2, 1258821856);
+               var1.readByte(2, 1258821856);
                var1.method5588(0, -991512151);
                class246.field3180.vmethod5878(var1.field3709, 0, 4, 567335408);
             } catch (IOException var4) {

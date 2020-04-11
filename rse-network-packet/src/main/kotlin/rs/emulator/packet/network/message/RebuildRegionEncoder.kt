@@ -2,7 +2,7 @@ package rs.emulator.packet.network.message
 
 import gg.rsmod.game.message.MessageEncoder
 import rs.emulator.packet.network.message.impl.RebuildRegionMessage
-import rs.emulator.buffer.packet.GamePacketBuilder
+import rs.emulator.packet.GamePacketBuilder
 import io.netty.buffer.Unpooled
 
 /**

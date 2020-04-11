@@ -3,7 +3,7 @@ package rs.emulator.packet.network.message
 import gg.rsmod.game.message.MessageEncoder
 import rs.emulator.packet.network.message.impl.RebuildLoginMessage
 import rs.emulator.packet.network.message.impl.RebuildNormalMessage
-import rs.emulator.buffer.packet.GamePacketBuilder
+import rs.emulator.packet.GamePacketBuilder
 
 /**
  * Responsible for extracting values from the [RebuildLoginMessage] based on keys.

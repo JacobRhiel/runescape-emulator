@@ -2,15 +2,20 @@ package rs.emulator.entity.actor.player
 
 import gg.rsmod.util.ServerProperties
 import io.netty.channel.Channel
+import rs.emulator.cache.definition.DefinitionRepository
+import rs.emulator.cache.definition.varp.VarBitDefinition
 import rs.emulator.encryption.xtea.XteaKeyService
 import rs.emulator.entity.actor.Actor
+import rs.emulator.entity.actor.movement.MovementQueue
 import rs.emulator.entity.actor.player.update.PlayerUpdateProtocol
 import rs.emulator.entity.actor.player.update.block.UpdateBlockSet
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.model.widget.WidgetSet
 import rs.emulator.model.widget.root.RootWidgetType
 import rs.emulator.model.widget.viewport.ViewportWidgetType
+import rs.emulator.packet.network.message.impl.*
 import rs.emulator.security.uuid.UUIDGenerator
+import rs.emulator.world.map.old.region.EntityType
 import java.io.File
 import java.nio.file.Paths
 import java.util.*
@@ -30,6 +35,8 @@ open class Player(val channel: Channel,
     fun fetchTileHashes() = updateProtocol.tiles
 
     val interfaces by lazy { WidgetSet() }
+
+    val varps = VarpSet(10253)//todo cache check size of archive.
 
     val playerUpdateBlocks = UpdateBlockSet()
 
@@ -80,12 +87,95 @@ open class Player(val channel: Channel,
 
         channel.write(interfaces.createViewportRequest())
 
-        /*RootWidgetType.values().filter { it.interfaceId != -1 }.forEach { pane ->
+        RootWidgetType.values().filter { it.interfaceId != -1 }.forEach { pane ->
 
             channel.write(interfaces.createDisplayRequest(interfaces.viewportWidget.interfaceId, pane.fixedChildId, pane.interfaceId))
 
-        }*/
+        }
+
+        channel.write(RunClientScriptMessage(1105, 1))
+        channel.write(RunClientScriptMessage(423, "gpi"))
+
+        syncVarp(1055)
+
+        setVarbit(8119, 1)
+
+/*        channel.write(VarpSmallMessage(843, 0))
+        channel.write(VarpSmallMessage(1055, 0))
+        channel.write(VarpSmallMessage(1107, 0))
+        channel.write(VarpSmallMessage(1306, 0))
+
+        channel.write(VarpLargeMessage(1737, -2147483648))*/
+
+        for (i in 0 until varps.maxVarps)
+        {
+            if (varps.isDirty(i))
+            {
+                val varp = varps[i]
+                val message = when
+                {
+                    varp.state in -Byte.MAX_VALUE..Byte.MAX_VALUE -> VarpSmallMessage(varp.id, varp.state)
+                    else                                          -> VarpLargeMessage(varp.id, varp.state)
+                }
+                println("writing varp?")
+                channel.write(message)
+            }
+        }
+        varps.clean()
+
+        //channel.write(MessageGameMessage(ChatMessageType.GAME_MESSAGE.id, "", "Welcome to RuneScape Emulator."))
+
     }
+
+    fun getVarp(id: Int): Int = varps.getState(id)
+
+    fun setVarp(id: Int, value: Int) {
+        varps.setState(id, value)
+    }
+
+    fun toggleVarp(id: Int) {
+        varps.setState(id, varps.getState(id) xor 1)
+    }
+
+    fun syncVarp(id: Int) {
+        setVarp(id, getVarp(id))
+    }
+
+    fun getVarbit(id: Int): Int
+    {
+        val def = DefinitionRepository.INSTANCE!!.find(VarBitDefinition::class.java, id)!!
+        println("varp get: " + def.index)
+        return varps.getBit(def.index, def.leastSignificantBit, def.mostSignificantBit)
+    }
+
+    fun setVarbit(id: Int, value: Int) {
+        val def = DefinitionRepository.INSTANCE!!.find(VarBitDefinition::class.java, id)!!
+        varps.setBit(def.index, def.leastSignificantBit, def.mostSignificantBit, value)
+        println("varp : " + id + ", " + def.index)
+    }
+
+    /**
+     * Write a varbit message to the player's client without actually modifying
+     * its varp value in [Player.varps].
+     */
+/*    fun sendTempVarbit(id: Int, value: Int) {
+        val def = world.definitions.get(VarpDefinition::class.java, id)
+        val state = BitManipulation.setBit(varps.getState(def.varp), def.startBit, def.endBit, value)
+        val message = if (state in -Byte.MAX_VALUE..Byte.MAX_VALUE) VarpSmallMessage(def.varp, state) else VarpLargeMessage(def.varp, state)
+        write(message)
+    }*/
+
+    fun toggleVarbit(id: Int) {
+        val def = DefinitionRepository.INSTANCE!!.find(VarBitDefinition::class.java, id)!!
+        varps.setBit(def.index, def.leastSignificantBit, def.mostSignificantBit, getVarbit(id) xor 1)
+    }
+
+    override fun isRunning(): Boolean = varps[173].state != 0 || movementQueue.peekLastStep()?.type == MovementQueue.StepType.FORCED_RUN
+
+    override fun getSize(): Int = 1
+
+    override val entityType: EntityType
+        get() = EntityType.CLIENT
 
     companion object
     {

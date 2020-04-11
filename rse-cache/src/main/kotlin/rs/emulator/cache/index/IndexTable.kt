@@ -82,7 +82,7 @@ class IndexTable
 
         val buffer = copyBufferToReader(reader, archiveCount * Short.SIZE_BYTES)
 
-        for(identifier in 0 until archiveCount)
+        for(identifier in ids.indices)
         {
 
             val archiveId = buffer.getUnsigned(DataType.SHORT).toInt() + if(identifier == 0) 0 else ids[identifier - 1]
@@ -168,8 +168,6 @@ class IndexTable
 
             val count = table.entryCount
 
-            table.entries = arrayOfNulls(count)
-
             val buffer = copyBufferToReader(reader, count * Short.SIZE_BYTES)
 
             for (index in 0 until count)
@@ -179,7 +177,7 @@ class IndexTable
 
                 table.lastEntryId += entryIdentifier
 
-                table.entries[index] = ArchiveEntry(table.lastEntryId)
+                table.entries[table.lastEntryId] = ArchiveEntry(table.lastEntryId)
 
             }
 
@@ -195,8 +193,6 @@ class IndexTable
             val table = archives[identifier]?.table!!
 
             val count = table.entryCount
-
-            table.entries = arrayOfNulls(count)
 
             val buffer = copyBufferToReader(reader, count * Int.SIZE_BYTES)
 

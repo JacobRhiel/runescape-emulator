@@ -71,7 +71,7 @@ public class class29 implements class203 {
          }
 
          if(var2 == 326) {
-            class196 var5 = class146.method3363(class192.field2239, client.field761.field1340, -1947671807);
+            class196 var5 = class146.method3363(ClientPacket.field2239, client.field761.field1340, -1947671807);
             client.field944.method4067(var5.field2338, -1419902667);
             client.field761.method2361(var5, 942666569);
             return true;

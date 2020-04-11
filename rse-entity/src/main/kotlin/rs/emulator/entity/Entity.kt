@@ -1,6 +1,7 @@
 package rs.emulator.entity
 
-import rs.emulator.world.map.region.chunk.Tile
+import rs.emulator.world.map.old.region.EntityType
+import rs.emulator.world.map.old.region.chunk.Tile
 
 /**
  *
@@ -10,5 +11,7 @@ abstract class Entity
 {
 
     lateinit var tile: Tile
+
+    abstract val entityType: EntityType
 
 }

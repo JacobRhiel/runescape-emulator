@@ -85,7 +85,7 @@ open class BufferedReader
 
             return if (peek < 128)
                 buffer.readByte() - 64
-            else buffer.readShort() - 49152
+            else buffer.readShort() - 0xc000
 
         }
 
@@ -98,21 +98,15 @@ open class BufferedReader
     val string: String
         get()
         {
-
             checkByteAccess()
-
             return buffer.readString()
-
         }
 
     val jagString: String
         get()
         {
-
             checkByteAccess()
-
             return buffer.readJagexString()
-
         }
 
     /**
@@ -124,17 +118,25 @@ open class BufferedReader
     val unsignedSmart: Int
         get()
         {
-
             checkByteAccess()
-
             val peek = buffer.getByte(buffer.readerIndex()).toInt()
+            return if (peek < 128) buffer.readByte().toInt()
+            else buffer.readShort() - 0x8000
+        }
 
-            return if (peek < 128)
+    val unsignedIntSmartShortCompat: Int
+        get()
+        {
+            var var1 = 0
+            var var2: Int
+            var2 = unsignedSmart
+            while (var2 == 32767)
             {
-                buffer.readByte().toInt()
+                var1 += 32767
+                var2 = unsignedSmart
             }
-            else buffer.readShort() - 32768
-
+            var1 += var2
+            return var1
         }
 
     constructor() : this(Unpooled.buffer())
@@ -489,6 +491,8 @@ open class BufferedReader
     fun markReaderIndex(position: Int) = buffer.readerIndex(position)
 
     fun markReaderIndex() = buffer.markReaderIndex()
+
+    fun readerIndex() = buffer.readerIndex()
 
     fun resetReaderIndex() = buffer.resetReaderIndex()
 

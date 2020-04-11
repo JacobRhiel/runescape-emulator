@@ -63,7 +63,7 @@ final class class19 implements Comparator {
       if(class246.field3180 != null) {
          try {
             var3 = new class309(4);
-            var3.method5531(var1?2:3, 1258821856);
+            var3.readByte(var1?2:3, 1258821856);
             var3.method5588(0, 1875521178);
             class246.field3180.vmethod5878(var3.field3709, 0, 4, -1587174832);
          } catch (IOException var8) {
@@ -92,9 +92,9 @@ final class class19 implements Comparator {
                   if(class246.field3163 != 0) {
                      try {
                         var3 = new class309(4);
-                        var3.method5531(4, 1258821856);
-                        var3.method5531(class246.field3163, 1258821856);
-                        var3.method5532(0, (byte)-21);
+                        var3.readByte(4, 1258821856);
+                        var3.readByte(class246.field3163, 1258821856);
+                        var3.readShort(0, (byte)-21);
                         class246.field3180.vmethod5878(var3.field3709, 0, 4, 2040635438);
                      } catch (IOException var6) {
                         try {

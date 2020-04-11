@@ -84,18 +84,18 @@ public class class99 {
          }
 
          class309 var25 = new class309(var3);
-         var25.method5531(2, 1258821856);
-         var25.method5532(var4, (byte)-31);
+         var25.readByte(2, 1258821856);
+         var25.readShort(var4, (byte)-31);
          Iterator var26 = this.field1283.entrySet().iterator();
 
          while(var26.hasNext()) {
             Entry var14 = (Entry)var26.next();
             int var15 = ((Integer)var14.getKey()).intValue();
             if(this.field1282[var15]) {
-               var25.method5532(var15, (byte)-102);
+               var25.readShort(var15, (byte)-102);
                Object var9 = var14.getValue();
                class3 var10 = class3.method38(var9.getClass(), -1981111471);
-               var25.method5531(var10.field9, 1258821856);
+               var25.readByte(var10.field9, 1258821856);
                class0 var11 = class3.method40(var9.getClass(), -334212288);
                var11.vmethod64(var9, var25, (byte)3);
             }

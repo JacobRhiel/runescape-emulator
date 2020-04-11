@@ -63,8 +63,8 @@ public class class83 {
             } else if(this.method1944(var3, (byte)-125)) {
                class82.method1936(var1, (byte)102);
             } else {
-               class196 var4 = class146.method3363(class192.field2290, client.field761.field1340, -1840577517);
-               var4.field2338.method5531(class234.method4198(var1, (byte)-14), 1258821856);
+               class196 var4 = class146.method3363(ClientPacket.field2290, client.field761.field1340, -1840577517);
+               var4.field2338.readByte(class234.method4198(var1, (byte)-14), 1258821856);
                var4.field2338.method5627(var1, 1801099985);
                client.field761.method2361(var4, 1191922733);
             }
@@ -78,8 +78,8 @@ public class class83 {
          if(var3.method5239(-1005152425)) {
             if(this.field1090.method5121(var3, -734937712)) {
                class179.method3585((byte)2);
-               class196 var4 = class146.method3363(class192.field2297, client.field761.field1340, -1846959933);
-               var4.field2338.method5531(class234.method4198(var1, (byte)60), 1258821856);
+               class196 var4 = class146.method3363(ClientPacket.field2297, client.field761.field1340, -1846959933);
+               var4.field2338.readByte(class234.method4198(var1, (byte)60), 1258821856);
                var4.field2338.method5627(var1, 728404971);
                client.field761.method2361(var4, 337262150);
             }
@@ -102,8 +102,8 @@ public class class83 {
             } else if(this.method1977(var3, false, -1865309245)) {
                class195.method3678(var1, 2095745244);
             } else {
-               class196 var4 = class146.method3363(class192.field2216, client.field761.field1340, -1836596392);
-               var4.field2338.method5531(class234.method4198(var1, (byte)90), 1258821856);
+               class196 var4 = class146.method3363(ClientPacket.field2216, client.field761.field1340, -1836596392);
+               var4.field2338.readByte(class234.method4198(var1, (byte)90), 1258821856);
                var4.field2338.method5627(var1, 1788916250);
                client.field761.method2361(var4, 350987826);
             }
@@ -117,8 +117,8 @@ public class class83 {
          if(var3.method5239(-1005152425)) {
             if(this.field1093.method5121(var3, -734937712)) {
                class179.method3585((byte)2);
-               class196 var4 = class146.method3363(class192.field2222, client.field761.field1340, -2127171437);
-               var4.field2338.method5531(class234.method4198(var1, (byte)64), 1258821856);
+               class196 var4 = class146.method3363(ClientPacket.field2222, client.field761.field1340, -2127171437);
+               var4.field2338.readByte(class234.method4198(var1, (byte)64), 1258821856);
                var4.field2338.method5627(var1, 763943099);
                client.field761.method2361(var4, 858861236);
             }

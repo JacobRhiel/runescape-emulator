@@ -315,20 +315,20 @@ public class class223 {
    }
 
    public void method4067(class309 var1, int var2) {
-      var1.method5531(this.field2542?1:0, 1258821856);
+      var1.readByte(this.field2542?1:0, 1258821856);
 
       int var3;
       for(var3 = 0; var3 < 7; ++var3) {
          int var4 = this.field2540[field2541[var3]];
          if(var4 == 0) {
-            var1.method5531(-1, 1258821856);
+            var1.readByte(-1, 1258821856);
          } else {
-            var1.method5531(var4 - 256, 1258821856);
+            var1.readByte(var4 - 256, 1258821856);
          }
       }
 
       for(var3 = 0; var3 < 5; ++var3) {
-         var1.method5531(this.field2533[var3], 1258821856);
+         var1.readByte(this.field2533[var3], 1258821856);
       }
 
    }
@@ -740,8 +740,8 @@ public class class223 {
 
    static final void method4063(String var0, int var1) {
       if(class70.field596 != null) {
-         class196 var2 = class146.method3363(class192.field2217, client.field761.field1340, -1839910713);
-         var2.field2338.method5531(class234.method4198(var0, (byte)34), 1258821856);
+         class196 var2 = class146.method3363(ClientPacket.field2217, client.field761.field1340, -1839910713);
+         var2.field2338.readByte(class234.method4198(var0, (byte)34), 1258821856);
          var2.field2338.method5627(var0, 1522628500);
          client.field761.method2361(var2, 1558188096);
       }

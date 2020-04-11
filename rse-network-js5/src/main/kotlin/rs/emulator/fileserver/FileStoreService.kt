@@ -5,8 +5,7 @@ package rs.emulator.fileserver
 import com.google.common.util.concurrent.AbstractIdleService
 import com.google.inject.Inject
 import com.google.inject.Singleton
-import net.runelite.cache.fs.Store
-import java.io.File
+import rs.emulator.cache.FileStore
 
 /**
  *
@@ -16,12 +15,12 @@ import java.io.File
     : AbstractIdleService()
 {
 
-    private val fileStore = Store(File("./data/cache/"))
+    @Inject private lateinit var fileStore: FileStore
 
     override fun startUp()
     {
 
-        fileStore.load()
+        fileStore.init()
 
         store = fileStore
 
@@ -37,7 +36,7 @@ import java.io.File
     companion object
     {
 
-        lateinit var store: Store
+        lateinit var store: FileStore
 
     }
 

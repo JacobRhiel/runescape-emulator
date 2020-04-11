@@ -19,7 +19,7 @@ class JS5FileEncoder
         out.writeByte(msg.index)
         out.writeShort(msg.archive)
 
-        msg.buffer.forEach { data ->
+        msg.buffer.byteArray().forEach { data ->
                 if (out.writerIndex() % 512 == 0)
                     out.writeByte(-1)
                 out.writeByte(data.toInt())

@@ -1,8 +1,8 @@
 package gg.rsmod.net.packet
 
 import gg.rsmod.game.message.MessageStructureSet
-import rs.emulator.buffer.packet.IPacketMetadata
-import rs.emulator.buffer.packet.PacketType
+import rs.emulator.packet.IPacketMetadata
+import rs.emulator.packet.PacketType
 import rs.emulator.utilities.logger
 
 /**

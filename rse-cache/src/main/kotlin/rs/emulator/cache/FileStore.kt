@@ -41,6 +41,7 @@ class FileStore @Inject constructor()
 
     private val indexes = mutableListOf<IndexFile>()
 
+
     fun init()
     {
 
@@ -193,6 +194,23 @@ class FileStore @Inject constructor()
 
     }
 
+    fun fetchArchiveFileByName(indexIdentifier: Int, name: String): ArchiveEntry
+    {
+
+        val index = fetchIndex(indexIdentifier)
+
+        val archive = index.fetchArchiveByName(name)
+
+        val table = archive.table
+
+        //todo memory efficiency.
+        archive.loadEntries(fetchArchiveBuffer(indexIdentifier, archive.identifier))
+
+        //todo check if null
+        return table.entries[archive.identifier]!!
+
+    }
+
     fun fetchArchiveFiles(indexConfig: IndexConfig, archiveConfig: ArchiveConfig): List<ArchiveEntry> = fetchArchiveFiles(indexConfig, archiveConfig.identifier)
 
     fun fetchArchiveFiles(indexConfig: IndexConfig, archiveIdentifier: Int): List<ArchiveEntry>
@@ -206,7 +224,7 @@ class FileStore @Inject constructor()
 
         archive.loadEntries(fetchArchiveBuffer(indexConfig.identifier, archiveIdentifier))
 
-        return table.entries.filterNotNull()
+        return table.entries.values.toTypedArray().toList()
 
     }
 

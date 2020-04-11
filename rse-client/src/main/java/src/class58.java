@@ -44,7 +44,7 @@ public class class58 {
    }
 
    static void method968(int var0, int var1, int var2) {
-      class196 var3 = class146.method3363(class192.field2291, client.field761.field1340, -2039559999);
+      class196 var3 = class146.method3363(ClientPacket.field2291, client.field761.field1340, -2039559999);
       var3.field2338.method5591(var0, -233666609);
       var3.field2338.method5582(var1, 70039705);
       client.field761.method2361(var3, 590976181);

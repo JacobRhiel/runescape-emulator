@@ -276,37 +276,37 @@ public class class237 {
                }
 
                if(class52.field406 == null) {
-                  class52.field406 = class192.method3670(class228.field2717, class7.field35.field3815, 0, (byte)119);
+                  class52.field406 = ClientPacket.method3670(class228.field2717, class7.field35.field3815, 0, (byte)119);
                } else {
                   ++var1;
                }
 
                if(class106.field1354 == null) {
-                  class106.field1354 = class192.method3670(class228.field2717, class7.field35.field3817, 0, (byte)33);
+                  class106.field1354 = ClientPacket.method3670(class228.field2717, class7.field35.field3817, 0, (byte)33);
                } else {
                   ++var1;
                }
 
                if(class4.field26 == null) {
-                  class4.field26 = class192.method3670(class228.field2717, class7.field35.field3818, 0, (byte)-76);
+                  class4.field26 = ClientPacket.method3670(class228.field2717, class7.field35.field3818, 0, (byte)-76);
                } else {
                   ++var1;
                }
 
                if(class47.field373 == null) {
-                  class47.field373 = class192.method3670(class228.field2717, class7.field35.field3819, 0, (byte)-12);
+                  class47.field373 = ClientPacket.method3670(class228.field2717, class7.field35.field3819, 0, (byte)-12);
                } else {
                   ++var1;
                }
 
                if(class299.field3650 == null) {
-                  class299.field3650 = class192.method3670(class228.field2717, class7.field35.field3820, 0, (byte)-74);
+                  class299.field3650 = ClientPacket.method3670(class228.field2717, class7.field35.field3820, 0, (byte)-74);
                } else {
                   ++var1;
                }
 
                if(class250.field3205 == null) {
-                  class250.field3205 = class192.method3670(class228.field2717, class7.field35.field3821, 0, (byte)93);
+                  class250.field3205 = ClientPacket.method3670(class228.field2717, class7.field35.field3821, 0, (byte)93);
                } else {
                   ++var1;
                }

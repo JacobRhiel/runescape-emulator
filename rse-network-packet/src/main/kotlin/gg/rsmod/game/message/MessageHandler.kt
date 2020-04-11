@@ -16,7 +16,7 @@ interface MessageHandler<T : Message>
      * Handles the [message] on the game-thread with the ability to read and write
      * to the [Client].
      */
-    fun handle(player: Player, world: World, message: T)
+    fun handle(player: Player, message: T)
 
     /**
      * A default method to log the handlers.

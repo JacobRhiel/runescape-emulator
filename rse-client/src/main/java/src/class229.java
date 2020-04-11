@@ -248,7 +248,7 @@ public class class229 implements class203 {
 
                         if(var23) {
                            if(var21 < 10) {
-                              class192.method3667(var21 + 1, var10.field2567, var10.field2709, var10.field2704, "", (byte)10);
+                              ClientPacket.method3667(var21 + 1, var10.field2567, var10.field2709, var10.field2704, "", (byte)10);
                            } else if(var21 == 10) {
                               class18.method210((byte)81);
                               class48.method815(var10.field2567, var10.field2709, class31.method388(class71.method1283(var10, -1933929812), -1866970355), var10.field2704, (byte)60);

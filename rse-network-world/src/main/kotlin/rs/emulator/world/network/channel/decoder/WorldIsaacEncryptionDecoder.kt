@@ -8,7 +8,7 @@ import io.netty.handler.codec.ByteToMessageDecoder
 import rs.emulator.buffer.utilities.BufferUtils.readJagexString
 import rs.emulator.buffer.utilities.BufferUtils.readString
 import rs.emulator.network.shared.NetworkConstants
-import rs.emulator.encryption.isaac.Isaac
+import rs.emulator.encryption.isaac.XTEA
 import rs.emulator.utilities.logger
 import rs.emulator.world.network.channel.encoder.WorldLoginResponseEncoder
 import rs.emulator.world.network.channel.message.WorldHandshakeResponseMessage
@@ -140,7 +140,7 @@ class WorldIsaacEncryptionDecoder
 
         readBytes(data)
 
-        return Unpooled.wrappedBuffer(Isaac.decipher(isaacKeys, data, 0, data.size))
+        return Unpooled.wrappedBuffer(XTEA.decipher(isaacKeys, data, 0, data.size))
 
     }
 

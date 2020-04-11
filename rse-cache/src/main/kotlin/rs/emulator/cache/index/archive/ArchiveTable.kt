@@ -1,6 +1,7 @@
 package rs.emulator.cache.index.archive
 
 import rs.emulator.cache.index.archive.entry.ArchiveEntry
+import java.util.*
 
 /**
  *
@@ -13,6 +14,6 @@ class ArchiveTable
 
     var lastEntryId = 0
 
-    var entries = emptyArray<ArchiveEntry?>()
+    var entries: SortedMap<Int, ArchiveEntry> = TreeMap()
 
 }

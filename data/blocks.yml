@@ -33,6 +33,7 @@ players:
       structure:
         - name: type
           type: BYTE
+          trans: NEGATE
 
     - block: FORCE_CHAT
       bit: 32

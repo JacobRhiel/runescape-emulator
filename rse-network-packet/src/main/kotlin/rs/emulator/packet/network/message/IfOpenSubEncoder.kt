@@ -9,9 +9,21 @@ import rs.emulator.packet.network.message.impl.IfOpenSubMessage
 class IfOpenSubEncoder : MessageEncoder<IfOpenSubMessage>() {
 
     override fun extract(message: IfOpenSubMessage, key: String): Number = when (key) {
-        "component" -> message.component
-        "overlay" -> (message.parent shl 16) or message.child
-        "type" -> message.type
+        "component" -> {
+            val a = message.component
+            println(a)
+            a
+        }
+        "overlay" -> {
+            val a = (message.parent shl 16) or message.child
+            println(a)
+            a
+        }
+        "type" -> {
+            val a = message.type
+            println(a)
+            a
+        }
         else -> throw Exception("Unhandled value key.")
     }
 

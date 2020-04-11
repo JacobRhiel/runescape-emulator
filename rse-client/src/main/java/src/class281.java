@@ -51,7 +51,7 @@ public class class281 {
          var3 = 65535L;
       }
 
-      var1.method5532((int)var3, (byte)-61);
+      var1.readShort((int)var3, (byte)-61);
       long var5 = this.field3579;
       var5 /= 10L;
       if(var5 < 0L) {
@@ -60,7 +60,7 @@ public class class281 {
          var5 = 65535L;
       }
 
-      var1.method5532((int)var5, (byte)-110);
+      var1.readShort((int)var5, (byte)-110);
       long var7 = this.field3576;
       var7 /= 10L;
       if(var7 < 0L) {
@@ -69,11 +69,11 @@ public class class281 {
          var7 = 65535L;
       }
 
-      var1.method5532((int)var7, (byte)-125);
-      var1.method5532(this.field3578, (byte)-48);
-      var1.method5532(this.field3583, (byte)-121);
-      var1.method5532(this.field3584, (byte)-104);
-      var1.method5532(this.field3586, (byte)-72);
+      var1.readShort((int)var7, (byte)-125);
+      var1.readShort(this.field3578, (byte)-48);
+      var1.readShort(this.field3583, (byte)-121);
+      var1.readShort(this.field3584, (byte)-104);
+      var1.readShort(this.field3586, (byte)-72);
    }
 
    public void method5022(int var1) {

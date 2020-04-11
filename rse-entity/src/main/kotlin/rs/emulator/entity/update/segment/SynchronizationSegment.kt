@@ -1,6 +1,6 @@
 package rs.emulator.entity.update.segment
 
-import rs.emulator.buffer.packet.GamePacketBuilder
+import rs.emulator.packet.GamePacketBuilder
 
 /**
  * @author Tom <rspsmods@gmail.com>

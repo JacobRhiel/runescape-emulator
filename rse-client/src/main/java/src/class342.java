@@ -226,7 +226,7 @@ public class class342 {
                }
 
                if(var8) {
-                  class196 var11 = class146.method3363(class192.field2260, client.field761.field1340, -1782506501);
+                  class196 var11 = class146.method3363(ClientPacket.field2260, client.field761.field1340, -1782506501);
                   var11.field2338.method5689(this.field4021.method4043(-1899522246), 747474969);
                   client.field761.method2361(var11, 824612981);
                   this.field4007 = 0L;

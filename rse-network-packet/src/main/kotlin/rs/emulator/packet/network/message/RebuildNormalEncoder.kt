@@ -4,7 +4,7 @@ import gg.rsmod.game.message.MessageEncoder
 import rs.emulator.packet.network.message.impl.RebuildNormalMessage
 import io.netty.buffer.Unpooled
 import rs.emulator.encryption.xtea.XteaKeyService
-import rs.emulator.world.map.region.chunk.Chunk
+import rs.emulator.world.map.old.region.chunk.Chunk
 
 /**
  * @author Tom <rspsmods@gmail.com>

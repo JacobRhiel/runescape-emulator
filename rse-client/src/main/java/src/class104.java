@@ -10,15 +10,15 @@ public class class104 {
    class308 field1337 = new class308('\u9c40');
    int field1328 = 0;
    class309 field1326 = new class309(5000);
-   class191 field1332 = null;
+   ServerPacket field1332 = null;
    boolean field1335 = true;
    int field1333 = 0;
-   class191 field1329;
-   class191 field1339;
+   ServerPacket field1329;
+   ServerPacket field1339;
    public class337 field1340;
    int field1338 = 0;
    int field1336 = 0;
-   class191 field1334;
+   ServerPacket field1334;
 
 
    class314 method2359(int var1) {

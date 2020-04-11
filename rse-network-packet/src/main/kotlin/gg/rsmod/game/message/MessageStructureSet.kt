@@ -3,7 +3,7 @@ package gg.rsmod.game.message
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.google.inject.Inject
 import com.google.inject.Singleton
-import rs.emulator.buffer.packet.PacketType
+import rs.emulator.packet.PacketType
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap
 import rs.emulator.buffer.type.DataType

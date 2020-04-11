@@ -115,8 +115,8 @@ public class class60 {
          }
       }
 
-      class196 var2 = class146.method3363(class192.field2246, client.field761.field1340, -2080002988);
-      var2.field2338.method5531(var0.length() + 1, 1258821856);
+      class196 var2 = class146.method3363(ClientPacket.field2246, client.field761.field1340, -2080002988);
+      var2.field2338.readByte(var0.length() + 1, 1258821856);
       var2.field2338.method5627(var0, 2111537711);
       client.field761.method2361(var2, 1331043615);
    }

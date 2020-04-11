@@ -1,5 +1,7 @@
 package rs.emulator.entity.actor
 
+import rs.emulator.world.map.old.region.chunk.Tile
+
 /**
  * Represents cardinal and ordinal directions in the game.
  *
@@ -88,12 +90,12 @@ enum class Direction(val orientationValue: Int, val playerWalkValue: Int, val np
 
         fun getForAngle(angle: Int): Direction = ANGLED_ORDER[angle / 45]
 
-        /*fun between(current: Tile, next: Tile): Direction {
+        fun between(current: Tile, next: Tile): Direction {
             val deltaX = next.x - current.x
             val deltaZ = next.z - current.z
 
             return fromDeltas(deltaX, deltaZ)
-        }*/
+        }
 
         private fun fromDeltas(deltaX: Int, deltaZ: Int): Direction {
             when (deltaZ) {

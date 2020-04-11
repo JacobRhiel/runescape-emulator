@@ -1,7 +1,7 @@
 package rs.emulator.packet.network.message.channel.encoder
 
 import gg.rsmod.game.message.*
-import rs.emulator.buffer.packet.GamePacketBuilder
+import rs.emulator.packet.GamePacketBuilder
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToMessageEncoder
 import rs.emulator.utilities.logger

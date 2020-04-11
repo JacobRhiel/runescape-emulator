@@ -110,7 +110,7 @@ public class class15 {
       class262.field3335.method3413();
       class256.field3279.method3413();
       class256.field3274.method3413();
-      class192.method3669(-2105956972);
+      ClientPacket.method3669(-2105956972);
       class259.field3295.method3413();
       class167.method3519((byte)16);
       class218.method4027(-1258139515);

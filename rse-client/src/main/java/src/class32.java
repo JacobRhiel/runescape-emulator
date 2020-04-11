@@ -64,10 +64,10 @@ public class class32 extends class43 {
       }
 
       if(client.field687 >= 25) {
-         class196 var2 = class146.method3363(class192.field2257, client.field761.field1340, -1746993437);
-         var2.field2338.method5531(class74.method1327(2092673023), 1258821856);
-         var2.field2338.method5532(class37.field277, (byte)-77);
-         var2.field2338.method5532(class221.field2525, (byte)-82);
+         class196 var2 = class146.method3363(ClientPacket.field2257, client.field761.field1340, -1746993437);
+         var2.field2338.readByte(class74.method1327(2092673023), 1258821856);
+         var2.field2338.readShort(class37.field277, (byte)-77);
+         var2.field2338.readShort(class221.field2525, (byte)-82);
          client.field761.method2361(var2, 348040455);
       }
 

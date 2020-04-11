@@ -1,8 +1,9 @@
 package rs.emulator.entity.actor.player.update.segment
 
-import rs.emulator.buffer.packet.GamePacketBuilder
+import rs.emulator.packet.GamePacketBuilder
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.update.segment.SynchronizationSegment
+import rs.emulator.utilities.logger
 
 /**
  * @author Tom <rspsmods@gmail.com>
@@ -33,6 +34,8 @@ class PlayerTeleportSegment(private val other: Player, private val encodeUpdateB
         val diffZ = other.tile.z - (other.lastTile?.z ?: 0)
         val diffH = other.tile.height - (other.lastTile?.height ?: 0)
 
+        logger().warn("x {} lastX {} z {} lastZ {}", other.tile.x, other.lastTile?.x ?: 0, other.tile.z, other.lastTile?.z ?: 0)
+
         /*
          * If the move is within a short radius, we want to save some bandwidth.
          */
@@ -48,6 +51,10 @@ class PlayerTeleportSegment(private val other: Player, private val encodeUpdateB
             buf.putBits(2, diffH and 0x3)
             buf.putBits(5, diffX and 0x1F)
             buf.putBits(5, diffZ and 0x1F)
+            println("teleport block segment")
+            println(diffH and 0x3)
+            println(diffX and 0x1F)
+            println(diffZ and 0x1F)
         } else {
             /*
              * Signal to the client that the difference in tiles are not within
@@ -60,6 +67,10 @@ class PlayerTeleportSegment(private val other: Player, private val encodeUpdateB
             buf.putBits(2, diffH and 0x3)
             buf.putBits(14, diffX and 0x3FFF)
             buf.putBits(14, diffZ and 0x3FFF)
+            println("teleport block segment")
+            println(diffH and 0x3)
+            println(diffX and 0x3FFF)
+            println(diffZ and 0x3FFF)
         }
     }
 }

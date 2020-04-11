@@ -58,24 +58,24 @@ public class class39 {
          if(var8 != null && var8 != class311.field3717 && var8.field652 != null && var8.field652.equals(var6)) {
             class196 var9;
             if(var0 == 1) {
-               var9 = class146.method3363(class192.field2267, client.field761.field1340, -1814876219);
-               var9.field2338.method5531(0, 1258821856);
+               var9 = class146.method3363(ClientPacket.field2267, client.field761.field1340, -1814876219);
+               var9.field2338.readByte(0, 1258821856);
                var9.field2338.writeIntME(var4[var7], -178401269);
                client.field761.method2361(var9, 1107468075);
             } else if(var0 == 4) {
-               var9 = class146.method3363(class192.field2282, client.field761.field1340, -1743183533);
-               var9.field2338.method5532(var4[var7], (byte)-36);
+               var9 = class146.method3363(ClientPacket.field2282, client.field761.field1340, -1743183533);
+               var9.field2338.readShort(var4[var7], (byte)-36);
                var9.field2338.method5575(0, (byte)16);
                client.field761.method2361(var9, 1922660779);
             } else if(var0 == 6) {
-               var9 = class146.method3363(class192.field2250, client.field761.field1340, -1748490008);
+               var9 = class146.method3363(ClientPacket.field2250, client.field761.field1340, -1748490008);
                var9.field2338.method5697(0, (byte)91);
                var9.field2338.writeIntME(var4[var7], 1367734381);
                client.field761.method2361(var9, 1176961597);
             } else if(var0 == 7) {
-               var9 = class146.method3363(class192.field2301, client.field761.field1340, -1866283189);
-               var9.field2338.method5531(0, 1258821856);
-               var9.field2338.method5532(var4[var7], (byte)-11);
+               var9 = class146.method3363(ClientPacket.field2301, client.field761.field1340, -1866283189);
+               var9.field2338.readByte(0, 1258821856);
+               var9.field2338.readShort(var4[var7], (byte)-11);
                client.field761.method2361(var9, 663362923);
             }
 

@@ -167,7 +167,7 @@ public class class211 extends class124 {
       client.field802 = 0;
       client.field889 = 0;
       class214.method4002(1652066276);
-      class191.method3666(0, -1241742248);
+      ServerPacket.method3666(0, -1241742248);
       class85.method2098(1189048729);
       client.field833 = 0;
       client.field835 = false;
@@ -244,10 +244,10 @@ public class class211 extends class124 {
          client.field679[var1] = true;
       }
 
-      class196 var6 = class146.method3363(class192.field2257, client.field761.field1340, -1841052897);
-      var6.field2338.method5531(class74.method1327(2146557474), 1258821856);
-      var6.field2338.method5532(class37.field277, (byte)-19);
-      var6.field2338.method5532(class221.field2525, (byte)-47);
+      class196 var6 = class146.method3363(ClientPacket.field2257, client.field761.field1340, -1841052897);
+      var6.field2338.readByte(class74.method1327(2146557474), 1258821856);
+      var6.field2338.readShort(class37.field277, (byte)-19);
+      var6.field2338.readShort(class221.field2525, (byte)-47);
       client.field761.method2361(var6, 1287850145);
       class70.field596 = null;
 

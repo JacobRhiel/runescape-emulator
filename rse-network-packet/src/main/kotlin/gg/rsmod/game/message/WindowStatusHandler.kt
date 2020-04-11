@@ -10,7 +10,7 @@ import rs.emulator.world.World
  */
 class WindowStatusHandler : MessageHandler<WindowStatusMessage> {
 
-    override fun handle(player: Player, world: World, message: WindowStatusMessage)
+    override fun handle(player: Player, message: WindowStatusMessage)
     {
        // client.clientWidth = message.width
        // client.clientHeight = message.height

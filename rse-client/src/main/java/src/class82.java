@@ -66,11 +66,11 @@ public class class82 {
 
    class309 method1929(int var1) {
       class309 var2 = new class309(100);
-      var2.method5531(field1085, 1258821856);
-      var2.method5531(this.field1077?1:0, 1258821856);
-      var2.method5531(this.field1078?1:0, 1258821856);
-      var2.method5531(this.field1079, 1258821856);
-      var2.method5531(this.field1082.size(), 1258821856);
+      var2.readByte(field1085, 1258821856);
+      var2.readByte(this.field1077?1:0, 1258821856);
+      var2.readByte(this.field1078?1:0, 1258821856);
+      var2.readByte(this.field1079, 1258821856);
+      var2.readByte(this.field1082.size(), 1258821856);
       Iterator var3 = this.field1082.entrySet().iterator();
 
       while(var3.hasNext()) {

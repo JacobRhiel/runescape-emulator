@@ -30,8 +30,8 @@ public class class34 {
    }
 
    static final void method436(int var0) {
-      class196 var1 = class146.method3363(class192.field2236, client.field761.field1340, -2113962800);
-      var1.field2338.method5531(0, 1258821856);
+      class196 var1 = class146.method3363(ClientPacket.field2236, client.field761.field1340, -2113962800);
+      var1.field2338.readByte(0, 1258821856);
       client.field761.method2361(var1, 1631649684);
    }
 }

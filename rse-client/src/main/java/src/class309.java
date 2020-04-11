@@ -93,7 +93,7 @@ public class class309 extends class189 {
       return ((this.field3709[this.field3710 - 3] & 255) << 16) + (this.field3709[this.field3710 - 1] & 255) + ((this.field3709[this.field3710 - 2] & 255) << 8) + ((this.field3709[this.field3710 - 4] & 255) << 24);
    }
 
-   public void method5531(int var1, int var2) {
+   public void readByte(int var1, int var2) {
       this.field3709[++this.field3710 - 1] = (byte)var1;
    }
 
@@ -167,7 +167,7 @@ public class class309 extends class189 {
 
    }
 
-   public void method5532(int var1, byte var2) {
+   public void readShort(int var1, byte var2) {
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
       this.field3709[++this.field3710 - 1] = (byte)var1;
    }
@@ -203,19 +203,19 @@ public class class309 extends class189 {
          if((var1 & -16384) != 0) {
             if((var1 & -2097152) != 0) {
                if((var1 & -268435456) != 0) {
-                  this.method5531(var1 >>> 28 | 128, 1258821856);
+                  this.readByte(var1 >>> 28 | 128, 1258821856);
                }
 
-               this.method5531(var1 >>> 21 | 128, 1258821856);
+               this.readByte(var1 >>> 21 | 128, 1258821856);
             }
 
-            this.method5531(var1 >>> 14 | 128, 1258821856);
+            this.readByte(var1 >>> 14 | 128, 1258821856);
          }
 
-         this.method5531(var1 >>> 7 | 128, 1258821856);
+         this.readByte(var1 >>> 7 | 128, 1258821856);
       }
 
-      this.method5531(var1 & 127, 1258821856);
+      this.readByte(var1 & 127, 1258821856);
    }
 
    public int method5751(int var1) {
@@ -247,7 +247,7 @@ public class class309 extends class189 {
    }
 
    public void method5690(boolean var1, int var2) {
-      this.method5531(var1?1:0, 1258821856);
+      this.readByte(var1?1:0, 1258821856);
    }
 
    public void method5530(byte var1) {
@@ -324,7 +324,7 @@ public class class309 extends class189 {
       return (byte)(128 - this.field3709[++this.field3710 - 1]);
    }
 
-   public int method5578(int var1) {
+   public int readByteS(int var1) {
       return 128 - this.field3709[++this.field3710 - 1] & 255;
    }
 
@@ -503,7 +503,7 @@ public class class309 extends class189 {
       BigInteger var7 = var6.modPow(var1, var2);
       byte[] var8 = var7.toByteArray();
       this.field3710 = 0;
-      this.method5532(var8.length, (byte)-102);
+      this.readShort(var8.length, (byte)-102);
       this.method5596(var8, 0, var8.length, -1590891251);
    }
 
@@ -642,9 +642,9 @@ public class class309 extends class189 {
 
    public void method5574(int var1, byte var2) {
       if(var1 >= 0 && var1 < 128) {
-         this.method5531(var1, 1258821856);
+         this.readByte(var1, 1258821856);
       } else if(var1 >= 0 && var1 < '\u8000') {
-         this.method5532(var1 + '\u8000', (byte)-62);
+         this.readShort(var1 + '\u8000', (byte)-62);
       } else {
          throw new IllegalArgumentException();
       }
@@ -672,6 +672,15 @@ public class class309 extends class189 {
 
    }
 
+   /*
+   old:
+   public void method5595(byte[] var1, int var2, int var3, byte var4) {
+      for(int var5 = var3 + var2 - 1; var5 >= var2; --var5) {
+         var1[var5] = (byte)(this.field3709[++this.field3710 - 1] - 128);
+      }
+
+   }
+ */
    public void method5595(byte[] var1, int var2, int var3, byte var4) {
       for(int var5 = var3 + var2 - 1; var5 >= var2; --var5) {
          var1[var5] = (byte)(this.field3709[++this.field3710 - 1] - 128);

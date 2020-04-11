@@ -149,7 +149,7 @@ public class class299 {
          if(class246.field3180 != null) {
             try {
                class309 var10 = new class309(4);
-               var10.method5531(3, 1258821856);
+               var10.readByte(3, 1258821856);
                var10.method5588(0, 1120871833);
                class246.field3180.vmethod5878(var10.field3709, 0, 4, 236801869);
             } catch (IOException var13) {

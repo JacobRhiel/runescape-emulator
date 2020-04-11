@@ -7,6 +7,9 @@ import rs.emulator.cache.compression.Compressible
 import rs.emulator.cache.compression.CompressionType
 import rs.emulator.utilities.logger
 
+
+
+
 /**
  *
  * @author Chk
@@ -54,14 +57,15 @@ class ArchiveFile(
     fun loadEntries(reader: BufferedReader): BufferedReader
     {
 
-        val entries = table.entries.filterNotNull()
+        val entries = table.entries.keys.toIntArray()
+
 
         val buffer = decompress(reader, null)
 
         if(!checkCompression()) return BufferedReader(Unpooled.EMPTY_BUFFER)
 
         if(entries.size == 1)
-            entries[0].contents = buffer.byteArray()
+            table.entries.values.first()?.contents = buffer.byteArray()
 
         buffer.markReaderIndex(buffer.readableBytes - 1)
 
@@ -86,7 +90,6 @@ class ArchiveFile(
                 filesSize[id] += chunkSize // add chunk size to file size
             }
         }
-
         val fileContents = arrayOfNulls<ByteArray>(entries.size)
         val fileOffsets = IntArray(entries.size)
 
@@ -105,7 +108,11 @@ class ArchiveFile(
             }
         }
 
-        entries.forEach { entry -> entry.contents = fileContents[entry.identifier]!! }
+        for(i in entries.indices)
+        {
+            table.entries[entries[i]]?.contents = fileContents[i]!!
+            //println("file: " + i + ", " + table.entries[entries[i]]?.contents?.toTypedArray()?.contentDeepToString())
+        }
 
         return buffer
 

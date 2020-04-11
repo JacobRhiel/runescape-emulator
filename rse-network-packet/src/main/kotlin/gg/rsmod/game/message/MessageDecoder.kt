@@ -1,6 +1,6 @@
 package gg.rsmod.game.message
 
-import rs.emulator.buffer.packet.GamePacketReader
+import rs.emulator.packet.GamePacketReader
 import rs.emulator.buffer.type.DataType
 import rs.emulator.buffer.type.signature.DataSignature
 

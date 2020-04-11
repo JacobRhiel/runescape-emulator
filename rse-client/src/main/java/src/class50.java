@@ -78,7 +78,7 @@ public class class50 {
             class309 var27 = new class309(128);
             class309 var10 = new class309(128);
             int[] var11 = new int[]{var35.nextInt(), var35.nextInt(), (int)(var2 >> 32), (int)var2};
-            var27.method5531(10, 1258821856);
+            var27.readByte(10, 1258821856);
 
             int var12;
             for(var12 = 0; var12 < 4; ++var12) {
@@ -95,7 +95,7 @@ public class class50 {
             }
 
             var27.method5570(class89.field1158, class89.field1155, -1664689414);
-            var10.method5531(10, 1258821856);
+            var10.readByte(10, 1258821856);
 
             for(var12 = 0; var12 < 3; ++var12) {
                var10.method5689(var35.nextInt(), 747474969);
@@ -122,12 +122,12 @@ public class class50 {
             var13.field3710 = var12;
             var13.method5536(var11, (short)280);
             class309 var14 = new class309(var13.field3710 + var27.field3710 + var10.field3710 + 5);
-            var14.method5531(2, 1258821856);
-            var14.method5531(var27.field3710, 1258821856);
+            var14.readByte(2, 1258821856);
+            var14.readByte(var27.field3710, 1258821856);
             var14.method5596(var27.field3709, 0, var27.field3710, -1590891251);
-            var14.method5531(var10.field3710, 1258821856);
+            var14.readByte(var10.field3710, 1258821856);
             var14.method5596(var10.field3709, 0, var10.field3710, -1590891251);
-            var14.method5532(var13.field3710, (byte)-3);
+            var14.readShort(var13.field3710, (byte)-3);
             var14.method5596(var13.field3709, 0, var13.field3710, -1590891251);
             String var15 = class240.method4218(var14.field3709, (byte)-100);
 

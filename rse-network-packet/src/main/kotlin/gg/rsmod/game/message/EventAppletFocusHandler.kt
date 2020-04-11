@@ -15,7 +15,7 @@ class EventAppletFocusHandler : MessageHandler<EventAppletFocusMessage> {
         private const val FOCUSED_STATE = 1
     }
 
-    override fun handle(player: Player, world: World, message: EventAppletFocusMessage)
+    override fun handle(player: Player, message: EventAppletFocusMessage)
     {
         logger().info("Handling applet focus")
         /*when (message.state) {

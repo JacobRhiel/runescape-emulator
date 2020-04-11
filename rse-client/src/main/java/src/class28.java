@@ -174,7 +174,7 @@ public class class28 implements class46 {
          }
 
          if((var5 & 1) != 0) {
-            var6 = var0.method5578(-576195763);
+            var6 = var0.readByteS(-576195763);
             int var10;
             int var11;
             int var12;
@@ -208,7 +208,7 @@ public class class28 implements class46 {
                   if(var10 != 32767) {
                      var11 = var0.method5561(2145187715);
                      var12 = var0.method5577(1811680304);
-                     int var13 = var10 > 0?var0.method5578(-576195763):var12;
+                     int var13 = var10 > 0?var0.readByteS(-576195763):var12;
                      var4.method1831(var9, client.field689, var10, var11, var12, var13, (byte)-58);
                   } else {
                      var4.method1832(var9, 671360815);

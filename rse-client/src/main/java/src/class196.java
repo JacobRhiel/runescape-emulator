@@ -8,7 +8,7 @@ public class class196 extends class189 {
    public static class351[] field2345;
    public class308 field2338;
    public int field2339;
-   public class192 field2347;
+   public ClientPacket field2347;
    public int field2337;
 
 

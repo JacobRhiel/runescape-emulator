@@ -1,7 +1,7 @@
 package gg.rsmod.game.message
 
-import rs.emulator.buffer.packet.GamePacket
-import rs.emulator.buffer.packet.GamePacketBuilder
+import rs.emulator.packet.GamePacket
+import rs.emulator.packet.GamePacketBuilder
 import rs.emulator.buffer.type.DataType
 
 /**

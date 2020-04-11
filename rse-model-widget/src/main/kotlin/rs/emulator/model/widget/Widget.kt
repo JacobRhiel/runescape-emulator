@@ -1,8 +1,6 @@
 package rs.emulator.model.widget
 
-import io.netty.channel.Channel
 import rs.emulator.cache.definition.widget.WidgetDefinition
-import rs.emulator.packet.network.message.impl.IfOpenSubMessage
 
 /**
  *

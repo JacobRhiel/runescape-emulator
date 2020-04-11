@@ -35,7 +35,7 @@ public class class162 extends class284 {
             int var3;
             if(client.field754 == 1) {
                var2 = class116.field1454 >> 7;
-               var3 = class191.field2206 >> 7;
+               var3 = ServerPacket.field2206 >> 7;
             } else {
                var2 = class311.field3717.field983 >> 7;
                var3 = class311.field3717.field973 >> 7;

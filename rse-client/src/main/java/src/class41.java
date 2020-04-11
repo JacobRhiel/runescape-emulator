@@ -79,7 +79,7 @@ public class class41 {
          var0.field979 = var0.field1021;
          var0.field995 = var0.field979;
       } else {
-         class192.method3668(var0, 135896742);
+         ClientPacket.method3668(var0, 135896742);
       }
 
       if(var0.field983 < 128 || var0.field973 < 128 || var0.field983 >= 13184 || var0.field973 >= 13184) {

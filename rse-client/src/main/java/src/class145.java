@@ -96,10 +96,10 @@ public final class class145 {
          }
 
          client.field862 = class85.field1115[class85.field1117 + 2];
-         class196 var19 = class146.method3363(class192.field2212, client.field761.field1340, -2072338142);
-         var19.field2338.method5531(client.field896, 1258821856);
-         var19.field2338.method5531(class166.field1996.field3804, 1258821856);
-         var19.field2338.method5531(client.field862, 1258821856);
+         class196 var19 = class146.method3363(ClientPacket.field2212, client.field761.field1340, -2072338142);
+         var19.field2338.readByte(client.field896, 1258821856);
+         var19.field2338.readByte(class166.field1996.field3804, 1258821856);
+         var19.field2338.readByte(client.field862, 1258821856);
          client.field761.method2361(var19, 495547088);
          return 1;
       } else {
@@ -110,11 +110,11 @@ public final class class145 {
             class85.field1117 -= 2;
             var5 = class85.field1115[class85.field1117];
             int var6 = class85.field1115[class85.field1117 + 1];
-            class196 var7 = class146.method3363(class192.field2289, client.field761.field1340, -1970903767);
-            var7.field2338.method5531(class234.method4198(var4, (byte)31) + 2, 1258821856);
+            class196 var7 = class146.method3363(ClientPacket.field2289, client.field761.field1340, -1970903767);
+            var7.field2338.readByte(class234.method4198(var4, (byte)31) + 2, 1258821856);
             var7.field2338.method5627(var4, 688583500);
-            var7.field2338.method5531(var5 - 1, 1258821856);
-            var7.field2338.method5531(var6, 1258821856);
+            var7.field2338.readByte(var5 - 1, 1258821856);
+            var7.field2338.readByte(var6, 1258821856);
             client.field761.method2361(var7, 1382671119);
             return 1;
          } else {
@@ -286,12 +286,12 @@ public final class class145 {
                   }
                }
 
-               class196 var9 = class146.method3363(class192.field2229, client.field761.field1340, -2115570666);
-               var9.field2338.method5531(0, 1258821856);
+               class196 var9 = class146.method3363(ClientPacket.field2229, client.field761.field1340, -2115570666);
+               var9.field2338.readByte(0, 1258821856);
                int var10 = var9.field2338.field3710;
-               var9.field2338.method5531(var5, 1258821856);
-               var9.field2338.method5531(var18, 1258821856);
-               var9.field2338.method5531(var8, 1258821856);
+               var9.field2338.readByte(var5, 1258821856);
+               var9.field2338.readByte(var18, 1258821856);
+               var9.field2338.readByte(var8, 1258821856);
                class321.method5932(var9.field2338, var4, (byte)77);
                var9.field2338.method5656(var9.field2338.field3710 - var10, -1075172075);
                client.field761.method2361(var9, 1854763525);
@@ -300,8 +300,8 @@ public final class class145 {
                class85.field1119 -= 2;
                var4 = class85.field1118[class85.field1119];
                String var13 = class85.field1118[class85.field1119 + 1];
-               class196 var12 = class146.method3363(class192.field2283, client.field761.field1340, -2050268225);
-               var12.field2338.method5532(0, (byte)-46);
+               class196 var12 = class146.method3363(ClientPacket.field2283, client.field761.field1340, -2050268225);
+               var12.field2338.readShort(0, (byte)-46);
                int var14 = var12.field2338.field3710;
                var12.field2338.method5627(var4, 2081249709);
                class321.method5932(var12.field2338, var13, (byte)45);

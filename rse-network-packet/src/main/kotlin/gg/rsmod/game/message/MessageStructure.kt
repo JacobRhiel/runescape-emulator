@@ -1,6 +1,6 @@
 package gg.rsmod.game.message
 
-import rs.emulator.buffer.packet.PacketType
+import rs.emulator.packet.PacketType
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap
 import rs.emulator.packet.network.message.MessageValue
 

@@ -52,22 +52,22 @@ public final class class135 extends class189 {
       if(client.field754 == 0) {
          var1 = class311.field3717.field983;
          var2 = class311.field3717.field973;
-         if(class116.field1454 - var1 < -500 || class116.field1454 - var1 > 500 || class191.field2206 - var2 < -500 || class191.field2206 - var2 > 500) {
+         if(class116.field1454 - var1 < -500 || class116.field1454 - var1 > 500 || ServerPacket.field2206 - var2 < -500 || ServerPacket.field2206 - var2 > 500) {
             class116.field1454 = var1;
-            class191.field2206 = var2;
+            ServerPacket.field2206 = var2;
          }
 
          if(var1 != class116.field1454) {
             class116.field1454 += (var1 - class116.field1454) / 16;
          }
 
-         if(var2 != class191.field2206) {
-            class191.field2206 += (var2 - class191.field2206) / 16;
+         if(var2 != ServerPacket.field2206) {
+            ServerPacket.field2206 += (var2 - ServerPacket.field2206) / 16;
          }
 
          var3 = class116.field1454 >> 7;
-         var4 = class191.field2206 >> 7;
-         var5 = class277.method5013(class116.field1454, class191.field2206, class71.field610, -213957736);
+         var4 = ServerPacket.field2206 >> 7;
+         var5 = class277.method5013(class116.field1454, ServerPacket.field2206, class71.field610, -213957736);
          var6 = 0;
          int var7;
          if(var3 > 3 && var4 > 3 && var3 < 100 && var4 < 100) {
@@ -113,7 +113,7 @@ public final class class135 extends class189 {
                   client.field756 = var3;
                }
 
-               class191.field2206 = class311.field3717.field973;
+               ServerPacket.field2206 = class311.field3717.field973;
                client.field770 = false;
             }
          }
@@ -174,7 +174,7 @@ public final class class135 extends class189 {
                var5 = class139.field1794[var1];
                var6 = class139.field1795[var1];
                class116.field1454 += var5 * var4 / 65536;
-               class191.field2206 += var6 * var4 / 65536;
+               ServerPacket.field2206 += var6 * var4 / 65536;
             }
 
             if(client.field759 != 0) {
@@ -189,7 +189,7 @@ public final class class135 extends class189 {
          }
 
          if(class54.field426[13]) {
-            client.field761.method2361(class146.method3363(class192.field2306, client.field761.field1340, -1758003060), 847143217);
+            client.field761.method2361(class146.method3363(ClientPacket.field2306, client.field761.field1340, -1758003060), 847143217);
             client.field754 = 0;
          }
       }

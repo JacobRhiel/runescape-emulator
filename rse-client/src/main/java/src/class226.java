@@ -941,7 +941,7 @@ public class class226 extends class189 {
                var11 = class64.method1217(var4, -655738751);
             }
 
-            class196 var13 = class146.method3363(class192.field2279, client.field761.field1340, -1762690977);
+            class196 var13 = class146.method3363(ClientPacket.field2279, client.field761.field1340, -1762690977);
             var13.field2338.method5689(var11, 747474969);
             client.field761.method2361(var13, 869988889);
             return 1;
@@ -949,15 +949,15 @@ public class class226 extends class189 {
             class196 var15;
             if(var0 == 3105) {
                var4 = class85.field1118[--class85.field1119];
-               var15 = class146.method3363(class192.field2213, client.field761.field1340, -1936764709);
-               var15.field2338.method5531(var4.length() + 1, 1258821856);
+               var15 = class146.method3363(ClientPacket.field2213, client.field761.field1340, -1936764709);
+               var15.field2338.readByte(var4.length() + 1, 1258821856);
                var15.field2338.method5627(var4, 1149225208);
                client.field761.method2361(var15, 1002151325);
                return 1;
             } else if(var0 == 3106) {
                var4 = class85.field1118[--class85.field1119];
-               var15 = class146.method3363(class192.field2273, client.field761.field1340, -2010712163);
-               var15.field2338.method5531(var4.length() + 1, 1258821856);
+               var15 = class146.method3363(ClientPacket.field2273, client.field761.field1340, -2010712163);
+               var15.field2338.readByte(var4.length() + 1, 1258821856);
                var15.field2338.method5627(var4, 891468418);
                client.field761.method2361(var15, 2093530023);
                return 1;
@@ -1001,8 +1001,8 @@ public class class226 extends class189 {
                   return 1;
                } else if(var0 == 3115) {
                   var16 = class85.field1115[--class85.field1117];
-                  var15 = class146.method3363(class192.field2253, client.field761.field1340, -1747060578);
-                  var15.field2338.method5532(var16, (byte)-43);
+                  var15 = class146.method3363(ClientPacket.field2253, client.field761.field1340, -1747060578);
+                  var15.field2338.readShort(var16, (byte)-43);
                   client.field761.method2361(var15, 576593365);
                   return 1;
                } else if(var0 == 3116) {
@@ -1015,8 +1015,8 @@ public class class226 extends class189 {
                   } else if(var6.length() > 500) {
                      return 1;
                   } else {
-                     class196 var7 = class146.method3363(class192.field2214, client.field761.field1340, -2036417885);
-                     var7.field2338.method5532(1 + class234.method4198(var8, (byte)-33) + class234.method4198(var6, (byte)-28), (byte)-21);
+                     class196 var7 = class146.method3363(ClientPacket.field2214, client.field761.field1340, -2036417885);
+                     var7.field2338.readShort(1 + class234.method4198(var8, (byte)-33) + class234.method4198(var6, (byte)-28), (byte)-21);
                      var7.field2338.method5700(var16, -927080333);
                      var7.field2338.method5627(var8, 832887722);
                      var7.field2338.method5627(var6, 1123888689);

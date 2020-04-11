@@ -107,6 +107,6 @@ public class class254 extends class184 {
    public static class334[] method4483(class243 var0, String var1, String var2, int var3) {
       int var4 = var0.method4240(var1, (short)-21319);
       int var5 = var0.method4233(var4, var2, 1342461508);
-      return class192.method3670(var0, var4, var5, (byte)25);
+      return ClientPacket.method3670(var0, var4, var5, (byte)25);
    }
 }

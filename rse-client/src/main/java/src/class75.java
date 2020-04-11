@@ -133,6 +133,7 @@ public final class class75 extends class78 {
       int var4 = this.method1337((byte)87);
       super.field983 = super.field1028[0] * 128 + var4 * 64;
       super.field973 = super.field1029[0] * 128 + var4 * 64;
+      System.out.println(super.field983 + ", " + super.field973);
    }
 
    int method1337(byte var1) {

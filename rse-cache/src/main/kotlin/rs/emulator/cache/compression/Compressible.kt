@@ -1,11 +1,10 @@
 package rs.emulator.cache.compression
 
 import com.google.common.primitives.Bytes
-import com.google.common.primitives.Ints
-import io.netty.buffer.Unpooled
 import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
+import rs.emulator.encryption.isaac.XTEA
 
 /**
  *
@@ -53,7 +52,7 @@ abstract class Compressible
             }
         }
 
-        //compressedData = net.runelite.cache.fs.Container.encrypt(compressedData, compressedData.size, keys)
+        compressedData = encrypt(keys, compressedData, compressedData.size)
 
         writer.put(DataType.BYTE, compression.opcode)
 
@@ -86,25 +85,36 @@ abstract class Compressible
 
         crc32.update(reader.byteArray(), 0, 5) // compression + length
 
-        var encryptedData = byteArrayOf()
+        var data = byteArrayOf()
+
+        var encryptedData: ByteArray
+
+        var decryptedData: ByteArray
 
         when(compressionType)
         {
 
-            CompressionType.NONE -> encryptedData = fetchEncryptedData(crc32, reader, compressedLength)
+            CompressionType.NONE ->
+            {
+                encryptedData = fetchEncryptedData(crc32, reader, compressedLength)
+                decryptedData = decrypt(encryptedData, encryptedData.size, keys)
+                data = decryptedData
+            }
 
             CompressionType.BZIP ->
             {
 
                 encryptedData = fetchEncryptedData(crc32, reader, compressedLength + 4)
 
-                val stream = BufferedReader(Unpooled.wrappedBuffer(encryptedData))
+                decryptedData = decrypt(encryptedData, encryptedData.size, keys)
+
+                val stream = BufferedReader(decryptedData)
 
                 val decompressedLength: Int = stream.getUnsigned(DataType.INT).toInt()
 
-                encryptedData = BZip2.decompress(stream.byteArray(), compressedLength)
+                data = BZip2.decompress(stream.byteArray(), compressedLength)
 
-                assert(encryptedData.size == decompressedLength)
+                assert(data.size == decompressedLength)
 
             }
 
@@ -113,13 +123,15 @@ abstract class Compressible
 
                 encryptedData = fetchEncryptedData(crc32, reader, compressedLength + 4)
 
-                val stream = BufferedReader(Unpooled.wrappedBuffer(encryptedData))
+                decryptedData = decrypt(encryptedData, encryptedData.size, keys)
+
+                val stream = BufferedReader(decryptedData)
 
                 val decompressedLength: Int = stream.getUnsigned(DataType.INT).toInt()
 
-                encryptedData = GZip.decompress(stream.byteArray(), compressedLength)
+                data = GZip.decompress(stream.byteArray(), compressedLength)
 
-                assert(encryptedData.size == decompressedLength)
+                assert(data.size == decompressedLength)
 
             }
 
@@ -129,7 +141,7 @@ abstract class Compressible
 
         hash = crc32.hash
 
-        return BufferedReader(Unpooled.wrappedBuffer(encryptedData))
+        return BufferedReader(data)
 
     }
 
@@ -142,14 +154,10 @@ abstract class Compressible
 
         crc32.update(encryptedData, 0, length)
 
-        println(reader.readableBytes)
-
         if(reader.readableBytes >= 2)
         {
 
             version = reader.getUnsigned(DataType.SHORT).toInt()
-
-            println("version $version")
 
             assert(version != -1)
 
@@ -171,5 +179,9 @@ abstract class Compressible
         'h'.toByte(),
         '1'.toByte()
     )
+
+    private fun encrypt(keys: IntArray?, data: ByteArray, length: Int): ByteArray = if (keys == null) data else XTEA.encipher(keys, data, length)
+
+    private fun decrypt(data: ByteArray, length: Int, keys: IntArray?): ByteArray = if (keys == null) data else XTEA.decipher(keys, data, 0, length)
 
 }

@@ -116,7 +116,7 @@ final class class20 implements Comparator {
          class31.field220 -= var6 << 7;
          class200.field2372 -= var7 << 7;
          class116.field1454 -= var6 << 7;
-         class191.field2206 -= var7 << 7;
+         ServerPacket.field2206 -= var7 << 7;
          client.field695 = -1;
          client.field811.method4925();
          client.field810.method4925();

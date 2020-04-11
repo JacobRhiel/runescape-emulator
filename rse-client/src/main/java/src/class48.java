@@ -190,7 +190,7 @@ public class class48 extends class30 {
 
          class96 var33;
          if(class194.field2331 == var0) {
-            var38 = var2.method5578(-576195763);
+            var38 = var2.readByteS(-576195763);
             var4 = (var38 >> 4 & 7) + class17.field91;
             var5 = (var38 & 7) + class340.field3959;
             var6 = var2.readShort((byte)7);
@@ -238,7 +238,7 @@ public class class48 extends class30 {
             var4 = (var38 >> 4 & 7) + class17.field91;
             var5 = (var38 & 7) + class340.field3959;
             var6 = var2.method5587(774060419);
-            var7 = var2.method5578(-576195763);
+            var7 = var2.readByteS(-576195763);
             var8 = var7 >> 2;
             var9 = var7 & 3;
             var10 = client.field699[var8];
@@ -250,11 +250,11 @@ public class class48 extends class30 {
             int var40;
             if(class194.field2325 == var0) {
                var38 = var2.readUnsignedByte((byte)96);
-               var4 = var2.method5578(-576195763);
+               var4 = var2.readByteS(-576195763);
                var5 = (var4 >> 4 & 7) + class17.field91;
                var6 = (var4 & 7) + class340.field3959;
                var7 = var2.method5586((byte)117);
-               var8 = var2.method5578(-576195763);
+               var8 = var2.readByteS(-576195763);
                var9 = var8 >> 4 & 15;
                var10 = var8 & 7;
                if(var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
@@ -290,7 +290,7 @@ public class class48 extends class30 {
 
             } else if(class194.field2332 == var0) {
                var38 = var2.method5586((byte)119);
-               var4 = var2.method5578(-576195763) * 4;
+               var4 = var2.readByteS(-576195763) * 4;
                var5 = var2.method5577(2146763860) * 4;
                var6 = var2.method5577(1816779581);
                byte var39 = var2.method5580(-587494464);
@@ -329,7 +329,7 @@ public class class48 extends class30 {
                }
 
             } else if(class194.field2328 == var0) {
-               var38 = var2.method5578(-576195763);
+               var38 = var2.readByteS(-576195763);
                var4 = (var38 >> 4 & 7) + class17.field91;
                var5 = (var38 & 7) + class340.field3959;
                var6 = var2.readUnsignedByte((byte)58);

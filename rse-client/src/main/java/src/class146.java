@@ -8,7 +8,7 @@ public class class146 {
    int field1896;
 
 
-   public static class196 method3363(class192 var0, class337 var1, int var2) {
+   public static class196 method3363(ClientPacket var0, class337 var1, int var2) {
       class196 var3 = class161.method3482((byte)-87);
       var3.field2347 = var0;
       var3.field2337 = var0.field2309;

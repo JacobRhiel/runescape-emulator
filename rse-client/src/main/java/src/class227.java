@@ -6,7 +6,7 @@ public class class227 {
 
 
    static final void method4160(int var0) {
-      class196 var1 = class146.method3363(class192.field2245, client.field761.field1340, -2031120869);
+      class196 var1 = class146.method3363(ClientPacket.field2245, client.field761.field1340, -2031120869);
       client.field761.method2361(var1, 1841814410);
 
       for(class70 var2 = (class70)client.field841.method5995(); var2 != null; var2 = (class70)client.field841.method6003()) {

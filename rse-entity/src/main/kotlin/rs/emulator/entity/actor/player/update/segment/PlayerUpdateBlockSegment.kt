@@ -1,16 +1,15 @@
 package rs.emulator.entity.actor.player.update.segment
 
-import rs.emulator.buffer.packet.GamePacketBuilder
+import rs.emulator.packet.GamePacketBuilder
 import rs.emulator.buffer.type.DataType
 import rs.emulator.buffer.type.order.DataOrder
 import rs.emulator.buffer.type.transform.DataTransformation
 import rs.emulator.entity.actor.Direction
-import rs.emulator.entity.actor.player.Appearance
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.actor.update.mask.ChatMessage
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.entity.update.segment.SynchronizationSegment
-import rs.emulator.world.map.region.chunk.Tile
+import rs.emulator.world.map.old.region.chunk.Tile
 
 /**
  * @author Tom <rspsmods@gmail.com>
@@ -130,7 +129,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                 val structure = blocks.updateBlocks[blockType]!!.values
                 buf.put(
                     structure[0].type, structure[0].order, structure[0].transformation,
-                    if (other.blockBuffer.teleport) 127 else /*if (other.steps?.runDirection != null) 2 else*/ 1
+                    if (other.blockBuffer.teleport) 127 else if (other.steps?.runDirection != null) 2 else 1
                 )
             }
 
@@ -226,7 +225,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
 */
                 val structure = blocks.updateBlocks[blockType]!!.values
 
-                appBuf.putBytesReverse(byteArrayOf(0, -1, -1, 0, 0, 0, 0, 1, 21, 0, 1, 26, 1, 38, 1, 3, 1, 33, 1, 42, 1, 14, 3, 4, 2, 3, 2, 3, 40, 3, 55, 3, 51, 3, 52, 3, 53, 3, 54, 3, 56, 71, 112, 105, 0, 3, 0, 0, 0).reversedArray())
+                appBuf.putBytesReverse(byteArrayOf(0, -1, -1, 0, 0, 0, 0, 1, 21, 0, 1, 26, 1, 38, 1, 3, 1, 33, 1, 42, 1, 14, 3, 4, 2, 3, 2, 3, 40, 3, 55, 3, 51, 3, 52, 3, 53, 3, 54, 3, 56, 71, 112, 105, 0, 3, 0, 0, 0))
 
                 buf.put(
                     structure[0].type,

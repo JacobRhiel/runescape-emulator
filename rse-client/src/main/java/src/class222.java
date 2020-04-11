@@ -156,7 +156,7 @@ public class class222 {
          var21 = client.field909 & 2047;
          var7 = class116.field1454;
          var8 = client.field756;
-         var9 = class191.field2206;
+         var9 = ServerPacket.field2206;
          var10 = var5 * 3 + 600;
          var11 = class99.method2281(var10, var3, -938707872);
          var12 = 2048 - var5 & 2047;
@@ -188,10 +188,10 @@ public class class222 {
          class200.field2372 = var9 - var16;
          class74.field638 = var5;
          class32.field230 = var21;
-         if(client.field754 == 1 && client.field849 >= 2 && client.field689 % 50 == 0 && (class116.field1454 >> 7 != class311.field3717.field983 >> 7 || class191.field2206 >> 7 != class311.field3717.field973 >> 7)) {
+         if(client.field754 == 1 && client.field849 >= 2 && client.field689 % 50 == 0 && (class116.field1454 >> 7 != class311.field3717.field983 >> 7 || ServerPacket.field2206 >> 7 != class311.field3717.field973 >> 7)) {
             var17 = class311.field3717.field666;
             var18 = (class116.field1454 >> 7) + class69.field590 * 731242929;
-            var19 = (class191.field2206 >> 7) + class89.field1152 * 1825982697;
+            var19 = (ServerPacket.field2206 >> 7) + class89.field1152 * 1825982697;
             class14.method148(var18, var19, var17, true, 1413232162);
          }
       }

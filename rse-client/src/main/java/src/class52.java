@@ -103,8 +103,8 @@ public final class class52 {
    }
 
    static final void method902(String var0, int var1, byte var2) {
-      class196 var3 = class146.method3363(class192.field2259, client.field761.field1340, -1895086813);
-      var3.field2338.method5531(class234.method4198(var0, (byte)109) + 1, 1258821856);
+      class196 var3 = class146.method3363(ClientPacket.field2259, client.field761.field1340, -1895086813);
+      var3.field2338.readByte(class234.method4198(var0, (byte)109) + 1, 1258821856);
       var3.field2338.method5627(var0, 2039848852);
       var3.field2338.method5697(var1, (byte)-21);
       client.field761.method2361(var3, 852177434);

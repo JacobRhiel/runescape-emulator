@@ -1,17 +1,14 @@
 package rs.emulator.cache.index
 
-import io.netty.buffer.Unpooled
 import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.type.DataType
 import rs.emulator.cache.compression.Compressible
-import rs.emulator.cache.compression.CompressionType
-import rs.emulator.cache.compression.CompressionType.*
 import rs.emulator.cache.index.archive.ArchiveConfig
 import rs.emulator.cache.index.archive.ArchiveFile
 import rs.emulator.cache.index.archive.entry.EntryData
+import rs.emulator.hash.Djb2
 import rs.emulator.utilities.logger
 import java.io.*
-import java.util.zip.CRC32
 
 /**
  *
@@ -64,6 +61,8 @@ open class IndexFile(
     fun fetchArchive(identifier: Int) = indexTable.fetchArchive(identifier)
 
     fun fetchArchive(archiveConfig: ArchiveConfig) = indexTable.fetchArchive(archiveConfig)
+
+    fun fetchArchiveByName(name: String) = indexTable.fetchAllArchives().values.first { it.nameHash == Djb2.hash(name) }
 
     override fun close() = idx.close()
 

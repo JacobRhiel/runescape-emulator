@@ -9,7 +9,7 @@ import rs.emulator.world.World
  */
 class MapBuildCompleteHandler : MessageHandler<MapBuildCompleteMessage> {
 
-    override fun handle(player: Player, world: World, message: MapBuildCompleteMessage)
+    override fun handle(player: Player, message: MapBuildCompleteMessage)
     {
         println("handling map build completion.")
         //client.lastMapBuildTime = world.currentCycle

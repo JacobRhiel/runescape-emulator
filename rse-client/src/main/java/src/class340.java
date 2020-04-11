@@ -71,29 +71,29 @@ public class class340 extends class189 {
    }
 
    public void method6359(class309 var1, int var2) {
-      var1.method5531(8, 1258821856);
-      var1.method5531(this.field3934, 1258821856);
-      var1.method5531(this.field3947?1:0, 1258821856);
-      var1.method5532(this.field3938, (byte)-58);
-      var1.method5531(this.field3937, 1258821856);
-      var1.method5531(this.field3928, 1258821856);
-      var1.method5531(this.field3942, 1258821856);
-      var1.method5531(this.field3940, 1258821856);
-      var1.method5531(this.field3941?1:0, 1258821856);
-      var1.method5532(this.field3951, (byte)-100);
-      var1.method5531(this.field3939, 1258821856);
+      var1.readByte(8, 1258821856);
+      var1.readByte(this.field3934, 1258821856);
+      var1.readByte(this.field3947?1:0, 1258821856);
+      var1.readShort(this.field3938, (byte)-58);
+      var1.readByte(this.field3937, 1258821856);
+      var1.readByte(this.field3928, 1258821856);
+      var1.readByte(this.field3942, 1258821856);
+      var1.readByte(this.field3940, 1258821856);
+      var1.readByte(this.field3941?1:0, 1258821856);
+      var1.readShort(this.field3951, (byte)-100);
+      var1.readByte(this.field3939, 1258821856);
       var1.method5588(this.field3944, 1340938914);
-      var1.method5532(this.field3945, (byte)-82);
+      var1.readShort(this.field3945, (byte)-82);
       var1.method5641(this.field3946, (short)21883);
       var1.method5641(this.field3927, (short)799);
       var1.method5641(this.field3948, (short)20864);
       var1.method5641(this.field3949, (short)27373);
-      var1.method5531(this.field3957, 1258821856);
-      var1.method5532(this.field3950, (byte)-16);
+      var1.readByte(this.field3957, 1258821856);
+      var1.readShort(this.field3950, (byte)-16);
       var1.method5641(this.field3954, (short)19748);
       var1.method5641(this.field3955, (short)21948);
-      var1.method5531(this.field3929, 1258821856);
-      var1.method5531(this.field3953, 1258821856);
+      var1.readByte(this.field3929, 1258821856);
+      var1.readByte(this.field3953, 1258821856);
 
       for(int var3 = 0; var3 < this.field3956.length; ++var3) {
          var1.method5689(this.field3956[var3], 747474969);

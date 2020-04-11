@@ -57,7 +57,7 @@ public final class class151 {
 
          for(int var4 = 0; var4 < var2.field1353; ++var4) {
             if(var2.field1350[var4] != 0) {
-               var0.method5531(var2.field1350[var4], 1258821856);
+               var0.readByte(var2.field1350[var4], 1258821856);
             } else {
                try {
                   int var5 = var2.field1348[var4];
@@ -66,16 +66,16 @@ public final class class151 {
                   if(var5 == 0) {
                      var6 = var2.field1349[var4];
                      var7 = var6.getInt((Object)null);
-                     var0.method5531(0, 1258821856);
+                     var0.readByte(0, 1258821856);
                      var0.method5689(var7, 747474969);
                   } else if(var5 == 1) {
                      var6 = var2.field1349[var4];
                      var6.setInt((Object)null, var2.field1351[var4]);
-                     var0.method5531(0, 1258821856);
+                     var0.readByte(0, 1258821856);
                   } else if(var5 == 2) {
                      var6 = var2.field1349[var4];
                      var7 = var6.getModifiers();
-                     var0.method5531(0, 1258821856);
+                     var0.readByte(0, 1258821856);
                      var0.method5689(var7, 747474969);
                   }
 
@@ -92,46 +92,46 @@ public final class class151 {
 
                      Object var12 = var26.invoke((Object)null, var8);
                      if(var12 == null) {
-                        var0.method5531(0, 1258821856);
+                        var0.readByte(0, 1258821856);
                      } else if(var12 instanceof Number) {
-                        var0.method5531(1, 1258821856);
+                        var0.readByte(1, 1258821856);
                         var0.method5529(((Number)var12).longValue());
                      } else if(var12 instanceof String) {
-                        var0.method5531(2, 1258821856);
+                        var0.readByte(2, 1258821856);
                         var0.method5627((String)var12, 688553335);
                      } else {
-                        var0.method5531(4, 1258821856);
+                        var0.readByte(4, 1258821856);
                      }
                   } else if(var5 == 4) {
                      var26 = var2.field1352[var4];
                      var7 = var26.getModifiers();
-                     var0.method5531(0, 1258821856);
+                     var0.readByte(0, 1258821856);
                      var0.method5689(var7, 747474969);
                   }
                } catch (ClassNotFoundException var14) {
-                  var0.method5531(-10, 1258821856);
+                  var0.readByte(-10, 1258821856);
                } catch (InvalidClassException var15) {
-                  var0.method5531(-11, 1258821856);
+                  var0.readByte(-11, 1258821856);
                } catch (StreamCorruptedException var16) {
-                  var0.method5531(-12, 1258821856);
+                  var0.readByte(-12, 1258821856);
                } catch (OptionalDataException var17) {
-                  var0.method5531(-13, 1258821856);
+                  var0.readByte(-13, 1258821856);
                } catch (IllegalAccessException var18) {
-                  var0.method5531(-14, 1258821856);
+                  var0.readByte(-14, 1258821856);
                } catch (IllegalArgumentException var19) {
-                  var0.method5531(-15, 1258821856);
+                  var0.readByte(-15, 1258821856);
                } catch (InvocationTargetException var20) {
-                  var0.method5531(-16, 1258821856);
+                  var0.readByte(-16, 1258821856);
                } catch (SecurityException var21) {
-                  var0.method5531(-17, 1258821856);
+                  var0.readByte(-17, 1258821856);
                } catch (IOException var22) {
-                  var0.method5531(-18, 1258821856);
+                  var0.readByte(-18, 1258821856);
                } catch (NullPointerException var23) {
-                  var0.method5531(-19, 1258821856);
+                  var0.readByte(-19, 1258821856);
                } catch (Exception var24) {
-                  var0.method5531(-20, 1258821856);
+                  var0.readByte(-20, 1258821856);
                } catch (Throwable var25) {
-                  var0.method5531(-21, 1258821856);
+                  var0.readByte(-21, 1258821856);
                }
             }
          }
@@ -145,8 +145,8 @@ public final class class151 {
       try {
          class352 var3 = new class352(class176.field2048, "rw", 10000L);
          class309 var4 = new class309(500);
-         var4.method5531(3, 1258821856);
-         var4.method5531(var1 != null?1:0, 1258821856);
+         var4.readByte(3, 1258821856);
+         var4.readByte(var1 != null?1:0, 1258821856);
          var4.method5540(var0.getPath(), -1160654316);
          if(var1 != null) {
             var4.method5540(var1.getPath(), -977254962);
@@ -173,11 +173,10 @@ public final class class151 {
          var4 = var1.readUnsignedShort((byte)50);
          var5 = var1.readShort((byte)23);
          class152.field1957 = new int[var5][4];
-
+         System.out.println(var3 + ", " + var4 + ", " + var5);
          for(var6 = 0; var6 < var5; ++var6) {
             for(var7 = 0; var7 < 4; ++var7) {
                class152.field1957[var6][var7] = var1.method5552(297718403);
-               System.out.println(class152.field1957[var6][var7]);
             }
          }
 

@@ -10,7 +10,7 @@ public class class303 {
       if(client.field761.field1336 >= 50 || var0) {
          client.field761.field1336 = 0;
          if(!client.field728 && client.field761.method2359(-737267651) != null) {
-            class196 var2 = class146.method3363(class192.field2295, client.field761.field1340, -1922326767);
+            class196 var2 = class146.method3363(ClientPacket.field2295, client.field761.field1340, -1922326767);
             client.field761.method2361(var2, 889438300);
 
             try {

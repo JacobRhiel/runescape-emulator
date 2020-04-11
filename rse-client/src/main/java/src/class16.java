@@ -470,7 +470,7 @@ public class class16 {
             class263.field3347.method3413();
             class196 var54;
             if(class42.field318.method1040(-584501921)) {
-               var54 = class146.method3363(class192.field2215, client.field761.field1340, -2036856058);
+               var54 = class146.method3363(ClientPacket.field2215, client.field761.field1340, -2036856058);
                var54.field2338.method5689(1057001181, 747474969);
                client.field761.method2361(var54, 1144996409);
             }
@@ -505,7 +505,7 @@ public class class16 {
             class260.field3306 = null;
             class64.field554 = null;
             class83.field1086 = null;
-            var54 = class146.method3363(class192.field2241, client.field761.field1340, -1939541926);
+            var54 = class146.method3363(ClientPacket.field2241, client.field761.field1340, -1939541926);
             client.field761.method2361(var54, 298658927);
             class62.field472.vmethod3577(-1195176395);
 
@@ -535,8 +535,8 @@ public class class16 {
 
    static final void method156(String var0, int var1) {
       if(!var0.equals("")) {
-         class196 var2 = class146.method3363(class192.field2236, client.field761.field1340, -1910479227);
-         var2.field2338.method5531(class234.method4198(var0, (byte)10), 1258821856);
+         class196 var2 = class146.method3363(ClientPacket.field2236, client.field761.field1340, -1910479227);
+         var2.field2338.readByte(class234.method4198(var0, (byte)10), 1258821856);
          var2.field2338.method5627(var0, 2073865916);
          client.field761.method2361(var2, 554752370);
       }

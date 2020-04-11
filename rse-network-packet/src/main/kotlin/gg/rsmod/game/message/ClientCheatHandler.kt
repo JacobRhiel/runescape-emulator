@@ -11,7 +11,9 @@ import java.util.Arrays
  */
 class ClientCheatHandler : MessageHandler<ClientCheatMessage> {
 
-    override fun handle(client: Player, world: World, message: ClientCheatMessage) {
+    override fun handle(client: Player, message: ClientCheatMessage)
+    {
+
         val values = message.command.split(" ")
         val command = values[0].toLowerCase()
         val args = if (values.size > 1) values.slice(1 until values.size).filter { it.isNotEmpty() }.toTypedArray() else null

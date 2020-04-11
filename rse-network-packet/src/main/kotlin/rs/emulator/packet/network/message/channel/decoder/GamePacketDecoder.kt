@@ -1,8 +1,8 @@
 package rs.emulator.packet.network.message.channel.decoder
 
-import rs.emulator.buffer.packet.GamePacket
-import rs.emulator.buffer.packet.IPacketMetadata
-import rs.emulator.buffer.packet.PacketType
+import rs.emulator.packet.GamePacket
+import rs.emulator.packet.IPacketMetadata
+import rs.emulator.packet.PacketType
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
@@ -35,18 +35,19 @@ class GamePacketDecoder(private val random: IsaacRandom?, private val packetMeta
     private fun decodeOpcode(ctx: ChannelHandlerContext, buf: ByteBuf, out: MutableList<Any>) {
         if (buf.isReadable) {
             opcode = buf.readUnsignedByte().toInt() - (random?.nextInt() ?: 0) and 0xFF
-            println("Packet decode request: $opcode.")
+            //println("Packet decode request: $opcode.")
             val packetType = packetMetadata.getType(opcode)
             if (packetType == null) {
                 logger.warn("Channel {} sent message with no valid metadata: {}.", ctx.channel(), opcode)
                 buf.skipBytes(buf.readableBytes())
                 return
             }
+            println("decoding packet: " + opcode)
             type = packetType
             ignore = packetMetadata.shouldIgnore(opcode)
 
             when (type) {
-                PacketType.FIXED                                    -> {
+                PacketType.FIXED                                                                          -> {
                     length = packetMetadata.getLength(opcode)
                     if (length != 0) {
                         setState(GameDecoderState.PAYLOAD)
@@ -61,7 +62,7 @@ class GamePacketDecoder(private val random: IsaacRandom?, private val packetMeta
                     }
                 }
                 PacketType.VARIABLE_BYTE, PacketType.VARIABLE_SHORT -> setState(GameDecoderState.LENGTH)
-                else                                                -> throw IllegalStateException("Unhandled packet type $type for opcode $opcode.")
+                else                                                                                                                            -> throw IllegalStateException("Unhandled packet type $type for opcode $opcode.")
             }
         }
     }
