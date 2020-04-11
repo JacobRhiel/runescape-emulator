@@ -68,12 +68,23 @@ class GamePacketDecoder(private val random: IsaacRandom?, private val packetMeta
     }
 
     private fun decodeLength(buf: ByteBuf, out: MutableList<Any>) {
-        if (buf.isReadable) {
-            length = if (type == PacketType.VARIABLE_SHORT) buf.readUnsignedShort() else buf.readUnsignedByte().toInt()
-            if (length != 0) {
-                setState(GameDecoderState.PAYLOAD)
-            } else if (!ignore) {
-                out.add(GamePacket(opcode, type, Unpooled.EMPTY_BUFFER))
+        if (buf.isReadable)
+        {
+            try
+            {
+
+                length = if (type == PacketType.VARIABLE_SHORT) buf.readUnsignedShort() else buf.readUnsignedByte().toInt()
+
+                if (length != 0)
+                    setState(GameDecoderState.PAYLOAD)
+                else if (!ignore)
+                    out.add(GamePacket(opcode, type, Unpooled.EMPTY_BUFFER))
+
+            }
+            catch(e: Exception)
+            {
+                logger().error("Error---------- packet {} ", opcode)
+                e.printStackTrace()
             }
         }
     }

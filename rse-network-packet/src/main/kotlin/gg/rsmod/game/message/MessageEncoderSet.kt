@@ -33,6 +33,8 @@ class MessageEncoderSet {
         put(MessageGameEncoder(), MessageGameMessage::class.java)
         put(UpdateZonePartialFollowsEncoder(), UpdateZonePartialFollowsMessage::class.java)
         put(UpdateZonePartialEnclosedEncoder(), UpdateZonePartialEnclosedMessage::class.java)
+        put(UpdateInvFullEncoder(), UpdateInvFullMessage::class.java)
+        put(UpdateInvPartialEncoder(), UpdateInvPartialMessage::class.java)
         /*
         put(IfCloseSubEncoder(), IfCloseSubMessage::class.java)
         put(IfSetTextEncoder(), IfSetTextMessage::class.java)
@@ -50,8 +52,7 @@ class MessageEncoderSet {
         put(UpdateStatEncoder(), UpdateStatMessage::class.java)
         put(UpdateRunEnergyEncoder(), UpdateRunEnergyMessage::class.java)
         put(SetMapFlagEncoder(), SetMapFlagMessage::class.java)
-        put(UpdateInvFullEncoder(), UpdateInvFullMessage::class.java)
-        put(UpdateInvPartialEncoder(), UpdateInvPartialMessage::class.java)
+
         put(LodAddChangeEncoder(), LocAddChangeMessage::class.java)
         put(LocDelEncoder(), LocDelMessage::class.java)
         put(UpdateRunWeightEncoder(), UpdateRunWeightMessage::class.java)

@@ -1,8 +1,10 @@
 package rs.emulator.packet.task
 
+import gg.rsmod.game.message.EntityUpdate
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.packet.PacketConstants
+import rs.emulator.packet.network.message.impl.EntityGroupMessage
 import rs.emulator.packet.network.message.impl.UpdateZonePartialEnclosedMessage
 import rs.emulator.utilities.logger
 import rs.emulator.world.map.old.collision.Collision
@@ -20,14 +22,20 @@ object PlayerPostSynchronizationTask : SynchronizationTask<Player> {
 
         if (moved) {
             logger().error("moved? {}, lastTile {} new Tile {}", moved, pawn.lastTile, pawn.tile)
-            pawn.lastTile = Tile(pawn.tile.z, pawn.tile.x, pawn.tile.height)
+            pawn.lastTile = Tile(pawn.tile.x, pawn.tile.z, pawn.tile.height)
         }
         pawn.moved = false
         pawn.steps = null
         pawn.blockBuffer.clean()
 
+        var done = false
 
-        if (moved) {
+        if(moved && !done)
+        {
+
+        }
+
+        /*if (moved) {
             val oldChunk = if (oldTile != null) Collision.chunks.get(oldTile.chunkCoords, createIfNeeded = false) else null
             val newChunk = Collision.chunks.get(pawn.tile.chunkCoords, createIfNeeded = false)
             if (newChunk != null && (oldChunk != newChunk || changedHeight)) {
@@ -56,6 +64,6 @@ object PlayerPostSynchronizationTask : SynchronizationTask<Player> {
                    // pawn.world.plugins.executeChunkEnter(pawn, newChunk.hashCode())
                 }
            // }
-        }
+        }*/
     }
 }
