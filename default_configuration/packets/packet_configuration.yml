@@ -139,6 +139,24 @@ outgoing_packets:
       - name: items
         type: BYTES
 
+  - message: rs.emulator.packet.network.message.impl.OpHeldDMessage
+    type: FIXED
+    opcode: 88
+    length: 9
+    structure:
+      - name: dst_slot
+        type: SHORT
+        order: LITTLE
+        trans: ADD
+      - name: src_slot
+        type: SHORT
+        trans: ADD
+      - name: insert_mode
+        type: BYTE
+      - name: component_hash
+        type: INT
+        order: MIDDLE
+
 incoming_packets:
 
   - message: rs.emulator.packet.network.message.impl.WindowStatusMessage

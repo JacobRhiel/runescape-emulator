@@ -34,6 +34,7 @@ class MessageDecoderSet {
         put(EventKeyboardMessage::class.java, EventKeyboardDecoder(), EventKeyboardHandler(), structures)
         put(MoveGameClickMessage::class.java, MoveGameClickDecoder(), ClickMapHandler(), structures)
         put(MoveMinimapClickMessage::class.java, MoveMinimapClickDecoder(), ClickMinimapHandler(), structures)
+        put(OpHeldDMessage::class.java, OpHeldDDecoder(), OpHeldDHandler(), structures)
         /*put(EventCameraPositionMessage::class.java, EventCameraPositionDecoder(), EventCameraPositionHandler(), structures)
         put(EventMouseIdleMessage::class.java, EventMouseIdleDecoder(), EventMouseIdleHandler(), structures)
 
@@ -72,7 +73,7 @@ class MessageDecoderSet {
         put(OpHeld4Message::class.java, OpHeld4Decoder(), OpHeld4Handler(), structures)
         put(OpHeld5Message::class.java, OpHeld5Decoder(), OpHeld5Handler(), structures)
         put(OpHeld6Message::class.java, OpHeld6Decoder(), OpHeld6Handler(), structures)
-        put(OpHeldDMessage::class.java, OpHeldDDecoder(), OpHeldDHandler(), structures)
+
         put(OpHeldUMessage::class.java, OpHeldUDecoder(), OpHeldUHandler(), structures)
 
         put(OpHeldTMessage::class.java, OpHeldTDecoder(), OpHeldTHandler(), structures)
