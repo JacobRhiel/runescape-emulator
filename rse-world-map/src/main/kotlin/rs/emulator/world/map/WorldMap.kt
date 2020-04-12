@@ -7,6 +7,7 @@ import com.google.inject.Singleton
 import it.unimi.dsi.fastutil.objects.*
 import rs.emulator.cache.FileStore
 import rs.emulator.cache.definition.DefinitionRepository
+import rs.emulator.cache.definition.definition
 import rs.emulator.cache.definition.region.landscape.LandscapeDefinition
 import rs.emulator.cache.definition.region.mapscape.MapScapeDefinition
 import rs.emulator.cache.index.IndexConfig
@@ -60,9 +61,9 @@ import java.util.concurrent.TimeUnit
 
         val definitions = HashMap<MapScapeDefinition, LandscapeDefinition>()
 
-        val mapScapeDefinition = DefinitionRepository.INSTANCE!!.find(MapScapeDefinition::class.java, region.id) ?: throw Error("No map scape definition for region ${region.id}.")
+        val mapScapeDefinition: MapScapeDefinition = definition().find(region.id)
 
-        val landscapeDefinition = DefinitionRepository.INSTANCE!!.find(LandscapeDefinition::class.java, region.id) ?: throw Error("No landscape definition for region ${region.id}.")
+        val landscapeDefinition: LandscapeDefinition = definition().find(region.id)
 
         definitions[mapScapeDefinition] = landscapeDefinition
 

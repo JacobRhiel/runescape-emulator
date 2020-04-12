@@ -22,17 +22,9 @@ import java.util.concurrent.TimeUnit
 @Singleton class DefinitionRepository @Inject constructor()
 {
 
-    @Inject
-    private lateinit var fileStore: FileStore
+    @PublishedApi @Inject internal lateinit var fileStore: FileStore
 
-    companion object
-    {
-
-        var INSTANCE: DefinitionRepository? = null
-
-    }
-
-    private val definitionCache: Cache<Class<Definition>, HashMap<Int, Definition>> = Caffeine.newBuilder()
+    @PublishedApi internal val definitionCache: Cache<Class<Definition>, HashMap<Int, Definition>> = Caffeine.newBuilder()
         .maximumSize(0xFFFF) //65535 default maximum size of any entry.
         .expireAfterAccess(2, TimeUnit.MINUTES)
         .recordStats()
@@ -40,12 +32,12 @@ import java.util.concurrent.TimeUnit
 
     private fun submitType(clazz: Class<Definition>) = definitionCache.put(clazz, hashMapOf())
 
-    fun <T : Definition> find(clazz: Class<out T>, identifier: Int): T? = find(clazz, identifier, -1)
+    inline fun <reified T : Definition> find(identifier: Int): T = find(identifier, -1)
 
-    fun <T : Definition> find(clazz: Class<out T>, identifier: Int, child: Int): T?
+    inline fun <reified T : Definition> find(identifier: Int, child: Int): T
     {
 
-        val definition = clazz.getDeclaredConstructor(Int::class.java).newInstance(identifier)
+        val definition = T::class.java.getDeclaredConstructor(Int::class.java).newInstance(identifier)
 
         val reader = when
         {
@@ -57,9 +49,9 @@ import java.util.concurrent.TimeUnit
 
         submitEntry(definition)
 
-        val definitions = definitionCache.getIfPresent(clazz)!!
+        val definitions = definitionCache.getIfPresent(T::class.java)!!
 
-        return definitions[identifier] as T?
+        return definitions[identifier] as T
 
     }
 

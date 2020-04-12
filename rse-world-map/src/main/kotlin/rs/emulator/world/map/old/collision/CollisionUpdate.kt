@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
 import it.unimi.dsi.fastutil.objects.ObjectList
 import rs.emulator.cache.definition.DefinitionRepository
+import rs.emulator.cache.definition.definition
 import rs.emulator.cache.definition.entity.LocDefinition
 import rs.emulator.entity.actor.Direction
 import rs.emulator.entity.loc.GameObject
@@ -54,7 +55,7 @@ class CollisionUpdate private constructor(val type: Type, val flags: Object2Obje
         }
 
         fun putObject(obj: GameObject) {
-            val def = DefinitionRepository.INSTANCE!!.find(LocDefinition::class.java, obj.id)!!
+            val def: LocDefinition = definition().find(obj.id)
             val type = obj.type
             val tile = obj.tile
 

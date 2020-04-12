@@ -2,6 +2,7 @@ package rs.emulator.entity.loc
 
 import com.google.common.base.MoreObjects
 import rs.emulator.cache.definition.DefinitionRepository
+import rs.emulator.cache.definition.definition
 import rs.emulator.cache.definition.entity.LocDefinition
 import rs.emulator.cache.definition.varp.VarBitDefinition
 import rs.emulator.entity.Entity
@@ -39,7 +40,7 @@ abstract class GameObject : Entity
 
     constructor(id: Int, type: Int, rot: Int, tile: Tile) : this(id, (type shl 2) or rot, tile)
 
-    fun getDef(): LocDefinition = DefinitionRepository.INSTANCE!!.find(LocDefinition::class.java, id)!!
+    fun getDef(): LocDefinition = definition().find(id)
 
     //fun isSpawned(world: World): Boolean = world.isSpawned(this)
 
@@ -54,7 +55,7 @@ abstract class GameObject : Entity
         val def = getDef()
 
         if (def.varbit != -1) {
-            val varbitDef = DefinitionRepository.INSTANCE!!.find(VarBitDefinition::class.java, def.varbit)!!
+            val varbitDef: VarBitDefinition = definition().find(def.varbit)
             val state = player.varps.getBit(varbitDef.identifier, varbitDef.leastSignificantBit, varbitDef.mostSignificantBit)
             return def.transforms!![state]
         }

@@ -3,6 +3,7 @@ package rs.emulator.entity.actor.player
 import gg.rsmod.util.ServerProperties
 import io.netty.channel.Channel
 import rs.emulator.cache.definition.DefinitionRepository
+import rs.emulator.cache.definition.definition
 import rs.emulator.cache.definition.varp.VarBitDefinition
 import rs.emulator.encryption.xtea.XteaKeyService
 import rs.emulator.entity.actor.Actor
@@ -153,13 +154,13 @@ open class Player(val channel: Channel,
 
     fun getVarbit(id: Int): Int
     {
-        val def = DefinitionRepository.INSTANCE!!.find(VarBitDefinition::class.java, id)!!
+        val def: VarBitDefinition = definition().find(id)
         println("varp get: " + def.index)
         return varps.getBit(def.index, def.leastSignificantBit, def.mostSignificantBit)
     }
 
     fun setVarbit(id: Int, value: Int) {
-        val def = DefinitionRepository.INSTANCE!!.find(VarBitDefinition::class.java, id)!!
+        val def: VarBitDefinition = definition().find(id)
         varps.setBit(def.index, def.leastSignificantBit, def.mostSignificantBit, value)
         println("varp : " + id + ", " + def.index)
     }
@@ -176,7 +177,7 @@ open class Player(val channel: Channel,
     }*/
 
     fun toggleVarbit(id: Int) {
-        val def = DefinitionRepository.INSTANCE!!.find(VarBitDefinition::class.java, id)!!
+        val def: VarBitDefinition = definition().find(id)
         varps.setBit(def.index, def.leastSignificantBit, def.mostSignificantBit, getVarbit(id) xor 1)
     }
 

@@ -9,8 +9,6 @@ import com.google.inject.Inject
 import com.google.inject.Injector
 import com.google.inject.Singleton
 import rs.emulator.cache.FileStore
-import rs.emulator.cache.definition.DefinitionRepository
-import rs.emulator.cache.index.IndexConfig
 import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.configuration.environment.RSEEnvironment
 import rs.emulator.database.service.JDBCPoolingService
@@ -22,6 +20,7 @@ import rs.emulator.packet.configuration.PacketConfiguration
 import rs.emulator.world.service.WorldService
 import rs.emulator.packet.task.QueueHandlerTask
 import rs.emulator.packet.task.parallel.*
+import rs.emulator.utilities.injector.injector
 import rs.emulator.world.map.WorldMap
 import java.util.concurrent.Executors
 
@@ -58,26 +57,12 @@ class RuneScapeEmulator @Inject constructor()
 
     @Inject private lateinit var fileStore: FileStore
 
-    @Inject private lateinit var definitions: DefinitionRepository
-
     @Inject private lateinit var engineService: CyclicEngineService
 
     @Inject private lateinit var worldMap: WorldMap
 
     fun start()
     {
-
-/*        fileStore.init()
-
-        val index = fileStore.fetchIndex(IndexConfig.MAPS.identifier)
-
-        val mapScape = index.fetchArchiveByName("m49_49")
-
-        val landScape = index.fetchArchiveByName("l49_49")
-
-        val buffer = mapScape.decompress(fileStore.fetchArchiveBuffer(index.identifier, mapScape.identifier))
-
-        println(mapScape)*/
 
         val executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors(), ThreadFactoryBuilder()
             .setNameFormat("game-task-thread")
@@ -91,8 +76,6 @@ class RuneScapeEmulator @Inject constructor()
         )
 
         tasks.forEach { engineService.submitTask(it) }
-
-        DefinitionRepository.INSTANCE = definitions
 
         WorldMap.INSTANCE = worldMap
 
@@ -114,6 +97,8 @@ class RuneScapeEmulator @Inject constructor()
             val rse = RuneScapeEmulator()
 
             rse.injector = Guice.createInjector()
+
+            injector = rse.injector
 
             rse.injector.getInstance(RuneScapeEmulator::class.java).start()
 
