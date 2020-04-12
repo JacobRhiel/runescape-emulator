@@ -22,13 +22,13 @@ import java.nio.file.Paths
     override fun defaultDirectory(): Path
     {
 
-        val substitutions = mutableMapOf<String, String>()
+        /*val substitutions = mutableMapOf<String, String>()
 
-        substitutions["user.home"] = System.getProperty("user.home")
+        substitutions["user.home"] = System.getProperty("user.home")*/
 
-        val directory = StringUtil.expand(fetchValue("default_directory", "./default/"), substitutions.toMap())
+        val directory = "./default_configuration/"//StringUtil.expand(fetchValue("default_directory", "./default/"), substitutions.toMap())
 
-        return Paths.get("$directory")
+        return Paths.get(directory)
 
     }
 

@@ -1,0 +1,229 @@
+outgoing_packets:
+
+  - message: rs.emulator.packet.network.message.impl.RebuildNormalMessage
+    type: VARIABLE_SHORT
+    opcode: 76
+    structure:
+      - name: z
+        type: SHORT
+      - name: x
+        order: LITTLE
+        type: SHORT
+      - name: xteas
+        type: BYTES
+
+  - message: rs.emulator.packet.network.message.impl.RebuildLoginMessage
+    type: VARIABLE_SHORT
+    opcode: 76
+    structure:
+      - name: gpi
+        type: BYTES
+      - name: z
+        type: SHORT
+      - name: x
+        order: LITTLE
+        type: SHORT
+      - name: xteas
+        type: BYTES
+
+  - message: rs.emulator.packet.network.message.impl.IfOpenTopMessage
+    type: FIXED
+    opcode: 60
+    structure:
+      - name: top
+        type: SHORT
+
+  - message: rs.emulator.packet.network.message.impl.IfOpenSubMessage
+    type: FIXED
+    opcode: 64
+    structure:
+      - name: type
+        type: BYTE
+      - name: component
+        type: SHORT
+        trans: ADD
+      - name: overlay
+        order: MIDDLE
+        type: INT
+
+  - message: rs.emulator.packet.network.message.impl.RunClientScriptMessage
+    type: VARIABLE_SHORT
+    opcode: 49
+    structure:
+      - name: types
+        type: BYTES
+      - name: args
+        type: BYTES
+      - name: id
+        type: INT
+
+  - message: rs.emulator.packet.network.message.impl.VarpLargeMessage
+    type: FIXED
+    opcode: 18
+    structure:
+      - name: id
+        type: SHORT
+        order: LITTLE
+        trans: ADD
+      - name: value
+        order: MIDDLE
+        type: INT
+
+  - message: rs.emulator.packet.network.message.impl.VarpSmallMessage
+    type: FIXED
+    opcode: 1
+    structure:
+      - name: value
+        type: BYTE
+        trans: SUBTRACT
+      - name: id
+        type: SHORT
+
+  - message: rs.emulator.packet.network.message.impl.MessageGameMessage
+    type: VARIABLE_BYTE
+    opcode: 39
+    structure:
+      - name: type
+        type: BYTE
+      - name: check_ignore
+        type: BYTE
+      - name: username
+        type: BYTES
+      - name: message
+        type: BYTES
+
+  - message: rs.emulator.packet.network.message.impl.UpdateZonePartialFollowsMessage
+    type: FIXED
+    opcode: 40
+    structure:
+      - name: z
+        type: BYTE
+        trans: SUBTRACT
+      - name: x
+        type: BYTE
+        trans: SUBTRACT
+
+  - message: rs.emulator.packet.network.message.impl.UpdateZonePartialEnclosedMessage
+    type: VARIABLE_SHORT
+    opcode: 59
+    structure:
+      - name: z
+        type: BYTE
+        trans: SUBTRACT
+      - name: x
+        type: BYTE
+      - name: payload
+        type: BYTES
+
+  - message: rs.emulator.packet.network.message.impl.UpdateInvPartialMessage
+    type: VARIABLE_SHORT
+    opcode: 35
+    structure:
+      - name: component_hash
+        type: INT
+      - name: container_key
+        type: SHORT
+      - name: items
+        type: BYTES
+
+  - message: rs.emulator.packet.network.message.impl.UpdateInvFullMessage
+    type: VARIABLE_SHORT
+    opcode: 71
+    structure:
+      - name: component_hash
+        type: INT
+      - name: container_key
+        type: SHORT
+      - name: item_count
+        type: SHORT
+      - name: items
+        type: BYTES
+
+incoming_packets:
+
+  - message: rs.emulator.packet.network.message.impl.WindowStatusMessage
+    type: FIXED
+    opcode: 52
+    length: 5
+    structure:
+      - name: mode
+        type: BYTE
+      - name: width
+        type: SHORT
+      - name: height
+        type: SHORT
+
+  - message: rs.emulator.packet.network.message.impl.MapBuildCompleteMessage
+    type: FIXED
+    opcode: 34
+    length: 0
+
+  - message: rs.emulator.packet.network.message.impl.EventAppletFocusMessage
+    type: FIXED
+    opcode: 54
+    length: 1
+    structure:
+      - name: state
+        type: BYTE
+
+  - message: rs.emulator.packet.network.message.impl.ClientCheatMessage
+    type: VARIABLE_BYTE
+    opcode: 93
+    structure:
+      - name: command
+        type: STRING
+
+  - message: rs.emulator.packet.network.message.impl.NoTimeoutMessage
+    type: FIXED
+    opcode: 30
+    length: 0
+    ignore: true
+
+  - message: rs.emulator.packet.network.message.impl.IgnoreMessage
+    type: VARIABLE_BYTE
+    opcode: 47
+    ignore: true
+
+  - message: rs.emulator.packet.network.message.impl.EventKeyboardMessage
+    type: VARIABLE_SHORT
+    opcode: 3
+    structure:
+      - name: last_key_press
+        type: TRI_BYTE
+      - name: key
+        type: BYTE
+
+  - message: rs.emulator.packet.network.message.impl.EventMouseMoveMessage # TODO: need to refactor code to see what values are received
+    type: VARIABLE_BYTE
+    opcode: 74
+    ignore: true
+
+  - message: rs.emulator.packet.network.message.impl.IgnoreMessage # TODO: EVENT_MOUSE_CLICK - need to refactor code to see what values are received
+    type: FIXED
+    opcode: 2
+    length: 6
+    ignore: true
+
+  - message: rs.emulator.packet.network.message.impl.MoveGameClickMessage
+    type: VARIABLE_BYTE
+    opcode: 85
+    structure:
+      - name: x
+        sign: UNSIGNED
+        type: SHORT
+      - name: movement_type
+        type: BYTE
+      - name: z
+        sign: UNSIGNED
+        type: SHORT
+
+  - message: rs.emulator.packet.network.message.impl.MoveMinimapClickMessage
+    type: VARIABLE_BYTE
+    opcode: 87
+    structure:
+      - name: x
+        type: SHORT
+      - name: movement_type
+        type: BYTE
+      - name: z
+        type: SHORT

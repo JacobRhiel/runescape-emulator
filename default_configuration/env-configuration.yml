@@ -1,0 +1,5 @@
+
+
+default_directory: "{{user.home}}/.runescape-emulator/"
+
+revision: 189
