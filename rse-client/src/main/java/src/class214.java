@@ -25,7 +25,7 @@ public abstract class class214 {
          client.field910 = var0;
          client.field911 = var1;
          var9 = class146.method3363(ClientPacket.field2240, client.field761.field1340, -1864596991);
-         var9.field2338.method5583(client.field957, -1912951471);
+         var9.field2338.writeShortA(client.field957, -1912951471);
          var9.field2338.method5591(class33.field243, 1399362845);
          var9.field2338.method5582(class89.field1152 * 1825982697 + var1, 70039705);
          var9.field2338.method5582(var0 + class69.field590 * 731242929, 70039705);
@@ -43,7 +43,7 @@ public abstract class class214 {
          var9 = class146.method3363(ClientPacket.field2252, client.field761.field1340, -2012690498);
          var9.field2338.readShort(client.field836, (byte)-22);
          var9.field2338.method5689(class7.field29, 747474969);
-         var9.field2338.method5583(var3, -979883098);
+         var9.field2338.writeShortA(var3, -979883098);
          var9.field2338.method5582(class89.field1152 * 1825982697 + var1, 70039705);
          var9.field2338.method5575(class54.field426[82]?1:0, (byte)16);
          var9.field2338.method5582(var0 + class69.field590 * 731242929, 70039705);
@@ -57,7 +57,7 @@ public abstract class class214 {
          client.field911 = var1;
          var9 = class146.method3363(ClientPacket.field2221, client.field761.field1340, -1905185610);
          var9.field2338.method5575(class54.field426[82]?1:0, (byte)16);
-         var9.field2338.writeIntME(var0 + class69.field590 * 731242929, 300462429);
+         var9.field2338.writeLEShortA(var0 + class69.field590 * 731242929, 300462429);
          var9.field2338.method5582(var3, 70039705);
          var9.field2338.method5582(var1 + class89.field1152 * 1825982697, 70039705);
          client.field761.method2361(var9, 923602484);
@@ -70,8 +70,8 @@ public abstract class class214 {
          client.field911 = var1;
          var9 = class146.method3363(ClientPacket.field2243, client.field761.field1340, -1973502695);
          var9.field2338.readShort(var3, (byte)-54);
-         var9.field2338.writeIntME(var0 + class69.field590 * 731242929, 262403225);
-         var9.field2338.writeIntME(class89.field1152 * 1825982697 + var1, 1342932825);
+         var9.field2338.writeLEShortA(var0 + class69.field590 * 731242929, 262403225);
+         var9.field2338.writeLEShortA(class89.field1152 * 1825982697 + var1, 1342932825);
          var9.field2338.method5697(class54.field426[82]?1:0, (byte)64);
          client.field761.method2361(var9, 1166824906);
       } else if(var2 == 5) {
@@ -82,10 +82,10 @@ public abstract class class214 {
          client.field910 = var0;
          client.field911 = var1;
          var9 = class146.method3363(ClientPacket.field2296, client.field761.field1340, -2040633888);
-         var9.field2338.method5583(var0 + class69.field590 * 731242929, -1255169545);
-         var9.field2338.writeIntME(var1 + class89.field1152 * 1825982697, 1313961216);
+         var9.field2338.writeShortA(var0 + class69.field590 * 731242929, -1255169545);
+         var9.field2338.writeLEShortA(var1 + class89.field1152 * 1825982697, 1313961216);
          var9.field2338.method5700(class54.field426[82]?1:0, -927080333);
-         var9.field2338.method5583(var3, -1369656115);
+         var9.field2338.writeShortA(var3, -1369656115);
          client.field761.method2361(var9, 1458239651);
       } else if(var2 == 6) {
          client.field922 = var6;
@@ -95,7 +95,7 @@ public abstract class class214 {
          client.field910 = var0;
          client.field911 = var1;
          var9 = class146.method3363(ClientPacket.field2288, client.field761.field1340, -2119943572);
-         var9.field2338.method5583(var3, -733677869);
+         var9.field2338.writeShortA(var3, -733677869);
          var9.field2338.readByte(class54.field426[82]?1:0, 1258821856);
          var9.field2338.readShort(var0 + class69.field590 * 731242929, (byte)-27);
          var9.field2338.method5582(var1 + class89.field1152 * 1825982697, 70039705);
@@ -174,7 +174,7 @@ public abstract class class214 {
                client.field910 = var0;
                client.field911 = var1;
                var10 = class146.method3363(ClientPacket.field2277, client.field761.field1340, -2110992892);
-               var10.field2338.method5583(var3, -1737468624);
+               var10.field2338.writeShortA(var3, -1737468624);
                var10.field2338.method5697(class54.field426[82]?1:0, (byte)-34);
                client.field761.method2361(var10, 481641381);
             }
@@ -218,10 +218,10 @@ public abstract class class214 {
                   client.field910 = var0;
                   client.field911 = var1;
                   var10 = class146.method3363(ClientPacket.field2225, client.field761.field1340, -1964427323);
-                  var10.field2338.method5583(class146.field1899, -502592808);
-                  var10.field2338.method5583(var3, -1311151125);
+                  var10.field2338.writeShortA(class146.field1899, -502592808);
+                  var10.field2338.writeShortA(var3, -1311151125);
                   var10.field2338.method5700(class54.field426[82]?1:0, -927080333);
-                  var10.field2338.writeIntME(client.field957, 1935856408);
+                  var10.field2338.writeLEShortA(client.field957, 1935856408);
                   var10.field2338.method5689(class33.field243, 747474969);
                   client.field761.method2361(var10, 449936171);
                }
@@ -238,7 +238,7 @@ public abstract class class214 {
                   var10.field2338.readShort(var3, (byte)-87);
                   var10.field2338.method5590(class7.field29, -591906963);
                   var10.field2338.readByte(class54.field426[82]?1:0, 1258821856);
-                  var10.field2338.method5583(client.field836, -1299861319);
+                  var10.field2338.writeShortA(client.field836, -1299861319);
                   client.field761.method2361(var10, 1217337068);
                }
             } else if(var2 == 16) {
@@ -249,12 +249,12 @@ public abstract class class214 {
                client.field910 = var0;
                client.field911 = var1;
                var9 = class146.method3363(ClientPacket.field2302, client.field761.field1340, -2025818889);
-               var9.field2338.method5583(class146.field1899, -1533718253);
-               var9.field2338.writeIntME(var3, 1519429750);
+               var9.field2338.writeShortA(class146.field1899, -1533718253);
+               var9.field2338.writeLEShortA(var3, 1519429750);
                var9.field2338.method5697(class54.field426[82]?1:0, (byte)51);
                var9.field2338.method5591(class33.field243, 1186318843);
-               var9.field2338.writeIntME(var0 + class69.field590 * 731242929, -72535625);
-               var9.field2338.writeIntME(client.field957, -557957316);
+               var9.field2338.writeLEShortA(var0 + class69.field590 * 731242929, -72535625);
+               var9.field2338.writeLEShortA(client.field957, -557957316);
                var9.field2338.method5582(var1 + class89.field1152 * 1825982697, 70039705);
                client.field761.method2361(var9, 1421955551);
             } else if(var2 == 17) {
@@ -267,10 +267,10 @@ public abstract class class214 {
                var9 = class146.method3363(ClientPacket.field2233, client.field761.field1340, -1875491851);
                var9.field2338.method5697(class54.field426[82]?1:0, (byte)-43);
                var9.field2338.method5582(var3, 70039705);
-               var9.field2338.writeIntME(client.field836, -1063739477);
+               var9.field2338.writeLEShortA(client.field836, -1063739477);
                var9.field2338.readShort(var1 + class89.field1152 * 1825982697, (byte)-63);
                var9.field2338.method5590(class7.field29, 1262115055);
-               var9.field2338.writeIntME(var0 + class69.field590 * 731242929, -366731667);
+               var9.field2338.writeLEShortA(var0 + class69.field590 * 731242929, -366731667);
                client.field761.method2361(var9, 989390776);
             } else if(var2 == 18) {
                client.field922 = var6;
@@ -280,8 +280,8 @@ public abstract class class214 {
                client.field910 = var0;
                client.field911 = var1;
                var9 = class146.method3363(ClientPacket.field2287, client.field761.field1340, -2049751087);
-               var9.field2338.writeIntME(var3, -1228921778);
-               var9.field2338.writeIntME(var0 + class69.field590 * 731242929, 605165);
+               var9.field2338.writeLEShortA(var3, -1228921778);
+               var9.field2338.writeLEShortA(var0 + class69.field590 * 731242929, 605165);
                var9.field2338.method5582(var1 + class89.field1152 * 1825982697, 70039705);
                var9.field2338.method5697(class54.field426[82]?1:0, (byte)43);
                client.field761.method2361(var9, 1983631295);
@@ -294,7 +294,7 @@ public abstract class class214 {
                client.field911 = var1;
                var9 = class146.method3363(ClientPacket.field2286, client.field761.field1340, -2005428887);
                var9.field2338.readShort(class89.field1152 * 1825982697 + var1, (byte)-125);
-               var9.field2338.method5583(var0 + class69.field590 * 731242929, -551480953);
+               var9.field2338.writeShortA(var0 + class69.field590 * 731242929, -551480953);
                var9.field2338.method5700(class54.field426[82]?1:0, -927080333);
                var9.field2338.readShort(var3, (byte)-1);
                client.field761.method2361(var9, 1849813620);
@@ -308,8 +308,8 @@ public abstract class class214 {
                var9 = class146.method3363(ClientPacket.field2275, client.field761.field1340, -2145851935);
                var9.field2338.readByte(class54.field426[82]?1:0, 1258821856);
                var9.field2338.method5582(var0 + class69.field590 * 731242929, 70039705);
-               var9.field2338.method5583(var1 + class89.field1152 * 1825982697, -1081695930);
-               var9.field2338.writeIntME(var3, -1284104682);
+               var9.field2338.writeShortA(var1 + class89.field1152 * 1825982697, -1081695930);
+               var9.field2338.writeLEShortA(var3, -1284104682);
                client.field761.method2361(var9, 682083392);
             } else if(var2 == 21) {
                client.field922 = var6;
@@ -322,7 +322,7 @@ public abstract class class214 {
                var9.field2338.readByte(class54.field426[82]?1:0, 1258821856);
                var9.field2338.method5582(var3, 70039705);
                var9.field2338.method5582(var0 + class69.field590 * 731242929, 70039705);
-               var9.field2338.method5583(var1 + class89.field1152 * 1825982697, -1656781085);
+               var9.field2338.writeShortA(var1 + class89.field1152 * 1825982697, -1656781085);
                client.field761.method2361(var9, 1893866076);
             } else if(var2 == 22) {
                client.field922 = var6;
@@ -333,9 +333,9 @@ public abstract class class214 {
                client.field911 = var1;
                var9 = class146.method3363(ClientPacket.field2235, client.field761.field1340, -2044408870);
                var9.field2338.readShort(var3, (byte)-115);
-               var9.field2338.method5583(var1 + class89.field1152 * 1825982697, -1628669805);
+               var9.field2338.writeShortA(var1 + class89.field1152 * 1825982697, -1628669805);
                var9.field2338.method5700(class54.field426[82]?1:0, -927080333);
-               var9.field2338.method5583(var0 + class69.field590 * 731242929, -944952200);
+               var9.field2338.writeShortA(var0 + class69.field590 * 731242929, -944952200);
                client.field761.method2361(var9, 276461356);
             } else if(var2 == 23) {
                if(client.field816) {
@@ -416,11 +416,11 @@ public abstract class class214 {
                      } else if(var2 == 31) {
                         var9 = class146.method3363(ClientPacket.field2305, client.field761.field1340, -1904989180);
                         var9.field2338.method5591(var1, 2139418747);
-                        var9.field2338.writeIntME(client.field957, 1725259723);
+                        var9.field2338.writeLEShortA(client.field957, 1725259723);
                         var9.field2338.method5617(class33.field243, -598231963);
-                        var9.field2338.method5583(var0, -1751715490);
+                        var9.field2338.writeShortA(var0, -1751715490);
                         var9.field2338.readShort(var3, (byte)-74);
-                        var9.field2338.method5583(class146.field1899, -2019608122);
+                        var9.field2338.writeShortA(class146.field1899, -2019608122);
                         client.field761.method2361(var9, 1021326584);
                         client.field786 = 0;
                         class40.field307 = class208.method3898(var1, (byte)-124);
@@ -429,8 +429,8 @@ public abstract class class214 {
                         var9 = class146.method3363(ClientPacket.field2228, client.field761.field1340, -1896955808);
                         var9.field2338.method5582(client.field836, 70039705);
                         var9.field2338.method5617(class7.field29, -598231963);
-                        var9.field2338.method5583(var3, -451398633);
-                        var9.field2338.method5583(var0, -445661238);
+                        var9.field2338.writeShortA(var3, -451398633);
+                        var9.field2338.writeShortA(var0, -445661238);
                         var9.field2338.method5617(var1, -598231963);
                         client.field761.method2361(var9, 491433042);
                         client.field786 = 0;
@@ -448,8 +448,8 @@ public abstract class class214 {
                      } else if(var2 == 34) {
                         var9 = class146.method3363(ClientPacket.field2265, client.field761.field1340, -2041543717);
                         var9.field2338.method5689(var1, 747474969);
-                        var9.field2338.method5583(var3, -2135906359);
-                        var9.field2338.writeIntME(var0, 2024544747);
+                        var9.field2338.writeShortA(var3, -2135906359);
+                        var9.field2338.writeLEShortA(var0, 2024544747);
                         client.field761.method2361(var9, 1988246370);
                         client.field786 = 0;
                         class40.field307 = class208.method3898(var1, (byte)-33);
@@ -474,9 +474,9 @@ public abstract class class214 {
                         client.field880 = var0;
                      } else if(var2 == 37) {
                         var9 = class146.method3363(ClientPacket.field2244, client.field761.field1340, -1883167729);
-                        var9.field2338.writeIntME(var0, 1104378785);
+                        var9.field2338.writeLEShortA(var0, 1104378785);
                         var9.field2338.method5617(var1, -598231963);
-                        var9.field2338.method5583(var3, -1581533869);
+                        var9.field2338.writeShortA(var3, -1581533869);
                         client.field761.method2361(var9, 1257908277);
                         client.field786 = 0;
                         class40.field307 = class208.method3898(var1, (byte)-117);
@@ -510,7 +510,7 @@ public abstract class class214 {
                         } else if(var2 == 40) {
                            var9 = class146.method3363(ClientPacket.field2276, client.field761.field1340, -1845507563);
                            var9.field2338.method5591(var1, 710120460);
-                           var9.field2338.writeIntME(var3, -332610591);
+                           var9.field2338.writeLEShortA(var3, -332610591);
                            var9.field2338.readShort(var0, (byte)-109);
                            client.field761.method2361(var9, 1670183087);
                            client.field786 = 0;
@@ -528,17 +528,17 @@ public abstract class class214 {
                         } else if(var2 == 42) {
                            var9 = class146.method3363(ClientPacket.field2299, client.field761.field1340, -1976414088);
                            var9.field2338.method5689(var1, 747474969);
-                           var9.field2338.method5583(var0, -1767621069);
-                           var9.field2338.method5583(var3, -1633798030);
+                           var9.field2338.writeShortA(var0, -1767621069);
+                           var9.field2338.writeShortA(var3, -1633798030);
                            client.field761.method2361(var9, 669036749);
                            client.field786 = 0;
                            class40.field307 = class208.method3898(var1, (byte)-76);
                            client.field880 = var0;
                         } else if(var2 == 43) {
                            var9 = class146.method3363(ClientPacket.field2238, client.field761.field1340, -1821207286);
-                           var9.field2338.writeIntME(var0, 2113682100);
+                           var9.field2338.writeLEShortA(var0, 2113682100);
                            var9.field2338.method5590(var1, 42936919);
-                           var9.field2338.writeIntME(var3, -1246275952);
+                           var9.field2338.writeLEShortA(var3, -1246275952);
                            client.field761.method2361(var9, 974087048);
                            client.field786 = 0;
                            class40.field307 = class208.method3898(var1, (byte)-47);
@@ -554,7 +554,7 @@ public abstract class class214 {
                               client.field911 = var1;
                               var10 = class146.method3363(ClientPacket.field2267, client.field761.field1340, -1787147016);
                               var10.field2338.readByte(class54.field426[82]?1:0, 1258821856);
-                              var10.field2338.writeIntME(var3, 1191215666);
+                              var10.field2338.writeLEShortA(var3, 1191215666);
                               client.field761.method2361(var10, 1759022211);
                            }
                         } else if(var2 == 45) {
@@ -567,7 +567,7 @@ public abstract class class214 {
                               client.field910 = var0;
                               client.field911 = var1;
                               var10 = class146.method3363(ClientPacket.field2232, client.field761.field1340, -1790480630);
-                              var10.field2338.method5583(var3, -597763106);
+                              var10.field2338.writeShortA(var3, -597763106);
                               var10.field2338.method5700(class54.field426[82]?1:0, -927080333);
                               client.field761.method2361(var10, 969632683);
                            }
@@ -624,7 +624,7 @@ public abstract class class214 {
                               client.field911 = var1;
                               var10 = class146.method3363(ClientPacket.field2250, client.field761.field1340, -1800131771);
                               var10.field2338.method5697(class54.field426[82]?1:0, (byte)18);
-                              var10.field2338.writeIntME(var3, 1962953213);
+                              var10.field2338.writeLEShortA(var3, 1962953213);
                               client.field761.method2361(var10, 1291239714);
                            }
                         } else if(var2 == 50) {
@@ -662,9 +662,9 @@ public abstract class class214 {
                                     var17 = class19.method224(var1, var0, -179142596);
                                     if(var17 != null) {
                                        var10 = class146.method3363(ClientPacket.field2272, client.field761.field1340, -1989713567);
-                                       var10.field2338.method5583(client.field837, -388375403);
-                                       var10.field2338.method5583(client.field836, -741954449);
-                                       var10.field2338.writeIntME(var0, 374315516);
+                                       var10.field2338.writeShortA(client.field837, -388375403);
+                                       var10.field2338.writeShortA(client.field836, -741954449);
+                                       var10.field2338.writeLEShortA(var0, 374315516);
                                        var10.field2338.method5582(var17.field2704, 70039705);
                                        var10.field2338.method5689(class7.field29, 747474969);
                                        var10.field2338.method5617(var1, -598231963);
@@ -681,7 +681,7 @@ public abstract class class214 {
                                     client.field910 = var0;
                                     client.field911 = var1;
                                     var9 = class146.method3363(ClientPacket.field2274, client.field761.field1340, -1961830516);
-                                    var9.field2338.writeIntME(var3, 289883298);
+                                    var9.field2338.writeLEShortA(var3, 289883298);
                                     var9.field2338.method5582(var0 + class69.field590 * 731242929, 70039705);
                                     var9.field2338.readByte(class54.field426[82]?1:0, 1258821856);
                                     var9.field2338.readShort(class89.field1152 * 1825982697 + var1, (byte)-115);
@@ -695,7 +695,7 @@ public abstract class class214 {
                                     client.field784 = 2;
                                     client.field783 = 0;
                                     var9 = class146.method3363(ClientPacket.field2284, client.field761.field1340, -2135115061);
-                                    var9.field2338.method5583(var3, -537308625);
+                                    var9.field2338.writeShortA(var3, -537308625);
                                     client.field761.method2361(var9, 1762166199);
                                     break label662;
                                  }
@@ -714,7 +714,7 @@ public abstract class class214 {
 
                                        if(var18 != null) {
                                           var11 = class146.method3363(ClientPacket.field2242, client.field761.field1340, -1792295427);
-                                          var11.field2338.writeIntME(var18.field3464, -933553088);
+                                          var11.field2338.writeLEShortA(var18.field3464, -933553088);
                                           client.field761.method2361(var11, 1593233163);
                                        }
                                     }
@@ -727,7 +727,7 @@ public abstract class class214 {
                                     client.field784 = 2;
                                     client.field783 = 0;
                                     var9 = class146.method3363(ClientPacket.field2294, client.field761.field1340, -2067878225);
-                                    var9.field2338.method5583(var3, -1321746884);
+                                    var9.field2338.writeShortA(var3, -1321746884);
                                     client.field761.method2361(var9, 512209534);
                                     break label662;
                                  }
@@ -738,7 +738,7 @@ public abstract class class214 {
                                        class141.method3161(27, "", var17.field2692[var0] + " x " + class30.method373(var3, (byte)-18).field3397, -801302607);
                                     } else {
                                        var10 = class146.method3363(ClientPacket.field2294, client.field761.field1340, -1796657334);
-                                       var10.field2338.method5583(var3, -1976088302);
+                                       var10.field2338.writeShortA(var3, -1976088302);
                                        client.field761.method2361(var10, 2117788310);
                                     }
 

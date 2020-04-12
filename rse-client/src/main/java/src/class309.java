@@ -303,7 +303,7 @@ public class class309 extends class189 {
       return ((this.field3709[this.field3710 - 2] & 255) << 24) + ((this.field3709[this.field3710 - 4] & 255) << 8) + (this.field3709[this.field3710 - 3] & 255) + ((this.field3709[this.field3710 - 1] & 255) << 16);
    }
 
-   public void method5583(int var1, int var2) {
+   public void writeShortA(int var1, int var2) {
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
       this.field3709[++this.field3710 - 1] = (byte)(var1 + 128);
    }
@@ -370,7 +370,7 @@ public class class309 extends class189 {
       return var6;
    }
 
-   public void writeIntME(int var1, int var2) {
+   public void writeLEShortA(int var1, int var2) {
       this.field3709[++this.field3710 - 1] = (byte)(var1 + 128);
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
    }

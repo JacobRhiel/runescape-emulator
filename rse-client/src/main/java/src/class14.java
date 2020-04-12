@@ -26,7 +26,7 @@ final class class14 implements Comparator {
       var5.field2338.method5700(var2, -927080333);
       var5.field2338.method5689(var3?client.field762:0, 747474969);
       var5.field2338.method5582(var0, 70039705);
-      var5.field2338.writeIntME(var1, 455919170);
+      var5.field2338.writeLEShortA(var1, 455919170);
       client.field761.method2361(var5, 591808699);
    }
 

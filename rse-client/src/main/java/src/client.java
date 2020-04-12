@@ -2760,8 +2760,8 @@ public final class client extends class62 implements class289 {
                      field764 = 20;
                      field765 = false;
                      var16 = class146.method3363(ClientPacket.field2220, field761.field1340, -1878824909);
-                     var16.field2338.writeIntME(field909, 1323815181);
-                     var16.field2338.writeIntME(field824, 1196014488);
+                     var16.field2338.writeLEShortA(field909, 1323815181);
+                     var16.field2338.writeLEShortA(field824, 1196014488);
                      field761.method2361(var16, 1572429090);
                   }
 
@@ -2972,8 +2972,8 @@ public final class client extends class62 implements class289 {
                                                 }
 
                                                 var20 = class146.method3363(ClientPacket.field2298, field761.field1340, -1893780109);
-                                                var20.field2338.writeIntME(field791, -1195317740);
-                                                var20.field2338.method5583(field817, -2077130267);
+                                                var20.field2338.writeLEShortA(field791, -1195317740);
+                                                var20.field2338.writeShortA(field817, -2077130267);
                                                 var20.field2338.readByte(var37, 1258821856);
                                                 var20.field2338.method5591(class236.field3082.field2567, 1411725545);
                                                 field761.method2361(var20, 901775494);
@@ -3998,7 +3998,7 @@ public final class client extends class62 implements class289 {
                if(field857 != null && class17.method181(field853, (byte)-16) != null) {
                   class196 var13 = class146.method3363(ClientPacket.field2234, field761.field1340, -2097969358);
                   var13.field2338.method5590(field857.field2567, 962080870);
-                  var13.field2338.method5583(field857.field2709, -2063919111);
+                  var13.field2338.writeShortA(field857.field2709, -2063919111);
                   var13.field2338.method5591(field853.field2567, -789647878);
                   var13.field2338.method5582(field857.field2704, 70039705);
                   var13.field2338.method5582(field853.field2709, 70039705);
