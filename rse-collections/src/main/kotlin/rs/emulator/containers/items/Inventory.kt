@@ -34,6 +34,7 @@ class Inventory : ItemContainer(28) {
                 tempListener(Item.EMPTY_ITEM, element)
             }
         }
+        onAddItem()
     }
 
     override fun removeItem(element: Item, tempListener: (Item, Item) -> Unit) {
@@ -62,6 +63,7 @@ class Inventory : ItemContainer(28) {
             }
             tempListener(old, this[slot])
         }
+        onRemoveItem()
     }
 
 }
