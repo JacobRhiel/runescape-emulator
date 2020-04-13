@@ -168,6 +168,7 @@ public final class class151 {
       int var7;
       int var8;
       int var9;
+      System.out.println("update map: " + client.field738);
       if(!client.field738) {
          int var3 = var1.writeShort((byte)33);
          var4 = var1.readUnsignedShort((byte)50);
@@ -210,6 +211,7 @@ public final class class151 {
 
          class20.method237(var4, var3, true, -1462729636);
       } else {
+         System.out.println("updating incorrect map?");
          boolean var16 = var1.readUnsignedByte((byte)58) == 1;
          var4 = var1.readUnsignedShort((byte)44);
          var5 = var1.method5587(-1663235403);

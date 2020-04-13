@@ -1,5 +1,6 @@
 package rs.emulator.world.map.coordinate
 
+import rs.emulator.world.map.old.region.chunk.Chunk
 import rs.emulator.world.map.region.coordinate.Coordinate
 
 /**
@@ -17,6 +18,12 @@ class WorldCoordinate : Coordinate
     {
         this.pointHash = hash
     }
+
+    val topLeftRegionX: Int get() = (x shr 3) - 6
+
+    val topLeftRegionZ: Int get() = (z shr 3) - 6
+
+    val regionBase: WorldCoordinate get() = WorldCoordinate(((x shr 3) - (Chunk.MAX_VIEWPORT shr 4)) shl 3, ((z shr 3) - (Chunk.MAX_VIEWPORT shr 4)) shl 3, plane)
 
     val as30BitInteger: Int get() = (z and 0x3FFF) or ((x and 0x3FFF) shl 14) or ((plane and 0x3) shl 28)
 

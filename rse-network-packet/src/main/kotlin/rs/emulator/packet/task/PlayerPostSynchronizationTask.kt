@@ -28,13 +28,6 @@ object PlayerPostSynchronizationTask : SynchronizationTask<Player> {
         pawn.steps = null
         pawn.blockBuffer.clean()
 
-        var done = false
-
-        if(moved && !done)
-        {
-
-        }
-
         /*if (moved) {
             val oldChunk = if (oldTile != null) Collision.chunks.get(oldTile.chunkCoords, createIfNeeded = false) else null
             val newChunk = Collision.chunks.get(pawn.tile.chunkCoords, createIfNeeded = false)

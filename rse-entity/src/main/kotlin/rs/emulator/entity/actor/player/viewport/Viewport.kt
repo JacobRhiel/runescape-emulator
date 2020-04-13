@@ -10,7 +10,17 @@ import rs.emulator.entity.actor.player.Player
 class Viewport
 {
 
+    private val idlePlayerFlags = IntArray(2048)
+
     val localPlayers = Int2ObjectOpenHashMap<Player>()
+
+    fun isSlotFree(index: Int): Boolean = idlePlayerFlags[index] and 0x1 == 0
+
+    fun isSlotBlocked(index: Int) : Boolean = idlePlayerFlags[index] and 0x1 != 0
+
+    fun setIdle(index: Int) = idlePlayerFlags[index].apply { or(2) }
+
+    fun shiftSlots() = idlePlayerFlags.forEachIndexed { index, _ -> idlePlayerFlags[index] = idlePlayerFlags[index] shr 1 }
 
     companion object
     {

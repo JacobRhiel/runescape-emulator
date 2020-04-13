@@ -52,9 +52,6 @@ class PlayerTeleportSegment(private val other: Player, private val encodeUpdateB
             buf.putBits(5, diffX and 0x1F)
             buf.putBits(5, diffZ and 0x1F)
             println("teleport block segment")
-            println(diffH and 0x3)
-            println(diffX and 0x1F)
-            println(diffZ and 0x1F)
         } else {
             /*
              * Signal to the client that the difference in tiles are not within
@@ -68,9 +65,6 @@ class PlayerTeleportSegment(private val other: Player, private val encodeUpdateB
             buf.putBits(14, diffX and 0x3FFF)
             buf.putBits(14, diffZ and 0x3FFF)
             println("teleport block segment")
-            println(diffH and 0x3)
-            println(diffX and 0x3FFF)
-            println(diffZ and 0x3FFF)
         }
     }
 }

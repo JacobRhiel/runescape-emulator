@@ -2,7 +2,7 @@ outgoing_packets:
 
   - message: rs.emulator.packet.network.message.impl.RebuildNormalMessage
     type: VARIABLE_SHORT
-    opcode: 76
+    opcode: 17
     structure:
       - name: z
         type: SHORT
@@ -14,7 +14,7 @@ outgoing_packets:
 
   - message: rs.emulator.packet.network.message.impl.RebuildLoginMessage
     type: VARIABLE_SHORT
-    opcode: 76
+    opcode: 17
     structure:
       - name: gpi
         type: BYTES

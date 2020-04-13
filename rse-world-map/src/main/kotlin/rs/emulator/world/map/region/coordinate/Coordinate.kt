@@ -1,7 +1,7 @@
 package rs.emulator.world.map.region.coordinate
 
 import rs.emulator.world.map.coordinate.WorldCoordinate
-import rs.emulator.world.map.region.chunk.LocalCoordinate
+import rs.emulator.world.map.region.chunk.ChunkCoordinate
 
 /**
  *
@@ -10,7 +10,7 @@ import rs.emulator.world.map.region.chunk.LocalCoordinate
 abstract class Coordinate(val x: Int, val z: Int, val plane: Int = 0)
 {
 
-    fun toLocal() : LocalCoordinate = LocalCoordinate(toLocalX(), toLocalZ(), plane)
+    fun toLocal() : ChunkCoordinate = ChunkCoordinate(toLocalX(), toLocalZ(), plane)
 
     fun toLocalX() : Int = (((x shr 3) - (x shr 3)) shl 3)
 

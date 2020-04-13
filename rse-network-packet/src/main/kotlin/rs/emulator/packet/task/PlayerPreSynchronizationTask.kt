@@ -22,12 +22,14 @@ object PlayerPreSynchronizationTask : SynchronizationTask<Player> {
 
             pawn.lastKnownRegionBase = Coordinate(regionX, regionZ, current.height)
 
+            println("regionx: " + regionX + ", z: " + regionZ)
+
             val xteaService = pawn.xteaKeyService
 
             /*val rebuildMessage = RebuildNormalMessage(current.x shr 3, current.z shr 3, xteaService)
                 instance != null -> RebuildRegionMessage(current.x shr 3, current.z shr 3, 1, instance.getCoordinates(pawn.tile), xteaService)
                 else ->*/
-           // pawn.channel.write(RebuildNormalMessage(current.x shr 3, current.z shr 3, xteaService))
+            pawn.channel.write(RebuildNormalMessage(current.x shr 3, current.z shr 3, xteaService))
         }
     }
 

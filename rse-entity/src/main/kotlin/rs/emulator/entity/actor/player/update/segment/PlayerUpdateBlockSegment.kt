@@ -27,7 +27,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
         var forceFaceTile = false
 
         var forceFace: Tile? = null
-        println("new player: $newPlayer")
+
         if (newPlayer)
         {
             mask = mask or blocks.updateBlocks[UpdateBlockType.APPEARANCE]!!.bit
@@ -47,7 +47,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                 else                                  ->
                 {
                     mask = mask or blocks.updateBlocks[UpdateBlockType.FACE_TILE]!!.bit
-                    forceFace = other.tile.step(Direction.NORTH)//other.lastFacingDirection)
+                    forceFace = other.tile.step(other.lastFacingDirection)
                 }
             }
         }
@@ -55,12 +55,10 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
         if (mask >= 0x100)
         {
             mask = mask or blocks.updateBlockExcessMask
-            println("mask: $mask")
             buf.put(DataType.BYTE, mask and 0xFF)
             buf.put(DataType.BYTE, mask shr 8)
         } else
         {
-            println("adding header: ${mask and 0xFF}")
             buf.put(DataType.BYTE, mask and 0xFF)
         }
 
@@ -82,8 +80,6 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
     private fun write(buf: GamePacketBuilder, blockType: UpdateBlockType, forceFace: Tile?)
     {
         val blocks = other.playerUpdateBlocks
-
-        println("writing block: $blockType")
 
         when (blockType)
         {
@@ -165,6 +161,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
             UpdateBlockType.APPEARANCE     ->
             {
                 val appBuf = GamePacketBuilder()
+
                 /*appBuf.put(DataType.BYTE, Appearance.DEFAULT.gender.id)
                 appBuf.put(DataType.BYTE, *//*other.skullIcon*//*-1)
                 appBuf.put(DataType.BYTE, *//*other.prayerIcon*//*-1)
