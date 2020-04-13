@@ -53,7 +53,7 @@ public final class class151 {
       class106 var2 = (class106)class105.field1341.method4860();
       if(var2 != null) {
          int var3 = var0.field3710;
-         var0.method5689(var2.field1347, 747474969);
+         var0.writeInt(var2.field1347, 747474969);
 
          for(int var4 = 0; var4 < var2.field1353; ++var4) {
             if(var2.field1350[var4] != 0) {
@@ -67,7 +67,7 @@ public final class class151 {
                      var6 = var2.field1349[var4];
                      var7 = var6.getInt((Object)null);
                      var0.readByte(0, 1258821856);
-                     var0.method5689(var7, 747474969);
+                     var0.writeInt(var7, 747474969);
                   } else if(var5 == 1) {
                      var6 = var2.field1349[var4];
                      var6.setInt((Object)null, var2.field1351[var4]);
@@ -76,7 +76,7 @@ public final class class151 {
                      var6 = var2.field1349[var4];
                      var7 = var6.getModifiers();
                      var0.readByte(0, 1258821856);
-                     var0.method5689(var7, 747474969);
+                     var0.writeInt(var7, 747474969);
                   }
 
                   Method var26;
@@ -106,7 +106,7 @@ public final class class151 {
                      var26 = var2.field1352[var4];
                      var7 = var26.getModifiers();
                      var0.readByte(0, 1258821856);
-                     var0.method5689(var7, 747474969);
+                     var0.writeInt(var7, 747474969);
                   }
                } catch (ClassNotFoundException var14) {
                   var0.readByte(-10, 1258821856);
@@ -169,9 +169,9 @@ public final class class151 {
       int var8;
       int var9;
       if(!client.field738) {
-         int var3 = var1.readShort((byte)33);
+         int var3 = var1.writeShort((byte)33);
          var4 = var1.readUnsignedShort((byte)50);
-         var5 = var1.readShort((byte)23);
+         var5 = var1.writeShort((byte)23);
          class152.field1957 = new int[var5][4];
          System.out.println(var3 + ", " + var4 + ", " + var5);
          for(var6 = 0; var6 < var5; ++var6) {
@@ -213,7 +213,7 @@ public final class class151 {
          boolean var16 = var1.readUnsignedByte((byte)58) == 1;
          var4 = var1.readUnsignedShort((byte)44);
          var5 = var1.method5587(-1663235403);
-         var6 = var1.readShort((byte)68);
+         var6 = var1.writeShort((byte)68);
          var1.method5496((byte)86);
 
          int var10;

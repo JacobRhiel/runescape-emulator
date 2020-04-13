@@ -16,7 +16,7 @@ public class class18 {
 
    public class18(class309 var1, boolean var2) {
       this.field98 = var1.readByte(-1182356577);
-      this.field95 = var1.readShort((byte)94);
+      this.field95 = var1.writeShort((byte)94);
       this.field97 = var1.readInt(297718403);
       this.field100 = var1.readInt(297718403);
       this.field96 = var1.readInt(297718403);

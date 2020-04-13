@@ -58,12 +58,12 @@ public class class48 extends class30 {
       } else {
          super.field199 = var1.readUnsignedByte((byte)27);
          super.field200 = var1.readUnsignedByte((byte)43);
-         super.field203 = var1.readShort((byte)98);
-         super.field195 = var1.readShort((byte)7);
+         super.field203 = var1.writeShort((byte)98);
+         super.field195 = var1.writeShort((byte)7);
          this.field375 = var1.readUnsignedByte((byte)25);
          this.field378 = var1.readUnsignedByte((byte)54);
-         super.field197 = var1.readShort((byte)41);
-         super.field198 = var1.readShort((byte)48);
+         super.field197 = var1.writeShort((byte)41);
+         super.field198 = var1.writeShort((byte)48);
          this.field374 = var1.readUnsignedByte((byte)36);
          this.field377 = var1.readUnsignedByte((byte)108);
          super.field201 = var1.method5564((byte)-59);
@@ -118,14 +118,14 @@ public class class48 extends class30 {
          if(class194.field2324 == var0) {
             byte var3 = var2.method5581(12345678);
             var4 = var2.method5587(-1264815455);
-            var5 = var2.readShort((byte)114);
+            var5 = var2.writeShort((byte)114);
             var6 = var2.method5587(-1679564732);
             var7 = var2.readByteN(678489344);
             var8 = var7 >> 2;
             var9 = var7 & 3;
             var10 = client.field699[var8];
             byte var11 = var2.readByte(-1089807719);
-            var12 = var2.method5576(1112762416);
+            var12 = var2.readByteA(1112762416);
             var13 = (var12 >> 4 & 7) + class17.field91;
             var14 = (var12 & 7) + class340.field3959;
             var15 = var2.method5579(-2046276387);
@@ -193,7 +193,7 @@ public class class48 extends class30 {
             var38 = var2.readByteS(-576195763);
             var4 = (var38 >> 4 & 7) + class17.field91;
             var5 = (var38 & 7) + class340.field3959;
-            var6 = var2.readShort((byte)7);
+            var6 = var2.writeShort((byte)7);
             if(var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
                class271 var32 = client.field808[class71.field610][var4][var5];
                if(var32 != null) {
@@ -213,7 +213,7 @@ public class class48 extends class30 {
             }
 
          } else if(class194.field2329 == var0) {
-            var38 = var2.readShort((byte)14);
+            var38 = var2.writeShort((byte)14);
             var4 = var2.method5587(543575469);
             var5 = var2.readUnsignedShort((byte)84);
             var6 = var2.readUnsignedByte((byte)38);
@@ -253,7 +253,7 @@ public class class48 extends class30 {
                var4 = var2.readByteS(-576195763);
                var5 = (var4 >> 4 & 7) + class17.field91;
                var6 = (var4 & 7) + class340.field3959;
-               var7 = var2.method5586((byte)117);
+               var7 = var2.readShortA((byte)117);
                var8 = var2.readByteS(-576195763);
                var9 = var8 >> 4 & 15;
                var10 = var8 & 7;
@@ -271,7 +271,7 @@ public class class48 extends class30 {
             }
 
             if(class194.field2323 == var0) {
-               var38 = var2.method5586((byte)113);
+               var38 = var2.readShortA((byte)113);
                var4 = var2.readUnsignedShort((byte)6);
                var5 = var2.readUnsignedByte((byte)116);
                var6 = (var5 >> 4 & 7) + class17.field91;
@@ -289,7 +289,7 @@ public class class48 extends class30 {
                }
 
             } else if(class194.field2332 == var0) {
-               var38 = var2.method5586((byte)119);
+               var38 = var2.readShortA((byte)119);
                var4 = var2.readByteS(-576195763) * 4;
                var5 = var2.readByteN(2146763860) * 4;
                var6 = var2.readByteN(1816779581);
@@ -315,12 +315,12 @@ public class class48 extends class30 {
                }
 
             } else if(class194.field2326 == var0) {
-               var38 = var2.method5576(-1443404975);
-               var4 = var2.readShort((byte)25);
-               var5 = var2.method5576(1594885473);
+               var38 = var2.readByteA(-1443404975);
+               var4 = var2.writeShort((byte)25);
+               var5 = var2.readByteA(1594885473);
                var6 = (var5 >> 4 & 7) + class17.field91;
                var7 = (var5 & 7) + class340.field3959;
-               var8 = var2.method5586((byte)127);
+               var8 = var2.readShortA((byte)127);
                if(var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) {
                   var6 = var6 * 128 + 64;
                   var7 = var7 * 128 + 64;

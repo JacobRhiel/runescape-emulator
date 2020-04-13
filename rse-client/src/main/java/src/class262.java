@@ -43,7 +43,7 @@ public class class262 extends class184 {
       } else if(var2 == 8) {
          this.field3337 = var1.method5557(-1416358410);
       } else if(var2 == 9) {
-         this.field3329 = var1.readShort((byte)52);
+         this.field3329 = var1.writeShort((byte)52);
       } else if(var2 == 10) {
          this.field3341 = var1.method5550(1282022395);
       } else if(var2 == 11) {
@@ -53,21 +53,21 @@ public class class262 extends class184 {
       } else if(var2 == 13) {
          this.field3339 = var1.method5550(-665217207);
       } else if(var2 == 14) {
-         this.field3334 = var1.readShort((byte)99);
+         this.field3334 = var1.writeShort((byte)99);
       } else if(var2 == 17 || var2 == 18) {
-         this.field3336 = var1.readShort((byte)72);
+         this.field3336 = var1.writeShort((byte)72);
          if(this.field3336 == '\uffff') {
             this.field3336 = -1;
          }
 
-         this.field3342 = var1.readShort((byte)123);
+         this.field3342 = var1.writeShort((byte)123);
          if(this.field3342 == '\uffff') {
             this.field3342 = -1;
          }
 
          int var4 = -1;
          if(var2 == 18) {
-            var4 = var1.readShort((byte)49);
+            var4 = var1.writeShort((byte)49);
             if(var4 == '\uffff') {
                var4 = -1;
             }
@@ -77,7 +77,7 @@ public class class262 extends class184 {
          this.field3340 = new int[var5 + 2];
 
          for(int var6 = 0; var6 <= var5; ++var6) {
-            this.field3340[var6] = var1.readShort((byte)20);
+            this.field3340[var6] = var1.writeShort((byte)20);
             if(this.field3340[var6] == '\uffff') {
                this.field3340[var6] = -1;
             }

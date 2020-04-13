@@ -82,23 +82,23 @@ public class class50 {
 
             int var12;
             for(var12 = 0; var12 < 4; ++var12) {
-               var27.method5689(var35.nextInt(), 747474969);
+               var27.writeInt(var35.nextInt(), 747474969);
             }
 
-            var27.method5689(var11[0], 747474969);
-            var27.method5689(var11[1], 747474969);
+            var27.writeInt(var11[0], 747474969);
+            var27.writeInt(var11[1], 747474969);
             var27.method5529(var2);
             var27.method5529(0L);
 
             for(var12 = 0; var12 < 4; ++var12) {
-               var27.method5689(var35.nextInt(), 747474969);
+               var27.writeInt(var35.nextInt(), 747474969);
             }
 
             var27.method5570(class89.field1158, class89.field1155, -1664689414);
             var10.readByte(10, 1258821856);
 
             for(var12 = 0; var12 < 3; ++var12) {
-               var10.method5689(var35.nextInt(), 747474969);
+               var10.writeInt(var35.nextInt(), 747474969);
             }
 
             var10.method5529(var35.nextLong());
@@ -127,7 +127,7 @@ public class class50 {
             var14.method5596(var27.field3709, 0, var27.field3710, -1590891251);
             var14.readByte(var10.field3710, 1258821856);
             var14.method5596(var10.field3709, 0, var10.field3710, -1590891251);
-            var14.readShort(var13.field3710, (byte)-3);
+            var14.writeShort(var13.field3710, (byte)-3);
             var14.method5596(var13.field3709, 0, var13.field3710, -1590891251);
             String var15 = class240.method4218(var14.field3709, (byte)-100);
 

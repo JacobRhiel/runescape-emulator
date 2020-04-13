@@ -17,8 +17,8 @@ public class class110 {
          }
       }
 
-      this.field1367 = var1.readShort((byte)69);
-      this.field1366 = var1.readShort((byte)92);
+      this.field1367 = var1.writeShort((byte)69);
+      this.field1366 = var1.writeShort((byte)92);
    }
 
    final byte[] method2446() {

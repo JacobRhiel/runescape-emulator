@@ -11,7 +11,7 @@ public class class250 extends class184 {
 
    void method4428(class309 var1, int var2, int var3) {
       if(var2 == 5) {
-         this.field3207 = var1.readShort((byte)125);
+         this.field3207 = var1.writeShort((byte)125);
       }
 
    }

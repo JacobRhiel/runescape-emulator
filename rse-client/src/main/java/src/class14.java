@@ -24,8 +24,8 @@ final class class14 implements Comparator {
    public static void method148(int var0, int var1, int var2, boolean var3, int var4) {
       class196 var5 = class146.method3363(ClientPacket.field2224, client.field761.field1340, -1798251034);
       var5.field2338.method5700(var2, -927080333);
-      var5.field2338.method5689(var3?client.field762:0, 747474969);
-      var5.field2338.method5582(var0, 70039705);
+      var5.field2338.writeInt(var3?client.field762:0, 747474969);
+      var5.field2338.writeULEShort(var0, 70039705);
       var5.field2338.writeLEShortA(var1, 455919170);
       client.field761.method2361(var5, 591808699);
    }

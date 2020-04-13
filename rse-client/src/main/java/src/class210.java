@@ -496,32 +496,32 @@ public class class210 extends class189 {
    static void method3960(byte[] var0, byte var1) {
       class309 var2 = new class309(var0);
       var2.field3710 = var0.length - 2;
-      class335.field3900 = var2.readShort((byte)59);
+      class335.field3900 = var2.writeShort((byte)59);
       class335.field3901 = new int[class335.field3900];
       class260.field3309 = new int[class335.field3900];
       class335.field3904 = new int[class335.field3900];
       class335.field3905 = new int[class335.field3900];
       class4.field24 = new byte[class335.field3900][];
       var2.field3710 = var0.length - 7 - class335.field3900 * 8;
-      class335.field3903 = var2.readShort((byte)30);
-      class335.field3902 = var2.readShort((byte)121);
+      class335.field3903 = var2.writeShort((byte)30);
+      class335.field3902 = var2.writeShort((byte)121);
       int var3 = (var2.readUnsignedByte((byte)95) & 255) + 1;
 
       int var4;
       for(var4 = 0; var4 < class335.field3900; ++var4) {
-         class335.field3901[var4] = var2.readShort((byte)82);
+         class335.field3901[var4] = var2.writeShort((byte)82);
       }
 
       for(var4 = 0; var4 < class335.field3900; ++var4) {
-         class260.field3309[var4] = var2.readShort((byte)27);
+         class260.field3309[var4] = var2.writeShort((byte)27);
       }
 
       for(var4 = 0; var4 < class335.field3900; ++var4) {
-         class335.field3904[var4] = var2.readShort((byte)34);
+         class335.field3904[var4] = var2.writeShort((byte)34);
       }
 
       for(var4 = 0; var4 < class335.field3900; ++var4) {
-         class335.field3905[var4] = var2.readShort((byte)89);
+         class335.field3905[var4] = var2.writeShort((byte)89);
       }
 
       var2.field3710 = var0.length - 7 - class335.field3900 * 8 - (var3 - 1) * 3;

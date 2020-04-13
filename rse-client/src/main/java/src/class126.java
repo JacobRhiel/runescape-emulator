@@ -98,8 +98,8 @@ public class class126 {
 
       this.field1533 = var1.method5561(811325361);
       this.field1527 = var1.method5561(1249655879);
-      this.field1530 = var1.readShort((byte)53);
-      this.field1531 = var1.readShort((byte)42);
+      this.field1530 = var1.writeShort((byte)53);
+      this.field1531 = var1.writeShort((byte)42);
       this.field1528 = new class123();
       this.field1522 = new class115();
       this.field1528.method2799(var1, this.field1522);

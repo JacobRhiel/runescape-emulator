@@ -75,14 +75,14 @@ public class class66 implements Callable {
       class101 var2 = new class101();
       class309 var3 = new class309(var0);
       var3.field3710 = var3.field3709.length - 2;
-      int var4 = var3.readShort((byte)101);
+      int var4 = var3.writeShort((byte)101);
       int var5 = var3.field3709.length - 2 - var4 - 12;
       var3.field3710 = var5;
       int var6 = var3.readInt(297718403);
-      var2.field1302 = var3.readShort((byte)103);
-      var2.field1301 = var3.readShort((byte)78);
-      var2.field1306 = var3.readShort((byte)104);
-      var2.field1296 = var3.readShort((byte)69);
+      var2.field1302 = var3.writeShort((byte)103);
+      var2.field1301 = var3.writeShort((byte)78);
+      var2.field1306 = var3.writeShort((byte)104);
+      var2.field1296 = var3.writeShort((byte)69);
       int var7 = var3.readUnsignedByte((byte)26);
       int var8;
       int var9;
@@ -90,7 +90,7 @@ public class class66 implements Callable {
          var2.field1304 = var2.method2325(var7, -1946257941);
 
          for(var8 = 0; var8 < var7; ++var8) {
-            var9 = var3.readShort((byte)102);
+            var9 = var3.writeShort((byte)102);
             class325 var10 = new class325(var9 > 0?class216.method4012(var9, -2094888461):1);
             var2.field1304[var8] = var10;
 
@@ -109,7 +109,7 @@ public class class66 implements Callable {
       var2.field1299 = new String[var6];
 
       for(var8 = 0; var3.field3710 < var5; var2.field1297[var8++] = var9) {
-         var9 = var3.readShort((byte)3);
+         var9 = var3.writeShort((byte)3);
          if(var9 == 3) {
             var2.field1299[var8] = var3.method5667(-1282132720);
          } else if(var9 < 100 && var9 != 21 && var9 != 38 && var9 != 39) {

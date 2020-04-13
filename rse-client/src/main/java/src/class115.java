@@ -43,8 +43,8 @@ public class class115 {
       this.field1445 = new int[this.field1453];
 
       for(int var2 = 0; var2 < this.field1453; ++var2) {
-         this.field1443[var2] = var1.readShort((byte)71);
-         this.field1445[var2] = var1.readShort((byte)109);
+         this.field1443[var2] = var1.writeShort((byte)71);
+         this.field1445[var2] = var1.writeShort((byte)109);
       }
 
    }

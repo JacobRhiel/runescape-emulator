@@ -16,7 +16,7 @@ public class class133 extends class189 {
 
 
    class133(class309 var1) {
-      this.field1641 = var1.readShort((byte)84);
+      this.field1641 = var1.writeShort((byte)84);
       this.field1638 = var1.readUnsignedByte((byte)39) == 1;
       int var2 = var1.readUnsignedByte((byte)125);
       if(var2 >= 1 && var2 <= 4) {
@@ -24,7 +24,7 @@ public class class133 extends class189 {
 
          int var3;
          for(var3 = 0; var3 < var2; ++var3) {
-            this.field1639[var3] = var1.readShort((byte)36);
+            this.field1639[var3] = var1.writeShort((byte)36);
          }
 
          if(var2 > 1) {

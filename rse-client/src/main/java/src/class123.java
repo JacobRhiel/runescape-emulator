@@ -75,24 +75,24 @@ public class class123 {
       this.field1498[0] = var3 >> 4;
       this.field1498[1] = var3 & 15;
       if(var3 != 0) {
-         this.field1504[0] = var1.readShort((byte)58);
-         this.field1504[1] = var1.readShort((byte)36);
+         this.field1504[0] = var1.writeShort((byte)58);
+         this.field1504[1] = var1.writeShort((byte)36);
          int var4 = var1.readUnsignedByte((byte)120);
 
          int var5;
          int var6;
          for(var5 = 0; var5 < 2; ++var5) {
             for(var6 = 0; var6 < this.field1498[var5]; ++var6) {
-               this.field1497[var5][0][var6] = var1.readShort((byte)113);
-               this.field1502[var5][0][var6] = var1.readShort((byte)111);
+               this.field1497[var5][0][var6] = var1.writeShort((byte)113);
+               this.field1502[var5][0][var6] = var1.writeShort((byte)111);
             }
          }
 
          for(var5 = 0; var5 < 2; ++var5) {
             for(var6 = 0; var6 < this.field1498[var5]; ++var6) {
                if((var4 & 1 << var5 * 4 << var6) != 0) {
-                  this.field1497[var5][1][var6] = var1.readShort((byte)121);
-                  this.field1502[var5][1][var6] = var1.readShort((byte)74);
+                  this.field1497[var5][1][var6] = var1.writeShort((byte)121);
+                  this.field1502[var5][1][var6] = var1.writeShort((byte)74);
                } else {
                   this.field1497[var5][1][var6] = this.field1497[var5][0][var6];
                   this.field1502[var5][1][var6] = this.field1502[var5][0][var6];

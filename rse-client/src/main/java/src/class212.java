@@ -9,7 +9,7 @@ public class class212 extends class189 {
    class212(class309 var1) {
       var1.field3710 = var1.field3709.length - 3;
       int var2 = var1.readUnsignedByte((byte)106);
-      int var3 = var1.readShort((byte)7);
+      int var3 = var1.writeShort((byte)7);
       int var4 = var2 * 10 + 14;
       var1.field3710 = 0;
       int var5 = 0;
@@ -168,11 +168,11 @@ public class class212 extends class189 {
       var1.field3710 += var5 * 3;
       this.field2498 = new byte[var4];
       class309 var51 = new class309(this.field2498);
-      var51.method5689(1297377380, 747474969);
-      var51.method5689(6, 747474969);
-      var51.readShort(var2 > 1?1:0, (byte)-115);
-      var51.readShort(var2, (byte)-81);
-      var51.readShort(var3, (byte)-93);
+      var51.writeInt(1297377380, 747474969);
+      var51.writeInt(6, 747474969);
+      var51.writeShort(var2 > 1?1:0, (byte)-115);
+      var51.writeShort(var2, (byte)-81);
+      var51.writeShort(var3, (byte)-93);
       var1.field3710 = var13;
       int var52 = 0;
       int var53 = 0;
@@ -186,7 +186,7 @@ public class class212 extends class189 {
       int var60 = 0;
 
       while(var60 < var2) {
-         var51.method5689(1297379947, 747474969);
+         var51.writeInt(1297379947, 747474969);
          var51.field3710 += 4;
          int var61 = var51.field3710;
          int var62 = -1;

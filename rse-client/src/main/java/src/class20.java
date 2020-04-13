@@ -332,7 +332,7 @@ final class class20 implements Comparator {
          var2.field1018 = var0.method5579(-1132241319);
          var2.field1019 = var0.method5587(913288350) + client.field689;
          var2.field1020 = var0.method5587(-58322318) + client.field689;
-         var2.field1021 = var0.readShort((byte)28);
+         var2.field1021 = var0.writeShort((byte)28);
          if(var2.field670) {
             var2.field990 += var2.field665;
             var2.field1017 += var2.field672;
@@ -352,7 +352,7 @@ final class class20 implements Comparator {
 
       int var6;
       if((var3 & 2048) != 0) {
-         var2.field1009 = var0.method5586((byte)102);
+         var2.field1009 = var0.readShortA((byte)102);
          var6 = var0.method5592(-1615826752);
          var2.field1033 = var6 >> 16;
          var2.field1013 = (var6 & '\uffff') + client.field689;
@@ -423,10 +423,14 @@ final class class20 implements Comparator {
       int var10;
       int var13;
       if((var3 & 1) != 0) {
-         var6 = var0.method5586((byte)105);
+         var6 = var0.readShortA((byte)105);
+         System.out.println("chat block");
+         System.out.println("effects: " + var6);
          class238 var19 = (class238)class16.method159(class70.method1278((byte)61), var0.readByteN(1626574628), -1609956543);
          boolean var15 = var0.readByteN(279752499) == 1;
-         var9 = var0.method5576(-499249652);
+         System.out.println("auto chat: " + var15);
+         var9 = var0.readByteA(-499249652);
+         System.out.println("length: " + var9);
          var10 = var0.field3710;
          if(var2.field652 != null && var2.field646 != null) {
             boolean var11 = false;
@@ -519,7 +523,7 @@ final class class20 implements Comparator {
       }
 
       if((var3 & 8) != 0) {
-         var2.field1015 = var0.method5586((byte)116);
+         var2.field1015 = var0.readShortA((byte)116);
          System.out.println("unknown mask 2: " + var2.field1015);
          if(var2.field1027 == 0) {
             var2.field979 = var2.field1015;

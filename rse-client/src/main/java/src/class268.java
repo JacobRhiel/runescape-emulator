@@ -26,24 +26,24 @@ public class class268 extends class184 {
       int var4;
       int var5;
       if(var2 == 1) {
-         var4 = var1.readShort((byte)51);
+         var4 = var1.writeShort((byte)51);
          this.field3514 = new int[var4];
 
          for(var5 = 0; var5 < var4; ++var5) {
-            this.field3514[var5] = var1.readShort((byte)79);
+            this.field3514[var5] = var1.writeShort((byte)79);
          }
 
          this.field3513 = new int[var4];
 
          for(var5 = 0; var5 < var4; ++var5) {
-            this.field3513[var5] = var1.readShort((byte)28);
+            this.field3513[var5] = var1.writeShort((byte)28);
          }
 
          for(var5 = 0; var5 < var4; ++var5) {
-            this.field3513[var5] += var1.readShort((byte)27) << 16;
+            this.field3513[var5] += var1.writeShort((byte)27) << 16;
          }
       } else if(var2 == 2) {
-         this.field3516 = var1.readShort((byte)62);
+         this.field3516 = var1.writeShort((byte)62);
       } else if(var2 == 3) {
          var4 = var1.readUnsignedByte((byte)90);
          this.field3517 = new int[var4 + 1];
@@ -58,9 +58,9 @@ public class class268 extends class184 {
       } else if(var2 == 5) {
          this.field3519 = var1.readUnsignedByte((byte)85);
       } else if(var2 == 6) {
-         this.field3510 = var1.readShort((byte)68);
+         this.field3510 = var1.writeShort((byte)68);
       } else if(var2 == 7) {
-         this.field3521 = var1.readShort((byte)82);
+         this.field3521 = var1.writeShort((byte)82);
       } else if(var2 == 8) {
          this.field3522 = var1.readUnsignedByte((byte)25);
       } else if(var2 == 9) {
@@ -74,11 +74,11 @@ public class class268 extends class184 {
          this.field3523 = new int[var4];
 
          for(var5 = 0; var5 < var4; ++var5) {
-            this.field3523[var5] = var1.readShort((byte)34);
+            this.field3523[var5] = var1.writeShort((byte)34);
          }
 
          for(var5 = 0; var5 < var4; ++var5) {
-            this.field3523[var5] += var1.readShort((byte)59) << 16;
+            this.field3523[var5] += var1.writeShort((byte)59) << 16;
          }
       } else if(var2 == 13) {
          var4 = var1.readUnsignedByte((byte)35);

@@ -456,18 +456,18 @@ public class class130 extends class144 {
       class309 var7 = new class309(var1);
       class309 var8 = new class309(var1);
       var4.field3710 = var1.length - 18;
-      int var9 = var4.readShort((byte)25);
-      int var10 = var4.readShort((byte)64);
+      int var9 = var4.writeShort((byte)25);
+      int var10 = var4.writeShort((byte)64);
       int var11 = var4.readUnsignedByte((byte)126);
       int var12 = var4.readUnsignedByte((byte)115);
       int var13 = var4.readUnsignedByte((byte)70);
       int var14 = var4.readUnsignedByte((byte)69);
       int var15 = var4.readUnsignedByte((byte)59);
       int var16 = var4.readUnsignedByte((byte)52);
-      int var17 = var4.readShort((byte)54);
-      int var18 = var4.readShort((byte)94);
-      int var19 = var4.readShort((byte)113);
-      int var20 = var4.readShort((byte)35);
+      int var17 = var4.writeShort((byte)54);
+      int var18 = var4.writeShort((byte)94);
+      int var19 = var4.writeShort((byte)113);
+      int var20 = var4.writeShort((byte)35);
       byte var21 = 0;
       int var45 = var21 + var9;
       int var23 = var45;
@@ -598,7 +598,7 @@ public class class130 extends class144 {
       var8.field3710 = var25;
 
       for(var38 = 0; var38 < var10; ++var38) {
-         this.field1577[var38] = (short)var4.readShort((byte)85);
+         this.field1577[var38] = (short)var4.writeShort((byte)85);
          if(var12 == 1) {
             var39 = var5.readUnsignedByte((byte)119);
             if((var39 & 1) == 1) {
@@ -689,9 +689,9 @@ public class class130 extends class144 {
 
       for(var42 = 0; var42 < var11; ++var42) {
          this.field1581[var42] = 0;
-         this.field1582[var42] = (short)var4.readShort((byte)70);
-         this.field1583[var42] = (short)var4.readShort((byte)116);
-         this.field1584[var42] = (short)var4.readShort((byte)58);
+         this.field1582[var42] = (short)var4.writeShort((byte)70);
+         this.field1583[var42] = (short)var4.writeShort((byte)116);
+         this.field1584[var42] = (short)var4.writeShort((byte)58);
       }
 
       if(this.field1602 != null) {
@@ -921,8 +921,8 @@ public class class130 extends class144 {
       class309 var7 = new class309(var1);
       class309 var8 = new class309(var1);
       var2.field3710 = var1.length - 23;
-      int var9 = var2.readShort((byte)93);
-      int var10 = var2.readShort((byte)27);
+      int var9 = var2.writeShort((byte)93);
+      int var10 = var2.writeShort((byte)27);
       int var11 = var2.readUnsignedByte((byte)50);
       int var12 = var2.readUnsignedByte((byte)20);
       int var13 = var2.readUnsignedByte((byte)94);
@@ -930,11 +930,11 @@ public class class130 extends class144 {
       int var15 = var2.readUnsignedByte((byte)16);
       int var16 = var2.readUnsignedByte((byte)61);
       int var17 = var2.readUnsignedByte((byte)17);
-      int var18 = var2.readShort((byte)25);
-      int var19 = var2.readShort((byte)60);
-      int var20 = var2.readShort((byte)68);
-      int var21 = var2.readShort((byte)16);
-      int var22 = var2.readShort((byte)102);
+      int var18 = var2.writeShort((byte)25);
+      int var19 = var2.writeShort((byte)60);
+      int var20 = var2.writeShort((byte)68);
+      int var21 = var2.writeShort((byte)16);
+      int var22 = var2.writeShort((byte)102);
       int var23 = 0;
       int var24 = 0;
       int var25 = 0;
@@ -1113,7 +1113,7 @@ public class class130 extends class144 {
       var8.field3710 = var36;
 
       for(var51 = 0; var51 < var10; ++var51) {
-         this.field1577[var51] = (short)var2.readShort((byte)26);
+         this.field1577[var51] = (short)var2.writeShort((byte)26);
          if(var12 == 1) {
             this.field1573[var51] = var3.readByte(-997513272);
          }
@@ -1131,7 +1131,7 @@ public class class130 extends class144 {
          }
 
          if(var16 == 1) {
-            this.field1578[var51] = (short)(var7.readShort((byte)65) - 1);
+            this.field1578[var51] = (short)(var7.writeShort((byte)65) - 1);
          }
 
          if(this.field1602 != null && this.field1578[var51] != -1) {
@@ -1199,9 +1199,9 @@ public class class130 extends class144 {
       for(var55 = 0; var55 < var11; ++var55) {
          var56 = this.field1581[var55] & 255;
          if(var56 == 0) {
-            this.field1582[var55] = (short)var2.readShort((byte)43);
-            this.field1583[var55] = (short)var2.readShort((byte)98);
-            this.field1584[var55] = (short)var2.readShort((byte)97);
+            this.field1582[var55] = (short)var2.writeShort((byte)43);
+            this.field1583[var55] = (short)var2.writeShort((byte)98);
+            this.field1584[var55] = (short)var2.writeShort((byte)97);
          }
       }
 
@@ -1209,9 +1209,9 @@ public class class130 extends class144 {
       var55 = var2.readUnsignedByte((byte)50);
       if(var55 != 0) {
          new class143();
-         var2.readShort((byte)30);
-         var2.readShort((byte)110);
-         var2.readShort((byte)82);
+         var2.writeShort((byte)30);
+         var2.writeShort((byte)110);
+         var2.writeShort((byte)82);
          var2.readInt(297718403);
       }
 

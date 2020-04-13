@@ -75,8 +75,8 @@ public class class82 {
 
       while(var3.hasNext()) {
          Entry var4 = (Entry)var3.next();
-         var2.method5689(((Integer)var4.getKey()).intValue(), 747474969);
-         var2.method5689(((Integer)var4.getValue()).intValue(), 747474969);
+         var2.writeInt(((Integer)var4.getKey()).intValue(), 747474969);
+         var2.writeInt(((Integer)var4.getValue()).intValue(), 747474969);
       }
 
       var2.method5627(this.field1080 != null?this.field1080:"", 1374369899);

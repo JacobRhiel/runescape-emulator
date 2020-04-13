@@ -140,7 +140,7 @@ public abstract class class243 {
          if(var4 >= 7) {
             this.field3128 = var3.method5751(1537726341);
          } else {
-            this.field3128 = var3.readShort((byte)87);
+            this.field3128 = var3.writeShort((byte)87);
          }
 
          int var6 = 0;
@@ -156,7 +156,7 @@ public abstract class class243 {
             }
          } else {
             for(var8 = 0; var8 < this.field3128; ++var8) {
-               this.field3137[var8] = var6 += var3.readShort((byte)101);
+               this.field3137[var8] = var6 += var3.writeShort((byte)101);
                if(this.field3137[var8] > var7) {
                   var7 = this.field3137[var8];
                }
@@ -188,7 +188,7 @@ public abstract class class243 {
          }
 
          for(var8 = 0; var8 < this.field3128; ++var8) {
-            this.field3134[this.field3137[var8]] = var3.readShort((byte)26);
+            this.field3134[this.field3137[var8]] = var3.writeShort((byte)26);
          }
 
          int var9;
@@ -222,7 +222,7 @@ public abstract class class243 {
                this.field3135[var9] = new int[var10];
 
                for(var12 = 0; var12 < var10; ++var12) {
-                  var13 = this.field3135[var9][var12] = var6 += var3.readShort((byte)51);
+                  var13 = this.field3135[var9][var12] = var6 += var3.writeShort((byte)51);
                   if(var13 > var11) {
                      var11 = var13;
                   }

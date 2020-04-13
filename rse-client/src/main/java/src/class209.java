@@ -63,8 +63,8 @@ public class class209 {
    void method3915(byte[] var1) {
       this.field2481.field3709 = var1;
       this.field2481.field3710 = 10;
-      int var2 = this.field2481.readShort((byte)34);
-      this.field2475 = this.field2481.readShort((byte)66);
+      int var2 = this.field2481.writeShort((byte)34);
+      this.field2475 = this.field2481.writeShort((byte)66);
       this.field2471 = 500000;
       this.field2469 = new int[var2];
 

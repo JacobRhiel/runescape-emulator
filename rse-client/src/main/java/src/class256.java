@@ -19,7 +19,7 @@ public class class256 extends class184 {
 
    void method4522(class309 var1, int var2, int var3) {
       if(var2 == 1) {
-         var1.readShort((byte)126);
+         var1.writeShort((byte)126);
       } else if(var2 == 2) {
          this.field3277 = var1.readUnsignedByte((byte)63);
       } else if(var2 == 3) {
@@ -27,7 +27,7 @@ public class class256 extends class184 {
       } else if(var2 == 4) {
          this.field3283 = 0;
       } else if(var2 == 5) {
-         this.field3275 = var1.readShort((byte)58);
+         this.field3275 = var1.writeShort((byte)58);
       } else if(var2 == 6) {
          var1.readUnsignedByte((byte)50);
       } else if(var2 == 7) {
@@ -35,7 +35,7 @@ public class class256 extends class184 {
       } else if(var2 == 8) {
          this.field3280 = var1.method5564((byte)-71);
       } else if(var2 == 11) {
-         this.field3283 = var1.readShort((byte)83);
+         this.field3283 = var1.writeShort((byte)83);
       } else if(var2 == 14) {
          this.field3284 = var1.readUnsignedByte((byte)17);
       } else if(var2 == 15) {

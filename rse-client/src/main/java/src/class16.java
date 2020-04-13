@@ -15,7 +15,7 @@ public class class16 {
    class16(class309 var1, byte var2, int var3) {
       this.field78 = var1.method5667(-1116602062);
       this.field86 = var1.method5667(-1505088485);
-      this.field81 = var1.readShort((byte)66);
+      this.field81 = var1.writeShort((byte)66);
       this.field76 = var1.method5553((byte)15);
       int var4 = var1.readInt(297718403);
       int var5 = var1.readInt(297718403);
@@ -471,7 +471,7 @@ public class class16 {
             class196 var54;
             if(class42.field318.method1040(-584501921)) {
                var54 = class146.method3363(ClientPacket.field2215, client.field761.field1340, -2036856058);
-               var54.field2338.method5689(1057001181, 747474969);
+               var54.field2338.writeInt(1057001181, 747474969);
                client.field761.method2361(var54, 1144996409);
             }
 

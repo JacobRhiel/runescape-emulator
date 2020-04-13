@@ -24,7 +24,7 @@ public class class15 {
    }
 
    public class15(class309 var1, boolean var2) {
-      int var3 = var1.readShort((byte)68);
+      int var3 = var1.writeShort((byte)68);
       boolean var4 = var1.readUnsignedByte((byte)42) == 1;
       byte var5;
       if(var4) {
@@ -33,7 +33,7 @@ public class class15 {
          var5 = 0;
       }
 
-      int var6 = var1.readShort((byte)11);
+      int var6 = var1.writeShort((byte)11);
       this.field67 = new ArrayList(var6);
 
       for(int var7 = 0; var7 < var6; ++var7) {

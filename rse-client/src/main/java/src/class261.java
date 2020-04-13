@@ -26,7 +26,7 @@ public class class261 extends class184 {
       } else {
          int var4;
          if(var2 == 5) {
-            this.field3317 = var1.readShort((byte)22);
+            this.field3317 = var1.writeShort((byte)22);
             this.field3320 = new int[this.field3317];
             this.field3313 = new String[this.field3317];
 
@@ -35,7 +35,7 @@ public class class261 extends class184 {
                this.field3313[var4] = var1.method5667(-236731419);
             }
          } else if(var2 == 6) {
-            this.field3317 = var1.readShort((byte)49);
+            this.field3317 = var1.writeShort((byte)49);
             this.field3320 = new int[this.field3317];
             this.field3311 = new int[this.field3317];
 

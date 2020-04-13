@@ -15,10 +15,10 @@ public class class24 extends class30 {
       } else {
          super.field199 = var1.readUnsignedByte((byte)35);
          super.field200 = var1.readUnsignedByte((byte)27);
-         super.field203 = var1.readShort((byte)117);
-         super.field195 = var1.readShort((byte)108);
-         super.field197 = var1.readShort((byte)7);
-         super.field198 = var1.readShort((byte)55);
+         super.field203 = var1.writeShort((byte)117);
+         super.field195 = var1.writeShort((byte)108);
+         super.field197 = var1.writeShort((byte)7);
+         super.field198 = var1.writeShort((byte)55);
          super.field201 = var1.method5564((byte)21);
          super.field202 = var1.method5564((byte)34);
       }

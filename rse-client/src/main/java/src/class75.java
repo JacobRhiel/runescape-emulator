@@ -205,7 +205,7 @@ public final class class75 extends class78 {
             var8 = var1.readUnsignedByte((byte)83);
             var5[var6] = var8 + (var7 << 8);
             if(var6 == 0 && var5[0] == '\uffff') {
-               var4 = var1.readShort((byte)115);
+               var4 = var1.writeShort((byte)115);
                break;
             }
 
@@ -229,38 +229,38 @@ public final class class75 extends class78 {
          var10[var7] = var8;
       }
 
-      super.field978 = var1.readShort((byte)67);
+      super.field978 = var1.writeShort((byte)67);
       if(super.field978 == '\uffff') {
          super.field978 = -1;
       }
 
-      super.field1010 = var1.readShort((byte)10);
+      super.field1010 = var1.writeShort((byte)10);
       if(super.field1010 == '\uffff') {
          super.field1010 = -1;
       }
 
       super.field980 = super.field1010;
-      super.field993 = var1.readShort((byte)127);
+      super.field993 = var1.writeShort((byte)127);
       if(super.field993 == '\uffff') {
          super.field993 = -1;
       }
 
-      super.field982 = var1.readShort((byte)62);
+      super.field982 = var1.writeShort((byte)62);
       if(super.field982 == '\uffff') {
          super.field982 = -1;
       }
 
-      super.field1003 = var1.readShort((byte)121);
+      super.field1003 = var1.writeShort((byte)121);
       if(super.field1003 == '\uffff') {
          super.field1003 = -1;
       }
 
-      super.field984 = var1.readShort((byte)31);
+      super.field984 = var1.writeShort((byte)31);
       if(super.field984 == '\uffff') {
          super.field984 = -1;
       }
 
-      super.field985 = var1.readShort((byte)42);
+      super.field985 = var1.writeShort((byte)42);
       if(super.field985 == '\uffff') {
          super.field985 = -1;
       }
@@ -273,7 +273,7 @@ public final class class75 extends class78 {
       }
 
       this.field650 = var1.readUnsignedByte((byte)55);
-      this.field671 = var1.readShort((byte)116);
+      this.field671 = var1.writeShort((byte)116);
       this.field651 = var1.readUnsignedByte((byte)124) == 1;
       if(client.field682 == 0 && client.field849 >= 2) {
          this.field651 = false;

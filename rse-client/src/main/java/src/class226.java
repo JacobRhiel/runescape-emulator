@@ -281,20 +281,20 @@ public class class226 extends class189 {
       this.field2566 = false;
       this.field2569 = var1.readUnsignedByte((byte)19);
       this.field2570 = var1.readUnsignedByte((byte)76);
-      this.field2571 = var1.readShort((byte)96);
+      this.field2571 = var1.writeShort((byte)96);
       this.field2576 = var1.method5550(-55588755);
       this.field2594 = var1.method5550(1964366515);
-      this.field2579 = var1.readShort((byte)125);
-      this.field2621 = var1.readShort((byte)40);
+      this.field2579 = var1.writeShort((byte)125);
+      this.field2621 = var1.writeShort((byte)40);
       this.field2640 = var1.readUnsignedByte((byte)96);
-      this.field2586 = var1.readShort((byte)66);
+      this.field2586 = var1.writeShort((byte)66);
       if(this.field2586 == '\uffff') {
          this.field2586 = -1;
       } else {
          this.field2586 += this.field2567 & -65536;
       }
 
-      this.field2688 = var1.readShort((byte)57);
+      this.field2688 = var1.writeShort((byte)57);
       if(this.field2688 == '\uffff') {
          this.field2688 = -1;
       }
@@ -307,7 +307,7 @@ public class class226 extends class189 {
 
          for(var4 = 0; var4 < var3; ++var4) {
             this.field2686[var4] = var1.readUnsignedByte((byte)80);
-            this.field2687[var4] = var1.readShort((byte)27);
+            this.field2687[var4] = var1.writeShort((byte)27);
          }
       }
 
@@ -319,11 +319,11 @@ public class class226 extends class189 {
          this.field2650 = new int[var4][];
 
          for(var5 = 0; var5 < var4; ++var5) {
-            var6 = var1.readShort((byte)8);
+            var6 = var1.writeShort((byte)8);
             this.field2650[var5] = new int[var6];
 
             for(var7 = 0; var7 < var6; ++var7) {
-               this.field2650[var5][var7] = var1.readShort((byte)18);
+               this.field2650[var5][var7] = var1.writeShort((byte)18);
                if(this.field2650[var5][var7] == '\uffff') {
                   this.field2650[var5][var7] = -1;
                }
@@ -332,12 +332,12 @@ public class class226 extends class189 {
       }
 
       if(this.field2569 == 0) {
-         this.field2597 = var1.readShort((byte)105);
+         this.field2597 = var1.writeShort((byte)105);
          this.field2629 = var1.readUnsignedByte((byte)99) == 1;
       }
 
       if(this.field2569 == 1) {
-         var1.readShort((byte)108);
+         var1.writeShort((byte)108);
          var1.readUnsignedByte((byte)52);
       }
 
@@ -401,7 +401,7 @@ public class class226 extends class189 {
          this.field2631 = var1.readUnsignedByte((byte)94);
          this.field2645 = var1.readUnsignedByte((byte)94);
          this.field2630 = var1.readUnsignedByte((byte)24);
-         this.field2627 = var1.readShort((byte)41);
+         this.field2627 = var1.writeShort((byte)41);
          if(this.field2627 == '\uffff') {
             this.field2627 = -1;
          }
@@ -431,37 +431,37 @@ public class class226 extends class189 {
 
       if(this.field2569 == 6) {
          this.field2610 = 1;
-         this.field2611 = var1.readShort((byte)5);
+         this.field2611 = var1.writeShort((byte)5);
          if(this.field2611 == '\uffff') {
             this.field2611 = -1;
          }
 
          this.field2698 = 1;
-         this.field2613 = var1.readShort((byte)5);
+         this.field2613 = var1.writeShort((byte)5);
          if(this.field2613 == '\uffff') {
             this.field2613 = -1;
          }
 
-         this.field2614 = var1.readShort((byte)33);
+         this.field2614 = var1.writeShort((byte)33);
          if(this.field2614 == '\uffff') {
             this.field2614 = -1;
          }
 
-         this.field2615 = var1.readShort((byte)88);
+         this.field2615 = var1.writeShort((byte)88);
          if(this.field2615 == '\uffff') {
             this.field2615 = -1;
          }
 
-         this.field2659 = var1.readShort((byte)113);
-         this.field2618 = var1.readShort((byte)117);
-         this.field2619 = var1.readShort((byte)70);
+         this.field2659 = var1.writeShort((byte)113);
+         this.field2618 = var1.writeShort((byte)117);
+         this.field2619 = var1.writeShort((byte)70);
       }
 
       if(this.field2569 == 7) {
          this.field2671 = new int[this.field2621 * this.field2579];
          this.field2692 = new int[this.field2579 * this.field2621];
          this.field2631 = var1.readUnsignedByte((byte)122);
-         this.field2627 = var1.readShort((byte)115);
+         this.field2627 = var1.writeShort((byte)115);
          if(this.field2627 == '\uffff') {
             this.field2627 = -1;
          }
@@ -493,7 +493,7 @@ public class class226 extends class189 {
       if(this.field2570 == 2 || this.field2569 == 2) {
          this.field2652 = var1.method5667(-711334102);
          this.field2689 = var1.method5667(-1693994719);
-         var5 = var1.readShort((byte)80) & 63;
+         var5 = var1.writeShort((byte)80) & 63;
          this.field2612 |= var5 << 11;
       }
 
@@ -532,21 +532,21 @@ public class class226 extends class189 {
       var1.readUnsignedByte((byte)56);
       this.field2566 = true;
       this.field2569 = var1.readUnsignedByte((byte)82);
-      this.field2571 = var1.readShort((byte)117);
+      this.field2571 = var1.writeShort((byte)117);
       this.field2576 = var1.method5550(1069799026);
       this.field2594 = var1.method5550(1878191640);
-      this.field2579 = var1.readShort((byte)14);
+      this.field2579 = var1.writeShort((byte)14);
       if(this.field2569 == 9) {
          this.field2621 = var1.method5550(195167900);
       } else {
-         this.field2621 = var1.readShort((byte)16);
+         this.field2621 = var1.writeShort((byte)16);
       }
 
       this.field2703 = var1.readByte(-977248073);
       this.field2683 = var1.readByte(-472286124);
       this.field2572 = var1.readByte(-503557418);
       this.field2573 = var1.readByte(227307832);
-      this.field2586 = var1.readShort((byte)109);
+      this.field2586 = var1.writeShort((byte)109);
       if(this.field2586 == '\uffff') {
          this.field2586 = -1;
       } else {
@@ -555,14 +555,14 @@ public class class226 extends class189 {
 
       this.field2629 = var1.readUnsignedByte((byte)56) == 1;
       if(this.field2569 == 0) {
-         this.field2590 = var1.readShort((byte)117);
-         this.field2597 = var1.readShort((byte)117);
+         this.field2590 = var1.writeShort((byte)117);
+         this.field2597 = var1.writeShort((byte)117);
          this.field2707 = var1.readUnsignedByte((byte)76) == 1;
       }
 
       if(this.field2569 == 5) {
          this.field2602 = var1.readInt(297718403);
-         this.field2604 = var1.readShort((byte)54);
+         this.field2604 = var1.writeShort((byte)54);
          this.field2605 = var1.readUnsignedByte((byte)64) == 1;
          this.field2640 = var1.readUnsignedByte((byte)94);
          this.field2606 = var1.readUnsignedByte((byte)112);
@@ -573,35 +573,35 @@ public class class226 extends class189 {
 
       if(this.field2569 == 6) {
          this.field2610 = 1;
-         this.field2611 = var1.readShort((byte)107);
+         this.field2611 = var1.writeShort((byte)107);
          if(this.field2611 == '\uffff') {
             this.field2611 = -1;
          }
 
          this.field2616 = var1.method5550(1079436953);
          this.field2617 = var1.method5550(-739998849);
-         this.field2618 = var1.readShort((byte)84);
-         this.field2619 = var1.readShort((byte)127);
-         this.field2657 = var1.readShort((byte)14);
-         this.field2659 = var1.readShort((byte)110);
-         this.field2614 = var1.readShort((byte)22);
+         this.field2618 = var1.writeShort((byte)84);
+         this.field2619 = var1.writeShort((byte)127);
+         this.field2657 = var1.writeShort((byte)14);
+         this.field2659 = var1.writeShort((byte)110);
+         this.field2614 = var1.writeShort((byte)22);
          if(this.field2614 == '\uffff') {
             this.field2614 = -1;
          }
 
          this.field2624 = var1.readUnsignedByte((byte)18) == 1;
-         var1.readShort((byte)50);
+         var1.writeShort((byte)50);
          if(this.field2703 != 0) {
-            this.field2622 = var1.readShort((byte)37);
+            this.field2622 = var1.writeShort((byte)37);
          }
 
          if(this.field2683 != 0) {
-            var1.readShort((byte)12);
+            var1.writeShort((byte)12);
          }
       }
 
       if(this.field2569 == 4) {
-         this.field2627 = var1.readShort((byte)47);
+         this.field2627 = var1.writeShort((byte)47);
          if(this.field2627 == '\uffff') {
             this.field2627 = -1;
          }
@@ -942,7 +942,7 @@ public class class226 extends class189 {
             }
 
             class196 var13 = class146.method3363(ClientPacket.field2279, client.field761.field1340, -1762690977);
-            var13.field2338.method5689(var11, 747474969);
+            var13.field2338.writeInt(var11, 747474969);
             client.field761.method2361(var13, 869988889);
             return 1;
          } else {
@@ -1002,7 +1002,7 @@ public class class226 extends class189 {
                } else if(var0 == 3115) {
                   var16 = class85.field1115[--class85.field1117];
                   var15 = class146.method3363(ClientPacket.field2253, client.field761.field1340, -1747060578);
-                  var15.field2338.readShort(var16, (byte)-43);
+                  var15.field2338.writeShort(var16, (byte)-43);
                   client.field761.method2361(var15, 576593365);
                   return 1;
                } else if(var0 == 3116) {
@@ -1016,7 +1016,7 @@ public class class226 extends class189 {
                      return 1;
                   } else {
                      class196 var7 = class146.method3363(ClientPacket.field2214, client.field761.field1340, -2036417885);
-                     var7.field2338.readShort(1 + class234.method4198(var8, (byte)-33) + class234.method4198(var6, (byte)-28), (byte)-21);
+                     var7.field2338.writeShort(1 + class234.method4198(var8, (byte)-33) + class234.method4198(var6, (byte)-28), (byte)-21);
                      var7.field2338.method5700(var16, -927080333);
                      var7.field2338.method5627(var8, 832887722);
                      var7.field2338.method5627(var6, 1123888689);

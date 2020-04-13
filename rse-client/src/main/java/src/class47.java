@@ -14,7 +14,7 @@ public class class47 extends class35 {
 
    void method774(class309 var1, boolean var2, int var3) {
       this.field371 = new LinkedList();
-      int var4 = var1.readShort((byte)123);
+      int var4 = var1.writeShort((byte)123);
 
       for(int var5 = 0; var5 < var4; ++var5) {
          int var6 = var1.method5564((byte)-27);
@@ -29,7 +29,7 @@ public class class47 extends class35 {
 
    void method775(class309 var1, class309 var2, int var3, boolean var4, int var5) {
       this.method471(var1, var3, (byte)64);
-      int var6 = var2.readShort((byte)91);
+      int var6 = var2.writeShort((byte)91);
       this.field372 = new HashSet(var6);
 
       int var7;
@@ -45,7 +45,7 @@ public class class47 extends class35 {
          this.field372.add(var8);
       }
 
-      var7 = var2.readShort((byte)45);
+      var7 = var2.writeShort((byte)45);
       this.field370 = new HashSet(var7);
 
       for(int var11 = 0; var11 < var7; ++var11) {

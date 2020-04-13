@@ -64,7 +64,7 @@ public class class309 extends class189 {
 
    public int method5561(int var1) {
       int var2 = this.field3709[this.field3710] & 255;
-      return var2 < 128?this.readUnsignedByte((byte)53):this.readShort((byte)99) - '\u8000';
+      return var2 < 128?this.readUnsignedByte((byte)53):this.writeShort((byte)99) - '\u8000';
    }
 
    public void method5627(String var1, int var2) {
@@ -121,7 +121,7 @@ public class class309 extends class189 {
       if(this.field3709[this.field3710] < 0) {
          return this.readInt(297718403) & Integer.MAX_VALUE;
       } else {
-         int var2 = this.readShort((byte)107);
+         int var2 = this.writeShort((byte)107);
          return var2 == 32767?-1:var2;
       }
    }
@@ -141,14 +141,14 @@ public class class309 extends class189 {
       return this.field3709[++this.field3710 - 1];
    }
 
-   public void method5689(int var1, int var2) {
+   public void writeInt(int var1, int var2) {
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 24);
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 16);
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
       this.field3709[++this.field3710 - 1] = (byte)var1;
    }
 
-   public int readShort(byte var1) {
+   public int writeShort(byte var1) {
       this.field3710 += 2;
       return (this.field3709[this.field3710 - 1] & 255) + ((this.field3709[this.field3710 - 2] & 255) << 8);
    }
@@ -167,7 +167,7 @@ public class class309 extends class189 {
 
    }
 
-   public void readShort(int var1, byte var2) {
+   public void writeShort(int var1, byte var2) {
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
       this.field3709[++this.field3710 - 1] = (byte)var1;
    }
@@ -219,7 +219,7 @@ public class class309 extends class189 {
    }
 
    public int method5751(int var1) {
-      return this.field3709[this.field3710] < 0?this.readInt(297718403) & Integer.MAX_VALUE:this.readShort((byte)38);
+      return this.field3709[this.field3710] < 0?this.readInt(297718403) & Integer.MAX_VALUE:this.writeShort((byte)38);
    }
 
    public void method5727(int[] var1, int var2, int var3, int var4) {
@@ -239,8 +239,8 @@ public class class309 extends class189 {
          }
 
          this.field3710 -= 8;
-         this.method5689(var8, 747474969);
-         this.method5689(var9, 747474969);
+         this.writeInt(var8, 747474969);
+         this.writeInt(var9, 747474969);
       }
 
       this.field3710 = var5;
@@ -279,7 +279,7 @@ public class class309 extends class189 {
 
    public int method5628(int var1) {
       int var2 = this.field3709[this.field3710] & 255;
-      return var2 < 128?this.readUnsignedByte((byte)108) - 64:this.readShort((byte)72) - '\uc000';
+      return var2 < 128?this.readUnsignedByte((byte)108) - 64:this.writeShort((byte)72) - '\uc000';
    }
 
    public void method5641(String var1, short var2) {
@@ -342,16 +342,16 @@ public class class309 extends class189 {
       return ((this.field3709[this.field3710 - 1] & 255) << 8) + ((this.field3709[this.field3710 - 4] & 255) << 16) + (this.field3709[this.field3710 - 2] & 255) + ((this.field3709[this.field3710 - 3] & 255) << 24);
    }
 
-   public int method5576(int var1) {
+   public int readByteA(int var1) {
       return this.field3709[++this.field3710 - 1] - 128 & 255;
    }
 
-   public void method5582(int var1, int var2) {
+   public void writeULEShort(int var1, int var2) {
       this.field3709[++this.field3710 - 1] = (byte)var1;
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
    }
 
-   public int method5586(byte var1) {
+   public int readShortA(byte var1) {
       this.field3710 += 2;
       return (this.field3709[this.field3710 - 1] - 128 & 255) + ((this.field3709[this.field3710 - 2] & 255) << 8);
    }
@@ -366,7 +366,7 @@ public class class309 extends class189 {
       }
 
       var6 = ~var6;
-      this.method5689(var6, 747474969);
+      this.writeInt(var6, 747474969);
       return var6;
    }
 
@@ -379,7 +379,7 @@ public class class309 extends class189 {
       return (byte)(this.field3709[++this.field3710 - 1] - 128);
    }
 
-   public void method5590(int var1, int var2) {
+   public void writeLEInt(int var1, int var2) {
       this.field3709[++this.field3710 - 1] = (byte)var1;
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 16);
@@ -503,7 +503,7 @@ public class class309 extends class189 {
       BigInteger var7 = var6.modPow(var1, var2);
       byte[] var8 = var7.toByteArray();
       this.field3710 = 0;
-      this.readShort(var8.length, (byte)-102);
+      this.writeShort(var8.length, (byte)-102);
       this.method5596(var8, 0, var8.length, -1590891251);
    }
 
@@ -610,8 +610,8 @@ public class class309 extends class189 {
          }
 
          this.field3710 -= 8;
-         this.method5689(var5, 747474969);
-         this.method5689(var6, 747474969);
+         this.writeInt(var5, 747474969);
+         this.writeInt(var6, 747474969);
       }
 
    }
@@ -633,8 +633,8 @@ public class class309 extends class189 {
          }
 
          this.field3710 -= 8;
-         this.method5689(var8, 747474969);
-         this.method5689(var9, 747474969);
+         this.writeInt(var8, 747474969);
+         this.writeInt(var9, 747474969);
       }
 
       this.field3710 = var5;
@@ -644,7 +644,7 @@ public class class309 extends class189 {
       if(var1 >= 0 && var1 < 128) {
          this.readByte(var1, 1258821856);
       } else if(var1 >= 0 && var1 < '\u8000') {
-         this.readShort(var1 + '\u8000', (byte)-62);
+         this.writeShort(var1 + '\u8000', (byte)-62);
       } else {
          throw new IllegalArgumentException();
       }
@@ -666,8 +666,8 @@ public class class309 extends class189 {
          }
 
          this.field3710 -= 8;
-         this.method5689(var5, 747474969);
-         this.method5689(var6, 747474969);
+         this.writeInt(var5, 747474969);
+         this.writeInt(var6, 747474969);
       }
 
    }

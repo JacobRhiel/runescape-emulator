@@ -67,16 +67,16 @@ public class class28 implements class46 {
    public void vmethod885(class309 var1, int var2) {
       this.field176 = var1.readUnsignedByte((byte)118);
       this.field186 = var1.readUnsignedByte((byte)84);
-      this.field174 = var1.readShort((byte)25);
+      this.field174 = var1.writeShort((byte)25);
       this.field178 = var1.readUnsignedByte((byte)53);
       this.field180 = var1.readUnsignedByte((byte)24);
-      this.field177 = var1.readShort((byte)119);
+      this.field177 = var1.writeShort((byte)119);
       this.field179 = var1.readUnsignedByte((byte)90);
       this.field172 = var1.readUnsignedByte((byte)110);
-      this.field175 = var1.readShort((byte)66);
+      this.field175 = var1.writeShort((byte)66);
       this.field182 = var1.readUnsignedByte((byte)12);
       this.field184 = var1.readUnsignedByte((byte)92);
-      this.field181 = var1.readShort((byte)46);
+      this.field181 = var1.writeShort((byte)46);
       this.field183 = var1.readUnsignedByte((byte)54);
       this.field185 = var1.readUnsignedByte((byte)106);
       this.method327(-1832298319);
@@ -123,7 +123,7 @@ public class class28 implements class46 {
 
          int var9;
          if((var5 & 16) != 0) {
-            var6 = var0.method5586((byte)123);
+            var6 = var0.readShortA((byte)123);
             var7 = var0.method5587(-706114222);
             var8 = var4.field983 - (var6 - class69.field590 * 731242929 - class69.field590 * 731242929) * 64;
             var9 = var4.field973 - (var7 - class89.field1152 * 1825982697 - class89.field1152 * 1825982697) * 64;
@@ -146,7 +146,7 @@ public class class28 implements class46 {
          }
 
          if((var5 & 8) != 0) {
-            var4.field999 = var0.readShort((byte)38);
+            var4.field999 = var0.writeShort((byte)38);
             if(var4.field999 == '\uffff') {
                var4.field999 = -1;
             }
@@ -223,8 +223,8 @@ public class class28 implements class46 {
             var4.field972 = var0.method5579(-1739412623);
             var4.field1018 = var0.readByte(-536961223);
             var4.field1019 = var0.readUnsignedShort((byte)126) + client.field689;
-            var4.field1020 = var0.method5586((byte)102) + client.field689;
-            var4.field1021 = var0.readShort((byte)31);
+            var4.field1020 = var0.readShortA((byte)102) + client.field689;
+            var4.field1021 = var0.writeShort((byte)31);
             var4.field1027 = 1;
             var4.field1032 = 0;
             var4.field990 += var4.field1028[0];

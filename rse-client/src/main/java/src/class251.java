@@ -112,7 +112,7 @@ public class class251 extends class184 {
             } else if(var2 == 18) {
                var1.method5564((byte)-9);
             } else if(var2 == 19) {
-               this.field3213 = var1.readShort((byte)108);
+               this.field3213 = var1.writeShort((byte)108);
             } else if(var2 == 21) {
                var1.readInt(297718403);
             } else if(var2 == 22) {

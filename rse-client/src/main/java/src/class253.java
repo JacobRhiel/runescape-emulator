@@ -22,15 +22,15 @@ public class class253 extends class184 {
 
    void method4468(class309 var1, int var2, byte var3) {
       if(var2 == 1) {
-         this.field3241 = var1.readShort((byte)103);
+         this.field3241 = var1.writeShort((byte)103);
       } else if(var2 == 2) {
-         this.field3243 = var1.readShort((byte)110);
+         this.field3243 = var1.writeShort((byte)110);
       } else if(var2 == 4) {
-         this.field3247 = var1.readShort((byte)21);
+         this.field3247 = var1.writeShort((byte)21);
       } else if(var2 == 5) {
-         this.field3249 = var1.readShort((byte)116);
+         this.field3249 = var1.writeShort((byte)116);
       } else if(var2 == 6) {
-         this.field3238 = var1.readShort((byte)59);
+         this.field3238 = var1.writeShort((byte)59);
       } else if(var2 == 7) {
          this.field3250 = var1.readUnsignedByte((byte)90);
       } else if(var2 == 8) {
@@ -44,8 +44,8 @@ public class class253 extends class184 {
             this.field3246 = new short[var4];
 
             for(var5 = 0; var5 < var4; ++var5) {
-               this.field3248[var5] = (short)var1.readShort((byte)4);
-               this.field3246[var5] = (short)var1.readShort((byte)67);
+               this.field3248[var5] = (short)var1.writeShort((byte)4);
+               this.field3246[var5] = (short)var1.writeShort((byte)67);
             }
          } else if(var2 == 41) {
             var4 = var1.readUnsignedByte((byte)36);
@@ -53,8 +53,8 @@ public class class253 extends class184 {
             this.field3237 = new short[var4];
 
             for(var5 = 0; var5 < var4; ++var5) {
-               this.field3245[var5] = (short)var1.readShort((byte)85);
-               this.field3237[var5] = (short)var1.readShort((byte)126);
+               this.field3245[var5] = (short)var1.writeShort((byte)85);
+               this.field3237[var5] = (short)var1.writeShort((byte)126);
             }
          }
       }

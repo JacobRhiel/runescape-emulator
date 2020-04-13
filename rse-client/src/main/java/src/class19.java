@@ -94,7 +94,7 @@ final class class19 implements Comparator {
                         var3 = new class309(4);
                         var3.readByte(4, 1258821856);
                         var3.readByte(class246.field3163, 1258821856);
-                        var3.readShort(0, (byte)-21);
+                        var3.writeShort(0, (byte)-21);
                         class246.field3180.vmethod5878(var3.field3709, 0, 4, 2040635438);
                      } catch (IOException var6) {
                         try {

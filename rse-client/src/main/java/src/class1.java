@@ -3,7 +3,7 @@ package src;
 final class class1 implements class0 {
 
    void method8(Integer var1, class309 var2, byte var3) {
-      var2.method5689(var1.intValue(), 747474969);
+      var2.writeInt(var1.intValue(), 747474969);
    }
 
    public Object vmethod74(class309 var1, int var2) {

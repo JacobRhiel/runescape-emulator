@@ -62,10 +62,10 @@ public class class42 implements class46 {
    public void vmethod885(class309 var1, int var2) {
       this.field324 = var1.readUnsignedByte((byte)23);
       this.field319 = var1.readUnsignedByte((byte)61);
-      this.field320 = var1.readShort((byte)94);
-      this.field321 = var1.readShort((byte)53);
-      this.field322 = var1.readShort((byte)5);
-      this.field323 = var1.readShort((byte)12);
+      this.field320 = var1.writeShort((byte)94);
+      this.field321 = var1.writeShort((byte)53);
+      this.field322 = var1.writeShort((byte)5);
+      this.field323 = var1.writeShort((byte)12);
       this.method662(-1986942295);
    }
 

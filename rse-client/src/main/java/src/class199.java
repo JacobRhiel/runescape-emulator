@@ -122,13 +122,13 @@ public class class199 implements class203 {
             byte[] var1 = class193.field2318.method3406(484192233);
             class309 var2 = new class309(var1);
             var2.readInt(297718403);
-            class80.field1044 = var2.readShort((byte)18);
+            class80.field1044 = var2.writeShort((byte)18);
             class324.field3837 = new class80[class80.field1044];
 
             class80 var4;
             for(int var3 = 0; var3 < class80.field1044; var4.field1054 = var3++) {
                var4 = class324.field3837[var3] = new class80();
-               var4.field1040 = var2.readShort((byte)105);
+               var4.field1040 = var2.writeShort((byte)105);
                var4.field1049 = var2.readInt(297718403);
                var4.field1051 = var2.method5667(-1936658852);
                var4.field1052 = var2.method5667(-1867077083);

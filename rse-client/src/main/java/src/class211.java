@@ -246,8 +246,8 @@ public class class211 extends class124 {
 
       class196 var6 = class146.method3363(ClientPacket.field2257, client.field761.field1340, -1841052897);
       var6.field2338.readByte(class74.method1327(2146557474), 1258821856);
-      var6.field2338.readShort(class37.field277, (byte)-19);
-      var6.field2338.readShort(class221.field2525, (byte)-47);
+      var6.field2338.writeShort(class37.field277, (byte)-19);
+      var6.field2338.writeShort(class221.field2525, (byte)-47);
       client.field761.method2361(var6, 1287850145);
       class70.field596 = null;
 

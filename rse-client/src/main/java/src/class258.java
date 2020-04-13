@@ -11,7 +11,7 @@ public class class258 extends class184 {
 
    void method4537(class309 var1, int var2, int var3) {
       if(var2 == 1) {
-         this.field3293 = var1.readShort((byte)33);
+         this.field3293 = var1.writeShort((byte)33);
          this.field3290 = var1.readUnsignedByte((byte)119);
          this.field3287 = var1.readUnsignedByte((byte)127);
       }

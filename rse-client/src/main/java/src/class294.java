@@ -56,7 +56,7 @@ public class class294 extends class286 {
 
    public final void method5274(class309 var1, int var2) {
       class292 var3 = new class292(var1.method5667(-1167599777), this.field3628);
-      int var4 = var1.readShort((byte)77);
+      int var4 = var1.writeShort((byte)77);
       byte var5 = var1.readByte(-192813369);
       boolean var6 = false;
       if(var5 == -128) {
@@ -102,7 +102,7 @@ public class class294 extends class286 {
 
          for(int var6 = 0; var6 < var5; ++var6) {
             class282 var7 = (class282)this.method5123(new class292(var1.method5667(-287488759), this.field3628), -2072014204);
-            int var8 = var1.readShort((byte)97);
+            int var8 = var1.writeShort((byte)97);
             var7.method5213(var8, ++this.field3634 - 1, 1813955816);
             var7.field3611 = var1.readByte(-152380441);
             var1.method5667(-2052410358);

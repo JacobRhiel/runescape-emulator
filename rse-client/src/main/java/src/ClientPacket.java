@@ -301,81 +301,81 @@ public class ClientPacket implements class190 {
                class196 var11;
                if(var0 == 1) {
                   var11 = class146.method3363(field2264, client.field761.field1340, -1962484155);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-86);
-                  var11.field2338.readShort(var3, (byte)-99);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-86);
+                  var11.field2338.writeShort(var3, (byte)-99);
                   client.field761.method2361(var11, 1289258531);
                }
 
                if(var0 == 2) {
                   var11 = class146.method3363(field2280, client.field761.field1340, -1799066638);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-23);
-                  var11.field2338.readShort(var3, (byte)-37);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-23);
+                  var11.field2338.writeShort(var3, (byte)-37);
                   client.field761.method2361(var11, 308217558);
                }
 
                if(var0 == 3) {
                   var11 = class146.method3363(field2278, client.field761.field1340, -1933357284);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-53);
-                  var11.field2338.readShort(var3, (byte)-107);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-53);
+                  var11.field2338.writeShort(var3, (byte)-107);
                   client.field761.method2361(var11, 1857256302);
                }
 
                if(var0 == 4) {
                   var11 = class146.method3363(field2226, client.field761.field1340, -1944215438);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-13);
-                  var11.field2338.readShort(var3, (byte)-86);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-13);
+                  var11.field2338.writeShort(var3, (byte)-86);
                   client.field761.method2361(var11, 1807533371);
                }
 
                if(var0 == 5) {
                   var11 = class146.method3363(field2269, client.field761.field1340, -1770223439);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-31);
-                  var11.field2338.readShort(var3, (byte)-49);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-31);
+                  var11.field2338.writeShort(var3, (byte)-49);
                   client.field761.method2361(var11, 1292154078);
                }
 
                if(var0 == 6) {
                   var11 = class146.method3363(field2230, client.field761.field1340, -1803468383);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-127);
-                  var11.field2338.readShort(var3, (byte)-83);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-127);
+                  var11.field2338.writeShort(var3, (byte)-83);
                   client.field761.method2361(var11, 1862931906);
                }
 
                if(var0 == 7) {
                   var11 = class146.method3363(field2256, client.field761.field1340, -1884252436);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-56);
-                  var11.field2338.readShort(var3, (byte)-18);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-56);
+                  var11.field2338.writeShort(var3, (byte)-18);
                   client.field761.method2361(var11, 1971129685);
                }
 
                if(var0 == 8) {
                   var11 = class146.method3363(field2262, client.field761.field1340, -1821253312);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-92);
-                  var11.field2338.readShort(var3, (byte)-5);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-92);
+                  var11.field2338.writeShort(var3, (byte)-5);
                   client.field761.method2361(var11, 1274259103);
                }
 
                if(var0 == 9) {
                   var11 = class146.method3363(field2223, client.field761.field1340, -1751113783);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-100);
-                  var11.field2338.readShort(var3, (byte)-54);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-100);
+                  var11.field2338.writeShort(var3, (byte)-54);
                   client.field761.method2361(var11, 641920884);
                }
 
                if(var0 == 10) {
                   var11 = class146.method3363(field2255, client.field761.field1340, -1852646181);
-                  var11.field2338.method5689(var1, 747474969);
-                  var11.field2338.readShort(var2, (byte)-115);
-                  var11.field2338.readShort(var3, (byte)-53);
+                  var11.field2338.writeInt(var1, 747474969);
+                  var11.field2338.writeShort(var2, (byte)-115);
+                  var11.field2338.writeShort(var3, (byte)-53);
                   client.field761.method2361(var11, 750117527);
                }
 

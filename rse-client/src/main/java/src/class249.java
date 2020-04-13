@@ -9,7 +9,7 @@ public class class249 extends class184 {
 
    void method4418(class309 var1, int var2, int var3) {
       if(var2 == 2) {
-         this.field3197 = var1.readShort((byte)6);
+         this.field3197 = var1.writeShort((byte)6);
       }
 
    }

@@ -85,14 +85,14 @@ public class class99 {
 
          class309 var25 = new class309(var3);
          var25.readByte(2, 1258821856);
-         var25.readShort(var4, (byte)-31);
+         var25.writeShort(var4, (byte)-31);
          Iterator var26 = this.field1283.entrySet().iterator();
 
          while(var26.hasNext()) {
             Entry var14 = (Entry)var26.next();
             int var15 = ((Integer)var14.getKey()).intValue();
             if(this.field1282[var15]) {
-               var25.readShort(var15, (byte)-102);
+               var25.writeShort(var15, (byte)-102);
                Object var9 = var14.getValue();
                class3 var10 = class3.method38(var9.getClass(), -1981111471);
                var25.readByte(var10.field9, 1258821856);
@@ -141,7 +141,7 @@ public class class99 {
                   int var10;
                   int var17;
                   if(var16 >= 2) {
-                     var17 = var15.readShort((byte)34);
+                     var17 = var15.writeShort((byte)34);
                      var8 = 0;
 
                      while(true) {
@@ -149,7 +149,7 @@ public class class99 {
                            break label229;
                         }
 
-                        var9 = var15.readShort((byte)68);
+                        var9 = var15.writeShort((byte)68);
                         var10 = var15.readUnsignedByte((byte)89);
                         class3 var11 = (class3)class16.method159(class3.method46(1220518321), var10, -1609956543);
                         Object var12 = var11.method42(var15, (byte)22);
@@ -160,17 +160,17 @@ public class class99 {
                         ++var8;
                      }
                   } else {
-                     var17 = var15.readShort((byte)32);
+                     var17 = var15.writeShort((byte)32);
 
                      for(var8 = 0; var8 < var17; ++var8) {
-                        var9 = var15.readShort((byte)30);
+                        var9 = var15.writeShort((byte)30);
                         var10 = var15.readInt(297718403);
                         if(this.field1282[var9]) {
                            this.field1283.put(Integer.valueOf(var9), Integer.valueOf(var10));
                         }
                      }
 
-                     var8 = var15.readShort((byte)44);
+                     var8 = var15.writeShort((byte)44);
                      var9 = 0;
 
                      while(true) {
@@ -178,7 +178,7 @@ public class class99 {
                            break label229;
                         }
 
-                        var15.readShort((byte)105);
+                        var15.writeShort((byte)105);
                         var15.method5667(-754295191);
                         ++var9;
                      }

@@ -18,7 +18,7 @@ public class class291 extends class286 {
             boolean var4 = var1.readUnsignedByte((byte)125) == 1;
             class292 var5 = new class292(var1.method5667(-1886250135), this.field3617);
             class292 var6 = new class292(var1.method5667(-283030505), this.field3617);
-            int var7 = var1.readShort((byte)56);
+            int var7 = var1.writeShort((byte)56);
             int var8 = var1.readUnsignedByte((byte)66);
             int var9 = var1.readUnsignedByte((byte)61);
             boolean var10 = (var9 & 2) != 0;

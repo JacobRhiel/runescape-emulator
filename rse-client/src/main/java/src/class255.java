@@ -28,7 +28,7 @@ public class class255 extends class184 {
             this.field3264 = new int[var4];
 
             for(var5 = 0; var5 < var4; ++var5) {
-               this.field3264[var5] = var1.readShort((byte)76);
+               this.field3264[var5] = var1.writeShort((byte)76);
             }
          } else if(var2 == 3) {
             this.field3270 = true;
@@ -38,8 +38,8 @@ public class class255 extends class184 {
             this.field3265 = new short[var4];
 
             for(var5 = 0; var5 < var4; ++var5) {
-               this.field3267[var5] = (short)var1.readShort((byte)91);
-               this.field3265[var5] = (short)var1.readShort((byte)37);
+               this.field3267[var5] = (short)var1.writeShort((byte)91);
+               this.field3265[var5] = (short)var1.writeShort((byte)37);
             }
          } else if(var2 == 41) {
             var4 = var1.readUnsignedByte((byte)40);
@@ -47,11 +47,11 @@ public class class255 extends class184 {
             this.field3261 = new short[var4];
 
             for(var5 = 0; var5 < var4; ++var5) {
-               this.field3259[var5] = (short)var1.readShort((byte)118);
-               this.field3261[var5] = (short)var1.readShort((byte)80);
+               this.field3259[var5] = (short)var1.writeShort((byte)118);
+               this.field3261[var5] = (short)var1.writeShort((byte)80);
             }
          } else if(var2 >= 60 && var2 < 70) {
-            this.field3269[var2 - 60] = var1.readShort((byte)126);
+            this.field3269[var2 - 60] = var1.writeShort((byte)126);
          }
       }
 

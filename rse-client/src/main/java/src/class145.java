@@ -301,7 +301,7 @@ public final class class145 {
                var4 = class85.field1118[class85.field1119];
                String var13 = class85.field1118[class85.field1119 + 1];
                class196 var12 = class146.method3363(ClientPacket.field2283, client.field761.field1340, -2050268225);
-               var12.field2338.readShort(0, (byte)-46);
+               var12.field2338.writeShort(0, (byte)-46);
                int var14 = var12.field2338.field3710;
                var12.field2338.method5627(var4, 2081249709);
                class321.method5932(var12.field2338, var13, (byte)45);

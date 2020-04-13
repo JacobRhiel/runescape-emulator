@@ -56,22 +56,22 @@ public class class264 extends class184 {
 
    void method4691(class309 var1, int var2, int var3) {
       if(var2 == 1) {
-         this.field3404 = var1.readShort((byte)53);
+         this.field3404 = var1.writeShort((byte)53);
       } else if(var2 == 2) {
          this.field3397 = var1.method5667(-487845464);
       } else if(var2 == 4) {
-         this.field3410 = var1.readShort((byte)127);
+         this.field3410 = var1.writeShort((byte)127);
       } else if(var2 == 5) {
-         this.field3411 = var1.readShort((byte)45);
+         this.field3411 = var1.writeShort((byte)45);
       } else if(var2 == 6) {
-         this.field3429 = var1.readShort((byte)17);
+         this.field3429 = var1.writeShort((byte)17);
       } else if(var2 == 7) {
-         this.field3414 = var1.readShort((byte)13);
+         this.field3414 = var1.writeShort((byte)13);
          if(this.field3414 > 32767) {
             this.field3414 -= 65536;
          }
       } else if(var2 == 8) {
-         this.field3445 = var1.readShort((byte)10);
+         this.field3445 = var1.writeShort((byte)10);
          if(this.field3445 > 32767) {
             this.field3445 -= 65536;
          }
@@ -82,15 +82,15 @@ public class class264 extends class184 {
       } else if(var2 == 16) {
          this.field3412 = true;
       } else if(var2 == 23) {
-         this.field3423 = var1.readShort((byte)123);
+         this.field3423 = var1.writeShort((byte)123);
          this.field3425 = var1.readUnsignedByte((byte)45);
       } else if(var2 == 24) {
-         this.field3402 = var1.readShort((byte)35);
+         this.field3402 = var1.writeShort((byte)35);
       } else if(var2 == 25) {
-         this.field3426 = var1.readShort((byte)58);
+         this.field3426 = var1.writeShort((byte)58);
          this.field3428 = var1.readUnsignedByte((byte)70);
       } else if(var2 == 26) {
-         this.field3405 = var1.readShort((byte)21);
+         this.field3405 = var1.writeShort((byte)21);
       } else if(var2 >= 30 && var2 < 35) {
          this.field3419[var2 - 30] = var1.method5667(-1200201468);
          if(this.field3419[var2 - 30].equalsIgnoreCase("Hidden")) {
@@ -107,8 +107,8 @@ public class class264 extends class184 {
             this.field3407 = new short[var4];
 
             for(var5 = 0; var5 < var4; ++var5) {
-               this.field3406[var5] = (short)var1.readShort((byte)67);
-               this.field3407[var5] = (short)var1.readShort((byte)105);
+               this.field3406[var5] = (short)var1.writeShort((byte)67);
+               this.field3407[var5] = (short)var1.writeShort((byte)105);
             }
          } else if(var2 == 41) {
             var4 = var1.readUnsignedByte((byte)102);
@@ -116,45 +116,45 @@ public class class264 extends class184 {
             this.field3415 = new short[var4];
 
             for(var5 = 0; var5 < var4; ++var5) {
-               this.field3438[var5] = (short)var1.readShort((byte)80);
-               this.field3415[var5] = (short)var1.readShort((byte)22);
+               this.field3438[var5] = (short)var1.writeShort((byte)80);
+               this.field3415[var5] = (short)var1.writeShort((byte)22);
             }
          } else if(var2 == 42) {
             this.field3424 = var1.readByte(-136814251);
          } else if(var2 == 65) {
             this.field3446 = true;
          } else if(var2 == 78) {
-            this.field3441 = var1.readShort((byte)80);
+            this.field3441 = var1.writeShort((byte)80);
          } else if(var2 == 79) {
-            this.field3430 = var1.readShort((byte)92);
+            this.field3430 = var1.writeShort((byte)92);
          } else if(var2 == 90) {
-            this.field3431 = var1.readShort((byte)106);
+            this.field3431 = var1.writeShort((byte)106);
          } else if(var2 == 91) {
-            this.field3433 = var1.readShort((byte)24);
+            this.field3433 = var1.writeShort((byte)24);
          } else if(var2 == 92) {
-            this.field3422 = var1.readShort((byte)29);
+            this.field3422 = var1.writeShort((byte)29);
          } else if(var2 == 93) {
-            this.field3434 = var1.readShort((byte)80);
+            this.field3434 = var1.writeShort((byte)80);
          } else if(var2 == 95) {
-            this.field3413 = var1.readShort((byte)126);
+            this.field3413 = var1.writeShort((byte)126);
          } else if(var2 == 97) {
-            this.field3437 = var1.readShort((byte)13);
+            this.field3437 = var1.writeShort((byte)13);
          } else if(var2 == 98) {
-            this.field3440 = var1.readShort((byte)124);
+            this.field3440 = var1.writeShort((byte)124);
          } else if(var2 >= 100 && var2 < 110) {
             if(this.field3435 == null) {
                this.field3435 = new int[10];
                this.field3436 = new int[10];
             }
 
-            this.field3435[var2 - 100] = var1.readShort((byte)95);
-            this.field3436[var2 - 100] = var1.readShort((byte)86);
+            this.field3435[var2 - 100] = var1.writeShort((byte)95);
+            this.field3436[var2 - 100] = var1.writeShort((byte)86);
          } else if(var2 == 110) {
-            this.field3439 = var1.readShort((byte)108);
+            this.field3439 = var1.writeShort((byte)108);
          } else if(var2 == 111) {
-            this.field3432 = var1.readShort((byte)32);
+            this.field3432 = var1.writeShort((byte)32);
          } else if(var2 == 112) {
-            this.field3448 = var1.readShort((byte)21);
+            this.field3448 = var1.writeShort((byte)21);
          } else if(var2 == 113) {
             this.field3442 = var1.readByte(-1513150906);
          } else if(var2 == 114) {
@@ -162,13 +162,13 @@ public class class264 extends class184 {
          } else if(var2 == 115) {
             this.field3444 = var1.readUnsignedByte((byte)78);
          } else if(var2 == 139) {
-            this.field3447 = var1.readShort((byte)35);
+            this.field3447 = var1.writeShort((byte)35);
          } else if(var2 == 140) {
-            this.field3400 = var1.readShort((byte)55);
+            this.field3400 = var1.writeShort((byte)55);
          } else if(var2 == 148) {
-            this.field3449 = var1.readShort((byte)34);
+            this.field3449 = var1.writeShort((byte)34);
          } else if(var2 == 149) {
-            this.field3450 = var1.readShort((byte)65);
+            this.field3450 = var1.writeShort((byte)65);
          } else if(var2 == 249) {
             this.field3427 = class246.method4375(var1, this.field3427, -810420491);
          }

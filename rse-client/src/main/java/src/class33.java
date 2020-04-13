@@ -64,14 +64,14 @@ public class class33 implements class46 {
    public void vmethod885(class309 var1, int var2) {
       this.field233 = var1.readUnsignedByte((byte)91);
       this.field240 = var1.readUnsignedByte((byte)35);
-      this.field238 = var1.readShort((byte)52);
-      this.field235 = var1.readShort((byte)25);
-      this.field236 = var1.readShort((byte)65);
-      this.field237 = var1.readShort((byte)86);
-      this.field232 = var1.readShort((byte)18);
-      this.field239 = var1.readShort((byte)46);
-      this.field234 = var1.readShort((byte)79);
-      this.field241 = var1.readShort((byte)91);
+      this.field238 = var1.writeShort((byte)52);
+      this.field235 = var1.writeShort((byte)25);
+      this.field236 = var1.writeShort((byte)65);
+      this.field237 = var1.writeShort((byte)86);
+      this.field232 = var1.writeShort((byte)18);
+      this.field239 = var1.writeShort((byte)46);
+      this.field234 = var1.writeShort((byte)79);
+      this.field241 = var1.writeShort((byte)91);
       this.method415(-1585844448);
    }
 
