@@ -80,11 +80,13 @@ players:
           trans: ADD
         - name: icon
           type: BYTE
+          trans: NEGATE
         - name: auto
           type: BYTE
           trans: NEGATE
         - name: compressed_length
           type: BYTE
+          trans: ADD
         - name: compressed_data
           type: BYTES
 

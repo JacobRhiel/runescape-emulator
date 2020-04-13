@@ -29,8 +29,9 @@
         <module>rse-model-widget</module>
         <module>rse-network-packet-message</module>
         <module>rse-entity-movement</module>
-        <module>rse-model-viewport</module>
         <module>rse-cache-definition</module>
+        <module>rse-entity-update</module>
+        <module>rse-entity-update-player</module>
     </modules>
     <packaging>pom</packaging>
 

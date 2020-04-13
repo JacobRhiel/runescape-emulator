@@ -42,20 +42,9 @@ class RuneScapeEmulator @Inject constructor()
 
     @Inject private lateinit var worldService: WorldService
 
-    @Inject
-    private lateinit var fileStoreService: FileStoreService
-
-    @Inject
-    private lateinit var environment: RSEEnvironment
-
-    @Inject
-    private lateinit var cacheConfiguration: CacheConfiguration
-
-    @Inject private lateinit var packetConfiguration: PacketConfiguration
+    @Inject private lateinit var fileStoreService: FileStoreService
 
     @Inject private lateinit var packetService: PacketService
-
-    @Inject private lateinit var fileStore: FileStore
 
     @Inject private lateinit var engineService: CyclicEngineService
 

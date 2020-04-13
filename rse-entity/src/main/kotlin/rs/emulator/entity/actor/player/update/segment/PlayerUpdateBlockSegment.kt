@@ -7,6 +7,7 @@ import rs.emulator.buffer.type.transform.DataTransformation
 import rs.emulator.entity.actor.Direction
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.actor.update.mask.ChatMessage
+import rs.emulator.entity.actor.update.mask.ChatMessage.Companion.huffman
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.entity.update.segment.SynchronizationSegment
 import rs.emulator.world.map.old.region.chunk.Tile
@@ -93,7 +94,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
 
                 val chatMessage = other.blockBuffer.publicChat
                 val compressed = ByteArray(256)
-                val length = 0//other.world.huffman.compress(chatMessage.text, compressed)
+                val length = huffman.compress(chatMessage.text, compressed)
 
                 buf.put(
                     structure[0].type,

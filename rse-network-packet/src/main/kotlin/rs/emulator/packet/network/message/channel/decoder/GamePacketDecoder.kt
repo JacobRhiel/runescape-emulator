@@ -9,6 +9,7 @@ import io.netty.channel.ChannelHandlerContext
 import mu.KLogging
 import rs.emulator.encryption.isaac.IsaacRandom
 import rs.emulator.packet.network.StatefulFrameDecoder
+import rs.emulator.utilities.logger
 
 /**
  * @author Tom <rspsmods@gmail.com>
@@ -38,7 +39,7 @@ class GamePacketDecoder(private val random: IsaacRandom?, private val packetMeta
             //println("Packet decode request: $opcode.")
             val packetType = packetMetadata.getType(opcode)
             if (packetType == null) {
-                logger.warn("Channel {} sent message with no valid metadata: {}.", ctx.channel(), opcode)
+                logger().warn("Channel {} sent message with no valid metadata: {}.", ctx.channel(), opcode)
                 buf.skipBytes(buf.readableBytes())
                 return
             }
@@ -103,6 +104,4 @@ class GamePacketDecoder(private val random: IsaacRandom?, private val packetMeta
             }
         }
     }
-
-    companion object : KLogging()
 }

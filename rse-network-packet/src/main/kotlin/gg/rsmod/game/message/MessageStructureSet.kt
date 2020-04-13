@@ -22,8 +22,7 @@ import kotlin.collections.set
  *
  * @author Tom <rspsmods@gmail.com>
  */
-@Singleton
-class MessageStructureSet @Inject constructor(private val configuration: PacketConfiguration)
+@Singleton class MessageStructureSet @Inject constructor(private val configuration: PacketConfiguration)
 {
 
     /**

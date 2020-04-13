@@ -1,4 +1,7 @@
-package rs.emulator.model.viewport
+package rs.emulator.entity.actor.player.viewport
+
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
+import rs.emulator.entity.actor.player.Player
 
 /**
  *
@@ -6,6 +9,8 @@ package rs.emulator.model.viewport
  */
 class Viewport
 {
+
+    val localPlayers = Int2ObjectOpenHashMap<Player>()
 
     companion object
     {

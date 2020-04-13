@@ -9,6 +9,7 @@ import rs.emulator.buffer.utilities.BufferUtils.readJagexString
 import rs.emulator.buffer.utilities.BufferUtils.readString
 import rs.emulator.network.shared.NetworkConstants
 import rs.emulator.encryption.isaac.XTEA
+import rs.emulator.fileStore
 import rs.emulator.utilities.logger
 import rs.emulator.world.network.channel.encoder.WorldLoginResponseEncoder
 import rs.emulator.world.network.channel.message.WorldHandshakeResponseMessage
@@ -90,8 +91,6 @@ class WorldIsaacEncryptionDecoder
         isaacBuffer.readJagexString()
 
         isaacBuffer.skipBytes(Int.SIZE_BYTES * 3)
-
-        val fileStore = session.fileStore
 
         val crcHashes = fileStore.fetchIndexCrcHashes()
 

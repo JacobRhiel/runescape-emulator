@@ -1,4 +1,4 @@
-package rs.emulator.model.viewport
+package rs.emulator.entity.actor.player.viewport
 
 /**
  *

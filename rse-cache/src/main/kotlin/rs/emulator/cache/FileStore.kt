@@ -104,6 +104,8 @@ class FileStore @Inject constructor()
 
     }
 
+    fun fetchIndexes() = indexes.toList()
+
     fun fetchIndex(identifier: Int): IndexFile
     {
 
@@ -208,6 +210,23 @@ class FileStore @Inject constructor()
 
         //todo check if null
         return table.entries[archive.identifier]!!
+
+    }
+
+    fun fetchArchiveFileByName(indexIdentifier: Int, name: String, identifier: Int): ArchiveEntry
+    {
+
+        val index = fetchIndex(indexIdentifier)
+
+        val archive = index.fetchArchiveByName(name)
+
+        val table = archive.table
+
+        //todo memory efficiency.
+        archive.loadEntries(fetchArchiveBuffer(indexIdentifier, archive.identifier))
+
+        //todo check if null
+        return table.entries[identifier]!!
 
     }
 

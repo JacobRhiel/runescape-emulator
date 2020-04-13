@@ -5,6 +5,7 @@ import mu.KLogging
 import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.model.queue.coroutine.*
+import rs.emulator.utilities.logger
 import rs.emulator.world.map.old.region.chunk.Tile
 import kotlin.coroutines.*
 
@@ -51,7 +52,7 @@ data class QueueTask(val ctx: Any, val priority: TaskPriority) : Continuation<Un
      */
     override fun resumeWith(result: Result<Unit>) {
         nextStep = null
-        result.exceptionOrNull()?.let { e -> logger.error("Error with plugin!", e) }
+        result.exceptionOrNull()?.let { e -> logger().error("Error with plugin!", e) }
     }
 
     /**
@@ -135,7 +136,10 @@ data class QueueTask(val ctx: Any, val priority: TaskPriority) : Continuation<Un
 
     class EmptyReturnValue
 
-    companion object : KLogging() {
+    companion object
+    {
+
         val EMPTY_RETURN_VALUE = EmptyReturnValue()
+
     }
 }

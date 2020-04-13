@@ -9,7 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rse-model-viewport</artifactId>
+    <artifactId>rse-entity-update</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>rs.emulator</groupId>
+            <artifactId>rse-buffer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

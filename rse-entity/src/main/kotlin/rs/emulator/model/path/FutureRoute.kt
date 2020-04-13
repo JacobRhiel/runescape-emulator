@@ -3,6 +3,7 @@ package rs.emulator.model.path
 import com.google.common.util.concurrent.ThreadFactoryBuilder
 import mu.KLogging
 import rs.emulator.entity.actor.movement.MovementQueue
+import rs.emulator.utilities.logger
 import java.util.concurrent.Executors
 
 /**
@@ -30,13 +31,14 @@ class FutureRoute private constructor(val strategy: PathFindingStrategy, val ste
 
     lateinit var route: Route
 
-    companion object : KLogging() {
+    companion object
+    {
 
         /**
          * Future routes are handled on a separate thread. This should be defined
          * else-where, but for now we'll keep it here!
          */
-        private val executor = Executors.newSingleThreadExecutor(ThreadFactoryBuilder().setNameFormat("pathfinding-thread").setUncaughtExceptionHandler { t, e -> logger.error("Error with thread $t", e) }.build())
+        private val executor = Executors.newSingleThreadExecutor(ThreadFactoryBuilder().setNameFormat("pathfinding-thread").setUncaughtExceptionHandler { t, e -> logger().error("Error with thread $t", e) }.build())
 
         /**
          * Creates a [FutureRoute] with the given parameters and executes it on

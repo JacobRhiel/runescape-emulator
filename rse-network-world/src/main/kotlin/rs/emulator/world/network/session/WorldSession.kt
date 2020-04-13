@@ -13,11 +13,7 @@ import kotlin.random.Random
  *
  * @author Chk
  */
-class WorldSession(
-    val configuration: WorldConfiguration,
-    val fileStore: FileStore
-)
-    : NetworkSession
+class WorldSession(val configuration: WorldConfiguration) : NetworkSession
 {
 
     val credentials = WorldSessionCredentials()

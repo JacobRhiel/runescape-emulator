@@ -1,5 +1,9 @@
 package rs.emulator.entity.actor.update.mask
 
+import gg.rsmod.util.HuffmanCodec
+import rs.emulator.cache.index.IndexConfig
+import rs.emulator.fileStore
+
 /**
  * Represents a public chat message for players.
  *
@@ -21,6 +25,15 @@ package rs.emulator.entity.actor.update.mask
  * @author Tom <rspsmods@gmail.com>
  */
 data class ChatMessage(val text: String, val icon: Int, val type: ChatType, val effect: ChatEffect, val color: ChatColor) {
+
+    companion object
+    {
+        val huffman by lazy {
+            val entry = fileStore.fetchArchiveFileByName(IndexConfig.BINARY.identifier, "huffman", 0)
+            HuffmanCodec(entry.contents)
+        }
+
+    }
 
     enum class ChatType(val id: Int) {
         NONE(0),

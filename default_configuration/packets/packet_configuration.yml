@@ -157,6 +157,15 @@ outgoing_packets:
         type: INT
         order: MIDDLE
 
+  - message: rs.emulator.packet.network.message.impl.SetMapFlagMessage
+    type: FIXED
+    opcode: 25
+    structure:
+      - name: x
+        type: BYTE
+      - name: z
+        type: BYTE
+
 incoming_packets:
 
   - message: rs.emulator.packet.network.message.impl.WindowStatusMessage
@@ -244,4 +253,43 @@ incoming_packets:
       - name: movement_type
         type: BYTE
       - name: z
+        type: SHORT
+
+  - message: rs.emulator.packet.network.message.impl.MessagePublicMessage
+    type: VARIABLE_BYTE
+    opcode: 22
+    structure:
+      - name: type
+        type: BYTE
+      - name: color
+        type: BYTE
+      - name: effect
+        type: BYTE
+
+    #opcodes:
+  - message: rs.emulator.packet.network.message.impl.IfButtonMessage
+    type: FIXED
+    opcodes: 19,23,48,49,55,57,62,71,73,96
+    length: 8
+    structure:
+      - name: hash
+        type: INT
+      - name: slot
+        type: SHORT
+      - name: item
+        type: SHORT
+
+  - message: rs.emulator.packet.network.message.impl.OpHeld1Message
+    type: FIXED
+    opcode: 97
+    length: 8
+    structure:
+      - name: item
+        sign: UNSIGNED
+        order: LITTLE
+        type: SHORT
+      - name: component_hash
+        type: INT
+        order: LITTLE
+      - name: slot
         type: SHORT

@@ -35,14 +35,16 @@ class MessageDecoderSet {
         put(MoveGameClickMessage::class.java, MoveGameClickDecoder(), ClickMapHandler(), structures)
         put(MoveMinimapClickMessage::class.java, MoveMinimapClickDecoder(), ClickMinimapHandler(), structures)
         put(OpHeldDMessage::class.java, OpHeldDDecoder(), OpHeldDHandler(), structures)
+        put(MessagePublicMessage::class.java, MessagePublicDecoder(), MessagePublicHandler(), structures)
+        put(IfButtonMessage::class.java, IfButton1Decoder(), IfButton1Handler(), structures)
+        put(OpHeld1Message::class.java, OpHeld1Decoder(), OpHeld1Handler(), structures)
+
         /*put(EventCameraPositionMessage::class.java, EventCameraPositionDecoder(), EventCameraPositionHandler(), structures)
         put(EventMouseIdleMessage::class.java, EventMouseIdleDecoder(), EventMouseIdleHandler(), structures)
 
 
         put(DetectModifiedClientMessage::class.java, DetectModifiedClientDecoder(), DetectModifiedClientHandler(), structures)
         put(WindowStatusMessage::class.java, WindowStatusDecoder(), WindowStatusHandler(), structures)
-
-        put(MessagePublicMessage::class.java, MessagePublicDecoder(), MessagePublicHandler(), structures)
         put(UpdateAppearanceMessage::class.java, UpdateAppearanceDecoder(), UpdateAppearanceHandler(), structures)
 
         put(ClanJoinChatLeaveChatMessage::class.java, ClanJoinChatLeaveChatDecoder(), ClanJoinChatLeaveHandler(), structures)
@@ -51,7 +53,6 @@ class MessageDecoderSet {
         put(ClickWorldMapMessage::class.java, ClickWorldMapDecoder(), ClickWorldMapHandler(), structures)
 
         put(CloseModalMessage::class.java, CloseModalDecoder(), CloseMainComponentHandler(), structures)
-        put(IfButtonMessage::class.java, IfButton1Decoder(), IfButton1Handler(), structures)
         put(IfButtonDMessage::class.java, IfButtonDDecoder(), IfButtonDHandler(), structures)
 
         put(ResumePauseButtonMessage::class.java, ResumePauseButtonDecoder(), ResumePauseButtonHandler(), structures)
@@ -66,8 +67,6 @@ class MessageDecoderSet {
         put(OpLoc4Message::class.java, OpLoc4Decoder(), OpLoc4Handler(), structures)
         put(OpLoc5Message::class.java, OpLoc5Decoder(), OpLoc5Handler(), structures)
         put(OpLoc6Message::class.java, OpLoc6Decoder(), OpLoc6Handler(), structures)
-
-        put(OpHeld1Message::class.java, OpHeld1Decoder(), OpHeld1Handler(), structures)
         put(OpHeld2Message::class.java, OpHeld2Decoder(), OpHeld2Handler(), structures)
         put(OpHeld3Message::class.java, OpHeld3Decoder(), OpHeld3Handler(), structures)
         put(OpHeld4Message::class.java, OpHeld4Decoder(), OpHeld4Handler(), structures)

@@ -5,6 +5,7 @@ import rs.emulator.engine.task.EngineTask
 import rs.emulator.entity.actor.Actor
 import rs.emulator.world.WorldRepository
 import rs.emulator.packet.task.*
+import rs.emulator.utilities.logger
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Phaser
 
@@ -56,12 +57,11 @@ class ParallelSynchronizationTask(private val executor: ExecutorService) : Engin
             try {
                 task.run(pawn)
             } catch (e: Exception) {
-                logger.error(e) { "Error with task ${this::class.java.simpleName} for $pawn." }
+                logger().error(e) { "Error with task ${this::class.java.simpleName} for $pawn." }
             } finally {
                 phaser.arriveAndDeregister()
             }
         }
     }
 
-    companion object : KLogging()
 }

@@ -53,7 +53,6 @@ abstract class GameObject : Entity
      */
     fun getTransform(player: Player): Int {
         val def = getDef()
-
         if (def.varbit != -1) {
             val varbitDef: VarBitDefinition = definition().find(def.varbit)
             val state = player.varps.getBit(varbitDef.identifier, varbitDef.leastSignificantBit, varbitDef.mostSignificantBit)

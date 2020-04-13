@@ -22,21 +22,13 @@ import rs.emulator.cache.FileStore
 
         fileStore.init()
 
-        store = fileStore
-
     }
 
     override fun shutDown()
     {
 
-        //fileStore.close()
-
-    }
-
-    companion object
-    {
-
-        lateinit var store: FileStore
+        //todo add to fileStore.close()
+        fileStore.fetchIndexes().forEach { it.close() }
 
     }
 

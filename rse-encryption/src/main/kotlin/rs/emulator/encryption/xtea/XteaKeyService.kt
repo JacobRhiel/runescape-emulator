@@ -3,6 +3,7 @@ package rs.emulator.encryption.xtea
 import com.google.gson.Gson
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 import mu.KLogging
+import rs.emulator.utilities.logger
 import java.io.FileNotFoundException
 import java.nio.file.*
 
@@ -38,7 +39,7 @@ class XteaKeyService
 
     fun get(region: Int): IntArray {
         if (keys[region] == null) {
-            logger.trace { "No XTEA keys found for region $region." }
+            logger().trace { "No XTEA keys found for region $region." }
             keys[region] = EMPTY_KEYS
         }
         return keys[region]!!
@@ -79,7 +80,7 @@ class XteaKeyService
         }*/
 
         val validKeys = totalRegions - missingKeys.size
-        logger.info("loaded {} xtea keys.", keys.size)
+        logger().info("loaded {} xtea keys.", keys.size)
         //logger.info("Loaded {} / {} ({}%) XTEA keys.", validKeys, totalRegions,
               //  String.format("%.2f", (validKeys.toDouble() * 100.0) / totalRegions.toDouble()))
     }
@@ -113,7 +114,8 @@ class XteaKeyService
         }
     }
 
-    companion object : KLogging() {
+    companion object
+    {
         val EMPTY_KEYS = intArrayOf(0, 0, 0, 0)
     }
 }

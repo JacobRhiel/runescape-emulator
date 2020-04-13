@@ -7,6 +7,7 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToByteEncoder
 import mu.KLogging
 import rs.emulator.encryption.isaac.IsaacRandom
+import rs.emulator.utilities.logger
 import java.text.DecimalFormat
 
 /**
@@ -17,10 +18,10 @@ class GamePacketEncoder(private val random: IsaacRandom?) : MessageToByteEncoder
     override fun encode(ctx: ChannelHandlerContext, msg: GamePacket, out: ByteBuf)
     {
         if (msg.type == PacketType.VARIABLE_BYTE && msg.length >= 256) {
-            logger.error("Message length {} too long for 'variable-byte' packet on channel {}.", DecimalFormat().format(msg.length), ctx.channel())
+            logger().error("Message length {} too long for 'variable-byte' packet on channel {}.", DecimalFormat().format(msg.length), ctx.channel())
             return
         } else if (msg.type == PacketType.VARIABLE_SHORT && msg.length >= 65536) {
-            logger.error("Message length {} too long for 'variable-short' packet on channel {}.", DecimalFormat().format(msg.length), ctx.channel())
+            logger().error("Message length {} too long for 'variable-short' packet on channel {}.", DecimalFormat().format(msg.length), ctx.channel())
             return
         }
         out.writeByte((msg.opcode + (random?.nextInt() ?: 0)) and 0xFF)
@@ -33,7 +34,5 @@ class GamePacketEncoder(private val random: IsaacRandom?) : MessageToByteEncoder
         out.writeBytes(msg.payload)
         msg.payload.release()
     }
-
-    companion object : KLogging()
 
 }

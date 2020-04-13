@@ -54,18 +54,20 @@ class ArchiveFile(
 
     }
 
-    fun loadEntries(reader: BufferedReader): BufferedReader
+    fun loadEntries(reader: BufferedReader)
     {
 
         val entries = table.entries.keys.toIntArray()
 
-
         val buffer = decompress(reader, null)
 
-        if(!checkCompression()) return BufferedReader(Unpooled.EMPTY_BUFFER)
+        if(!checkCompression()) return
 
         if(entries.size == 1)
+        {
             table.entries.values.first()?.contents = buffer.byteArray()
+            return
+        }
 
         buffer.markReaderIndex(buffer.readableBytes - 1)
 
@@ -113,8 +115,6 @@ class ArchiveFile(
             table.entries[entries[i]]?.contents = fileContents[i]!!
             //println("file: " + i + ", " + table.entries[entries[i]]?.contents?.toTypedArray()?.contentDeepToString())
         }
-
-        return buffer
 
     }
 

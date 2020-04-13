@@ -3,6 +3,7 @@ package rs.emulator.packet.network.message
 import gg.rsmod.game.message.MessageEncoder
 import rs.emulator.packet.network.message.impl.RunClientScriptMessage
 import mu.KLogging
+import rs.emulator.utilities.logger
 
 /**
  * @author Tom <rspsmods@gmail.com>
@@ -38,7 +39,7 @@ class RunClientScriptEncoder : MessageEncoder<RunClientScriptMessage>() {
                         args.add((value.toInt() shr 8).toByte())
                         args.add(value.toByte())
                     }
-                    else -> logger.error("Invalid argument type {} for script {}.", value::class.java, message.id)
+                    else -> logger().error("Invalid argument type {} for script {}.", value::class.java, message.id)
                 }
             }
             args.toByteArray()
@@ -46,5 +47,4 @@ class RunClientScriptEncoder : MessageEncoder<RunClientScriptMessage>() {
         else -> throw Exception("Unhandled value key.")
     }
 
-    companion object : KLogging()
 }

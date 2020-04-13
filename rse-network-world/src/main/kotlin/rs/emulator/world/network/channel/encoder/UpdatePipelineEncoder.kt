@@ -39,7 +39,7 @@ class UpdatePipelineEncoder(private val configuration: WorldConfiguration,
 
                 js5Provider.handlers().forEach { ctx.pipeline().remove(it::class.simpleName) }
 
-                ctx.channel().attr(NetworkConstants.SESSION_KEY).set(WorldSession(configuration, fileStore))
+                ctx.channel().attr(NetworkConstants.SESSION_KEY).set(WorldSession(configuration))
 
                 ctx.channel().writeAndFlush(WorldSeedCreationMessage())
 
