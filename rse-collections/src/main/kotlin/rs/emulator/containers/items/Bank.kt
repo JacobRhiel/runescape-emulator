@@ -12,12 +12,12 @@ class Bank : ItemContainer(300) {
         if(item != null) {
             item += element
         }
-        onAddItem()
+        fireStateChange()
     }
 
     override fun removeItem(element: Item, tempListener: (Item, Item) -> Unit) {
         val isPlaceholder : Boolean = element["placeholder"]
 
-        onRemoveItem()
+        fireStateChange()
     }
 }

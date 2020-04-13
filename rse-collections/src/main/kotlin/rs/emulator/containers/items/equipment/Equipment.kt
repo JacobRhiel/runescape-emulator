@@ -39,13 +39,13 @@ class Equipment : ItemContainer(14) {
         } else {
             this[equipSlot] = element.copy()
         }
-        onAddItem()
+        fireStateChange()
     }
 
     override fun removeItem(element: Item, tempListener: (Item, Item) -> Unit) {
         val slot : Int = element["equip_slot"]
         tempListener(this[slot], Item.EMPTY_ITEM)
         this[slot] = Item.EMPTY_ITEM
-        onRemoveItem()
+        fireStateChange()
     }
 }

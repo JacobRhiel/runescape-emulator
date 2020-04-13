@@ -10,8 +10,7 @@ abstract class ItemContainer(
 
     val items: ObservableArray<Item> = ObservableArray(Array(size, init = { Item.EMPTY_ITEM }), Item.EMPTY_ITEM)
 
-    protected var onAddItem : () -> Unit = {}
-    protected var onRemoveItem : () -> Unit = {}
+    private var onStateChange : () -> Unit = {}
 
     operator fun get(slot: Int): Item = items[slot]
     operator fun set(slot: Int, item: Item) {
@@ -23,12 +22,12 @@ abstract class ItemContainer(
     abstract fun addItem(element: Item, tempListener: (Item, Item) -> Unit = { _, _ -> })
     abstract fun removeItem(element: Item, tempListener: (Item, Item) -> Unit = { _, _ -> })
 
-    fun onAddItem(body : () -> Unit) {
-        this.onAddItem = body
+    fun setStateChangeListener(body : () -> Unit) {
+        this.onStateChange = body
     }
 
-    fun onRemoveItem(body : () -> Unit) {
-        this.onRemoveItem = body
+    fun fireStateChange() {
+        onStateChange()
     }
 
     @Deprecated("Deprecated in this context", ReplaceWith("addItem"), DeprecationLevel.HIDDEN)
