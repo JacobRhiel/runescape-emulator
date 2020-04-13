@@ -26,13 +26,15 @@ class DatabaseConnection(
     fun initConnection()
     {
 
-        connection = DriverManager.getConnection(
+        /*connection = DriverManager.getConnection(
             String.format(
                 "jdbc:postgresql://%s:%d/%s?prepareThreshold=0",
                 host,
                 port,
                 database
-            ), username, password)
+            ), username, password)*/
+
+        //install local postgres whenever we do databasing.
 
         info("Successfully initialized database connection to: $host - $port - $database.")
 

@@ -4,9 +4,12 @@ import gg.rsmod.util.ServerProperties
 import io.netty.channel.Channel
 import rs.emulator.cache.definition.definition
 import rs.emulator.cache.definition.varp.VarBitDefinition
+import rs.emulator.containers.items.Inventory
+import rs.emulator.containers.items.equipment.Equipment
 import rs.emulator.encryption.xtea.XteaKeyService
 import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.movement.MovementQueue
+import rs.emulator.entity.actor.player.storage.StorageManager
 import rs.emulator.entity.actor.player.update.PlayerUpdateProtocol
 import rs.emulator.entity.actor.player.update.block.UpdateBlockSet
 import rs.emulator.entity.update.UpdateBlockType
@@ -45,6 +48,8 @@ open class Player(val channel: Channel,
     val xteaKeyService = XteaKeyService()
 
     val viewport by lazy { Viewport() }
+
+    val storageManager = StorageManager()
 
     override fun addBlock(block: UpdateBlockType) {
         val bits = playerUpdateBlocks.updateBlocks[block]!!
@@ -129,8 +134,21 @@ open class Player(val channel: Channel,
 
         channel.write(MessageGameMessage(ChatMessageType.GAME_MESSAGE.id, "", "Welcome to RuneScape Emulator."))
 
-        channel.write(UpdateInvFullMessage(interfaceId = 149, component = 0, containerKey = 93,
-                                           items = hashMapOf(Pair(4151, 1), Pair(24417, 1), Pair(24419, 1), Pair(24420, 1), Pair(24421, 1))))
+        storageManager.bind(93, Inventory()) {
+            setStateChangeListener {
+                channel.write(
+                    UpdateInvFullMessage(
+                        interfaceId = 149,
+                        component = 0,
+                        containerKey = 93,
+                        items = items.array
+                    )
+                )
+
+            }
+        }
+        storageManager.invalidateStateFor(93)
+        storageManager.bind(94, Equipment())
 
 /*
         val msg = EntityGroupMessage(7, EntityUpdate(7, this).toMessage())

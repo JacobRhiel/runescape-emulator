@@ -32,6 +32,7 @@
         <module>rse-cache-definition</module>
         <module>rse-entity-update</module>
         <module>rse-entity-update-player</module>
+        <module>rse-client</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -124,7 +125,7 @@
         <dependency>
             <groupId>io.github.microutils</groupId>
             <artifactId>kotlin-logging</artifactId>
-            <version>1.7.8</version>
+            <version>1.7.9</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

@@ -1,28 +1,25 @@
 package rs.emulator.packet.network.message
 
 import gg.rsmod.game.message.MessageEncoder
-import rs.emulator.packet.network.message.impl.UpdateInvFullMessage
 import rs.emulator.buffer.type.DataType
 import rs.emulator.buffer.type.order.DataOrder
 import rs.emulator.buffer.type.transform.DataTransformation
 import rs.emulator.packet.GamePacketBuilder
-import rs.emulator.utilities.logger
+import rs.emulator.packet.network.message.impl.UpdateInvFullMessage
 
 /**
  * @author Tom <rspsmods@gmail.com>
  */
 class UpdateInvFullEncoder : MessageEncoder<UpdateInvFullMessage>() {
 
-    override fun extract(message: UpdateInvFullMessage, key: String): Number = when (key)
-    {
+    override fun extract(message: UpdateInvFullMessage, key: String): Number = when (key) {
         "component_hash" -> message.componentHash
         "container_key" -> message.containerKey
         "item_count" -> message.items.size
         else -> throw Exception("Unhandled value key.")
     }
 
-    override fun extractBytes(message: UpdateInvFullMessage, key: String): ByteArray = when (key)
-    {
+    override fun extractBytes(message: UpdateInvFullMessage, key: String): ByteArray = when (key) {
         "items" -> {
 
             /**
@@ -31,16 +28,11 @@ class UpdateInvFullEncoder : MessageEncoder<UpdateInvFullMessage>() {
              */
             val buf = GamePacketBuilder()
             message.items.forEach { item ->
-                //if (item != null) {
-                    buf.put(DataType.SHORT, DataOrder.LITTLE, DataTransformation.ADD, item.key + 1)
-                    buf.put(DataType.BYTE, DataTransformation.NEGATE, Math.min(255, item.value))
-                    if (item.value >= 255) {
-                        buf.put(DataType.INT, DataOrder.INVERSED_MIDDLE, item.value)
-                    }
-               /* } else {
-                    buf.put(DataType.SHORT, DataTransformation.ADD, 0)
-                    buf.put(DataType.BYTE, DataTransformation.NEGATE, 0)
-                }*/
+                buf.put(DataType.SHORT, DataOrder.LITTLE, DataTransformation.ADD, item.id + 1)
+                buf.put(DataType.BYTE, DataTransformation.NEGATE, 255.coerceAtMost(item.amount))
+                if (item.amount >= 255) {
+                    buf.put(DataType.INT, DataOrder.INVERSED_MIDDLE, item.amount)
+                }
             }
             val data = ByteArray(buf.byteBuf.readableBytes())
             buf.byteBuf.readBytes(data)

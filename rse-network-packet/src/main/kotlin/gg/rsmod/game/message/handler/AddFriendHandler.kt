@@ -18,6 +18,6 @@ class AddFriendHandler : MessageHandler<AddFriendMessage>
 		println("friend: $friendAdded")
 
 		client.updateSocialLists()*/
-
+//add polars latest cache there
 	}
 }

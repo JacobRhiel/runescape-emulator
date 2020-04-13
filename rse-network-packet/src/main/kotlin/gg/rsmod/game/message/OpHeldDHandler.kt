@@ -17,6 +17,10 @@ class OpHeldDHandler : MessageHandler<OpHeldDMessage> {
 
         logger().info("Swap component item: interface={} component={}, src_slot={}, dst_slot={}", interfaceId, component, fromSlot, toSlot)
 
+        when {
+            interfaceId == 149 -> client.storageManager.inventory().swap(fromSlot, toSlot)
+        }
+
        /* client.attr[INTERACTING_ITEM_SLOT] = fromSlot
         client.attr[OTHER_ITEM_SLOT_ATTR] = toSlot
 
