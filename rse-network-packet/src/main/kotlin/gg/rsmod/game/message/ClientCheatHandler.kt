@@ -1,10 +1,10 @@
 package gg.rsmod.game.message
 
+import rs.emulator.cache.definition.definition
+import rs.emulator.cache.definition.entity.ObjDefinition
 import rs.emulator.entity.actor.player.Player
-import rs.emulator.entity.obj.ObjFactory
-import rs.emulator.entity.obj.toDefinition
+import rs.emulator.entity.obj.toItem
 import rs.emulator.packet.network.message.impl.ClientCheatMessage
-import rs.emulator.storables.Item
 
 /**
  * @author Tom <rspsmods@gmail.com>
@@ -24,7 +24,7 @@ class ClientCheatHandler : MessageHandler<ClientCheatMessage> {
         if (command.startsWith("item") && args != null) {
             val id = args[0].toInt()
             val amount = if(args.size > 1) args[1].toInt() else 1
-            val item = ObjFactory.createItem(id, amount)
+            val item = definition().find<ObjDefinition>(id).toItem(amount)
             client.storageManager.inventory().addItem(item) { empty, added ->
                 client.sendDebugMessage("Spawned $added")
             }

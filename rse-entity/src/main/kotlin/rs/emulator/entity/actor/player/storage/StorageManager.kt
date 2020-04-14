@@ -5,7 +5,7 @@ import rs.emulator.containers.ItemContainer
 import rs.emulator.containers.items.Inventory
 import rs.emulator.containers.items.equipment.Equipment
 
-class StorageManager {
+class  StorageManager {
 
     val storageList = mutableMapOf<Int, ItemContainer>()
     val storageAttributes = mutableMapOf<Int, AttributeMap>()
