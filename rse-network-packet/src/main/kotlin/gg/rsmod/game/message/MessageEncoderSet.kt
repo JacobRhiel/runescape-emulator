@@ -37,6 +37,7 @@ class MessageEncoderSet {
         put(UpdateInvPartialEncoder(), UpdateInvPartialMessage::class.java)
         put(SetMapFlagEncoder(), SetMapFlagMessage::class.java)
         put(IfSetEventsEncoder(), IfSetEventsMessage::class.java)
+        put(LogoutFullEncoder(), LogoutFullMessage::class.java)
 
         /*
         put(IfCloseSubEncoder(), IfCloseSubMessage::class.java)

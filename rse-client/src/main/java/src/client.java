@@ -1038,7 +1038,6 @@ public final class client extends class62 implements class289 {
 
                for(var9 = 0; var9 < var43; ++var9) {
                   var10 = var4.method5587(125664341);
-                  System.out.println("item id: " + var10);
                   var11 = var4.readByteN(1923226993);
                   if(var11 == 255) {
                      var11 = var4.readMEInt((byte)-7);
@@ -1921,6 +1920,7 @@ public final class client extends class62 implements class289 {
                var6 = var4.method5611(1446601986);
                var7 = var4.readInt(297718403);
                var43 = var4.method5587(-1082350877);
+               System.out.println(var6 + ", " + var7 + ", " + var43);
                if(var43 == '\uffff') {
                   var43 = -1;
                }

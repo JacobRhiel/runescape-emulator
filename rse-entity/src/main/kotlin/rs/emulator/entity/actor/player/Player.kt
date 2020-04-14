@@ -15,6 +15,7 @@ import rs.emulator.entity.actor.player.update.PlayerUpdateProtocol
 import rs.emulator.entity.actor.player.update.block.UpdateBlockSet
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.entity.actor.player.viewport.Viewport
+import rs.emulator.model.widget.InterfaceEvent
 import rs.emulator.model.widget.WidgetSet
 import rs.emulator.model.widget.root.RootWidgetType
 import rs.emulator.model.widget.viewport.ViewportWidgetType
@@ -172,6 +173,9 @@ open class Player(val channel: Channel,
     {
         channel.write(MessageGameMessage(ChatMessageType.MOD_CHAT.id, "Debug", message))
     }
+
+    fun setInterfaceEvents(interfaceId: Int, component: Int, range: IntRange, settings: EnumSet<InterfaceEvent>) = channel.write(IfSetEventsMessage(hash = ((interfaceId shl 16) or component), fromChild = range.start, toChild = range.endInclusive, setting = settings.sumBy { it.mask }))
+
 
     fun getVarp(id: Int): Int = varps.getState(id)
 
