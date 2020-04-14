@@ -4,12 +4,12 @@ import gg.rsmod.util.ServerProperties
 import io.netty.channel.Channel
 import rs.emulator.cache.definition.definition
 import rs.emulator.cache.definition.varp.VarBitDefinition
-import rs.emulator.containers.items.Inventory
-import rs.emulator.containers.items.equipment.Equipment
 import rs.emulator.encryption.xtea.XteaKeyService
 import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.movement.MovementQueue
+import rs.emulator.entity.actor.player.storage.Inventory
 import rs.emulator.entity.actor.player.storage.StorageManager
+import rs.emulator.entity.actor.player.storage.equipment.Equipment
 import rs.emulator.entity.actor.player.update.PlayerUpdateProtocol
 import rs.emulator.entity.actor.player.update.block.UpdateBlockSet
 import rs.emulator.entity.update.UpdateBlockType

@@ -1,4 +1,4 @@
-package rs.emulator.containers.items.equipment
+package rs.emulator.entity.actor.player.storage.equipment
 
 enum class EquipmentSlots(val slot : Int) {
 

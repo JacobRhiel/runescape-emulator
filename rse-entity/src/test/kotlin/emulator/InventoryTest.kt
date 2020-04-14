@@ -2,7 +2,7 @@ package rs.emulator
 
 import org.junit.Assert
 import org.junit.Test
-import rs.emulator.containers.items.Inventory
+import rs.emulator.entity.actor.player.storage.Inventory
 import rs.emulator.storables.Item
 
 class InventoryTest {

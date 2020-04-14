@@ -1,6 +1,5 @@
 package rs.emulator.containers
 
-import rs.emulator.containers.items.ItemIterator
 import rs.emulator.obersables.ObservableArray
 import rs.emulator.storables.Item
 

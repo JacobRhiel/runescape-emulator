@@ -1,4 +1,4 @@
-package rs.emulator.containers.items.equipment
+package rs.emulator.entity.actor.player.storage.equipment
 
 import rs.emulator.containers.ItemContainer
 import rs.emulator.storables.Item

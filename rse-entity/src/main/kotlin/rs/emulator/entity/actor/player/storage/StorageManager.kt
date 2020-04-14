@@ -2,8 +2,7 @@ package rs.emulator.entity.actor.player.storage
 
 import rs.emulator.attributes.AttributeMap
 import rs.emulator.containers.ItemContainer
-import rs.emulator.containers.items.Inventory
-import rs.emulator.containers.items.equipment.Equipment
+import rs.emulator.entity.actor.player.storage.equipment.Equipment
 
 class  StorageManager {
 

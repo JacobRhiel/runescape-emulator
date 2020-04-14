@@ -1,4 +1,4 @@
-package rs.emulator.containers.items
+package rs.emulator.containers
 
 import rs.emulator.obersables.ObservableArray
 import rs.emulator.storables.Item

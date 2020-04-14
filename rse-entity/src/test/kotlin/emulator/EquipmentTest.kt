@@ -2,8 +2,8 @@ package rs.emulator
 
 import org.junit.Assert
 import org.junit.Test
-import rs.emulator.containers.items.equipment.Equipment
-import rs.emulator.containers.items.equipment.EquipmentSlots
+import rs.emulator.entity.actor.player.storage.equipment.Equipment
+import rs.emulator.entity.actor.player.storage.equipment.EquipmentSlots
 import rs.emulator.storables.Item
 
 class EquipmentTest {
