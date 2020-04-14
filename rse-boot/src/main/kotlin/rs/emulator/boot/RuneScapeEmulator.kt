@@ -78,7 +78,7 @@ class RuneScapeEmulator @Inject constructor()
         WorldMap.INSTANCE = worldMap
 
         manager = ServiceManager(
-            listOf(databaseService, rsaService, fileStoreService, packetService, worldService, engineService)
+            listOf(/*databaseService, */rsaService, fileStoreService, packetService, worldService, engineService)
         )
 
         manager.startAsync().awaitHealthy()
