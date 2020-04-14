@@ -3,7 +3,7 @@ package rs.emulator.entity.actor.player.storage.equipment
 import rs.emulator.containers.ItemContainer
 import rs.emulator.storables.Item
 
-class Equipment : ItemContainer(14) {
+class Equipment : ItemContainer(11) {
 
     override fun addItem(element: Item, tempListener: (Item, Item) -> Unit) {
         val equipSlot: Int = element["equip_slot"]

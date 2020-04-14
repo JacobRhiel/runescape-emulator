@@ -1,15 +1,21 @@
 package rs.emulator.entity.actor.player.update.segment
 
-import rs.emulator.packet.GamePacketBuilder
 import rs.emulator.buffer.type.DataType
 import rs.emulator.buffer.type.order.DataOrder
 import rs.emulator.buffer.type.transform.DataTransformation
-import rs.emulator.entity.actor.Direction
+import rs.emulator.cache.definition.definition
+import rs.emulator.cache.definition.entity.IdentityKitDefinition
+import rs.emulator.cache.definition.entity.ObjDefinition
+import rs.emulator.cache.index.IndexConfig
+import rs.emulator.cache.index.archive.ArchiveConfig
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.actor.update.mask.ChatMessage
 import rs.emulator.entity.actor.update.mask.ChatMessage.Companion.huffman
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.entity.update.segment.SynchronizationSegment
+import rs.emulator.fileStore
+import rs.emulator.packet.GamePacketBuilder
+import rs.emulator.storables.Item
 import rs.emulator.world.map.old.region.chunk.Tile
 
 /**
@@ -162,38 +168,58 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
             {
                 val appBuf = GamePacketBuilder()
 
-                /*appBuf.put(DataType.BYTE, Appearance.DEFAULT.gender.id)
-                appBuf.put(DataType.BYTE, *//*other.skullIcon*//*-1)
-                appBuf.put(DataType.BYTE, *//*other.prayerIcon*//*-1)
+                appBuf.put(DataType.BYTE, 0)//gender
+                appBuf.put(DataType.BYTE, -1)//skull icon
+                appBuf.put(DataType.BYTE, -1)//prayer icon
 
-                val translation = arrayOf(0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1)
-                val arms = 6
-                val hair = 8
-                val beard = 11
+                val equipment = other.storageManager.equipment()
 
-                val equipment = arrayOf(1038, 9787, 19553, 4151, 24420, 12817, 24421, 7462, 13239, 19550, -1, -1)
+                var styles = intArrayOf(0, 0, 0, 0, 21, 0, 26, 38, 3, 33, 42, 14)
 
-                val styles = intArrayOf(-1, -1, -1, -1, 21, -1, 26, 38, 3, 33, 42, 14)
+                val e = arrayOf(1038, 9787, 19553, 4151, 24420, 12817, 24421, 7462, 13239, 19550, -1, -1)
+                val translation = arrayOf(-1, -1, -1, -1, 2, -1, 3, 5, 0, 4, 6, 1)
+                val flags = intArrayOf(6, 5, 8, 7, 6, 0, 49, 0, 6, 6, 0)
 
-                appBuf.put(DataType.BYTE, 0)
-                appBuf.put(DataType.BYTE, 0)
-                appBuf.put(DataType.BYTE, 0)
-                appBuf.put(DataType.BYTE, 0)
-                appBuf.put(DataType.BYTE, 1)
-                appBuf.put(DataType.BYTE, 21)
-                appBuf.put(DataType.BYTE, 0)
-                appBuf.put(DataType.BYTE, 1)
-                appBuf.put(DataType.BYTE, 26)
-                appBuf.put(DataType.BYTE, 1)
-                appBuf.put(DataType.BYTE, 38)
-                appBuf.put(DataType.BYTE, 1)
-                appBuf.put(DataType.BYTE, 3)
-                appBuf.put(DataType.BYTE, 1)
-                appBuf.put(DataType.BYTE, 33)
-                appBuf.put(DataType.BYTE, 1)
-                appBuf.put(DataType.BYTE, 42)
-                appBuf.put(DataType.BYTE, 1)
-                appBuf.put(DataType.BYTE, 14)
+                for(index in 0 until 12)
+                {
+
+                    //val item = equipment[if(index >= equipment.size) equipment.size - 1 else index]
+
+                    if(e[index] == -1)
+                    {
+
+                        println("iteration: $index")
+
+                        if(styles[index] == 0)
+                            appBuf.put(DataType.BYTE, 0)
+                        else
+                        {
+                            appBuf.put(DataType.BYTE, 1)
+                            appBuf.put(DataType.BYTE, styles[index])
+                            println("style : " + styles[index])
+                        }
+
+                        continue
+
+                    }
+                    else
+                    {
+
+                        if(e[index] != -1)
+                        {
+                            val id = e[index]
+
+                            appBuf.put(DataType.BYTE, (id + 512) shr 8)//flag
+
+                            appBuf.put(DataType.BYTE, (id + 512) - (((id + 512) shr 8) shl 8))//idk item hash
+
+                        }
+                        else
+                            appBuf.put(DataType.BYTE, styles[index])
+
+                    }
+
+                }
 
                 for (i in 0 until 5)
                 {
@@ -203,27 +229,16 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
 
                 val animations = intArrayOf(808, 823, 823, 820, 821, 822, 824)
 
-                *//* val weapon = other.equipment[3] // Assume slot 3 is the weapon.
-                 if (weapon != null) {
-                     val def = weapon.getDef(other.world.definitions)
-                     def.renderAnimations?.forEachIndexed { index, anim ->
-                         animations[index] = anim
-                     }
-                 }*//*
-
                 animations.forEach { anim ->
                     appBuf.put(DataType.SHORT, anim)
                 }
 
-                appBuf.putString(*//*other.username*//*"gpi")
-                appBuf.put(DataType.BYTE, *//*other.combatLevel*//*3)
+                appBuf.putString("gpi")
+                appBuf.put(DataType.BYTE, /*other.combatLevel*/3)
                 appBuf.put(DataType.SHORT, 0)//skill level
                 appBuf.put(DataType.BYTE, 0)//is hidden
-                println("appbuf: ${appBuf.byteBuf.array().toTypedArray().contentDeepToString()}")
-*/
-                val structure = blocks.updateBlocks[blockType]!!.values
 
-                appBuf.putBytesReverse(byteArrayOf(0, -1, -1, 0, 0, 0, 0, 1, 21, 0, 1, 26, 1, 38, 1, 3, 1, 33, 1, 42, 1, 14, 3, 4, 2, 3, 2, 3, 40, 3, 55, 3, 51, 3, 52, 3, 53, 3, 54, 3, 56, 71, 112, 105, 0, 3, 0, 0, 0))
+                val structure = blocks.updateBlocks[blockType]!!.values
 
                 buf.put(
                     structure[0].type,
@@ -232,7 +247,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                     appBuf.byteBuf.readableBytes()
                 )
 
-                buf.putBytes(structure[1].transformation, appBuf.byteBuf)
+                buf.putBytesReverse(structure[1].transformation, appBuf.byteBuf)
 
             }
 
@@ -336,7 +351,12 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
             UpdateBlockType.ANIMATION      ->
             {
                 val structure = blocks.updateBlocks[blockType]!!.values
-                buf.put(structure[0].type, structure[0].order, structure[0].transformation, 65535/*other.blockBuffer.animation*/)
+                buf.put(
+                    structure[0].type,
+                    structure[0].order,
+                    structure[0].transformation,
+                    65535/*other.blockBuffer.animation*/
+                )
                 buf.put(
                     structure[1].type,
                     structure[1].order,
@@ -404,21 +424,21 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                 )
             }
 
-            UpdateBlockType.UNKNOWN_1 ->
+            UpdateBlockType.UNKNOWN_1      ->
             {
 
                 buf.put(DataType.BYTE, DataOrder.BIG, DataTransformation.NEGATE, 2)
 
             }
 
-            UpdateBlockType.UNKNOWN_2 ->
+            UpdateBlockType.UNKNOWN_2      ->
             {
 
                 buf.put(DataType.SHORT, DataOrder.LITTLE, DataTransformation.ADD, 253)
 
             }
 
-            UpdateBlockType.CONTEXT_MENU ->
+            UpdateBlockType.CONTEXT_MENU   ->
             {
                 buf.putString("")
                 buf.putString("")
@@ -427,4 +447,5 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
             else                           -> throw RuntimeException("Unhandled update block type: $blockType")
         }
     }
+
 }
