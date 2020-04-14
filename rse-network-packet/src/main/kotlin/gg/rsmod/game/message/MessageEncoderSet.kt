@@ -36,10 +36,11 @@ class MessageEncoderSet {
         put(UpdateInvFullEncoder(), UpdateInvFullMessage::class.java)
         put(UpdateInvPartialEncoder(), UpdateInvPartialMessage::class.java)
         put(SetMapFlagEncoder(), SetMapFlagMessage::class.java)
+        put(IfSetEventsEncoder(), IfSetEventsMessage::class.java)
+
         /*
         put(IfCloseSubEncoder(), IfCloseSubMessage::class.java)
         put(IfSetTextEncoder(), IfSetTextMessage::class.java)
-        put(IfSetEventsEncoder(), IfSetEventsMessage::class.java)
         put(IfSetHideEncoder(), IfSetHideMessage::class.java)
         put(IfSetAnimEncoder(), IfSetAnimMessage::class.java)
         put(IfSetObjectEncoder(), IfSetObjectMessage::class.java)

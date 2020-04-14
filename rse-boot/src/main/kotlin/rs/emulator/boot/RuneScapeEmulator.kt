@@ -8,12 +8,20 @@ import com.google.inject.Guice
 import com.google.inject.Inject
 import com.google.inject.Injector
 import com.google.inject.Singleton
+import io.netty.buffer.Unpooled
+import rs.emulator.buffer.BufferedWriter
+import rs.emulator.buffer.type.DataType
 import rs.emulator.cache.FileStore
+import rs.emulator.cache.definition.definition
+import rs.emulator.cache.definition.entity.IdentityKitDefinition
+import rs.emulator.cache.index.IndexConfig
+import rs.emulator.cache.index.archive.ArchiveConfig
 import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.configuration.environment.RSEEnvironment
 import rs.emulator.database.service.JDBCPoolingService
 import rs.emulator.encryption.rsa.service.RSAService
 import rs.emulator.engine.service.CyclicEngineService
+import rs.emulator.fileStore
 import rs.emulator.fileserver.FileStoreService
 import rs.emulator.packet.PacketService
 import rs.emulator.packet.configuration.PacketConfiguration
@@ -22,6 +30,7 @@ import rs.emulator.packet.task.QueueHandlerTask
 import rs.emulator.packet.task.parallel.*
 import rs.emulator.utilities.injector.injector
 import rs.emulator.world.map.WorldMap
+import java.nio.ByteBuffer
 import java.util.concurrent.Executors
 
 /**
@@ -69,7 +78,7 @@ class RuneScapeEmulator @Inject constructor()
         WorldMap.INSTANCE = worldMap
 
         manager = ServiceManager(
-            listOf(/*databaseService, */rsaService, fileStoreService, packetService, worldService, engineService)
+            listOf(databaseService, rsaService, fileStoreService, packetService, worldService, engineService)
         )
 
         manager.startAsync().awaitHealthy()
