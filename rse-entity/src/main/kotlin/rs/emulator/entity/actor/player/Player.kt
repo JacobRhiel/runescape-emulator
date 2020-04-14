@@ -9,6 +9,7 @@ import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.movement.MovementQueue
 import rs.emulator.entity.actor.player.storage.Inventory
 import rs.emulator.entity.actor.player.storage.StorageManager
+import rs.emulator.entity.actor.player.storage.bank.Bank
 import rs.emulator.entity.actor.player.storage.equipment.Equipment
 import rs.emulator.entity.actor.player.update.PlayerUpdateProtocol
 import rs.emulator.entity.actor.player.update.block.UpdateBlockSet
@@ -144,11 +145,20 @@ open class Player(val channel: Channel,
                         items = items.array
                     )
                 )
-
             }
         }
         storageManager.invalidateStateFor(93)
         storageManager.bind(94, Equipment())
+        storageManager.bind(95, Bank()) {
+            setStateChangeListener {
+
+                channel.write(UpdateInvFullMessage(
+                    containerKey = 95,
+                    items = items.array
+                ))
+
+            }
+        }
 
 /*
         val msg = EntityGroupMessage(7, EntityUpdate(7, this).toMessage())
