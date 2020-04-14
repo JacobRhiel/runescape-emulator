@@ -166,6 +166,21 @@ outgoing_packets:
       - name: z
         type: BYTE
 
+  - message: rs.emulator.packet.network.message.IfSetEventsMessage
+    type: FIXED
+    opcode: 83
+    structure:
+      - name: from
+        type: SHORT
+      - name: hash
+        type: INT
+        order: INVERSED_MIDDLE
+      - name: setting
+        type: INT
+      - name: to
+        type: SHORT
+        trans: ADD
+
 incoming_packets:
 
   - message: rs.emulator.packet.network.message.impl.WindowStatusMessage
