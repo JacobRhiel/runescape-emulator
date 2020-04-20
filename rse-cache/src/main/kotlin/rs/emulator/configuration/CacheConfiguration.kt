@@ -4,6 +4,7 @@ import com.google.inject.*
 import rs.emulator.configuration.YamlConfiguration
 import rs.emulator.configuration.environment.RSEEnvironment
 import java.nio.file.Path
+import java.nio.file.Paths
 
 /**
  *
@@ -13,6 +14,6 @@ import java.nio.file.Path
     : YamlConfiguration("cache-configuration", environment)
 {
 
-    override fun defaultDirectory(): Path = reference.defaultDirectory().resolve("cache")
+    override fun defaultDirectory(): Path = Paths.get("./data/cache/")//reference.defaultDirectory().resolve("cache")
 
 }

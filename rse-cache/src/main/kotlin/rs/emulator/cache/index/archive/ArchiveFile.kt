@@ -2,21 +2,25 @@ package rs.emulator.cache.index.archive
 
 import io.netty.buffer.Unpooled
 import rs.emulator.buffer.BufferedReader
+import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
-import rs.emulator.cache.compression.Compressible
-import rs.emulator.cache.compression.CompressionType
+import rs.emulator.cache.compression.*
+import rs.emulator.cache.index.Saveable
+import rs.emulator.cache.index.archive.entry.ArchiveEntry
+import rs.emulator.cache.index.archive.entry.EntryData
+import rs.emulator.cache.security.Crc32
+import rs.emulator.fileStore
 import rs.emulator.utilities.logger
-
-
-
+import java.nio.ByteBuffer
 
 /**
  *
  * @author Chk
  */
 class ArchiveFile(
+    val parentIdx: Int,
     val identifier: Int
-) : Compressible()
+) : Compressible(), Saveable
 {
 
     var nameHash: Int = 0
@@ -63,7 +67,9 @@ class ArchiveFile(
 
         if(!checkCompression()) return
 
-        if(entries.size == 1)
+        if(entries.isEmpty())
+            return
+        else if(entries.size == 1)
         {
             table.entries.values.first()?.contents = buffer.byteArray()
             return
@@ -111,11 +117,92 @@ class ArchiveFile(
         }
 
         for(i in entries.indices)
-        {
             table.entries[entries[i]]?.contents = fileContents[i]!!
-            //println("file: " + i + ", " + table.entries[entries[i]]?.contents?.toTypedArray()?.contentDeepToString())
-        }
 
     }
+
+    fun fetchEntry(identifier: Int) = table.entries[identifier]
+
+    fun getOrCreateEntry(identifier: Int) = table.entries.getOrElse(identifier)
+    {
+        logger().info("Entry {} did not exist, creating..", identifier)
+        val entry = ArchiveEntry(identifier)
+        table.entries[entry.identifier] = entry
+        table.lastEntryId += entry.identifier
+        table.entryCount++
+        table.entries[identifier]!!
+    }
+
+    internal fun saveEntries() : BufferedReader
+    {
+
+        var size = 0
+
+        table.entries.forEach { size += it.value.contents.size }
+
+        val buffer = Unpooled.buffer(size + table.entries.size * 4)
+
+        val entryCount = table.entryCount
+
+        val emptyByteArray = byteArrayOf()
+
+        when (entryCount)
+        {
+            0    -> return BufferedReader(emptyByteArray)
+            1    -> buffer.writeBytes(table.entries.values.first().contents)
+            else -> table.entries.forEach { buffer.writeBytes(it.value.contents) }
+        }
+
+        val keys = table.entries.keys
+
+        table.entries.forEach { (index, entry) ->
+
+            val chunkSize = entry.contents.size
+
+            val previousChunkSize = if(keys.indexOf(index) == 0) 0 else table.entries[keys.toTypedArray()[keys.indexOf(index) - 1]]?.contents?.size ?: 0
+
+            buffer.writeInt(chunkSize - previousChunkSize)
+
+        }
+
+        buffer.writeByte(1)
+
+        return BufferedReader(buffer.copy(0, buffer.readableBytes()))
+
+    }
+
+    override fun save()
+    {
+
+        println("saving archive: $identifier - compression ${fetchCompression()}")
+
+        val reader = compress(version, fetchCompression(), saveEntries().byteArray())
+
+        println("archive bytes saved as: " + reader.byteArray().toTypedArray().contentDeepToString())
+
+        val entry = fileStore.datFile.write(parentIdx, identifier, reader.byteArray())
+
+        println("entry: ${entry.sector} - ${entry.length}")
+
+        fileStore.fetchIndex(parentIdx).writeEntry(entry)
+
+        reader.markReaderIndex()
+
+        val compression = CompressionType.compressionForOpcode(reader.getSigned(DataType.BYTE).toInt())
+
+        val compressedSize = reader.getSigned(DataType.INT).toInt()
+
+        reader.resetReaderIndex()
+
+        val length = 1 + 4 + compressedSize + (if(compression != CompressionType.NONE) 4 else 0)
+
+        val crc = Crc32()
+
+        crc.update(reader.byteArray(), 0, length)
+
+        this.crc = crc.hash
+
+    }
+
 
 }

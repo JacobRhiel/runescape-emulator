@@ -41,7 +41,11 @@ enum class IndexConfig(
 
     INSTRUMENTS(15),
 
-    WORLD_MAP(16)
+    WORLD_MAP(16),
+
+    OBJ_617(19),
+
+    META_DATA(21)
 
     ;
 

@@ -2,6 +2,7 @@ package rs.emulator.cache.index
 
 import io.netty.buffer.Unpooled
 import rs.emulator.buffer.BufferedReader
+import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
 import rs.emulator.cache.index.archive.ArchiveConfig
 import rs.emulator.cache.index.archive.ArchiveFile
@@ -18,22 +19,42 @@ class IndexTable
 
     private var archives : SortedMap<Int, ArchiveFile> = TreeMap()
 
-    var protocol: Int = 0
+    var protocol: Int = 6
 
     var version: Int = 0
 
-    var named: Boolean = false
+    var named: Boolean = true
 
     var hash: Int = 0
 
     var archiveCount = 0
 
-    fun load(reader: BufferedReader)
+    private var ids = intArrayOf()
+
+    fun addArchive(archive: ArchiveFile): ArchiveFile
+    {
+        archives[archive.identifier] = archive
+        archiveCount++
+        return archives[archive.identifier]!!
+    }
+
+    fun unload()
+    {
+        archives.clear()
+        protocol = 6
+        version = 0
+        named = true
+        hash = 0
+        archiveCount = 0
+        ids = intArrayOf()
+    }
+
+    fun load(idx: Int, reader: BufferedReader)
     {
 
         decodeHeader(reader)
 
-        generateArchiveFile(reader)
+        generateArchiveFile(idx, reader)
 
         if (named)
             assignNameHash(reader)
@@ -51,12 +72,39 @@ class IndexTable
 
     }
 
+    fun createWriter(): BufferedWriter
+    {
+
+        val writer = BufferedWriter()
+
+        encodeHeader(writer)
+
+        encodeArchiveIdentifier(writer)
+
+        if (named)
+            encodeNameHash(writer)
+
+        encodeCrc(writer)
+
+        encodeVersion(writer)
+
+        encodeArchiveFiles(writer)
+
+        encodeArchiveTableEntry(writer)
+
+        if (named)
+            encodeArchiveEntryNameHash(writer)
+
+        return writer
+
+    }
+
     private fun decodeHeader(reader: BufferedReader)
     {
 
         protocol = reader.getUnsigned(DataType.BYTE).toInt()
 
-        require(!(protocol < 5 || protocol > 7)) { "Unsupported protocol" }
+        require(!(protocol < 5 || protocol > 7)) { "Unsupported protocol: $protocol" }
 
         if(protocol >= 6)
             version = reader.getSigned(DataType.INT).toInt()
@@ -65,37 +113,55 @@ class IndexTable
 
         named = 1 and hash != 0
 
-        require(hash and 1.inv() == 0) { "Unknown flags" }
+        archiveCount = if(protocol >= 7) reader.bigSmart else reader.getUnsigned(DataType.SHORT).toInt()
 
-        assert(hash and 3.inv() == 0)
-
-        archiveCount = reader.getUnsigned(DataType.SHORT).toInt()
-
-        ids = IntArray(archiveCount)
+        ids = IntArray(archiveCount) { it.inc() - 1 }
 
     }
 
-    private lateinit var ids: IntArray
+    private fun encodeHeader(writer: BufferedWriter)
+    {
 
-    private fun generateArchiveFile(reader: BufferedReader)
+        writer.put(DataType.BYTE, protocol)
+
+        if(protocol >= 6)
+            writer.put(DataType.INT, version)
+
+        writer.put(DataType.BYTE, if(named) 1 else 0)
+
+        writer.put(DataType.SHORT, archiveCount)
+
+    }
+
+    private fun generateArchiveFile(idx: Int, reader: BufferedReader)
     {
 
         val buffer = copyBufferToReader(reader, archiveCount * Short.SIZE_BYTES)
 
+        println("sizes: " + ids.toTypedArray().contentDeepToString())
+
         for(identifier in ids.indices)
         {
 
-            val archiveId = buffer.getUnsigned(DataType.SHORT).toInt() + if(identifier == 0) 0 else ids[identifier - 1]
+            val archiveId = (if(protocol >= 7) buffer.bigSmart else buffer.getUnsigned(DataType.SHORT).toInt()) + if(identifier == 0) 0 else ids[identifier - 1]
 
             ids[identifier] = archiveId.also {
 
-                val file = ArchiveFile(it)
+                val file = ArchiveFile(idx, it)
 
                 archives[it] = file
 
             }
 
         }
+
+    }
+
+    private fun encodeArchiveIdentifier(writer: BufferedWriter)
+    {
+
+        for(identifier in archives.keys)
+            writer.put(DataType.SHORT, archives.keys.first { it == identifier })
 
     }
 
@@ -109,6 +175,17 @@ class IndexTable
             val nameHash = buffer.getSigned(DataType.INT).toInt()
 
             archives[identifier]?.nameHash = nameHash
+
+        }
+
+    }
+
+    private fun encodeNameHash(writer: BufferedWriter)
+    {
+
+        archives.forEach { (identifier, _) ->
+
+            writer.put(DataType.INT, archives[identifier]!!.nameHash)
 
         }
 
@@ -129,6 +206,17 @@ class IndexTable
 
     }
 
+    private fun encodeCrc(writer: BufferedWriter)
+    {
+
+        archives.forEach { (identifier, _) ->
+
+            writer.put(DataType.INT, archives[identifier]!!.crc)
+
+        }
+
+    }
+
     private fun assignVersion(reader: BufferedReader)
     {
 
@@ -144,6 +232,16 @@ class IndexTable
 
     }
 
+    private fun encodeVersion(writer: BufferedWriter)
+    {
+        archives.forEach { (identifier, _) ->
+
+            writer.put(DataType.INT, archives[identifier]!!.version)
+
+        }
+
+    }
+
     private fun countArchiveFiles(reader: BufferedReader)
     {
 
@@ -151,9 +249,20 @@ class IndexTable
 
         archives.forEach { (identifier, _) ->
 
-            val count = buffer.getUnsigned(DataType.SHORT).toInt()
+            val count = if(protocol >= 7) buffer.bigSmart else buffer.getUnsigned(DataType.SHORT).toInt()
 
             archives[identifier]?.table?.entryCount = count
+
+        }
+
+    }
+
+    private fun encodeArchiveFiles(writer: BufferedWriter)
+    {
+
+        archives.forEach { (identifier, _) ->
+
+            writer.put(DataType.SHORT, archives[identifier]!!.table.entryCount)
 
         }
 
@@ -173,13 +282,29 @@ class IndexTable
             for (index in 0 until count)
             {
 
-                val entryIdentifier = buffer.getUnsigned(DataType.SHORT).toInt()
+                val entryIdentifier = if(protocol >= 7) buffer.bigSmart else buffer.getUnsigned(DataType.SHORT).toInt()
 
                 table.lastEntryId += entryIdentifier
 
-                table.entries[table.lastEntryId] = ArchiveEntry(table.lastEntryId)
+                val independent = entryIdentifier != 1
+
+                table.entries[if(independent) entryIdentifier else table.lastEntryId] = ArchiveEntry(if(independent) entryIdentifier else table.lastEntryId)
 
             }
+
+        }
+
+    }
+
+    private fun encodeArchiveTableEntry(writer: BufferedWriter)
+    {
+
+        archives.forEach { (identifier, _) ->
+
+            val table = archives[identifier]?.table!!
+
+            for (index in table.entries.keys)
+                writer.put(DataType.SHORT, table.entries[index]!!.identifier)
 
         }
 
@@ -209,6 +334,20 @@ class IndexTable
 
     }
 
+    private fun encodeArchiveEntryNameHash(writer: BufferedWriter)
+    {
+
+        archives.forEach { (identifier, _) ->
+
+            val table = archives[identifier]?.table!!
+
+            for (index in table.entries.keys)
+                writer.put(DataType.INT, table.entries[index]!!.nameHash)
+
+        }
+
+    }
+
     private fun copyBufferToReader(reader: BufferedReader, length: Int) : BufferedReader
     {
 
@@ -226,7 +365,9 @@ class IndexTable
         if(!archives.filter { it.key == identifier }.any())
             logger().error("No ArchiveFile exists for config type: {}", identifier)
 
-        return archives[identifier]!!
+        println(archives.values.map { it.identifier }.toTypedArray().contentDeepToString())
+
+        return archives.values.first { it.identifier == identifier }
 
     }
 

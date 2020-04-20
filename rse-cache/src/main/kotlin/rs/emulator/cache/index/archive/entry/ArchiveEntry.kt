@@ -2,6 +2,7 @@ package rs.emulator.cache.index.archive.entry
 
 import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.type.DataType
+import rs.emulator.cache.compression.Compressible
 import rs.emulator.utilities.logger
 
 /**
@@ -10,11 +11,11 @@ import rs.emulator.utilities.logger
  */
 class ArchiveEntry(
     val identifier: Int
-)
+) : Compressible()
 {
 
     var nameHash: Int = 0
 
-    lateinit var contents: ByteArray
+    var contents: ByteArray = byteArrayOf()
 
 }

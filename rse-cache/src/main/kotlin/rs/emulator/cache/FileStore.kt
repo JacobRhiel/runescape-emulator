@@ -16,7 +16,6 @@ import rs.emulator.cache.index.archive.ArchiveConfig
 import rs.emulator.cache.index.archive.ArchiveFile
 import rs.emulator.cache.index.archive.entry.ArchiveEntry
 import rs.emulator.cache.reference.ReferenceTable
-import rs.emulator.configuration.environment.RSEEnvironment
 import rs.emulator.utilities.logger
 import java.io.File
 import java.util.*
@@ -25,22 +24,27 @@ import java.util.*
  *
  * @author Chk
  */
-@Singleton
-class FileStore @Inject constructor()
+@Singleton class FileStore @Inject constructor()
 {
 
-    @Inject
-    private lateinit var referenceTable: ReferenceTable
+    @Inject internal lateinit var referenceTable: ReferenceTable
 
-    @Inject
-    private lateinit var datFile: DataFile
-
-    @Inject private lateinit var environment: RSEEnvironment
+    @Inject internal lateinit var datFile: DataFile
 
     @Inject private lateinit var configuration: CacheConfiguration
 
     private val indexes = mutableListOf<IndexFile>()
 
+    fun close()
+    {
+
+        datFile.close()
+
+        referenceTable.close()
+
+        indexes.forEach { it.close() }
+
+    }
 
     fun init()
     {
@@ -60,8 +64,10 @@ class FileStore @Inject constructor()
 
     }
 
-    private fun load(identifier: Int)
+    internal fun load(identifier: Int)
     {
+
+        println("loading index: $identifier")
 
         val idxEntry = referenceTable.readIndex(indexes[identifier])
 
@@ -69,11 +75,33 @@ class FileStore @Inject constructor()
 
         val decompressedBuffer = indexes[identifier].decompress(idxBuffer)
 
-        indexes[identifier].indexTable.load(decompressedBuffer)
+        indexes[identifier].indexTable.load(identifier, decompressedBuffer)
 
     }
 
-    fun fetchIndexCrcHashes() = indexes.map { it.fetchCrcHash() }.toIntArray()
+    fun getOrCreateIndex(idx: IndexConfig) = getOrCreateIndex(idx.identifier)
+
+    fun getOrCreateIndex(identifier: Int)  = indexes.getOrElse(identifier) {
+        logger().info("No IndexFile exists for identifier: {}, creating..", identifier)
+        indexes.add(IndexFile(identifier, File("${configuration.defaultDirectory()}/main_file_cache.idx$identifier")))
+        indexes[identifier]
+    }
+
+    private fun createIndex(idx: IndexConfig): IndexFile = createIndex(idx.identifier)
+
+    private fun createIndex(identifier: Int): IndexFile
+    {
+
+        if(indexes.any { it.identifier == identifier })
+            return getOrCreateIndex(identifier)
+
+        indexes.add(IndexFile(identifier, File("${configuration.defaultDirectory()}/main_file_cache.idx$identifier")))
+
+        return indexes[identifier]
+
+    }
+
+    fun fetchIndexCrcHashes() = indexes.filter { it.identifier <= 20 }.map { it.fetchCrcHash() }.toIntArray()
 
     fun fetchIndexHeaderBuffer(): BufferedWriter
     {
@@ -175,7 +203,7 @@ class FileStore @Inject constructor()
         archive.loadEntries(fetchArchiveBuffer(indexConfig, archiveConfig))
 
         //todo check if null
-        return table.entries[identifier]!!
+        return table.entries.values.first { it.identifier == identifier }
 
     }
 
@@ -191,8 +219,10 @@ class FileStore @Inject constructor()
         //todo memory efficiency.
         archive.loadEntries(fetchArchiveBuffer(indexIdentifier, archiveIdentifier))
 
+        println("archive entry keys: " + table.entries.keys.toTypedArray().contentDeepToString())
+
         //todo check if null
-        return table.entries[identifier]!!
+        return table.entries.values.first { it.identifier == identifier }
 
     }
 

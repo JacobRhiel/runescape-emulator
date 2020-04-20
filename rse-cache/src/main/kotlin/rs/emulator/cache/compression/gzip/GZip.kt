@@ -1,4 +1,4 @@
-package rs.emulator.cache.compression
+package rs.emulator.cache.compression.gzip
 
 import org.apache.commons.compress.utils.IOUtils
 

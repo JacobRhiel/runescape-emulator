@@ -124,6 +124,15 @@ open class BufferedReader
             else buffer.readShort() - 0x8000
         }
 
+    val bigSmart: Int
+        get()
+        {
+            checkByteAccess()
+            val peek = buffer.getByte(buffer.readerIndex()).toInt()
+            return if(peek >= 0) buffer.readUnsignedShort() and 0xFFFF
+            else buffer.readInt() and Integer.MAX_VALUE
+        }
+
     val unsignedIntSmartShortCompat: Int
         get()
         {

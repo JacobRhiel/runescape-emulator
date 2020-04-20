@@ -6,20 +6,23 @@ import io.netty.buffer.Unpooled
 import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
+import rs.emulator.cache.index.archive.entry.EntryData
 import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.utilities.logger
 import java.io.*
+import java.nio.ByteBuffer
 import java.util.*
 
 /**
  *
  * @author Chk
  */
-@Singleton class DataFile @Inject constructor(private val cacheConfiguration: CacheConfiguration)
-    : Closeable
+@Singleton
+class DataFile @Inject constructor(private val cacheConfiguration: CacheConfiguration) : Closeable
 {
 
-    private val dat = RandomAccessFile(cacheConfiguration.defaultDirectory().resolve("main_file_cache.dat2").toFile(), "rw")
+    private val dat =
+        RandomAccessFile(cacheConfiguration.defaultDirectory().resolve("main_file_cache.dat2").toFile(), "rw")
 
     private val sectorSize = 520
 
@@ -27,7 +30,7 @@ import java.util.*
     {
 
         if (sectorId <= 0L || dat.length() / sectorSize < sectorId.toLong())
-            logger().error("bad read, dat length {}, requested sector {}", dat.length(), sectorId)
+            logger().error("bad read, index{}, dat length {}, requested sector {}", index, dat.length(), sectorId)
 
         val bufferedReader = BufferedReader(Unpooled.wrappedBuffer(ByteArray(sectorSize)))
 
@@ -41,7 +44,7 @@ import java.util.*
 
         var sector = sectorId
 
-        val headerSize: Byte = 8
+        var headerSize: Byte
 
         var currentIndex: Int
 
@@ -57,6 +60,10 @@ import java.util.*
 
             dat.seek(sectorSize.times(sector).toLong())
 
+            val archiveExceedsShort = archive > 0xFFFF
+
+            headerSize = if(archiveExceedsShort) 10 else 8
+
             var dataBlockSize = size - readBytesCount
 
             if (dataBlockSize > sectorSize - headerSize)
@@ -66,7 +73,7 @@ import java.util.*
 
             bufferedReader.markReaderIndex()
 
-            currentArchive = bufferedReader.getUnsigned(DataType.SHORT).toInt()
+            currentArchive = bufferedReader.getUnsigned(if(archiveExceedsShort) DataType.INT else DataType.SHORT).toInt()
 
             currentPart = bufferedReader.getUnsigned(DataType.SHORT).toInt()
 
@@ -74,11 +81,16 @@ import java.util.*
 
             currentIndex = bufferedReader.getUnsigned(DataType.BYTE).toInt()
 
+            println(bufferedReader.byteArray().toTypedArray().contentDeepToString())
+
             bufferedReader.resetReaderIndex()
 
+            println("idx: $index current idx: $currentIndex - archive: $archive current archive: $currentArchive - sector: $sectorId next sector: $nextSector part: $part current part: $currentPart - size: $size")
+
             if (archive != currentArchive || currentPart != part || index != currentIndex)
-                logger().error("Invalid sector read: index {} != current index {}, archive {} != current archive {}, part {} != current part {}",
-                               index, currentIndex, archive, currentArchive, part, currentPart
+                logger().error(
+                    "Invalid sector read: index {} != current index {}, archive {} != current archive {}, part {} != current part {}",
+                    index, currentIndex, archive, currentArchive, part, currentPart
                 )
 
             if (nextSector < 0 || dat.length() / sectorSize < nextSector.toLong())
@@ -97,6 +109,80 @@ import java.util.*
         val buffer = Arrays.copyOfRange(bufferedWriter.toBufferedReader().byteArray(), 0, bufferedWriter.length)
 
         return BufferedReader(Unpooled.wrappedBuffer(buffer))
+
+    }
+
+    fun write(idx: Int, archive: Int, compressedData: ByteArray): EntryData
+    {
+
+        var sector: Int
+
+        var startSector: Int
+
+        val writer = BufferedWriter(Unpooled.buffer(sectorSize))
+
+        val data = ByteBuffer.wrap(compressedData)
+
+        val length = compressedData.size
+
+        sector = ((dat.length() + (sectorSize - 1)) / sectorSize).toInt()
+
+        if (sector == 0)
+            sector = 1
+
+        startSector = sector
+
+        var part = 0
+
+        var offset = 0
+
+        while (offset < length)
+        {
+
+            var nextSector = sector + 1
+
+            var dataLength: Int
+
+            val excessArchiveId = archive > 0xFFFF
+
+            if (length - offset <= if(excessArchiveId) 510 else 512)
+                nextSector = 0
+
+            writeHeader(archive, part, sector, nextSector, idx, excessArchiveId)
+
+            dataLength = length - offset
+            if (dataLength > if(excessArchiveId) 510 else 512)
+                dataLength = if(excessArchiveId) 510 else 512
+
+            data.get(writer.toRawBufferedReader().byteArray(), 0, dataLength)
+
+            dat.write(writer.toRawBufferedReader().byteArray(), 0, dataLength)
+
+            offset += dataLength
+
+            sector = nextSector
+
+            part++
+
+        }
+
+        return EntryData(archive, startSector, compressedData.size)
+
+    }
+
+    private fun writeHeader(archive: Int, part: Int, sector: Int, nextSector: Int, idx: Int, excessArchiveId: Boolean)
+    {
+
+        val writer = BufferedWriter()
+
+        writer.put(if(excessArchiveId) DataType.INT else DataType.SHORT, archive)
+        writer.put(DataType.SHORT, part)
+        writer.put(DataType.TRI_BYTE, nextSector)
+        writer.put(DataType.BYTE, idx)
+
+        dat.seek((sectorSize * sector).toLong())
+
+        dat.write(writer.toBufferedReader().byteArray(), 0, if(excessArchiveId) 10 else 8)
 
     }
 

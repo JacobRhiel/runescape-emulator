@@ -1,4 +1,4 @@
-package rs.emulator.cache.compression
+package rs.emulator.cache.security
 
 import java.util.zip.CRC32
 

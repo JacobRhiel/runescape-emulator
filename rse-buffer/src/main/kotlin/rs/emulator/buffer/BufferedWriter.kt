@@ -12,7 +12,7 @@ import rs.emulator.buffer.utilities.DataConstants
  *
  * @author Chk
  */
-open class BufferedWriter(protected val buffer: ByteBuf = Unpooled.buffer())
+open class BufferedWriter(protected val buffer: ByteBuf = Unpooled.buffer(0))
 {
 
     /**
@@ -187,6 +187,8 @@ open class BufferedWriter(protected val buffer: ByteBuf = Unpooled.buffer())
      * @param value The value.
      */
     fun putBit(value: Int) = putBits(1, value)
+
+    fun putBits(numBits: Int, value: Boolean) = putBits(numBits, if(value) 1 else 0)
 
     /**
      * Puts `numBits` into the buffer with the value `value`.
@@ -459,6 +461,8 @@ open class BufferedWriter(protected val buffer: ByteBuf = Unpooled.buffer())
 
     }
 
-    fun toBufferedReader() : BufferedReader = BufferedReader(byteBuf.array())
+    fun toBufferedReader() : BufferedReader = BufferedReader(byteBuf.array().copyOfRange(0, byteBuf.readableBytes()))
+
+    fun toRawBufferedReader() : BufferedReader = BufferedReader(byteBuf.array())
 
 }

@@ -1,4 +1,4 @@
-package rs.emulator.cache.compression
+package rs.emulator.cache.compression.huffman
 
 class HuffmanCodec(private val sizes: ByteArray) {
 

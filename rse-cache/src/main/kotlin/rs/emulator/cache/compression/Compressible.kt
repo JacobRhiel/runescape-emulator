@@ -1,9 +1,13 @@
 package rs.emulator.cache.compression
 
 import com.google.common.primitives.Bytes
+import com.google.common.primitives.Ints
 import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
+import rs.emulator.cache.compression.bzip.BZip2
+import rs.emulator.cache.compression.gzip.GZip
+import rs.emulator.cache.security.Crc32
 import rs.emulator.encryption.isaac.XTEA
 
 /**
@@ -13,18 +17,20 @@ import rs.emulator.encryption.isaac.XTEA
 abstract class Compressible
 {
 
-    private var hash: Int = 0
+    internal var hash: Int = 0
 
     private var version: Int = 0
 
-    private var compressionType = CompressionType.NONE
+    var compressionType = CompressionType.NONE
 
-    fun compress(version: Int, compression: CompressionType, writer: BufferedWriter): BufferedReader = compress(version, compression, writer, null)
+    fun compress(version: Int, compression: CompressionType, data: ByteArray): BufferedReader = compress(version, compression, data, null)
 
-    fun compress(version: Int, compression: CompressionType, writer: BufferedWriter, keys: IntArray?): BufferedReader
+    fun compress(version: Int, compression: CompressionType, data: ByteArray, keys: IntArray?): BufferedReader
     {
 
-        val reader = writer.toBufferedReader()
+        val reader = BufferedReader(data)
+
+        val writer = BufferedWriter()
 
         var compressedData: ByteArray
 
@@ -39,14 +45,14 @@ abstract class Compressible
             }
             CompressionType.BZIP  ->
             {
-                compressedData = Bytes.concat(ByteArray(writer.readableBytes), BZip2.compress(reader.byteArray()))
+                compressedData = Bytes.concat(data, BZip2.compress(reader.byteArray()))
 
                 length = compressedData.size - 4
 
             }
             CompressionType.GZIP   ->
             {
-                compressedData = Bytes.concat(ByteArray(writer.readableBytes), GZip.compress(reader.byteArray()))
+                compressedData = Bytes.concat(Ints.toByteArray(data.size), GZip.compress(reader.byteArray()))
 
                 length = compressedData.size - 4
             }
@@ -76,10 +82,12 @@ abstract class Compressible
 
         val compressionType = CompressionType.compressionForOpcode(opcode) //todo return null
 
+        println(compressionType)
+
         val compressedLength = reader.getSigned(DataType.INT).toInt()
 
         if (compressedLength < 0 || compressedLength > 1000000)
-            throw RuntimeException("Invalid data")
+            throw RuntimeException("Invalid data: $compressedLength")
 
         val crc32 = Crc32()
 
@@ -128,6 +136,8 @@ abstract class Compressible
                 val stream = BufferedReader(decryptedData)
 
                 val decompressedLength: Int = stream.getUnsigned(DataType.INT).toInt()
+
+                println("gzip size: " + stream.byteArray().size + ", " + compressedLength)
 
                 data = GZip.decompress(stream.byteArray(), compressedLength)
 
