@@ -43,7 +43,7 @@ class Inventory : ItemContainer(28) {
             return
         }
         val slot = this.indexOfFirst { it.isIdentical(element) }
-        if(this[slot] != Item.EMPTY_ITEM) {
+        if(slot != -1 && this[slot] != Item.EMPTY_ITEM) {
             val isStackable : Boolean = element["stackable"]
             val old = this[slot]
             when {

@@ -14,6 +14,8 @@ class Viewport
 
     val localPlayers = Int2ObjectOpenHashMap<Player>()
 
+    fun coordinateOf(index: Int) = localPlayers.keys.indexOf(index)
+
     fun isSlotFree(index: Int): Boolean = idlePlayerFlags[index] and 0x1 == 0
 
     fun isSlotBlocked(index: Int) : Boolean = idlePlayerFlags[index] and 0x1 != 0

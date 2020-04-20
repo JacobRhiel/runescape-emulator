@@ -19,12 +19,6 @@ class WorldCoordinate : Coordinate
         this.pointHash = hash
     }
 
-    val topLeftRegionX: Int get() = (x shr 3) - 6
-
-    val topLeftRegionZ: Int get() = (z shr 3) - 6
-
-    val regionBase: WorldCoordinate get() = WorldCoordinate(((x shr 3) - (Chunk.MAX_VIEWPORT shr 4)) shl 3, ((z shr 3) - (Chunk.MAX_VIEWPORT shr 4)) shl 3, plane)
-
     val as30BitInteger: Int get() = (z and 0x3FFF) or ((x and 0x3FFF) shl 14) or ((plane and 0x3) shl 28)
 
     val asTileHashMultiplier: Int get() = (z shr 13) or ((x shr 13) shl 8) or ((plane and 0x3) shl 16)

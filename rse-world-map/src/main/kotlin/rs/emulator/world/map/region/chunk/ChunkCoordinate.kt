@@ -1,18 +1,21 @@
 package rs.emulator.world.map.region.chunk
 
 import rs.emulator.world.map.coordinate.WorldCoordinate
+import rs.emulator.world.map.old.region.chunk.Chunk
+import rs.emulator.world.map.region.RegionCoordinate
 import rs.emulator.world.map.region.coordinate.Coordinate
 
 /**
  *
  * @author Chk
  */
-class ChunkCoordinate(x: Int, z: Int, plane: Int = 0) : Coordinate(x, z, plane)
+class ChunkCoordinate(private val region: Int, x: Int, z: Int, plane: Int = 0) : Coordinate(x, z, plane)
 {
 
-    fun fromWorldCoordinate(x: Int, z: Int): ChunkCoordinate = ChunkCoordinate(x, z)
+    override fun toRegion(): RegionCoordinate = RegionCoordinate((region shr 8) * 64, (region and 0xff) * 64, plane)
 
-    fun fromWorldCoordinate(coordinate: WorldCoordinate): ChunkCoordinate = fromWorldCoordinate(coordinate.topLeftRegionX, coordinate.topLeftRegionZ)
+    //(x shr 6) shl 8 and z shr 6, x and 63, z and 63
+    override fun toWorld() = WorldCoordinate(x + ((region shr 8) shl 6), z + ((region and 0xFF) shl 6), plane)
 
     override fun equals(other: Any?): Boolean
     {

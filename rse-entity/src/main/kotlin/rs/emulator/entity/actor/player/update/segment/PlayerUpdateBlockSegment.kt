@@ -4,18 +4,13 @@ import rs.emulator.buffer.type.DataType
 import rs.emulator.buffer.type.order.DataOrder
 import rs.emulator.buffer.type.transform.DataTransformation
 import rs.emulator.cache.definition.definition
-import rs.emulator.cache.definition.entity.IdentityKitDefinition
-import rs.emulator.cache.definition.entity.ObjDefinition
-import rs.emulator.cache.index.IndexConfig
-import rs.emulator.cache.index.archive.ArchiveConfig
+import rs.emulator.cache.definition.entity.obj.meta.ObjMetaDataDefinition
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.actor.update.mask.ChatMessage
 import rs.emulator.entity.actor.update.mask.ChatMessage.Companion.huffman
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.entity.update.segment.SynchronizationSegment
-import rs.emulator.fileStore
 import rs.emulator.packet.GamePacketBuilder
-import rs.emulator.storables.Item
 import rs.emulator.world.map.old.region.chunk.Tile
 
 /**
@@ -180,10 +175,19 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                 val translation = arrayOf(-1, -1, -1, -1, 2, -1, 3, 5, 0, 4, 6, 1)
                 val flags = intArrayOf(6, 5, 8, 7, 6, 0, 49, 0, 6, 6, 0)
 
+                val hair = 8
+                val beard = 11
+
                 for(index in 0 until 12)
                 {
 
+                    val def: ObjMetaDataDefinition = definition().find(1038)
+
                     //val item = equipment[if(index >= equipment.size) equipment.size - 1 else index]
+
+                    val slot = def.equipment?.slot
+
+                    println(slot)
 
                     if(e[index] == -1)
                     {

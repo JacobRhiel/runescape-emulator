@@ -3,6 +3,7 @@ package rs.emulator.entity.actor.player.update.segment
 import rs.emulator.packet.GamePacketBuilder
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.update.segment.SynchronizationSegment
+import rs.emulator.world.map.region.RegionCoordinate
 
 /**
  * @author Tom <rspsmods@gmail.com>
@@ -38,4 +39,22 @@ class AddLocalPlayerSegment(private val other: Player, private val locationSegme
         buf.putBits(13, other.tile.z and 0x1FFF)
         buf.putBits(1, 1) // Requires block update
     }
+
+/*    fun movement(current: RegionCoordinate, last: RegionCoordinate) : SynchronizationSegment?
+    {
+
+        RegionCoordinate.regionDelta(current, last) { deltaX, deltaY, deltaPlane ->
+            return if (deltaX == 0 && deltaY == 0 && deltaPlane == 0) {
+                null//No update needed
+            } else if (deltaX == 0 && deltaY == 0 && deltaPlane != 0) {
+                HeightPlayerSync.create(current, last)//Change player plane
+            } else if (deltaX == -1 || deltaY == -1 || deltaX == 1 || deltaY == 1) {
+                RegionPlayerSync.create(current, last)//Move to adjacent region
+            } else {
+                MoveGlobalPlayerSync.create(current, last)//Move to a non-adjacent region
+            }
+        }
+
+    }*/
+
 }

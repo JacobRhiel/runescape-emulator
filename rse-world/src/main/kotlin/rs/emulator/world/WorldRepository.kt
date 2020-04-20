@@ -1,7 +1,7 @@
 package rs.emulator.world
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap
 import rs.emulator.entity.actor.player.Player
+import rs.emulator.world.collection.IndexedActorList
 
 /**
  *
@@ -10,6 +10,6 @@ import rs.emulator.entity.actor.player.Player
 object WorldRepository
 {
 
-    val players = Int2ObjectArrayMap<Player>()
+    val players = IndexedActorList<Player>(2048)
 
 }

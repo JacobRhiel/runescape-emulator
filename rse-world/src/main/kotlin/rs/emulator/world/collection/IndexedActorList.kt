@@ -6,20 +6,21 @@ import rs.emulator.entity.actor.Actor
  *
  * @author Chk
  */
-class IndexedActorList(capacity: Int) : ArrayList<Actor>(capacity)
+class IndexedActorList<T : Actor>(capacity: Int) : ArrayList<T>(capacity)
 {
 
-    override fun add(actor: Actor): Boolean
+    override fun add(actor: T): Boolean
     {
         val added = super.add(actor)
-        let { actor.index == indexOf(actor) }
+        val index = indexOf(actor)
+        actor.index = if(index == 0) 1 else index + 1
         return added
     }
 
-    override fun remove(actor: Actor): Boolean
+    override fun remove(actor: T): Boolean
     {
         val removed = super.remove(actor)
-        let { actor.index = -1 }
+        actor.index = -1
         return removed
     }
 

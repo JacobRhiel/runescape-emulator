@@ -80,6 +80,19 @@ open class Player(val channel: Channel,
 
         updateProtocol.initializeGPI(this)
 
+        storageManager.bind(94, Equipment()) {
+
+            setStateChangeListener {
+                channel.write(
+                    UpdateInvFullMessage(
+                        containerKey = 94,
+                        items = items.array
+                    )
+                )
+            }
+
+        }
+
         //addBlock(UpdateBlockType.ANIMATION)
 
         addBlock(UpdateBlockType.APPEARANCE)
@@ -149,7 +162,7 @@ open class Player(val channel: Channel,
             }
         }
         storageManager.invalidateStateFor(93)
-        storageManager.bind(94, Equipment())
+
         storageManager.bind(95, Bank()) {
             setStateChangeListener {
 

@@ -9,17 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rse-entity-update</artifactId>
+    <artifactId>rse-tools</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>rs.emulator</groupId>
-            <artifactId>rse-buffer</artifactId>
+            <artifactId>rse-cache</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>rs.emulator</groupId>
-            <artifactId>rse-entity</artifactId>
+            <artifactId>rse-cache-definition</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

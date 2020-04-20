@@ -30,15 +30,20 @@ class Equipment : ItemContainer(11) {
                     this[EquipmentSlots.WEAPON.slot] = Item.EMPTY_ITEM
                 }
             }
+            else -> {
+                val stackable : Boolean = this[equipSlot]["stackable"]
+                val old = this[equipSlot]
+                if(this[equipSlot] == Item.EMPTY_ITEM) {
+                    this[equipSlot] = element.copy()
+                } else if(stackable && isStackable) {
+                    this[equipSlot] += element
+                } else {
+                    this[equipSlot] = element.copy()
+                }
+                tempListener(old, this[equipSlot])
+            }
         }
-        val stackable : Boolean = this[equipSlot]["stackable"]
-        if(this[equipSlot] == Item.EMPTY_ITEM) {
-            this[equipSlot] = element.copy()
-        } else if(stackable && isStackable) {
-            this[equipSlot] += element
-        } else {
-            this[equipSlot] = element.copy()
-        }
+
         fireStateChange()
     }
 

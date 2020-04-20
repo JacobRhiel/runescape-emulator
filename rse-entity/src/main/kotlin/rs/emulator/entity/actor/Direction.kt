@@ -117,5 +117,6 @@ enum class Direction(val orientationValue: Int, val playerWalkValue: Int, val np
             }
             throw IllegalArgumentException("Unhandled delta difference. [$deltaX, $deltaZ]")
         }
+
     }
 }
