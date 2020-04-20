@@ -33,6 +33,7 @@
         <module>rse-entity-update</module>
         <module>rse-entity-update-player</module>
         <module>rse-client</module>
+        <module>rse-tools</module>
     </modules>
     <packaging>pom</packaging>
 

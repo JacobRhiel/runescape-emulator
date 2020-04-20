@@ -314,3 +314,18 @@ incoming_packets:
         order: LITTLE
       - name: slot
         type: SHORT
+
+  - message: rs.emulator.packet.network.message.impl.OpHeld2Message
+    type: FIXED
+    opcode: 58
+    length: 8
+    structure:
+      - name: component_hash
+        type: INT
+      - name: item
+        type: SHORT
+        trans: ADD
+      - name: slot
+        order: LITTLE
+        type: SHORT
+        trans: ADD
