@@ -775,8 +775,8 @@ public final class client extends class62 implements class289 {
             var1.field1334 = var1.field1332;
             int var17;
             if(ServerPacket.field2204 == var1.field1332) {
-               var17 = var4.method5587(438416270);
-               var6 = var4.method5611(-1049580829);
+               var17 = var4.readLEShortA(438416270);
+               var6 = var4.readMEInt(-1049580829);
                System.out.println("large varp: " + var17 + ", " + var6);
                class221.field2524[var17] = var6;
                if(class221.field2526[var17] != var6) {
@@ -843,8 +843,8 @@ public final class client extends class62 implements class289 {
 
             class226 var48;
             if(ServerPacket.field2186 == var1.field1332) {
-               var17 = var4.readUnsignedShort((byte)45);
-               var6 = var4.readUnsignedShort((byte)80);
+               var17 = var4.readLEShort((byte)45);
+               var6 = var4.readLEShort((byte)80);
                var7 = var4.readMEInt((byte)76);
                var48 = class208.method3898(var7, (byte)-12);
                var48.field2623 = var6 + (var17 << 16);
@@ -899,7 +899,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2119 == var1.field1332) {
-               var17 = var4.readUnsignedShort((byte)67);
+               var17 = var4.readLEShort((byte)67);
                byte var46 = var4.method5581(12345678);
                System.out.println("small varp: " + var17 + ", " + var46);
                class221.field2524[var17] = var46;
@@ -952,7 +952,7 @@ public final class client extends class62 implements class289 {
             class226 var51;
             if(ServerPacket.field2179 == var1.field1332) {
                var17 = var4.readInt(297718403);
-               var6 = var4.readShortA((byte)127);
+               var6 = var4.readLEShortA((byte)127);
                var51 = class208.method3898(var17, (byte)-125);
                if(var51.field2610 != 1 || var6 != var51.field2611) {
                   var51.field2610 = 1;
@@ -1037,7 +1037,8 @@ public final class client extends class62 implements class289 {
                var43 = var4.writeShort((byte)68);
 
                for(var9 = 0; var9 < var43; ++var9) {
-                  var10 = var4.method5587(125664341);
+                  var10 = var4.readLEShortA(125664341);
+                  System.out.println("item id: " + var10);
                   var11 = var4.readByteN(1923226993);
                   if(var11 == 255) {
                      var11 = var4.readMEInt((byte)-7);
@@ -1144,7 +1145,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2176 == var1.field1332) {
-               var17 = var4.readUnsignedShort((byte)73);
+               var17 = var4.readLEShort((byte)73);
                var6 = var4.readInt(297718403);
                var7 = var17 >> 10 & 31;
                var43 = var17 >> 5 & 31;
@@ -1251,7 +1252,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2171 == var1.field1332) {
-               var17 = var4.method5587(-630878999);
+               var17 = var4.readLEShortA(-630878999);
                if(var17 == '\uffff') {
                   var17 = -1;
                }
@@ -1275,9 +1276,9 @@ public final class client extends class62 implements class289 {
 
             class226 var29;
             if(ServerPacket.field2168 == var1.field1332) {
-               var17 = var4.readShortA((byte)115);
+               var17 = var4.readLEShortA((byte)115);
                var6 = var4.method5592(-1733643091);
-               var7 = var4.method5587(349593222);
+               var7 = var4.readLEShortA(349593222);
                var43 = var4.writeShort((byte)122);
                var29 = class208.method3898(var6, (byte)-83);
                if(var43 != var29.field2618 || var17 != var29.field2619 || var7 != var29.field2659) {
@@ -1324,8 +1325,8 @@ public final class client extends class62 implements class289 {
             class70 var18;
             if(ServerPacket.field2182 == var1.field1332) {
                var17 = var4.readByteN(2008929967);
-               var6 = var4.readShortA((byte)126);
-               var7 = var4.method5611(282352601);
+               var6 = var4.readLEShortA((byte)126);
+               var7 = var4.readMEInt(282352601);
                System.out.println("sub: " + var17 + ", " + var6 + ", " + (var7 >> 16));
                var18 = (class70)field841.method6010((long)var7);
                if(var18 != null) {
@@ -1473,8 +1474,8 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2140 == var1.field1332) {
-               var17 = var4.method5611(350650888);
-               var6 = var4.readShortA((byte)108);
+               var17 = var4.readMEInt(350650888);
+               var6 = var4.readLEShortA((byte)108);
                var51 = class208.method3898(var17, (byte)-41);
                if(var51.field2610 != 2 || var6 != var51.field2611) {
                   var51.field2610 = 2;
@@ -1507,7 +1508,7 @@ public final class client extends class62 implements class289 {
 
             boolean var40;
             if(ServerPacket.field2196 == var1.field1332) {
-               var17 = var4.method5611(1460673854);
+               var17 = var4.readMEInt(1460673854);
                var40 = var4.readUnsignedByte((byte)19) == 1;
                var51 = class208.method3898(var17, (byte)-102);
                if(var40 != var51.field2629) {
@@ -1599,7 +1600,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2189 == var1.field1332) {
-               var17 = var4.method5587(-2051250318);
+               var17 = var4.readLEShortA(-2051250318);
                if(var17 == '\uffff') {
                   var17 = -1;
                }
@@ -1825,7 +1826,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2178 == var1.field1332) {
-               var17 = var4.readUnsignedShort((byte)22);
+               var17 = var4.readLEShort((byte)22);
                var6 = var4.method5592(-1442883624);
                var51 = class208.method3898(var6, (byte)-67);
                if(var51 != null && var51.field2569 == 0) {
@@ -1854,7 +1855,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2118 == var1.field1332) {
-               var17 = var4.readUnsignedShort((byte)50);
+               var17 = var4.readLEShort((byte)50);
                class65.method1242(var17, -1106697441);
                field868[++field869 - 1 & 31] = var17 & 32767;
                var1.field1332 = null;
@@ -1912,15 +1913,14 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2201 == var1.field1332) {
-               var17 = var4.readUnsignedShort((byte)51);
+               var17 = var4.readLEShort((byte)51);
                if(var17 == '\uffff') {
                   var17 = -1;
                }
 
-               var6 = var4.method5611(1446601986);
+               var6 = var4.readMEInt(1446601986);
                var7 = var4.readInt(297718403);
-               var43 = var4.method5587(-1082350877);
-               System.out.println(var6 + ", " + var7 + ", " + var43);
+               var43 = var4.readLEShortA(-1082350877);
                if(var43 == '\uffff') {
                   var43 = -1;
                }
@@ -2023,7 +2023,7 @@ public final class client extends class62 implements class289 {
             }
 
             if(ServerPacket.field2124 == var1.field1332) {
-               var17 = var4.method5611(1078535567);
+               var17 = var4.readMEInt(1078535567);
                var6 = var4.readInt(297718403);
                class70 var19 = (class70)field841.method6010((long)var6);
                var18 = (class70)field841.method6010((long)var17);

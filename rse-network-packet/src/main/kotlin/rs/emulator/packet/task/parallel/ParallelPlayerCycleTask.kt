@@ -24,7 +24,7 @@ class ParallelPlayerCycleTask(private val executor: ExecutorService) : EngineTas
         val playerCount = worldPlayers.count()
 
         phaser.bulkRegister(playerCount)
-        worldPlayers.values.forEach { p ->
+        worldPlayers.forEach { p ->
             executor.execute {
                     PhasedTask.run(phaser) {
                     //p.cycle()

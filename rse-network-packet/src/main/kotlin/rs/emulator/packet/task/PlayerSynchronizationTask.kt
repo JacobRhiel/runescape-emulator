@@ -157,7 +157,7 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
                     if (skipNext) {
                         continue
                     }
-                    if (next == null || next.blockBuffer.isDirty() || /*next.moved || next.steps != null || */next != player && shouldRemove(player, next)) {
+                    if (next == null || next.blockBuffer.isDirty() || next.moved || next.steps != null || next != player && shouldRemove(player, next)) {
                         break
                     }
                     skipCount++
@@ -183,7 +183,9 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
 
         val updateProtocol = player.updateProtocol
 
-        for (i in 0 until updateProtocol.gpiExternalCount) {
+        for (i in 0 until updateProtocol.gpiExternalCount)
+        {
+
             val index = updateProtocol.gpiExternalIndexes[i]
 
             val skip = when (initial) {
@@ -201,7 +203,7 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
                 continue
             }
 
-            val nonLocal = if (index < 2000) WorldRepository.players[index] else null
+            val nonLocal = if (index < 2000) WorldRepository.players.getOrNull(index) else null
 
             if (nonLocal != null && added < MAX_PLAYER_ADDITIONS_PER_CYCLE && updateProtocol.gpiLocalCount + added < MAX_LOCAL_PLAYERS
                     && shouldAdd(player, nonLocal)) {
@@ -231,7 +233,7 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
                 if (skipNext) {
                     continue
                 }
-                val next = if (nextIndex < 2000) WorldRepository.players[nextIndex] else null
+                val next = if (nextIndex < 2000) WorldRepository.players.getOrNull(nextIndex) else null
                 if (next != null && (shouldAdd(player, next) || next.tile.asTileHashMultiplier != updateProtocol.gpiTileHashMultipliers[nextIndex])) {
                     break
                 }

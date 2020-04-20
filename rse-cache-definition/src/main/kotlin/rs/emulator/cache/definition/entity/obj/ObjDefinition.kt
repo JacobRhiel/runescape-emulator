@@ -1,4 +1,4 @@
-package rs.emulator.cache.definition.entity
+package rs.emulator.cache.definition.entity.obj
 
 import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.type.DataType

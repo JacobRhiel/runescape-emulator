@@ -293,12 +293,12 @@ public class class309 extends class189 {
       }
    }
 
-   public int method5587(int var1) {
+   public int readLEShortA(int var1) {
       this.field3710 += 2;
       return ((this.field3709[this.field3710 - 1] & 255) << 8) + (this.field3709[this.field3710 - 2] - 128 & 255);
    }
 
-   public int method5611(int var1) {
+   public int readMEInt(int var1) {
       this.field3710 += 4;
       return ((this.field3709[this.field3710 - 2] & 255) << 24) + ((this.field3709[this.field3710 - 4] & 255) << 8) + (this.field3709[this.field3710 - 3] & 255) + ((this.field3709[this.field3710 - 1] & 255) << 16);
    }
@@ -328,7 +328,7 @@ public class class309 extends class189 {
       return 128 - this.field3709[++this.field3710 - 1] & 255;
    }
 
-   public int readUnsignedShort(byte var1) {
+   public int readLEShort(byte var1) {
       this.field3710 += 2;
       return ((this.field3709[this.field3710 - 1] & 255) << 8) + (this.field3709[this.field3710 - 2] & 255);
    }
@@ -351,7 +351,7 @@ public class class309 extends class189 {
       this.field3709[++this.field3710 - 1] = (byte)(var1 >> 8);
    }
 
-   public int readShortA(byte var1) {
+   public int readLEShortA(byte var1) {
       this.field3710 += 2;
       return (this.field3709[this.field3710 - 1] - 128 & 255) + ((this.field3709[this.field3710 - 2] & 255) << 8);
    }

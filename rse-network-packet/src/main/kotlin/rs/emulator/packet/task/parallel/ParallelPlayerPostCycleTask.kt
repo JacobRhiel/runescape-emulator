@@ -24,7 +24,7 @@ class ParallelPlayerPostCycleTask(private val executor: ExecutorService) : Engin
         val worldPlayers = WorldRepository.players
         val playerCount = worldPlayers.count()
         phaser.bulkRegister(playerCount)
-        worldPlayers.values.forEach { p ->
+        worldPlayers.forEach { p ->
             executor.execute {
                 PhasedTask.run(phaser) {
                     p.channel.flush()

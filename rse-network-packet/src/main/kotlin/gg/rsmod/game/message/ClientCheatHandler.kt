@@ -1,12 +1,13 @@
 package gg.rsmod.game.message
 
 import rs.emulator.cache.definition.definition
-import rs.emulator.cache.definition.entity.ObjDefinition
+import rs.emulator.cache.definition.entity.obj.ObjDefinition
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.obj.createItem
 import rs.emulator.model.widget.InterfaceEvent
 import rs.emulator.packet.network.message.impl.ClientCheatMessage
 import rs.emulator.packet.network.message.impl.LogoutFullMessage
+import rs.emulator.world.WorldRepository
 import java.util.*
 
 /**
@@ -23,7 +24,9 @@ class ClientCheatHandler : MessageHandler<ClientCheatMessage> {
 
         println("command sent? : $command : ${args?.contentDeepToString()}")
 
-        if(command.startsWith("log")) {
+        if(command.startsWith("log"))
+        {
+            WorldRepository.players.remove(client)
             client.channel.write(LogoutFullMessage())
         }
 
@@ -31,6 +34,7 @@ class ClientCheatHandler : MessageHandler<ClientCheatMessage> {
             val id = args[0].toInt()
             val amount = if (args.size > 1) args[1].toInt() else 1
             val item = definition().find<ObjDefinition>(id).createItem(amount)
+            item.attributes["equip_slot"] = 3
             client.storageManager.inventory().addItem(item) { empty, added ->
                 client.sendDebugMessage("Spawned $added")
             }

@@ -30,22 +30,19 @@ class ParallelSynchronizationTask(private val executor: ExecutorService) : Engin
         val playerCount = worldPlayers.count()
 
         phaser.bulkRegister(playerCount)
-        worldPlayers.forEach { p ->
-            val player = p.value
+        worldPlayers.forEach { player ->
             submit(phaser, executor, player, PlayerPreSynchronizationTask)
         }
         phaser.arriveAndAwaitAdvance()
 
         phaser.bulkRegister(playerCount)
-        worldPlayers.forEach { p ->
-            val player = p.value
+        worldPlayers.forEach { player ->
             submit(phaser, executor, player, PlayerSynchronizationTask)
         }
         phaser.arriveAndAwaitAdvance()
 
         phaser.bulkRegister(playerCount)
-        worldPlayers.forEach { p ->
-            val player = p.value
+        worldPlayers.forEach { player ->
             submit(phaser, executor, player, PlayerPostSynchronizationTask)
         }
         phaser.arriveAndAwaitAdvance()

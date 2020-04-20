@@ -39,10 +39,16 @@ import java.util.concurrent.TimeUnit
 
         val definition = T::class.java.getDeclaredConstructor(Int::class.java).newInstance(identifier)
 
+        val shiftedId = definition.shiftedId
+
+        val hasShiftedId = shiftedId != -1
+
         val reader = when
         {
             definition.archiveName != null -> BufferedReader(fileStore.fetchArchiveFileByName(definition.indexConfig.identifier, definition.archiveName!!).contents)
-            else                           -> BufferedReader(fileStore.fetchArchiveFile(definition.indexConfig.identifier, if(child == -1) definition.archive else identifier, if(child == -1) identifier else child).contents)
+            else                           -> BufferedReader(fileStore.fetchArchiveFile(definition.indexConfig.identifier,
+                                                                                        if(child == -1) definition.archive else if(hasShiftedId) shiftedId else identifier,
+                                                                                        if(child == -1) if(hasShiftedId) shiftedId else identifier else child).contents)
         }
 
         definition.decodeHeader(reader)

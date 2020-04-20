@@ -62,6 +62,8 @@ class PacketSession(
 
         player.login()
 
+        println("player index: " + player.index)
+
         val msg = RebuildLoginMessage(
             player.index,
             player.tile,

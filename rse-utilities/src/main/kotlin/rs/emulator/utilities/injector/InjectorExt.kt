@@ -8,5 +8,3 @@ import com.google.inject.Injector
  */
 
 lateinit var injector: Injector
-
-fun EmittedInject.injectedInstanceOf(clazz: Class<*>) = injector.getInstance(clazz)

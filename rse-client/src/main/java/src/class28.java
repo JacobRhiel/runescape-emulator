@@ -93,7 +93,7 @@ public class class28 implements class46 {
          int var7;
          int var8;
          if((var5 & 128) != 0) {
-            var6 = var0.method5587(-1307628826);
+            var6 = var0.readLEShortA(-1307628826);
             if(var6 == '\uffff') {
                var6 = -1;
             }
@@ -123,8 +123,8 @@ public class class28 implements class46 {
 
          int var9;
          if((var5 & 16) != 0) {
-            var6 = var0.readShortA((byte)123);
-            var7 = var0.method5587(-706114222);
+            var6 = var0.readLEShortA((byte)123);
+            var7 = var0.readLEShortA(-706114222);
             var8 = var4.field983 - (var6 - class69.field590 * 731242929 - class69.field590 * 731242929) * 64;
             var9 = var4.field973 - (var7 - class89.field1152 * 1825982697 - class89.field1152 * 1825982697) * 64;
             if(var8 != 0 || var9 != 0) {
@@ -133,7 +133,7 @@ public class class28 implements class46 {
          }
 
          if((var5 & 32) != 0) {
-            var4.field1148 = class237.method4201(var0.method5587(-904491103), -35139096);
+            var4.field1148 = class237.method4201(var0.readLEShortA(-904491103), -35139096);
             var4.field976 = var4.field1148.field3470;
             var4.field1026 = var4.field1148.field3489;
             var4.field993 = var4.field1148.field3472;
@@ -153,7 +153,7 @@ public class class28 implements class46 {
          }
 
          if((var5 & 2) != 0) {
-            var4.field1009 = var0.method5587(-1889162822);
+            var4.field1009 = var0.readLEShortA(-1889162822);
             var6 = var0.readMEInt((byte)-22);
             var4.field1033 = var6 >> 16;
             var4.field1013 = (var6 & '\uffff') + client.field689;
@@ -222,8 +222,8 @@ public class class28 implements class46 {
             var4.field1017 = var0.method5581(12345678);
             var4.field972 = var0.method5579(-1739412623);
             var4.field1018 = var0.readByte(-536961223);
-            var4.field1019 = var0.readUnsignedShort((byte)126) + client.field689;
-            var4.field1020 = var0.readShortA((byte)102) + client.field689;
+            var4.field1019 = var0.readLEShort((byte)126) + client.field689;
+            var4.field1020 = var0.readLEShortA((byte)102) + client.field689;
             var4.field1021 = var0.writeShort((byte)31);
             var4.field1027 = 1;
             var4.field1032 = 0;

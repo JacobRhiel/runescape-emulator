@@ -330,8 +330,8 @@ final class class20 implements Comparator {
          var2.field1017 = var0.readByte(-1409270265);
          var2.field972 = var0.method5581(12345678);
          var2.field1018 = var0.method5579(-1132241319);
-         var2.field1019 = var0.method5587(913288350) + client.field689;
-         var2.field1020 = var0.method5587(-58322318) + client.field689;
+         var2.field1019 = var0.readLEShortA(913288350) + client.field689;
+         var2.field1020 = var0.readLEShortA(-58322318) + client.field689;
          var2.field1021 = var0.writeShort((byte)28);
          if(var2.field670) {
             var2.field990 += var2.field665;
@@ -352,7 +352,7 @@ final class class20 implements Comparator {
 
       int var6;
       if((var3 & 2048) != 0) {
-         var2.field1009 = var0.readShortA((byte)102);
+         var2.field1009 = var0.readLEShortA((byte)102);
          var6 = var0.method5592(-1615826752);
          var2.field1033 = var6 >> 16;
          var2.field1013 = (var6 & '\uffff') + client.field689;
@@ -370,7 +370,7 @@ final class class20 implements Comparator {
       int var7;
       if((var3 & 128) != 0) {
          System.out.println("animation update");
-         var6 = var0.readUnsignedShort((byte)70);
+         var6 = var0.readLEShort((byte)70);
          System.out.println("animation: " + var6);
          if(var6 == '\uffff') {
             var6 = -1;
@@ -408,7 +408,7 @@ final class class20 implements Comparator {
       }
 
       if((var3 & 4) != 0) {
-         var2.field999 = var0.method5587(-89428685);
+         var2.field999 = var0.readLEShortA(-89428685);
          if(var2.field999 == '\uffff') {
             var2.field999 = -1;
          }
@@ -423,7 +423,7 @@ final class class20 implements Comparator {
       int var10;
       int var13;
       if((var3 & 1) != 0) {
-         var6 = var0.readShortA((byte)105);
+         var6 = var0.readLEShortA((byte)105);
          System.out.println("chat block");
          System.out.println("effects: " + var6);
          class238 var19 = (class238)class16.method159(class70.method1278((byte)61), var0.readByteN(1626574628), -1609956543);
@@ -523,7 +523,7 @@ final class class20 implements Comparator {
       }
 
       if((var3 & 8) != 0) {
-         var2.field1015 = var0.readShortA((byte)116);
+         var2.field1015 = var0.readLEShortA((byte)116);
          System.out.println("unknown mask 2: " + var2.field1015);
          if(var2.field1027 == 0) {
             var2.field979 = var2.field1015;

@@ -10,8 +10,7 @@ class QueueHandlerTask : EngineTask {
         var playerQueues = 0
         var npcQueues = 0
 
-        WorldRepository.players.forEach { map ->
-            val player = map.value
+        WorldRepository.players.forEach { player ->
             player.queues.cycle()
             playerQueues += player.queues.size
         }
