@@ -63,7 +63,13 @@ class ArchiveFile(
 
         val entries = table.entries.keys.toIntArray()
 
+        println("indices: " + table.entries.size)
+
+        //println("reader: " + reader.byteArray().toTypedArray().contentDeepToString())
+
         val buffer = decompress(reader, null)
+
+       //println("decomp: " + buffer.byteArray().toTypedArray().contentDeepToString())
 
         if(!checkCompression()) return
 
@@ -79,9 +85,18 @@ class ArchiveFile(
 
         val chunks = buffer.getUnsigned(DataType.BYTE).toInt()
 
+        //println("chunk count; $chunks")
+
+       // println("file count: " + entries.size)
+
         buffer.resetReaderIndex()
 
+        //4 extra bytes on index 9 archive 0 on reader index
+        //724 bytes, on OpenOSRS its 720 bytes, we are 4 bytes ahead.
+
         buffer.markReaderIndex(buffer.readableBytes - 1 - chunks * entries.size * 4)
+
+        //println("reader index: " + buffer.readerIndex())
 
         val chunkSizes = Array(entries.size) { IntArray(chunks) }
 
