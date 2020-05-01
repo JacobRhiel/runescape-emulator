@@ -7,7 +7,7 @@ import rs.emulator.storables.Item
 fun Item.toDefinition() : ObjDefinition = definition().find(this.id)
 
 fun ObjDefinition.createItem(amount : Int = 1, init : Item.(ObjDefinition) -> Unit = {}) : Item {
-    val item = Item(this.identifier, amount)
+    val item = Item(this.id, amount)
     init(item, this)
     setAttributes(item)
     return item

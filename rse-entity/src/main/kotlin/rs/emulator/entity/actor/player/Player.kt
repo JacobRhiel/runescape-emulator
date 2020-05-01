@@ -3,7 +3,7 @@ package rs.emulator.entity.actor.player
 import gg.rsmod.util.ServerProperties
 import io.netty.channel.Channel
 import rs.emulator.cache.definition.definition
-import rs.emulator.cache.definition.varp.VarBitDefinition
+import rs.emulator.cache.definition.varp.bit.VarBitDefinition
 import rs.emulator.encryption.xtea.XteaKeyService
 import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.movement.MovementQueue
@@ -124,12 +124,12 @@ open class Player(val channel: Channel,
 
         setVarbit(8119, 1)
 
-/*        channel.write(VarpSmallMessage(843, 0))
+        channel.write(VarpSmallMessage(843, 0))
         channel.write(VarpSmallMessage(1055, 0))
         channel.write(VarpSmallMessage(1107, 0))
         channel.write(VarpSmallMessage(1306, 0))
 
-        channel.write(VarpLargeMessage(1737, -2147483648))*/
+        channel.write(VarpLargeMessage(1737, -2147483648))
 
         for (i in 0 until varps.maxVarps)
         {

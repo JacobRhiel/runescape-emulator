@@ -171,7 +171,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
 
                 var styles = intArrayOf(0, 0, 0, 0, 21, 0, 26, 38, 3, 33, 42, 14)
 
-                val e = arrayOf(1038, 9787, 19553, 4151, 24420, 12817, 24421, 7462, 13239, 19550, -1, -1)
+                val e = arrayOf(8901, 9787, 19553, 4151, 24420, 12817, 24421, 7462, 13239, 19550, -1, -1)
                 val translation = arrayOf(-1, -1, -1, -1, 2, -1, 3, 5, 0, 4, 6, 1)
                 val flags = intArrayOf(6, 5, 8, 7, 6, 0, 49, 0, 6, 6, 0)
 
@@ -181,13 +181,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                 for(index in 0 until 12)
                 {
 
-                    val def: ObjMetaDataDefinition = definition().find(1038)
-
                     //val item = equipment[if(index >= equipment.size) equipment.size - 1 else index]
-
-                    val slot = def.equipment?.slot
-
-                    println(slot)
 
                     if(e[index] == -1)
                     {
@@ -211,15 +205,59 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
 
                         if(e[index] != -1)
                         {
+
+                            val definition: ObjMetaDataDefinition = definition().find(e[index])
+
+                            val slot = definition.equipment?.slot
+
+                            other.sendDebugMessage("slot: $slot")
+
+                            var equipType = -1
+
+                            if(slot != null)
+                            {
+                                if(slot == "head")
+                                    equipType == 8
+                                if(slot == "2h")
+                                    equipType == 5
+                                if(slot == "body")
+                                    equipType = 6
+                            }
+
                             val id = e[index]
 
-                            appBuf.put(DataType.BYTE, (id + 512) shr 8)//flag
+                            /*if(index == 6 && equipType == 6)
+                            {
+                                appBuf.put(DataType.BYTE, 0)
+                                continue
+                            }
 
-                            appBuf.put(DataType.BYTE, (id + 512) - (((id + 512) shr 8) shl 8))//idk item hash
+                            if(index == 11 || index == 8 && equipType == 8)
+                            {
+                                appBuf.put(DataType.BYTE, 0)
+                                continue
+                            }*/
+
+                            val flag = (id + 512) shr 8
+
+                            //appBuf.put(DataType.BYTE, flag) //flag
+
+                           //appBuf.put(DataType.BYTE, (id + 512) - (((id + 512) shr 8) shl 8))//idk item hash
+
+                            appBuf.put(DataType.SHORT, 0x200 + id)
 
                         }
                         else
-                            appBuf.put(DataType.BYTE, styles[index])
+                        {
+                            if(styles[index] == 0)
+                                appBuf.put(DataType.BYTE, 0)
+                            else
+                            {
+                                appBuf.put(DataType.BYTE, 1)
+                                appBuf.put(DataType.BYTE, styles[index])
+                                println("style : " + styles[index])
+                            }
+                        }
 
                     }
 

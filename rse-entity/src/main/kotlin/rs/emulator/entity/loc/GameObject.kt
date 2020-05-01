@@ -1,10 +1,9 @@
 package rs.emulator.entity.loc
 
 import com.google.common.base.MoreObjects
-import rs.emulator.cache.definition.DefinitionRepository
 import rs.emulator.cache.definition.definition
-import rs.emulator.cache.definition.entity.LocDefinition
-import rs.emulator.cache.definition.varp.VarBitDefinition
+import rs.emulator.cache.definition.entity.loc.LocDefinition
+import rs.emulator.cache.definition.varp.bit.VarBitDefinition
 import rs.emulator.entity.Entity
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.world.map.old.region.chunk.Tile
@@ -55,7 +54,7 @@ abstract class GameObject : Entity
         val def = getDef()
         if (def.varbit != -1) {
             val varbitDef: VarBitDefinition = definition().find(def.varbit)
-            val state = player.varps.getBit(varbitDef.identifier, varbitDef.leastSignificantBit, varbitDef.mostSignificantBit)
+            val state = player.varps.getBit(varbitDef.id, varbitDef.leastSignificantBit, varbitDef.mostSignificantBit)
             return def.transforms!![state]
         }
 
