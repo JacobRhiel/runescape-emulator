@@ -11,7 +11,7 @@ import rs.emulator.entity.actor.update.mask.ChatMessage.Companion.huffman
 import rs.emulator.entity.update.UpdateBlockType
 import rs.emulator.entity.update.segment.SynchronizationSegment
 import rs.emulator.packet.GamePacketBuilder
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 
 /**
  * @author Tom <rspsmods@gmail.com>

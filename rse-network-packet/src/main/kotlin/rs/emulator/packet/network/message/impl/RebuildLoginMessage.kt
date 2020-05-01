@@ -2,7 +2,7 @@ package rs.emulator.packet.network.message.impl
 
 import gg.rsmod.game.message.Message
 import rs.emulator.encryption.xtea.XteaKeyService
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 
 /**
  * @author Tom <rspsmods@gmail.com>

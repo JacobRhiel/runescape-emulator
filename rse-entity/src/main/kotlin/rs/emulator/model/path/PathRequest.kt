@@ -3,7 +3,7 @@ package rs.emulator.model.path
 import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.Direction
 import rs.emulator.model.path.PathRequest.ClipFlag
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 import java.util.EnumSet
 
 /**

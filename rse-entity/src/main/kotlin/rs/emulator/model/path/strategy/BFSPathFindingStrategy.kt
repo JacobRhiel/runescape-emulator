@@ -3,8 +3,8 @@ package rs.emulator.model.path.strategy
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet
 import rs.emulator.entity.actor.Direction
 import rs.emulator.model.path.*
-import rs.emulator.world.map.old.collision.CollisionManager
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.collision.CollisionManager
+import rs.emulator.entity.old.region.chunk.Tile
 import java.util.*
 
 /**

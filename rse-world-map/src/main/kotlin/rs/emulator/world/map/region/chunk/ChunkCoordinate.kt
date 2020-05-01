@@ -1,7 +1,6 @@
 package rs.emulator.world.map.region.chunk
 
 import rs.emulator.world.map.coordinate.WorldCoordinate
-import rs.emulator.world.map.old.region.chunk.Chunk
 import rs.emulator.world.map.region.RegionCoordinate
 import rs.emulator.world.map.region.coordinate.Coordinate
 

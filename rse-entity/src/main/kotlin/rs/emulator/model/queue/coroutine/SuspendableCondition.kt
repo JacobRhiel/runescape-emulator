@@ -1,7 +1,7 @@
 package rs.emulator.model.queue.coroutine
 
 import com.google.common.base.MoreObjects
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 import java.util.concurrent.atomic.AtomicInteger
 
 /**

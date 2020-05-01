@@ -1,6 +1,6 @@
 package rs.emulator.entity.actor.update.mask
 
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 
 /**
  * @author Tom <rspsmods@gmail.com>

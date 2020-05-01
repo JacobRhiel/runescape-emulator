@@ -22,7 +22,7 @@ import rs.emulator.model.widget.viewport.ViewportWidgetType
 import rs.emulator.packet.network.message.ChatMessageType
 import rs.emulator.packet.network.message.impl.*
 import rs.emulator.security.uuid.UUIDGenerator
-import rs.emulator.world.map.old.region.EntityType
+import rs.emulator.entity.old.region.EntityType
 import java.io.File
 import java.nio.file.Paths
 import java.util.*

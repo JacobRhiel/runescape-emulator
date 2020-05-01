@@ -1,6 +1,6 @@
 package rs.emulator.model.path
 
-import rs.emulator.world.map.old.collision.CollisionManager
+import rs.emulator.entity.old.collision.CollisionManager
 
 /**
  * Represents an strategy that can be used to find a valid path to a target.

@@ -1,12 +1,11 @@
 package rs.emulator.model.queue
 
 import gg.rsmod.game.model.queue.coroutine.*
-import mu.KLogging
 import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.model.queue.coroutine.*
 import rs.emulator.utilities.logger
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 import kotlin.coroutines.*
 
 /**

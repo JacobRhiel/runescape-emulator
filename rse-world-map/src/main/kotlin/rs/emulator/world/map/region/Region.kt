@@ -7,15 +7,13 @@ import rs.emulator.world.map.collision.CollisionFlags.BLOCKED_TILE
 import rs.emulator.world.map.collision.CollisionFlags.BRIDGE_TILE
 import rs.emulator.world.map.collision.CollisionMesh
 import rs.emulator.world.map.coordinate.WorldCoordinate
-import rs.emulator.world.map.old.region.chunk.Chunk.Companion.REGION_SIZE
 import rs.emulator.world.map.region.chunk.RegionChunk
 
 /**
  *
  * @author Chk
  */
-class Region(val id: Int)
-{
+class Region(val id: Int) {
 
     val x: Int = id shr 8
 
@@ -31,15 +29,11 @@ class Region(val id: Int)
 
     lateinit var collisionMesh: CollisionMesh
 
-    fun load()
-    {
+    fun load() {
 
-        for (plane in 0 until 4)
-        {
-            for (localX in 0 until 64)
-            {
-                for (localZ in 0 until 64)
-                {
+        for (plane in 0 until 4) {
+            for (localX in 0 until 64) {
+                for (localZ in 0 until 64) {
 
                     val worldCoordinate = WorldCoordinate(baseX + localX, baseZ + localZ, plane)
 
@@ -53,8 +47,7 @@ class Region(val id: Int)
 
     }
 
-    fun isOutOfBounds(localX: Int, localY: Int): Boolean
-    {
+    fun isOutOfBounds(localX: Int, localY: Int): Boolean {
         return localX < 0 || localX >= REGION_SIZE || localY < 0 || localY >= REGION_SIZE
     }
 
@@ -67,7 +60,14 @@ class Region(val id: Int)
      * @param chunkY The chunks y coordinate
      * @param chunkPlane The chunks plane coordinate
      */
-    fun apply(entityId: Int, settings: Array<Array<ByteArray>>, rotation: Int?, chunkX: Int?, chunkY: Int?, chunkPlane: Int?) {
+    fun apply(
+        entityId: Int,
+        settings: Array<Array<ByteArray>>,
+        rotation: Int?,
+        chunkX: Int?,
+        chunkY: Int?,
+        chunkPlane: Int?
+    ) {
         if (rotation == null) {
             //Static region
             applySettings(settings, REGION_RANGE, REGION_RANGE, PLANE_RANGE) { localX, localY, plane ->
@@ -77,12 +77,17 @@ class Region(val id: Int)
         } else if (chunkX != null && chunkY != null && chunkPlane != null) {
             //Dynamic region
             //Add settings for only the chunk
-            applySettings(settings, chunkX until chunkX + 8, chunkY until chunkY + 8, chunkPlane..chunkPlane) { localX, localY, plane ->
+            applySettings(
+                settings,
+                chunkX until chunkX + 8,
+                chunkY until chunkY + 8,
+                chunkPlane..chunkPlane
+            ) { localX, localY, plane ->
                 //Calculate new position after rotation
-               /* val newX = chunk.translateX(localX and 0x7, localY and 0x7, rotation)
-                val newY = chunk.translateY(localX and 0x7, localY and 0x7, rotation)
-                //Add mask
-                collisionMesh.addMask(entityId, chunkX or newX, chunkY or newY, plane, CollisionFlags.FLOOR_BLOCKS_WALK)*/
+                /* val newX = chunk.translateX(localX and 0x7, localY and 0x7, rotation)
+                 val newY = chunk.translateY(localX and 0x7, localY and 0x7, rotation)
+                 //Add mask
+                 collisionMesh.addMask(entityId, chunkX or newX, chunkY or newY, plane, CollisionFlags.FLOOR_BLOCKS_WALK)*/
             }
         }
     }
@@ -95,7 +100,13 @@ class Region(val id: Int)
      * @param planes The plane range to iterate
      * @param action Action to apply
      */
-    private fun applySettings(settings: Array<Array<ByteArray>>, horizontal: IntRange, vertical: IntRange, planes: IntRange, action: (Int, Int, Int) -> Unit) {
+    private fun applySettings(
+        settings: Array<Array<ByteArray>>,
+        horizontal: IntRange,
+        vertical: IntRange,
+        planes: IntRange,
+        action: (Int, Int, Int) -> Unit
+    ) {
         //Check all tiles in specified range
         for (plane in planes) {
             for (localX in horizontal) {
@@ -109,16 +120,41 @@ class Region(val id: Int)
         }
     }
 
-    companion object
-    {
+    companion object {
 
         const val REGION_PLANES = 4
 
         val PLANE_RANGE = 0 until REGION_PLANES
 
+        const val SIZE = RegionChunk.SIZE * RegionChunk.SIZE
+
+        /**
+         * The size of a chunk, in tiles.
+         */
+        const val CHUNK_SIZE = 8
+
+        /**
+         * The amount of chunks in a region.
+         */
+        const val CHUNKS_PER_REGION = 13
+
+        /**
+         * The amount of [Chunk]s that can be viewed at a time by a player.
+         */
+        const val CHUNK_VIEW_RADIUS = 3
+
+        /**
+         * The size of a region, in tiles.
+         */
+        const val REGION_SIZE = CHUNK_SIZE * CHUNK_SIZE
+
         val REGION_RANGE = 0 until REGION_SIZE
 
-        const val SIZE = RegionChunk.SIZE * RegionChunk.SIZE
+        /**
+         * The size of the viewport a [gg.rsmod.game.model.entity.Player] can
+         * 'see' at a time, in tiles.
+         */
+        const val MAX_VIEWPORT = CHUNK_SIZE * CHUNKS_PER_REGION
 
     }
 

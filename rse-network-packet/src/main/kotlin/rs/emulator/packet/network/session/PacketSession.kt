@@ -16,7 +16,7 @@ import rs.emulator.packet.network.message.channel.decoder.GamePacketEncoder
 import rs.emulator.packet.network.message.channel.encoder.GameMessageEncoder
 import rs.emulator.packet.network.message.impl.*
 import rs.emulator.utilities.logger
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 
 /**
  *

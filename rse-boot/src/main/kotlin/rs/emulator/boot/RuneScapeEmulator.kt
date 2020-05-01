@@ -13,7 +13,6 @@ import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
 import rs.emulator.cache.FileStore
 import rs.emulator.cache.definition.definition
-import rs.emulator.cache.definition.entity.IdentityKitDefinition
 import rs.emulator.cache.index.IndexConfig
 import rs.emulator.cache.index.archive.ArchiveConfig
 import rs.emulator.configuration.CacheConfiguration

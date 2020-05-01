@@ -3,8 +3,8 @@ package rs.emulator.entity.actor.movement
 import rs.emulator.entity.actor.Actor
 import rs.emulator.entity.actor.Direction
 import rs.emulator.entity.update.UpdateBlockType
-import rs.emulator.world.map.old.collision.Collision
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.collision.Collision
+import rs.emulator.entity.old.region.chunk.Tile
 import java.util.*
 
 /**

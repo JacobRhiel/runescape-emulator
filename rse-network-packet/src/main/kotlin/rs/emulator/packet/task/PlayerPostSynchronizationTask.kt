@@ -1,14 +1,8 @@
 package rs.emulator.packet.task
 
-import gg.rsmod.game.message.EntityUpdate
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet
 import rs.emulator.entity.actor.player.Player
-import rs.emulator.packet.PacketConstants
-import rs.emulator.packet.network.message.impl.EntityGroupMessage
-import rs.emulator.packet.network.message.impl.UpdateZonePartialEnclosedMessage
 import rs.emulator.utilities.logger
-import rs.emulator.world.map.old.collision.Collision
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 
 /**
  * @author Tom <rspsmods@gmail.com>

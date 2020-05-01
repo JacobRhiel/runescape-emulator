@@ -6,7 +6,7 @@ import rs.emulator.cache.definition.entity.loc.LocDefinition
 import rs.emulator.cache.definition.varp.bit.VarBitDefinition
 import rs.emulator.entity.Entity
 import rs.emulator.entity.actor.player.Player
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 
 /**
  * A [GameObject] is any type of map object that can occupy a tile.

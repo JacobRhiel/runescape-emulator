@@ -2,7 +2,7 @@ package rs.emulator.packet.task
 
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.packet.network.message.impl.RebuildNormalMessage
-import rs.emulator.world.map.old.region.chunk.*
+import rs.emulator.entity.old.region.chunk.*
 
 /**
  * @author Tom <rspsmods@gmail.com>

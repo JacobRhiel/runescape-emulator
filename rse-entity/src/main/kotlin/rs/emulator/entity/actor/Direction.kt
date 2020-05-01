@@ -1,6 +1,6 @@
 package rs.emulator.entity.actor
 
-import rs.emulator.world.map.old.region.chunk.Tile
+import rs.emulator.entity.old.region.chunk.Tile
 
 /**
  * Represents cardinal and ordinal directions in the game.

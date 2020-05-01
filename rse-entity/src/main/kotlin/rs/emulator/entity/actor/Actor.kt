@@ -11,10 +11,9 @@ import rs.emulator.model.queue.QueueTask
 import rs.emulator.model.queue.QueueTaskSet
 import rs.emulator.model.queue.impl.PawnQueueTaskSet
 import rs.emulator.packet.network.message.impl.SetMapFlagMessage
-import rs.emulator.utilities.logger
-import rs.emulator.world.map.old.collision.Collision
-import rs.emulator.world.map.old.collision.CollisionManager
-import rs.emulator.world.map.old.region.chunk.*
+import rs.emulator.entity.old.collision.Collision
+import rs.emulator.entity.old.collision.CollisionManager
+import rs.emulator.entity.old.region.chunk.*
 import java.util.*
 
 /**
