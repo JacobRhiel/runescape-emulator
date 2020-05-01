@@ -3,9 +3,8 @@ package rs.emulator.world.map.old.collision
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
 import it.unimi.dsi.fastutil.objects.ObjectList
-import rs.emulator.cache.definition.DefinitionRepository
 import rs.emulator.cache.definition.definition
-import rs.emulator.cache.definition.entity.LocDefinition
+import rs.emulator.cache.definition.entity.loc.LocDefinition
 import rs.emulator.entity.actor.Direction
 import rs.emulator.entity.loc.GameObject
 import rs.emulator.world.map.old.region.chunk.Tile
