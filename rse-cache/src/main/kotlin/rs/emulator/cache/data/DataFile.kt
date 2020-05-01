@@ -34,7 +34,7 @@ class DataFile @Inject constructor(private val cacheConfiguration: CacheConfigur
 
         val bufferedReader = BufferedReader(Unpooled.wrappedBuffer(ByteArray(sectorSize)))
 
-        val bufferedWriter = BufferedWriter()
+        val bufferedWriter = BufferedWriter(Unpooled.buffer(size))
 
         var part = 0
 
@@ -71,6 +71,8 @@ class DataFile @Inject constructor(private val cacheConfiguration: CacheConfigur
 
             checkReadSize(index, archive, bufferedReader.byteArray(), 0, headerSize + dataBlockSize)
 
+            val bytes = bufferedReader.byteArray().copyOfRange(0, headerSize + dataBlockSize)
+
             bufferedReader.markReaderIndex()
 
             currentArchive = bufferedReader.getUnsigned(if(archiveExceedsShort) DataType.INT else DataType.SHORT).toInt()
@@ -80,8 +82,6 @@ class DataFile @Inject constructor(private val cacheConfiguration: CacheConfigur
             nextSector = bufferedReader.getUnsigned(DataType.TRI_BYTE).toInt()
 
             currentIndex = bufferedReader.getUnsigned(DataType.BYTE).toInt()
-
-            println(bufferedReader.byteArray().toTypedArray().contentDeepToString())
 
             bufferedReader.resetReaderIndex()
 
@@ -98,7 +98,7 @@ class DataFile @Inject constructor(private val cacheConfiguration: CacheConfigur
 
             sector = nextSector
 
-            bufferedWriter.putBytes(bufferedReader.byteArray(), headerSize.toInt(), dataBlockSize)
+            bufferedWriter.putBytes(bytes, headerSize.toInt(), dataBlockSize)
 
             readBytesCount += dataBlockSize
 

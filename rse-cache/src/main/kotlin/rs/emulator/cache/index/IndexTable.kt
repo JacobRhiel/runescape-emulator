@@ -115,6 +115,8 @@ class IndexTable
 
         archiveCount = if(protocol >= 7) reader.bigSmart else reader.getUnsigned(DataType.SHORT).toInt()
 
+        println("archive count: " + archiveCount)
+
         ids = IntArray(archiveCount) { it.inc() - 1 }
 
     }
@@ -286,7 +288,7 @@ class IndexTable
 
                 table.lastEntryId += entryIdentifier
 
-                val independent = entryIdentifier != 1
+                val independent = entryIdentifier > 2
 
                 table.entries[if(independent) entryIdentifier else table.lastEntryId] = ArchiveEntry(if(independent) entryIdentifier else table.lastEntryId)
 
@@ -365,7 +367,7 @@ class IndexTable
         if(!archives.filter { it.key == identifier }.any())
             logger().error("No ArchiveFile exists for config type: {}", identifier)
 
-        println(archives.values.map { it.identifier }.toTypedArray().contentDeepToString())
+        println("keys: " + archives.values.map { it.identifier }.toTypedArray().contentDeepToString())
 
         return archives.values.first { it.identifier == identifier }
 

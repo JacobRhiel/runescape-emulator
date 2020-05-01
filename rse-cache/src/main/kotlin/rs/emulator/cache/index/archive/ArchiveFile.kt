@@ -102,12 +102,15 @@ class ArchiveFile(
 
         val filesSize = IntArray(entries.size)
 
+        println(buffer.byteArray().toTypedArray().contentDeepToString())
+
         for (chunk in 0 until chunks)
         {
             var chunkSize = 0
             for (id in entries.indices)
             {
                 val delta: Int = buffer.getSigned(DataType.INT).toInt()
+                println("id: $id - delta: $delta")
                 chunkSize += delta // size of this chunk
                 chunkSizes[id][chunk] = chunkSize // store size of chunk
                 filesSize[id] += chunkSize // add chunk size to file size

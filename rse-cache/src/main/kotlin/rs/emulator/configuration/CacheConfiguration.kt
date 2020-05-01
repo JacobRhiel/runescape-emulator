@@ -14,6 +14,6 @@ import java.nio.file.Paths
     : YamlConfiguration("cache-configuration", environment)
 {
 
-    override fun defaultDirectory(): Path = Paths.get("./data/cache/")//reference.defaultDirectory().resolve("cache")
+    override fun defaultDirectory(): Path = Paths.get("./default_configuration/cache/")//reference.defaultDirectory().resolve("cache")
 
 }

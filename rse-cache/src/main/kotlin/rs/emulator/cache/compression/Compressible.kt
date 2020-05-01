@@ -84,6 +84,8 @@ abstract class Compressible
 
         println(compressionType)
 
+        println("reader length bzip: " + reader.byteArray().size)
+
         val compressedLength = reader.getSigned(DataType.INT).toInt()
 
         if (compressedLength < 0 || compressedLength > 1000000)
@@ -122,6 +124,8 @@ abstract class Compressible
 
                 data = BZip2.decompress(stream.byteArray(), compressedLength)
 
+                println("test bzip: " + data.size + ", " + decompressedLength)
+
                 assert(data.size == decompressedLength)
 
             }
@@ -150,6 +154,8 @@ abstract class Compressible
         this.compressionType = compressionType!! //todo null check.
 
         hash = crc32.hash
+
+        println("data size: " + data.size)
 
         return BufferedReader(data)
 
