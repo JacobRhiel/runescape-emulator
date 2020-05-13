@@ -141,7 +141,7 @@ abstract class Compressible
 
                 val decompressedLength: Int = stream.getUnsigned(DataType.INT).toInt()
 
-                println("gzip size: " + stream.byteArray().size + ", " + compressedLength)
+                //println("gzip size: " + stream.byteArray().size + ", " + compressedLength)
 
                 data = GZip.decompress(stream.byteArray(), compressedLength)
 

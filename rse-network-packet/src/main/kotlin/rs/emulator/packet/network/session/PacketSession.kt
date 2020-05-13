@@ -98,7 +98,7 @@ class PacketSession(
                 return
             }
 
-            val message = decoder.decode(msg.opcode, PacketConstants.MESSAGE_STRUCTURE_SET!!.get(msg.opcode)!!, GamePacketReader(msg))
+            val message = decoder.decode(msg.opcode, GamePacketReader(msg))
 
             val handle = MessageHandle(message, handler, msg.opcode, msg.payload.readableBytes())
 

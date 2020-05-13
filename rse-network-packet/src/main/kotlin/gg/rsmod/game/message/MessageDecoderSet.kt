@@ -26,7 +26,8 @@ class MessageDecoderSet {
     /**
      * Links [Message]s to their respective [MessageDecoder]s and [MessageHandler].
      */
-    fun init(structures: MessageStructureSet) {
+    fun init(structures: MessageStructureSet)
+    {
         put(EventAppletFocusMessage::class.java, EventAppletFocusDecoder(), EventAppletFocusHandler(), structures)
         put(WindowStatusMessage::class.java, WindowStatusDecoder(), WindowStatusHandler(), structures)
         put(MapBuildCompleteMessage::class.java, MapBuildCompleteDecoder(), MapBuildCompleteHandler(), structures)

@@ -7,10 +7,10 @@ import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
 import rs.emulator.cache.index.archive.entry.EntryData
-import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.utilities.logger
 import java.io.*
 import java.nio.ByteBuffer
+import java.nio.file.Paths
 import java.util.*
 
 /**
@@ -18,11 +18,11 @@ import java.util.*
  * @author Chk
  */
 @Singleton
-class DataFile @Inject constructor(private val cacheConfiguration: CacheConfiguration) : Closeable
+class DataFile @Inject constructor() : Closeable
 {
 
     private val dat =
-        RandomAccessFile(cacheConfiguration.defaultDirectory().resolve("main_file_cache.dat2").toFile(), "rw")
+        RandomAccessFile(Paths.get("./data/cache/").resolve("main_file_cache.dat2").toFile(), "rw")
 
     private val sectorSize = 520
 
@@ -84,8 +84,6 @@ class DataFile @Inject constructor(private val cacheConfiguration: CacheConfigur
             currentIndex = bufferedReader.getUnsigned(DataType.BYTE).toInt()
 
             bufferedReader.resetReaderIndex()
-
-            println("idx: $index current idx: $currentIndex - archive: $archive current archive: $currentArchive - sector: $sectorId next sector: $nextSector part: $part current part: $currentPart - size: $size")
 
             if (archive != currentArchive || currentPart != part || index != currentIndex)
                 logger().error(

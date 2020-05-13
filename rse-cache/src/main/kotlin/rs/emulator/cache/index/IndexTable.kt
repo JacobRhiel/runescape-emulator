@@ -115,8 +115,6 @@ class IndexTable
 
         archiveCount = if(protocol >= 7) reader.bigSmart else reader.getUnsigned(DataType.SHORT).toInt()
 
-        println("archive count: " + archiveCount)
-
         ids = IntArray(archiveCount) { it.inc() - 1 }
 
     }
@@ -139,8 +137,6 @@ class IndexTable
     {
 
         val buffer = copyBufferToReader(reader, archiveCount * Short.SIZE_BYTES)
-
-        println("sizes: " + ids.toTypedArray().contentDeepToString())
 
         for(identifier in ids.indices)
         {
@@ -288,9 +284,14 @@ class IndexTable
 
                 table.lastEntryId += entryIdentifier
 
-                val independent = entryIdentifier > 2
+/*                val independent = (entryIdentifier != 0 && entryIdentifier != 1) || entryIdentifier != 2
 
-                table.entries[if(independent) entryIdentifier else table.lastEntryId] = ArchiveEntry(if(independent) entryIdentifier else table.lastEntryId)
+                if(!independent)
+                    table.lastEntryId += entryIdentifier
+                else
+                    table.lastEntryId = entryIdentifier*/
+
+                table.entries[table.lastEntryId] = ArchiveEntry(table.lastEntryId)
 
             }
 

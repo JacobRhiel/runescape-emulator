@@ -1,6 +1,9 @@
 package rs.emulator.packet.network.message
 
 import gg.rsmod.game.message.MessageDecoder
+import rs.emulator.buffer.type.DataType
+import rs.emulator.buffer.type.order.DataOrder
+import rs.emulator.packet.GamePacketReader
 import rs.emulator.packet.network.message.impl.OpHeld1Message
 
 /**
@@ -8,11 +11,11 @@ import rs.emulator.packet.network.message.impl.OpHeld1Message
  */
 class OpHeld1Decoder : MessageDecoder<OpHeld1Message>() {
 
-    override fun decode(opcode: Int, opcodeIndex: Int, values: HashMap<String, Number>, stringValues: HashMap<String, String>): OpHeld1Message
+    override fun decode(opcode: Int, reader: GamePacketReader): OpHeld1Message
     {
-        val hash = values["component_hash"]!!.toInt()
-        val item = values["item"]!!.toInt()
-        val slot = values["slot"]!!.toInt()
+        val item = reader.getUnsigned(DataType.SHORT, DataOrder.LITTLE).toInt()
+        val hash = reader.getSigned(DataType.INT, DataOrder.LITTLE).toInt()
+        val slot = reader.getSigned(DataType.SHORT).toInt()
         return OpHeld1Message(
             if (item == 0xFFFF) -1 else item,
             if (slot == 0xFFFF) -1 else slot,

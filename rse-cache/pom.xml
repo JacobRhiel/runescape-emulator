@@ -14,11 +14,6 @@
     <dependencies>
         <dependency>
             <groupId>rs.emulator</groupId>
-            <artifactId>rse-configuration</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>rs.emulator</groupId>
             <artifactId>rse-buffer</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

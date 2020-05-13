@@ -1,6 +1,8 @@
 package rs.emulator.packet.network.message
 
 import gg.rsmod.game.message.MessageDecoder
+import rs.emulator.buffer.type.DataType
+import rs.emulator.packet.GamePacketReader
 import rs.emulator.packet.network.message.impl.IfButtonMessage
 
 /**
@@ -8,14 +10,14 @@ import rs.emulator.packet.network.message.impl.IfButtonMessage
  */
 class IfButton1Decoder : MessageDecoder<IfButtonMessage>() {
 
-    override fun decode(opcode: Int, opcodeIndex: Int, values: HashMap<String, Number>, stringValues: HashMap<String, String>): IfButtonMessage
+    override fun decode(opcode: Int, reader: GamePacketReader): IfButtonMessage
     {
-        val hash = values["hash"]!!.toInt()
-        val slot = values["slot"]!!.toInt()
-        val item = values["item"]!!.toInt()
+        val hash = reader.getSigned(DataType.INT).toInt()
+        val slot = reader.getSigned(DataType.SHORT).toInt()
+        val item = reader.getSigned(DataType.SHORT).toInt()
         return IfButtonMessage(
             hash = hash,
-            option = opcodeIndex,
+            option = opcode,
             slot = if (slot == 0xFFFF) -1 else slot,
             item = if (item == 0xFFFF) -1 else item
         )

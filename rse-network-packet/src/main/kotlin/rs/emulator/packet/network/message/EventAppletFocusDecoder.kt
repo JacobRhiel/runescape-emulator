@@ -1,6 +1,8 @@
 package rs.emulator.packet.network.message
 
 import gg.rsmod.game.message.MessageDecoder
+import rs.emulator.buffer.type.DataType
+import rs.emulator.packet.GamePacketReader
 import rs.emulator.packet.network.message.impl.EventAppletFocusMessage
 
 /**
@@ -8,9 +10,9 @@ import rs.emulator.packet.network.message.impl.EventAppletFocusMessage
  */
 class EventAppletFocusDecoder : MessageDecoder<EventAppletFocusMessage>() {
 
-    override fun decode(opcode: Int, opcodeIndex: Int, values: HashMap<String, Number>, stringValues: HashMap<String, String>): EventAppletFocusMessage
+    override fun decode(opcode: Int, reader: GamePacketReader): EventAppletFocusMessage
     {
-        val state = values["state"]!!.toInt()
+        val state = reader.getSigned(DataType.BYTE).toInt()
         return EventAppletFocusMessage(state)
     }
 }

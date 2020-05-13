@@ -22,7 +22,9 @@ import rs.emulator.world.map.collision.CollisionFlags.WALL_OBJ_WEST_BLOCKS_WALK_
  *
  * @author Chk
  */
-enum class Direction(val deltaX: Int, val deltaY: Int, val value: Int, val mask: Int) {
+enum class Direction(val deltaX: Int, val deltaY: Int, val value: Int, val mask: Int)
+{
+
     NORTH_WEST(-1, 1, 0, CORNER_OBJ_NORTH_WEST_BLOCKS_WALK_ALTERNATIVE),
     NORTH(0, 1, 1, WALL_OBJ_NORTH_BLOCKS_WALK_ALTERNATIVE),
     NORTH_EAST(1, 1, 2, CORNER_OBJ_NORTH_EAST_BLOCKS_WALK_ALTERNATIVE),

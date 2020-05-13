@@ -75,39 +75,49 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
         return segments
     }
 
-    private fun addLocalSegments(player: Player, initial: Boolean, segments: MutableList<SynchronizationSegment>) {
+    private fun addLocalSegments(player: Player, initial: Boolean, segments: MutableList<SynchronizationSegment>)
+    {
+
         var skipCount = 0
 
         val updateProtocol = player.updateProtocol
 
-        for (i in 0 until updateProtocol.gpiLocalCount) {
+        for (i in 0 until updateProtocol.gpiLocalCount)
+        {
+
             val index = updateProtocol.gpiLocalIndexes[i]
+
             val local = updateProtocol.gpiLocalPlayers[index]
 
-            val skip = when (initial) {
+            val skip = when (initial)
+            {
                 true -> (updateProtocol.gpiInactivityFlags[index] and 0x1) != 0
                 else -> (updateProtocol.gpiInactivityFlags[index] and 0x1) == 0
             }
 
-            if (skip) {
+            if (skip)
                 continue
-            }
 
-            if (skipCount > 0) {
+            if (skipCount > 0)
+            {
                 skipCount--
                 updateProtocol.gpiInactivityFlags[index] = updateProtocol.gpiInactivityFlags[index] or 0x2
                 continue
             }
 
-            if (local != player && (local == null || shouldRemove(player, local))) {
+            if (local != player && (local == null || shouldRemove(player, local)))
+            {
+
                 val lastTileHash = updateProtocol.gpiTileHashMultipliers[index]
+
                 val currTileHash = local?.tile?.asTileHashMultiplier ?: 0
+
                 val updateTileHash = lastTileHash != currTileHash
 
                 segments.add(RemoveLocalPlayerSegment(updateTileHash))
-                if (updateTileHash) {
+
+                if (updateTileHash)
                     segments.add(PlayerLocationHashSegment(lastTileHash, currTileHash))
-                }
 
                 updateProtocol.gpiLocalPlayers[index] = null
                 updateProtocol.gpiTileHashMultipliers[index] = currTileHash
@@ -116,50 +126,62 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
             }
 
             val requiresBlockUpdate = local.blockBuffer.isDirty()
-            if (requiresBlockUpdate) {
+
+            if (requiresBlockUpdate)
                 segments.add(PlayerUpdateBlockSegment(other = local, newPlayer = false))
-            }
-            if (local.moved) {
+
+            if (local.moved)
                 segments.add(PlayerTeleportSegment(other = local, encodeUpdateBlocks = requiresBlockUpdate))
-            } else if (local.steps != null) {
+            else if (local.steps != null)
+            {
+
                 var dx = DIRECTION_DELTA_X[local.steps!!.walkDirection!!.playerWalkValue]
                 var dz = DIRECTION_DELTA_Z[local.steps!!.walkDirection!!.playerWalkValue]
                 var running = local.steps!!.runDirection != null
 
                 var direction = 0
-                if (running) {
+
+                if (running)
+                {
                     dx += DIRECTION_DELTA_X[local.steps!!.runDirection!!.playerWalkValue]
                     dz += DIRECTION_DELTA_Z[local.steps!!.runDirection!!.playerWalkValue]
                     direction = getPlayerRunningDirection(dx, dz)
                     running = direction != -1
                 }
-                if (!running) {
+
+                if (!running)
                     direction = getPlayerWalkingDirection(dx, dz)
-                }
 
                 segments.add(PlayerWalkSegment(encodeUpdateBlocks = requiresBlockUpdate, running = running,
                         direction = direction))
 
-                if (!requiresBlockUpdate && running) {
+                if (!requiresBlockUpdate && running)
                     segments.add(PlayerUpdateBlockSegment(other = local, newPlayer = false))
-                }
-            } else if (requiresBlockUpdate) {
-                println("requires updating")
+
+            }
+            else if (requiresBlockUpdate)
                 segments.add(SignalPlayerUpdateBlockSegment())
-            } else {
-                for (j in i + 1 until updateProtocol.gpiLocalCount) {
+            else
+            {
+
+                for (j in i + 1 until updateProtocol.gpiLocalCount)
+                {
+
                     val nextIndex = updateProtocol.gpiLocalIndexes[j]
+
                     val next = updateProtocol.gpiLocalPlayers[nextIndex]
-                    val skipNext = when (initial) {
+
+                    val skipNext = when (initial)
+                    {
                         true -> (updateProtocol.gpiInactivityFlags[nextIndex] and 0x1) != 0
                         else -> (updateProtocol.gpiInactivityFlags[nextIndex] and 0x1) == 0
                     }
-                    if (skipNext) {
+                    if (skipNext)
                         continue
-                    }
-                    if (next == null || next.blockBuffer.isDirty() || next.moved || next.steps != null || next != player && shouldRemove(player, next)) {
+
+                    if (next == null || next.blockBuffer.isDirty() || next.moved || next.steps != null || next != player && shouldRemove(player, next))
                         break
-                    }
+
                     skipCount++
                 }
                 segments.add(PlayerSkipCountSegment(skipCount))
@@ -188,16 +210,17 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
 
             val index = updateProtocol.gpiExternalIndexes[i]
 
-            val skip = when (initial) {
+            val skip = when (initial)
+            {
                 true -> (updateProtocol.gpiInactivityFlags[index] and 0x1) == 0
                 else -> (updateProtocol.gpiInactivityFlags[index] and 0x1) != 0
             }
 
-            if (skip) {
+            if (skip)
                 continue
-            }
 
-            if (skipCount > 0) {
+            if (skipCount > 0)
+            {
                 skipCount--
                 updateProtocol.gpiInactivityFlags[index] = updateProtocol.gpiInactivityFlags[index] or 0x2
                 continue
@@ -213,6 +236,8 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
 
                 val tileUpdateSegment = if (oldTileHash == currTileHash) null else PlayerLocationHashSegment(oldTileHash, currTileHash)
 
+                println("me: " + player.index + " other: " + nonLocal.index)
+
                 segments.add(AddLocalPlayerSegment(other = nonLocal, locationSegment = tileUpdateSegment))
                 segments.add(PlayerUpdateBlockSegment(other = nonLocal, newPlayer = true))
 
@@ -224,28 +249,34 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
                 continue
             }
 
-            for (j in i + 1 until updateProtocol.gpiExternalCount) {
+            for (j in i + 1 until updateProtocol.gpiExternalCount)
+            {
+
                 val nextIndex = updateProtocol.gpiExternalIndexes[j]
-                val skipNext = when (initial) {
+
+                val skipNext = when (initial)
+                {
                     true -> (updateProtocol.gpiInactivityFlags[nextIndex] and 0x1) == 0
                     else -> (updateProtocol.gpiInactivityFlags[nextIndex] and 0x1) != 0
                 }
-                if (skipNext) {
+
+                if (skipNext)
                     continue
-                }
+
                 val next = if (nextIndex < 2000) WorldRepository.players.getOrNull(nextIndex) else null
-                if (next != null && (shouldAdd(player, next) || next.tile.asTileHashMultiplier != updateProtocol.gpiTileHashMultipliers[nextIndex])) {
+
+                if (next != null && (shouldAdd(player, next) || next.tile.asTileHashMultiplier != updateProtocol.gpiTileHashMultipliers[nextIndex]))
                     break
-                }
+
                 skipCount++
+
             }
             segments.add(PlayerSkipCountSegment(count = skipCount))
             updateProtocol.gpiInactivityFlags[index] = updateProtocol.gpiInactivityFlags[index] or 0x2
         }
 
-        if (skipCount > 0) {
+        if (skipCount > 0)
             throw RuntimeException()
-        }
 
         return added
     }
@@ -255,9 +286,11 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
     private fun shouldRemove(player: Player, other: Player): Boolean = /*!other.isOnline || other.invisible || */!other.tile.isWithinRadius(player.tile, Player.NORMAL_VIEW_DISTANCE)
 
     val DIRECTION_DELTA_X = intArrayOf(-1, 0, 1, -1, 1, -1, 0, 1)
+
     val DIRECTION_DELTA_Z = intArrayOf(-1, -1, -1, 0, 0, 1, 1, 1)
 
-    fun getPlayerWalkingDirection(dx: Int, dy: Int): Int {
+    fun getPlayerWalkingDirection(dx: Int, dy: Int): Int
+    {
         if (dx == -1 && dy == -1) {
             return 0
         }
@@ -284,7 +317,8 @@ object PlayerSynchronizationTask : SynchronizationTask<Player> {
         } else -1
     }
 
-    fun getPlayerRunningDirection(dx: Int, dy: Int): Int {
+    fun getPlayerRunningDirection(dx: Int, dy: Int): Int
+    {
         if (dx == -2 && dy == -2)
             return 0
         if (dx == -1 && dy == -2)

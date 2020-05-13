@@ -8,7 +8,6 @@ import rs.emulator.buffer.BufferedReader
 import rs.emulator.buffer.BufferedWriter
 import rs.emulator.buffer.type.DataType
 import rs.emulator.cache.compression.CompressionType
-import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.cache.data.DataFile
 import rs.emulator.cache.index.IndexConfig
 import rs.emulator.cache.index.IndexFile
@@ -31,8 +30,6 @@ import java.util.*
 
     @Inject internal lateinit var datFile: DataFile
 
-    @Inject private lateinit var configuration: CacheConfiguration
-
     private val indexes = mutableListOf<IndexFile>()
 
     fun close()
@@ -54,7 +51,7 @@ import java.util.*
         for (index in 0 until count)
         {
 
-            indexes.add(IndexFile(index, File("${configuration.defaultDirectory()}/main_file_cache.idx$index")))
+            indexes.add(IndexFile(index, File("./data/cache/main_file_cache.idx$index")))
 
             load(index)
 
@@ -83,7 +80,7 @@ import java.util.*
 
     fun getOrCreateIndex(identifier: Int)  = indexes.getOrElse(identifier) {
         logger().info("No IndexFile exists for identifier: {}, creating..", identifier)
-        indexes.add(IndexFile(identifier, File("${configuration.defaultDirectory()}/main_file_cache.idx$identifier")))
+        indexes.add(IndexFile(identifier, File("./data/cache/main_file_cache.idx$identifier")))
         indexes[identifier]
     }
 
@@ -95,7 +92,7 @@ import java.util.*
         if(indexes.any { it.identifier == identifier })
             return getOrCreateIndex(identifier)
 
-        indexes.add(IndexFile(identifier, File("${configuration.defaultDirectory()}/main_file_cache.idx$identifier")))
+        indexes.add(IndexFile(identifier, File("./data/cache/main_file_cache.idx$identifier")))
 
         return indexes[identifier]
 
@@ -219,7 +216,7 @@ import java.util.*
         //todo memory efficiency.
         archive.loadEntries(fetchArchiveBuffer(indexIdentifier, archiveIdentifier))
 
-        println("archive entry keys: " + table.entries.keys.toTypedArray().contentDeepToString())
+       //println("archive entry keys: " + table.entries.keys.toTypedArray().contentDeepToString())
 
         //todo check if null
         return table.entries.values.first { it.identifier == identifier }

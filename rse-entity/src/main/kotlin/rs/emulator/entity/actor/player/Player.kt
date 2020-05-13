@@ -240,6 +240,13 @@ open class Player(val channel: Channel,
     override val entityType: EntityType
         get() = EntityType.CLIENT
 
+    override fun equals(other: Any?): Boolean
+    {
+        val player = other as? Player
+        return if(player == null) false
+        else this.index == player.index
+    }
+
     companion object
     {
 

@@ -63,13 +63,7 @@ class ArchiveFile(
 
         val entries = table.entries.keys.toIntArray()
 
-        println("indices: " + table.entries.size)
-
-        //println("reader: " + reader.byteArray().toTypedArray().contentDeepToString())
-
         val buffer = decompress(reader, null)
-
-       //println("decomp: " + buffer.byteArray().toTypedArray().contentDeepToString())
 
         if(!checkCompression()) return
 
@@ -85,24 +79,13 @@ class ArchiveFile(
 
         val chunks = buffer.getUnsigned(DataType.BYTE).toInt()
 
-        //println("chunk count; $chunks")
-
-       // println("file count: " + entries.size)
-
         buffer.resetReaderIndex()
 
-        //4 extra bytes on index 9 archive 0 on reader index
-        //724 bytes, on OpenOSRS its 720 bytes, we are 4 bytes ahead.
-
         buffer.markReaderIndex(buffer.readableBytes - 1 - chunks * entries.size * 4)
-
-        //println("reader index: " + buffer.readerIndex())
 
         val chunkSizes = Array(entries.size) { IntArray(chunks) }
 
         val filesSize = IntArray(entries.size)
-
-        println(buffer.byteArray().toTypedArray().contentDeepToString())
 
         for (chunk in 0 until chunks)
         {
@@ -110,7 +93,6 @@ class ArchiveFile(
             for (id in entries.indices)
             {
                 val delta: Int = buffer.getSigned(DataType.INT).toInt()
-                println("id: $id - delta: $delta")
                 chunkSize += delta // size of this chunk
                 chunkSizes[id][chunk] = chunkSize // store size of chunk
                 filesSize[id] += chunkSize // add chunk size to file size
@@ -192,15 +174,9 @@ class ArchiveFile(
     override fun save()
     {
 
-        println("saving archive: $identifier - compression ${fetchCompression()}")
-
         val reader = compress(version, fetchCompression(), saveEntries().byteArray())
 
-        println("archive bytes saved as: " + reader.byteArray().toTypedArray().contentDeepToString())
-
         val entry = fileStore.datFile.write(parentIdx, identifier, reader.byteArray())
-
-        println("entry: ${entry.sector} - ${entry.length}")
 
         fileStore.fetchIndex(parentIdx).writeEntry(entry)
 

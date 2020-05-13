@@ -2,17 +2,17 @@ package rs.emulator.cache.reference
 
 import com.google.inject.Inject
 import com.google.inject.Singleton
-import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.cache.index.IndexFile
 import rs.emulator.cache.index.archive.entry.EntryData
 import java.io.File
+import java.nio.file.Paths
 
 /**
  *
  * @author Chk
  */
-@Singleton class ReferenceTable @Inject constructor(configuration: CacheConfiguration)
-    : IndexFile(255, configuration.defaultDirectory().resolve("main_file_cache.idx255").toFile())
+@Singleton class ReferenceTable @Inject constructor()
+    : IndexFile(255, Paths.get("./data/cache").resolve("main_file_cache.idx255").toFile())
 {
 
     fun readIndex(index: IndexFile): EntryData

@@ -11,8 +11,7 @@ import rs.emulator.utilities.logger
  *
  * @author Tom <rspsmods@gmail.com>
  */
-class PacketMetadata(private val structures: MessageStructureSet) :
-    IPacketMetadata
+class PacketMetadata(private val structures: MessageStructureSet) : IPacketMetadata
 {
 
     /**
@@ -20,18 +19,22 @@ class PacketMetadata(private val structures: MessageStructureSet) :
      */
     override fun getType(opcode: Int): PacketType? = structures.get(opcode)?.type
 
-    override fun getLength(opcode: Int): Int {
+    override fun getLength(opcode: Int): Int
+    {
         val structure = structures.get(opcode)
-        if (structure == null) {
+        if (structure == null)
+        {
             logger().warn("No message structure found for message with opcode {}.", opcode)
             return 0
         }
         return structure.length
     }
 
-    override fun shouldIgnore(opcode: Int): Boolean {
+    override fun shouldIgnore(opcode: Int): Boolean
+    {
         val structure = structures.get(opcode)
-        if (structure == null) {
+        if (structure == null)
+        {
             logger().warn("No message structure found for message with opcode {}.", opcode)
             return true
         }

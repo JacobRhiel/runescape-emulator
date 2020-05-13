@@ -13,7 +13,8 @@ class IndexedActorList<T : Actor>(capacity: Int) : ArrayList<T>(capacity)
     {
         val added = super.add(actor)
         val index = indexOf(actor)
-        actor.index = if(index == 0) 1 else index + 1
+        println("index: " + actor.index)
+        actor.index = index//if(index == 0) 1 else index + 1
         return added
     }
 

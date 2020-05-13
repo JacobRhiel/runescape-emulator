@@ -25,7 +25,7 @@ class WorldCreatePacketSessionMessage(private val session: WorldSession) : Netwo
 
         session.channel.write(WorldResponseMessage())
 
-        val player = Player(session.channel, "Test")//todo WorldRepo. reference instead of passing non-essential args.
+        val player = Player(session.channel, this.session.credentials.username!!)//todo WorldRepo. reference instead of passing non-essential args.
 
         WorldRepository.players.add(player)
 

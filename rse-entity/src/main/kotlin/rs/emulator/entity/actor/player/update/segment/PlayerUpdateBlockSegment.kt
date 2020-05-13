@@ -206,7 +206,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                         if(e[index] != -1)
                         {
 
-                            val definition: ObjMetaDataDefinition = definition().find(e[index])
+                           /* val definition: ObjMetaDataDefinition = definition().find(e[index])
 
                             val slot = definition.equipment?.slot
 
@@ -222,7 +222,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                                     equipType == 5
                                 if(slot == "body")
                                     equipType = 6
-                            }
+                            }*/
 
                             val id = e[index]
 
