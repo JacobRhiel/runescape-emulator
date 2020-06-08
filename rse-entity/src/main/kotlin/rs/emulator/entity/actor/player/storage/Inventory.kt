@@ -1,69 +1,71 @@
 package rs.emulator.entity.actor.player.storage
 
 import rs.emulator.containers.ItemContainer
+import rs.emulator.obersables.ObservableContainerState
 import rs.emulator.storables.Item
 
 class Inventory : ItemContainer(28) {
 
-    override fun addItem(element: Item, tempListener: (Item, Item) -> Unit) {
+    override fun addItem(element: Item, observer: ObservableContainerState.() -> Unit) {
+        val containerState = ObservableContainerState { observer(this) }
+        observer(containerState)
         if(isFull()) {
-            tempListener(element, Item.EMPTY_ITEM)
             return
         }
         val isStackable : Boolean = element["stackable"]
         if(isStackable) {
-            val item = this.find { it.isIdentical(element) }
-            if(item != null) {
-                val i = item.copy()
-                item += element
-                tempListener(i, element)
+            val foundSlot = this.findSlot(element)
+            if(foundSlot != -1) {
+                val i = this[foundSlot].copy()
+                i += element
+                containerState.add(i, foundSlot)
             } else {
                 val slot = nextSlot()
-                this[slot] = element.copy()
-                tempListener(Item.EMPTY_ITEM, this[slot])
+                containerState.add(element.copy(), slot)
             }
         } else {
             var amt = element.amount
+            var newSlot = nextSlot()
             while(amt > 0 && hasSpace()) {
-                this[nextSlot()] = element.copy(1)
+                containerState.add(element.copy(1), newSlot)
+                newSlot++
                 amt--
             }
-            if(isFull() && amt > 0) {
-                tempListener(element.copy(amt), element.copy(element.amount - amt))
-            } else {
-                tempListener(Item.EMPTY_ITEM, element)
-            }
         }
-        fireStateChange()
+        containerState.commit(this)
     }
 
-    override fun removeItem(element: Item, tempListener: (Item, Item) -> Unit) {
+    override fun removeItem(element: Item, observer: ObservableContainerState.() -> Unit) {
+        val containerState = ObservableContainerState { observer(this) }
         if(this.all { it == Item.EMPTY_ITEM }) {
-            tempListener(Item.EMPTY_ITEM, Item.EMPTY_ITEM)
             return
         }
-        val slot = this.indexOfFirst { it.isIdentical(element) }
+        val slot = this.findSlot(element)
         if(slot != -1 && this[slot] != Item.EMPTY_ITEM) {
             val isStackable : Boolean = element["stackable"]
-            val old = this[slot]
             when {
-                isStackable -> this[slot] -= element
+                isStackable -> {
+                    val copy = this[slot].copy()
+                    copy -= element
+                    containerState.remove(copy, slot)
+                }
                 element.amount > 1 -> {
                     var amt = element.amount
-                    val iter = this.iterator()
-                    while(iter.hasNext() && amt > 0) {
-                        val toRemove = iter.next()
-                        if(toRemove.isIdentical(element)) {
-                            iter.remove()
+                    this.forEachIndexed { index, item ->
+                        if (amt > 0) {
+                            if(item.isIdentical(element)) {
+                                containerState.remove(item.copy(0), index)
+                            }
                             amt--
+                        } else {
+                            return@forEachIndexed
                         }
                     }
                 }
-                else -> this[slot] = Item.EMPTY_ITEM
+                else -> containerState.remove(element.copy(0), slot)
             }
-            tempListener(old, this[slot])
         }
-        fireStateChange()
+        containerState.commit(this)
     }
 
 }

@@ -1,6 +1,7 @@
 package rs.emulator.containers
 
 import rs.emulator.obersables.ObservableArray
+import rs.emulator.obersables.ObservableContainerState
 import rs.emulator.storables.Item
 
 abstract class ItemContainer(
@@ -18,8 +19,8 @@ abstract class ItemContainer(
         }
     }
 
-    abstract fun addItem(element: Item, tempListener: (Item, Item) -> Unit = { _, _ -> })
-    abstract fun removeItem(element: Item, tempListener: (Item, Item) -> Unit = { _, _ -> })
+    abstract fun addItem(element: Item, observer: ObservableContainerState.() -> Unit = {})
+    abstract fun removeItem(element: Item, observer: ObservableContainerState.() -> Unit = {})
 
     fun setStateChangeListener(body : () -> Unit) {
         this.onStateChange = body
@@ -39,6 +40,10 @@ abstract class ItemContainer(
         removeItem(element)
     }
 
+    fun findSlot(element: Item) : Int {
+        return this.indexOfFirst { it.isIdentical(element) }
+    }
+
     operator fun contains(element: Item): Boolean = this.items.any { it.isIdentical(element) }
 
     fun addChangeListener(listener: (ObservableArray<Item>, Item, Item) -> Unit) {
@@ -51,7 +56,6 @@ abstract class ItemContainer(
 
     fun shiftItems() {
         items.sortedBy { it }.forEachIndexed { index, item -> items[index] = item }
-
     }
 
     override fun nextSlot(): Int = items.indexOfFirst { it == Item.EMPTY_ITEM }
