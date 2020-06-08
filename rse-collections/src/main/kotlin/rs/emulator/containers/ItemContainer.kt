@@ -58,7 +58,7 @@ abstract class ItemContainer(
         items.sortedBy { it }.forEachIndexed { index, item -> items[index] = item }
     }
 
-    override fun nextSlot(): Int = items.indexOfFirst { it == Item.EMPTY_ITEM }
+    override fun nextSlot(): Int = items.indexOfFirst { it === Item.EMPTY_ITEM }
 
     override fun swap(fromSlot: Int, toSlot: Int) {
         val from = items[fromSlot]

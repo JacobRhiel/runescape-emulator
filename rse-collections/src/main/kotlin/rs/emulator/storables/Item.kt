@@ -89,6 +89,7 @@ data class Item(override val id: Int, override var amount: Int = 1, val attribut
 
     companion object {
         val EMPTY_ITEM = Item(-1, 0)
+        val PlACE_HOLDER = Item(-1, 0)
 
         fun asStackable(id: Int, amount: Int = 1): Item {
             val item = Item(id, amount)

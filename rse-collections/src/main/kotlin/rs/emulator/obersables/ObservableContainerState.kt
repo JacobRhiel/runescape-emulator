@@ -3,21 +3,30 @@ package rs.emulator.obersables
 import rs.emulator.containers.ItemContainer
 import rs.emulator.storables.Item
 
-class ObservableContainerState(init : ObservableContainerState.() -> Unit) {
+class ObservableContainerState(init: ObservableContainerState.() -> Unit) {
 
-    val added : MutableList<Pair<Item, Int>> = mutableListOf()
-    val removed : MutableList<Pair<Item, Int>> = mutableListOf()
+    val added: MutableList<Pair<Item, Int>> = mutableListOf()
+    val removed: MutableList<Pair<Item, Int>> = mutableListOf()
 
-    var add : Item.(Int) -> Unit = { added.add(this to it) }
-    var remove : Item.(Int) -> Unit = { removed.add(this to it) }
-    var commit : ItemContainer.() -> Unit = {
+    var add: Item.(Int) -> Unit = { addItem(it, this) }
+    var remove: Item.(Int) -> Unit = { removeItem(it, this) }
+    var commit: ItemContainer.() -> Unit = {
         addItems()
         removeItems()
+        clearPlaceholders()
         fireStateChange()
     }
 
     init {
         init(this)
+    }
+
+    fun addItem(slot: Int, item: Item) {
+        added.add(item to slot)
+    }
+
+    fun removeItem(slot: Int, item: Item) {
+        removed.add(item to slot)
     }
 
     fun ItemContainer.addItems() {
@@ -32,7 +41,7 @@ class ObservableContainerState(init : ObservableContainerState.() -> Unit) {
         removed.forEach {
             val item = it.first
             val slot = it.second
-            if(item.amount <= 0) {
+            if (item.amount <= 0) {
                 this[slot] = Item.EMPTY_ITEM
             } else {
                 this[slot].amount = item.amount
@@ -40,15 +49,23 @@ class ObservableContainerState(init : ObservableContainerState.() -> Unit) {
         }
     }
 
-    fun added(add : Item.(Int) -> Unit) {
+    fun ItemContainer.clearPlaceholders() {
+        forEachIndexed { index, item ->
+            if(item === Item.PlACE_HOLDER) {
+                this[index] = Item.EMPTY_ITEM
+            }
+        }
+    }
+
+    fun added(add: Item.(Int) -> Unit) {
         this.add = add
     }
 
-    fun removed(remove : Item.(Int) -> Unit) {
+    fun removed(remove: Item.(Int) -> Unit) {
         this.remove = remove
     }
 
-    fun commit(commit : ItemContainer.() -> Unit) {
+    fun commit(commit: ItemContainer.() -> Unit) {
         this.commit = commit
     }
 

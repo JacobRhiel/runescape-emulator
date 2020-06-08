@@ -8,7 +8,6 @@ class Inventory : ItemContainer(28) {
 
     override fun addItem(element: Item, observer: ObservableContainerState.() -> Unit) {
         val containerState = ObservableContainerState { observer(this) }
-        observer(containerState)
         if(isFull()) {
             return
         }
@@ -25,10 +24,10 @@ class Inventory : ItemContainer(28) {
             }
         } else {
             var amt = element.amount
-            var newSlot = nextSlot()
             while(amt > 0 && hasSpace()) {
-                containerState.add(element.copy(1), newSlot)
-                newSlot++
+                val slot = nextSlot()
+                containerState.add(element.copy(1), slot)
+                this[slot] = Item.PlACE_HOLDER
                 amt--
             }
         }

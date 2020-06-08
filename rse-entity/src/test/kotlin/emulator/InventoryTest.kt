@@ -189,4 +189,24 @@ class InventoryTest {
 
     }
 
+    @Test
+    fun place_holders() {
+
+        val inv = Inventory()
+
+        inv[1] = Item(4151)
+
+        inv.addItem(Item(1050, 2)) {
+            commit {
+                println("Inventory place_holder count ${inv.count { it === Item.PlACE_HOLDER }}")
+                addItems()
+                clearPlaceholders()
+                println("Inventory place_holder count ${inv.count { it === Item.PlACE_HOLDER }}")
+            }
+        }
+
+        println("Inv $inv")
+
+    }
+
 }
