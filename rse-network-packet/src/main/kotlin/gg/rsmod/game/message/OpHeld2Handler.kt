@@ -24,10 +24,17 @@ class OpHeld2Handler : MessageHandler<OpHeld2Message> {
 
         item.attributes["equip_slot"] = 3
 
-        client.storageManager.equipment().addItem(item) { removed, equiped ->
-
-            client.storageManager.inventory().removeItem(equiped)
-
+        val inv = client.storageManager.inventory()
+        client.storageManager.equipment().addItem(item) {
+            commit {
+                if (!inv.isFull()) {
+                    addItems()
+                    removed.forEach { inv.removeItem(it.first) }
+                    removeItems()
+                    clearPlaceholders()
+                    fireStateChange()
+                }
+            }
         }
 
         /*if (message.slot < 0 || message.slot >= client.inventory.capacity) {

@@ -35,8 +35,14 @@ class ClientCheatHandler : MessageHandler<ClientCheatMessage> {
             val amount = if (args.size > 1) args[1].toInt() else 1
             val item = definition().find<ObjDefinition>(id).createItem(amount)
             item.attributes["equip_slot"] = 3
-            client.storageManager.inventory().addItem(item) { empty, added ->
-                client.sendDebugMessage("Spawned $added")
+            client.storageManager.inventory().addItem(item) {
+                commit {
+                    client.sendDebugMessage("Item Spawned $item")
+                    addItems()
+                    removeItems()
+                    clearPlaceholders()
+                    fireStateChange()
+                }
             }
         } else if (command.startsWith("obank")) {
             client.sendDebugMessage("Opening bank")

@@ -1,24 +1,14 @@
 package rs.emulator.tools.osrsbox.index
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.core.JsonFactory
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.google.gson.stream.JsonReader
-import com.google.inject.*
+import com.google.inject.Guice
+import com.google.inject.Inject
+import com.google.inject.Injector
+import com.google.inject.Singleton
 import rs.emulator.cache.FileStore
-import rs.emulator.cache.compression.CompressionType
-import rs.emulator.cache.definition.definition
-import rs.emulator.cache.definition.entity.obj.ObjDefinition
 import rs.emulator.cache.definition.entity.obj.meta.ObjMetaDataDefinition
-import rs.emulator.cache.index.IndexConfig
-import rs.emulator.cache.index.archive.ArchiveConfig
-import rs.emulator.configuration.CacheConfiguration
 import rs.emulator.configuration.environment.RSEEnvironment
 import rs.emulator.utilities.injector.injector
-import java.io.File
-import java.io.FileReader
 
 /**
  *
@@ -31,9 +21,6 @@ class OSRSBoxItemMetaDataPacker @Inject constructor()
     private lateinit var injector: Injector
 
     @Inject lateinit var environment: RSEEnvironment
-
-    @Inject
-    private lateinit var config: CacheConfiguration
 
     @Inject
     private lateinit var fileStore: FileStore
