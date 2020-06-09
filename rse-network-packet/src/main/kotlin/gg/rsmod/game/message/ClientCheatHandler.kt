@@ -123,7 +123,7 @@ class ClientCheatHandler : MessageHandler<ClientCheatMessage> {
             val amount = if (args.size > 1) args[1].toInt() else 1
             val tab = if(args.size > 2) args[2].toInt() else 0
             val item = definition().find<ObjDefinition>(id).createItem(amount)
-            client.storageManager.bank().addItem(item, tab)
+            client.storageManager.bank().addItem(item)
         }
 
         //log(client, "Command: cmd=%s, args=%s", command, Arrays.toString(args ?: emptyArray<String>()))

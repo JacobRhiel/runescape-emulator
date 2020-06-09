@@ -5,27 +5,26 @@ import rs.emulator.cache.definition.entity.obj.ObjDefinition
 import rs.emulator.packet.network.message.impl.OpHeld2Message
 import rs.emulator.entity.actor.player.Player
 import rs.emulator.entity.obj.createItem
-import rs.emulator.storables.Item
 
 /**
  * @author Tom <rspsmods@gmail.com>
  */
 class OpHeld2Handler : MessageHandler<OpHeld2Message> {
 
-    override fun handle(client: Player, message: OpHeld2Message) {
+    override fun handle(player: Player, message: OpHeld2Message) {
         @Suppress("unused")
         val interfaceId = message.componentHash shr 16
         @Suppress("unused")
         val component = message.componentHash and 0xFFFF
 
-        client.sendDebugMessage("Item action 2: id=${message.item}, slot=${message.slot}, component=($interfaceId, $component), inventory=(x, x)")
+        player.sendDebugMessage("Item action 2: id=${message.item}, slot=${message.slot}, component=($interfaceId, $component), inventory=(x, x)")
 
         val item = definition().find<ObjDefinition>(message.item).createItem()
 
         item.attributes["equip_slot"] = 3
 
-        val inv = client.storageManager.inventory()
-        client.storageManager.equipment().addItem(item) {
+        val inv = player.storageManager.inventory()
+        player.storageManager.equipment().addItem(item) {
             commit {
                 if (!inv.isFull()) {
                     addItems()

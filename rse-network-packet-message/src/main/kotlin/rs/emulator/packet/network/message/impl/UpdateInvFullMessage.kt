@@ -1,7 +1,7 @@
 package rs.emulator.packet.network.message.impl
 
 import gg.rsmod.game.message.Message
-import rs.emulator.Storable
+import rs.emulator.collections.Storable
 
 /**
  * @author Tom <rspsmods@gmail.com>

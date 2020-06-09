@@ -1,13 +1,13 @@
 package rs.emulator.entity.actor.player.storage
 
+import rs.emulator.containers.ContainerState
 import rs.emulator.containers.ItemContainer
-import rs.emulator.obersables.ObservableContainerState
-import rs.emulator.storables.Item
+import rs.emulator.items.Item
 
 class Inventory : ItemContainer(28) {
 
-    override fun addItem(element: Item, observer: ObservableContainerState.() -> Unit) {
-        val containerState = ObservableContainerState { observer(this) }
+    override fun addItem(element: Item, containerState: ContainerState.() -> Unit) {
+        val containerState = ContainerState { containerState(this) }
         if(isFull()) {
             return
         }
@@ -34,8 +34,8 @@ class Inventory : ItemContainer(28) {
         containerState.commit(this)
     }
 
-    override fun removeItem(element: Item, observer: ObservableContainerState.() -> Unit) {
-        val containerState = ObservableContainerState { observer(this) }
+    override fun removeItem(element: Item, containerState: ContainerState.() -> Unit) {
+        val containerState = ContainerState { containerState(this) }
         if(this.all { it == Item.EMPTY_ITEM }) {
             return
         }

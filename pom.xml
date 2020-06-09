@@ -14,7 +14,7 @@
         <module>rse-boot</module>
         <module>rse-buffer</module>
         <module>rse-configuration</module>
-        <module>rse-collections</module>
+        <module>rse-api</module>
         <module>rse-network-shared</module>
         <module>rse-network-js5</module>
         <module>rse-network-world</module>
@@ -34,7 +34,6 @@
         <module>rse-entity-update-player</module>
         <module>rse-client</module>
         <module>rse-tools</module>
-        <module>rse-content-api</module>
     </modules>
     <packaging>pom</packaging>
 

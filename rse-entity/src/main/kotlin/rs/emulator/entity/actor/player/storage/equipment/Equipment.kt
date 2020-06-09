@@ -1,13 +1,13 @@
 package rs.emulator.entity.actor.player.storage.equipment
 
 import rs.emulator.containers.ItemContainer
-import rs.emulator.obersables.ObservableContainerState
-import rs.emulator.storables.Item
+import rs.emulator.containers.ContainerState
+import rs.emulator.items.Item
 
 class Equipment : ItemContainer(11) {
 
-    override fun addItem(element: Item, observer: ObservableContainerState.() -> Unit) {
-        val containerState = ObservableContainerState { observer(this) }
+    override fun addItem(element: Item, containerState: ContainerState.() -> Unit) {
+        val containerState = ContainerState { containerState(this) }
         val equipSlot: Int = element["equip_slot"]
         val isStackable: Boolean = element["stackable"]
         val isTwoHanded: Boolean = element["twoHanded"]
@@ -43,8 +43,8 @@ class Equipment : ItemContainer(11) {
         containerState.commit(this)
     }
 
-    override fun removeItem(element: Item, observer: ObservableContainerState.() -> Unit) {
-        val containerState = ObservableContainerState { observer(this) }
+    override fun removeItem(element: Item, containerState: ContainerState.() -> Unit) {
+        val containerState = ContainerState { containerState(this) }
         val slot : Int = element["equip_slot"]
         containerState.remove(this[slot].copy(0), slot)
         containerState.commit(this)

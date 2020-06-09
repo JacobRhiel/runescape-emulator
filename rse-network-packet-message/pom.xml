@@ -28,8 +28,8 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>rs.emulator</groupId>
-            <artifactId>rse-collections</artifactId>
+            <groupId>rs.emulator.rse.api</groupId>
+            <artifactId>api-collections</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

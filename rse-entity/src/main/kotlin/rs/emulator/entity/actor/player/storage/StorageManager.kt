@@ -1,10 +1,9 @@
 package rs.emulator.entity.actor.player.storage
 
-import rs.emulator.Storable
-import rs.emulator.attributes.AttributeMap
-import rs.emulator.containers.Container
+import rs.emulator.collections.Storable
+import rs.emulator.collections.AttributeMap
+import rs.emulator.collections.Container
 import rs.emulator.containers.ItemContainer
-import rs.emulator.containers.StorableContainer
 import rs.emulator.entity.actor.player.storage.bank.Bank
 import rs.emulator.entity.actor.player.storage.equipment.Equipment
 
