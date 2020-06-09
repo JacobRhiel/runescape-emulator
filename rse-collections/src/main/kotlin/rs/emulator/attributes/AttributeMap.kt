@@ -19,6 +19,10 @@ class AttributeMap(
         setAttribute(key, save, value)
     }
 
+    operator fun set(key : String, save : Boolean = false, value : String) {
+        setAttribute(key, save, value)
+    }
+
     operator fun set(key: String, save: Boolean, value: Boolean) {
         setAttribute(key, save, value)
     }

@@ -22,7 +22,7 @@ class AddPlayerSynchronizationSegment(private val player: Player) : Synchronizat
 
         //locationSegment?.encode(buf)
 
-        builder.putBits(13, player.coordinate.x and 0x1FFF)
+        builder.putBits(13, player.tile.x and 0x1FFF)
         builder.putBits(13, player.tile.z and 0x1FFF)
         builder.putBits(1, 1) // Requires block update
 
